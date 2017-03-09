@@ -1,0 +1,72 @@
+/* 
+    Document   : style.css
+    Created on : 8-jan-2013, 9:04:12
+    Author     : Jan
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+
+body{
+    font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+    background: #ddd;
+}
+
+a{
+    color: darkblue;
+}
+
+.clearfix{
+    float: none;
+    clear:both;
+}
+
+.header-form{
+    float:left;
+    padding: 10px;
+    background: #fff;
+    margin-bottom: 5px;
+}
+
+.table-container{
+    position: relative;
+}
+
+table.match-grid{
+    border-collapse: collapse;
+}
+
+table.match-grid th, table.match-grid td{
+    border: 1px solid #d5d5d5;
+    margin: 0;
+    padding: 3px;
+}
+
+table.match-grid th{
+    padding: 5px;
+    background: grey;
+    color: white;
+}
+
+table.match-grid th.headerSortDown{
+    background: url('../img/asc.gif') no-repeat grey center right;
+}
+
+table.match-grid th.headerSortUp{
+    background: url('../img/desc.gif') no-repeat grey center right;
+}
+
+table.match-grid tr:nth-child(odd){background: #ededed;}
+
+.yes{color: green;}
+.no{color: crimson;}
+.suggest{background: honeydew !important;}
+
+.indicator{
+    height: 20px;
+    background: green;
+}
+

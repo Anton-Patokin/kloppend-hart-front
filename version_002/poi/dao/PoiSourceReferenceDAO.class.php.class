@@ -1,0 +1,14 @@
+<?php
+
+namespace poi\dao;
+
+class PoiSourceReferenceDAO extends \core\dao\GenericDAO {
+    public function __construct() {
+        $dbConfig = new \core\config\DBConfig();
+        parent::init($dbConfig->conn(), 'source_reference');
+    }
+        
+}
+
+
+?>

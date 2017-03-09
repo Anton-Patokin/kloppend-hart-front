@@ -1,0 +1,94 @@
+<?php
+
+require_once(ROOT_FRONT . '/application/models/facebookModel.php');
+require_once(ROOT_FRONT . '/application/models/foursquareModel.php');
+require_once(ROOT_FRONT . '/application/models/apenModel.php');
+
+class heatmapController extends Controller{
+    
+    protected $facebookModel;
+    protected $foursquareModel;
+    protected $apenModel;
+    
+    
+    public function __construct($model, $controller, $action) {
+        parent::__construct($model, $controller, $action);
+        $this->facebookModel = new facebookModel();
+        $this->foursquareModel = new foursquareModel();
+        $this->apenModel = new apenModel();
+    }
+    
+    public function getMetricsByTimeRange($startDate, $endDate){
+        $metrics = array();
+        $this->doNotRenderHeader = 1;
+        $metrics['facebook'] = $this->getFacebookMetricsByTimeRange($startDate, $endDate);
+        $metrics['foursquare'] = $this->getFoursquareMetricsByTimeRange($startDate, $endDate);
+        $metrics['apen'] = $this->getApenMetricsByTimeRange($startDate, $endDate);
+        echo json_encode($metrics);
+    }   
+    
+    private function getFoursquareMetricsByTimeRange($startDate, $endDate){
+        $metrics = array();
+        
+        $metrics['checkin'] = $this->foursquareModel->getFoursquareMetricByNameByTimeRange('checkin', $startDate, $endDate);
+        $metrics['user']    = $this->foursquareModel->getFoursquareMetricByNameByTimeRange('user', $startDate, $endDate);
+        
+        return $metrics;
+    }
+    
+    private function getFacebookMetricsByTimeRange($startDate, $endDate){
+        $metrics = array();
+        
+        //3 queries atm -> can be reduces to 1 of performance issues rise
+        $metrics['like']          = $this->facebookModel->getFacebookMetricByNameByTimeRange('like', $startDate, $endDate);
+        $metrics['checkin']       = $this->facebookModel->getFacebookMetricByNameByTimeRange('checkin', $startDate, $endDate);
+        $metrics['talking_about'] = $this->facebookModel->getFacebookMetricByNameByTimeRange('talking_about', $startDate, $endDate);
+        
+        return $metrics;
+    }
+    
+    private function getApenMetricsByTimeRange($startDate, $endDate){
+        $metrics = array();
+        
+        $metrics['visit'] = $this->apenModel->getApenMetricByNameByTimeRange('visit', $startDate, $endDate);
+        
+        return $metrics;
+    }
+    
+    public function getTrendingList($lat, $lng, $startDate, $endDate){
+        $this->doNotRenderHeader = 1;
+        $trendingList = array();
+        $trendingList = array_merge($trendingList, $this->foursquareModel->getTrendingList($lat, $lng, $startDate, $endDate));
+        $trendingList = array_merge($trendingList, $this->facebookModel->getTrendingList($lat, $lng, $startDate, $endDate));
+        $trendingList = array_merge($trendingList, $this->apenModel->getTrendingList($lat, $lng, $startDate, $endDate));
+        
+        $diff_value = array();
+        foreach ($trendingList as $key => $row)
+        {
+            $diff_value[$key] = $row->differential_value;
+        }
+        array_multisort($diff_value, SORT_DESC, $trendingList);
+        
+        echo json_encode($trendingList);
+    } 
+    
+    public function getTopTrendingList($startDate, $endDate){
+         $this->doNotRenderHeader = 1;
+        $trendingList = array();
+        $trendingList = array_merge($trendingList, $this->foursquareModel->getTopTrendingList($startDate, $endDate));
+        $trendingList = array_merge($trendingList, $this->facebookModel->getTopTrendingList($startDate, $endDate));
+        $trendingList = array_merge($trendingList, $this->apenModel->getTopTrendingList($startDate, $endDate));
+        
+        $diff_value = array();
+        foreach ($trendingList as $key => $row)
+        {
+            $diff_value[$key] = $row->differential_value;
+        }
+        array_multisort($diff_value, SORT_DESC, $trendingList);
+        
+        echo json_encode($trendingList);
+        
+    }
+    
+}
+?>
