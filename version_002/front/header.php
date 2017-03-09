@@ -14,4 +14,7 @@
         type="text/javascript"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
     <script src="scripts/angular_main.js"></script>
+    <script src="scripts/angular_section_angular_google_maps_controller.js"></script>
+    <script src="scripts/angular_section_8_controller.js"></script>
+    <script src="scripts/angular_section_1_controller.js"></script>
 </head>
