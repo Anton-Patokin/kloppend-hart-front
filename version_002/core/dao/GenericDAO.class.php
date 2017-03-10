@@ -47,11 +47,11 @@
                return;
             }
             $result = $query->fetch(\PDO::FETCH_OBJ);
+
             return $result;
         }
         
         protected function getByPrimaryKey($values, $identifiers){
-            //var_dump($values);
             $keyCond = implode(' = ? AND ', $identifiers) . ' = ? ';
             $query = $this->DB->prepare("SELECT $this->colsString FROM $this->table WHERE $keyCond");
             $succes = $query->execute($values);
@@ -96,7 +96,6 @@
         protected function insertRecords($array){
             $inserts = array();
             foreach ($array as $object){
-                var_dump($object);
                 $inserts[] = $this->insertRecord($object);
             }
             return $inserts;

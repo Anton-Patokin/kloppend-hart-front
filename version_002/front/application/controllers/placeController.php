@@ -1,6 +1,6 @@
 <?php
 require_once ROOT_FRONT . '/application/models/homeModel.php';
-class placeController extends Controller{
+class placeController {
     
     protected $homeModel;
     

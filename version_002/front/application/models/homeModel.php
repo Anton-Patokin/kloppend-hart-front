@@ -1,11 +1,10 @@
 <?php
-require_once '../../apen/service/ApenService.class.php';
+require_once (ROOT. '/apen/service/ApenService.class.php');
 
-class homeModel extends Model{
-    protected $apenService;
+class homeModel{
     
     public function __construct() {
-        parent::__construct();
+ 
         $this->apenService = new \apen\service\ApenService();
     }
     

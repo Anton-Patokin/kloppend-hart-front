@@ -1,11 +1,10 @@
 <?php
-require_once '../../aggregated/service/PoiStatsTimeAggregatedService.class.php';
-class foursquareModel extends Model{
+require_once(ROOT. '/aggregated/service/PoiStatsTimeAggregatedService.class.php');
+class foursquareModel{
     
     protected $PoiStatsTimeAggregatedService;
     
    public function __construct() {
-       parent::__construct();
        $this->PoiStatsTimeAggregatedService = new \aggregated\service\PoiStatsTimeAggregatedService();
    }
     

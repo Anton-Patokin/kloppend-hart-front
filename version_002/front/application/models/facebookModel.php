@@ -1,15 +1,17 @@
 <?php
-require_once '../../aggregated/service/PoiStatsTimeAggregatedService.class.php';
-class facebookModel extends Model{
+require_once(ROOT. '/aggregated/service/PoiStatsTimeAggregatedService.class.php');
+
+//require_once '../../aggregated/service/PoiStatsTimeAggregatedService.class.php';
+class facebookModel{
     
     protected $PoiStatsTimeAggregatedService;
     
    public function __construct() {
-       parent::__construct();
        $this->PoiStatsTimeAggregatedService = new \aggregated\service\PoiStatsTimeAggregatedService();
    }
     
     public function getFacebookMetricByNameByTimeRange($metric, $startDate, $endDate, $source = 'facebook'){
+        
         return $this->PoiStatsTimeAggregatedService->getAggregatedPoiStatsTimeByMetricBySourceByTimRange($metric, $source, $startDate, $endDate);
     }
     

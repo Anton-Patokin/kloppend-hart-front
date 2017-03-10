@@ -1,18 +1,16 @@
 <?php
-
 require_once(ROOT_FRONT . '/application/models/facebookModel.php');
 require_once(ROOT_FRONT . '/application/models/foursquareModel.php');
 require_once(ROOT_FRONT . '/application/models/apenModel.php');
 
-class heatmapController extends Controller{
+class heatmapController{
     
     protected $facebookModel;
     protected $foursquareModel;
     protected $apenModel;
     
     
-    public function __construct($model, $controller, $action) {
-        parent::__construct($model, $controller, $action);
+    public function __construct() {
         $this->facebookModel = new facebookModel();
         $this->foursquareModel = new foursquareModel();
         $this->apenModel = new apenModel();
@@ -24,7 +22,7 @@ class heatmapController extends Controller{
         $metrics['facebook'] = $this->getFacebookMetricsByTimeRange($startDate, $endDate);
         $metrics['foursquare'] = $this->getFoursquareMetricsByTimeRange($startDate, $endDate);
         $metrics['apen'] = $this->getApenMetricsByTimeRange($startDate, $endDate);
-        echo json_encode($metrics);
+        return json_encode($metrics);
     }   
     
     private function getFoursquareMetricsByTimeRange($startDate, $endDate){

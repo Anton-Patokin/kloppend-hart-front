@@ -1,11 +1,11 @@
 <?php
-require_once '../../aggregated/service/PoiStatsTimeAggregatedService.class.php';
-class apenModel extends Model{
+require_once(ROOT. 'aggregated/service/PoiStatsTimeAggregatedService.class.php');
+class apenModel{
     
     protected $PoiStatsTimeAggregatedService;
     
    public function __construct() {
-       parent::__construct();
+
        $this->PoiStatsTimeAggregatedService = new \aggregated\service\PoiStatsTimeAggregatedService();
    }
     
