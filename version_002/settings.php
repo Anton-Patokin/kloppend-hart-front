@@ -3,6 +3,8 @@
 DEFINE("HTTP_GET","GET");
 DEFINE("HTTP_POST","POST");
 DEFINE('ROOT', 'C:\xampp\htdocs\edge\projects\kloppend-hart-antwerpen\version_002\\');
+//DEFINE('ROOT_FRONT', 'C:\xampp\htdocs\edge\projects\kloppend-hart-antwerpen\version_002\front\\');
+
 set_time_limit(120);
 
 global $pdo;

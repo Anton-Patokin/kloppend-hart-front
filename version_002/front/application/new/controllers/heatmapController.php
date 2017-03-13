@@ -26,7 +26,7 @@
 	        $metrics['facebook'] = $this->getFacebookMetricsByTimeRange($startDate, $endDate);
 	        $metrics['foursquare'] = $this->getFoursquareMetricsByTimeRange($startDate, $endDate);
 	        $metrics['apen'] = $this->getApenMetricsByTimeRange($startDate, $endDate);
-	        echo json_encode($metrics);
+	        return json_encode($metrics);
 	    }
 
 	    private function getFoursquareMetricsByTimeRange($startDate, $endDate){

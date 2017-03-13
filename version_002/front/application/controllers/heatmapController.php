@@ -15,6 +15,9 @@ class heatmapController{
         $this->foursquareModel = new foursquareModel();
         $this->apenModel = new apenModel();
     }
+
+
+    
     
     public function getMetricsByTimeRange($startDate, $endDate){
         $metrics = array();
@@ -22,7 +25,7 @@ class heatmapController{
         $metrics['facebook'] = $this->getFacebookMetricsByTimeRange($startDate, $endDate);
         $metrics['foursquare'] = $this->getFoursquareMetricsByTimeRange($startDate, $endDate);
         $metrics['apen'] = $this->getApenMetricsByTimeRange($startDate, $endDate);
-        return json_encode($metrics);
+        echo json_encode($metrics);
     }   
     
     private function getFoursquareMetricsByTimeRange($startDate, $endDate){
