@@ -136,7 +136,7 @@ app.controller("PrimeController", function ($scope, $http, $interval) {
                 }
             }
 
-
+//test
 
             // console.log(data);
         });
