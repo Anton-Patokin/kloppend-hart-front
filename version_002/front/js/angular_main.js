@@ -5,9 +5,10 @@ app.config(function ($routeProvider) {
             templateUrl: "sections/section0.php",
             controller: "londonCtrl"
         })
-        .when("/section1", {
-            templateUrl: "sections/section1.php",
-            controller: "section1"
+        .when("/section1/:category/:subcategory", {
+            templateUrl: function(attrs){ 
+                return 'sections/section1.php?category=' + attrs.category + '&subcategory=' + attrs.subcategory; },
+            controller  : 'section1'
         })
         .when("/section2", {
             templateUrl: "sections/section2.php",
