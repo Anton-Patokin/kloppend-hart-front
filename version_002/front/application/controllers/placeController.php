@@ -1,11 +1,13 @@
 <?php
 require_once ROOT_FRONT . '/application/models/homeModel.php';
+require_once ROOT_FRONT . '/application/models/placeModel.php';
 class placeController {
     
     protected $homeModel;
+    protected $placeModel;
     
     public function __construct($model, $controller, $action) {
-        parent::__construct($model, $controller, $action);
+        $this->placeModel = new placeModel;
         $this->homeModel = new homeModel();
     }
     
@@ -69,6 +71,16 @@ class placeController {
         if($ajax) echo json_encode($topPlaces);
         else return $topPlaces;
     }
+
+    public function getSubcategories($category){
+            $subCategories = $this->homeModel->getCategoriesByName($category);
+            $objectName = 'field_soort_' . $category . '_value';
+            $category = array();
+            foreach ($subCategories as $subCategory) {
+                array_push($category, $subCategory->$objectName);
+            }
+            echo json_encode($category);
+        }
     
     public function getPlaceTotalMetricsByNid($nid){
          $this->doNotRenderHeader = 1;

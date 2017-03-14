@@ -1,12 +1,12 @@
 <?php
-require_once '../../apen/service/ApenService.class.php';
-require_once '../../poi/service/PoiService.class.php';
-require_once '../../foursquare/service/FoursquareService.class.php';
-require_once '../../aggregated/service/PoiStatsTimeAggregatedService.class.php';
+require_once '../../../apen/service/ApenService.class.php';
+require_once '../../../poi/service/PoiService.class.php';
+require_once '../../../foursquare/service/FoursquareService.class.php';
+require_once '../../../aggregated/service/PoiStatsTimeAggregatedService.class.php';
 require_once 'foursquareModel.php';
 require_once 'facebookModel.php';
 
-class placeModel extends Model{
+class placeModel{
     protected $apenService;
     protected $foursquareService;
     protected $poiStatsTimeAggregatedService;
@@ -15,7 +15,6 @@ class placeModel extends Model{
     protected $facebookModel;
     
     public function __construct() {
-        parent::__construct();
         $this->apenService = new \apen\service\ApenService();
         $this->poiStatsTimeAggregatedService = new \aggregated\service\PoiStatsTimeAggregatedService();
         $this->poiService = new \poi\service\PoiService();
