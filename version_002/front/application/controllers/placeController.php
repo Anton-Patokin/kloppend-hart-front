@@ -6,7 +6,7 @@ class placeController {
     protected $homeModel;
     protected $placeModel;
     
-    public function __construct($model, $controller, $action) {
+    public function __construct() {
         $this->placeModel = new placeModel;
         $this->homeModel = new homeModel();
     }
@@ -51,6 +51,7 @@ class placeController {
         
         $this->doNotRenderHeader = 1;
         $stats = $this->placeModel->getPlaceStatsByNid($nid, $startDate, $endDate);
+        // var_dump($stats);
         echo json_encode($stats);
     }
     
@@ -68,7 +69,7 @@ class placeController {
         if($subcategory == '2de-hands') $subcategory = '2de hands';
         
         $topPlaces = $this->placeModel->getTopPlacesByCategory($category, $subcategory);
-        if($ajax) echo json_encode($topPlaces);
+        if($ajax) return json_encode($topPlaces);
         else return $topPlaces;
     }
 
@@ -79,7 +80,7 @@ class placeController {
             foreach ($subCategories as $subCategory) {
                 array_push($category, $subCategory->$objectName);
             }
-            echo json_encode($category);
+            return json_encode($category);
         }
     
     public function getPlaceTotalMetricsByNid($nid){

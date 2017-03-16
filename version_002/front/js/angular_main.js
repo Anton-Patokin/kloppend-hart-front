@@ -1,13 +1,18 @@
-var app = angular.module("myApp", ["ngRoute", 'uiGmapgoogle-maps']);
+var app = angular.module("myApp", ["ngRoute", 'uiGmapgoogle-maps', 'angular.morris']);
 app.config(function ($routeProvider) {
     $routeProvider
         .when("/bla", {
             templateUrl: "sections/section0.php",
             controller: "londonCtrl"
         })
-        .when("/section1/:category/:subcategory", {
+        // .when("/section1/:category/:subcategory", {
+        //     templateUrl: function(attrs){ 
+        //         return 'sections/section1.php?category=' + attrs.category + '&subcategory=' + attrs.subcategory; },
+        //     controller  : 'section1'
+        // })
+        .when("/section1/:category/:action/:value", {
             templateUrl: function(attrs){ 
-                return 'sections/section1.php?category=' + attrs.category + '&subcategory=' + attrs.subcategory; },
+                return 'sections/section1.php?category=' + attrs.category + '&action=' + attrs.action + '&value=' + attrs.value; },
             controller  : 'section1'
         })
         .when("/section2", {

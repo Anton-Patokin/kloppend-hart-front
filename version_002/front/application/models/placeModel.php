@@ -1,8 +1,8 @@
 <?php
-require_once '../../../apen/service/ApenService.class.php';
-require_once '../../../poi/service/PoiService.class.php';
-require_once '../../../foursquare/service/FoursquareService.class.php';
-require_once '../../../aggregated/service/PoiStatsTimeAggregatedService.class.php';
+require_once ROOT . '/apen/service/ApenService.class.php';
+require_once ROOT . '/poi/service/PoiService.class.php';
+require_once ROOT . '/foursquare/service/FoursquareService.class.php';
+require_once ROOT . '/aggregated/service/PoiStatsTimeAggregatedService.class.php';
 require_once 'foursquareModel.php';
 require_once 'facebookModel.php';
 
@@ -61,7 +61,7 @@ class placeModel{
         $metrics['facebook']   = $this->poiStatsTimeAggregatedService->getStatsBySourceNameByNidByTimeRange('facebook',$nid, $startDate, $endDate);
         $metrics['apen']   = $this->poiStatsTimeAggregatedService->getStatsBySourceNameByNidByTimeRange('apen',$nid, $startDate, $endDate);
         //$metrics['instagram']   = $this->poiStatsTimeAggregatedService->getStatsBySourceNameByNidByTimeRange('instagram',$nid, $startDate, $endDate);
-        $metrics['twitter']   = $this->poiStatsTimeAggregatedService->getStatsBySourceNameByNidByTimeRange('twitter',$nid, $startDate, $endDate);
+        // $metrics['twitter']   = $this->poiStatsTimeAggregatedService->getStatsBySourceNameByNidByTimeRange('twitter',$nid, $startDate, $endDate);
         
         
         

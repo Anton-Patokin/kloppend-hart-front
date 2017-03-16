@@ -1,5 +1,5 @@
 <?php
-require_once '../../../aggregated/service/PoiStatsTimeAggregatedService.class.php';
+require_once ROOT . '/aggregated/service/PoiStatsTimeAggregatedService.class.php';
 class facebookModel {
 
     protected $PoiStatsTimeAggregatedService;
