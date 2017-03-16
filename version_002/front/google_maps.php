@@ -18,13 +18,16 @@
 
 </div>
 
+
+
+
 <div class="size_map">
     <ui-gmap-google-map center="map.center" zoom="map.zoom" draggable="true" options="options" events="map.events">
 
 
         <!--    <ui-gmap-layer type="TransitLayer" show="map.show"></ui-gmap-layer>-->
 <!--        <ui-gmap-layer namespace="visualization" type="'HeatmapLayer'" show="map.show"></ui-gmap-layer>-->
-        <ui-gmap-layer type="Data" show="map.showData" onCreated="map.dataLayerCallback"></ui-gmap-layer>
+        <ui-gmap-layer namespace="visualization" type="HeatmapLayer" show="map.showHeat" onCreated="map.heatLayerCallback"></ui-gmap-layer>
 
         <!--        <ui-gmap-markers doCluster="true" typeOptions="{minimumClusterSize : 1}" models="heatmepData"-->
         <!--                         events="markersEvents" coords="'self'" heatmap-layer="{}"-->
