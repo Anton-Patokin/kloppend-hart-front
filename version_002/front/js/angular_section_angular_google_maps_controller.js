@@ -25,7 +25,7 @@ app.controller("PrimeController", function ($scope, $http, $interval) {
 
 //heatmap Settings
     var center;
-    var markerOffset  = 17;
+    var markerOffset = 17;
     var heatMapRadius = 35;
 
     var markerCluster;
@@ -36,9 +36,9 @@ app.controller("PrimeController", function ($scope, $http, $interval) {
     var currentAppStateFunction = null;
 
     var date = new Date();
-    var startHour = date.getHours() -2;
-    var endHour   = date.getHours() + 1;
-    var day  = date.getFullYear() + '-'  + ('0' + (date.getMonth()+1)).slice(-2) + '-'+ ('0' +date.getDate()).slice(-2);
+    var startHour = date.getHours() - 2;
+    var endHour = date.getHours() + 1;
+    var day = date.getFullYear() + '-' + ('0' + (date.getMonth() + 1)).slice(-2) + '-' + ('0' + date.getDate()).slice(-2);
 
     var countPastAjaxCalls = 0;
 
@@ -90,41 +90,48 @@ app.controller("PrimeController", function ($scope, $http, $interval) {
     function getHeatMapData(startDate, endDate, timeRange, cache) {
         var method = 'GET';
         console.log(startDate,endDate);
+        console.log(startDate, endDate);
+        // var url = 'http://localhost/edge/projects/kloppend-hart-antwerpen/version_002/front/' +
+        //     'application/service/heatmap/getMetricsByTimeRange/2017-02-01 13:00:00/ 2017-03-13 15:00:00'
         var url = 'http://localhost/edge/projects/kloppend-hart-antwerpen/version_002/front/' +
-            'application/service/heatmap/getMetricsByTimeRange/2017-02-01 13:00:00/ 2017-03-13 15:00:00'
+            'application/service/heatmap/getMetricsByTimeRange/2017-03-01 13:00:00/' + endDate
         $http(
             {
                 method: method,
                 url: url,
             }
         ).then(function (result) {
-            var data =result['data'];
-            console.log("marker",data);
-            for(var api in data){
+            var data = result['data'];
+            console.log("marker", data);
+            for (var api in data) {
 
 
-                if(!heatmapData.hasOwnProperty(api)) heatmapData[api] = [];
-                if(!markersArray.hasOwnProperty(api)) markersArray[api] = [];
+                if (!heatmapData.hasOwnProperty(api)) heatmapData[api] = [];
+                if (!markersArray.hasOwnProperty(api)) markersArray[api] = [];
 
-                for(var metric in data[api]){
+                for (var metric in data[api]) {
 
-                    if(!heatmapData[api].hasOwnProperty(metric)) heatmapData[api][metric] = [];
-                    if(!markersArray[api].hasOwnProperty(metric)) markersArray[api][metric] = [];
+                    if (!heatmapData[api].hasOwnProperty(metric)) heatmapData[api][metric] = [];
+                    if (!markersArray[api].hasOwnProperty(metric)) markersArray[api][metric] = [];
 
-                    for(var i in data[api][metric]){
+                    for (var i in data[api][metric]) {
 
-                        if(!heatmapData[api][metric].hasOwnProperty(startDate)) heatmapData[api][metric][startDate] = [];
-                        if(!markersArray[api][metric].hasOwnProperty(startDate)) markersArray[api][metric][startDate] = [];
+                        if (!heatmapData[api][metric].hasOwnProperty(startDate)) heatmapData[api][metric][startDate] = [];
+                        if (!markersArray[api][metric].hasOwnProperty(startDate)) markersArray[api][metric][startDate] = [];
 
                         var weight;
-                        if(timeRange == 'current') weight = data[api][metric][i].real_time_weight;
-                        if(timeRange == 'past') weight = data[api][metric][i].overall_weight;
-                        if(timeRange == 'future') weight = data[api][metric][i].future_weight;
+                        if (timeRange == 'current') weight = data[api][metric][i].real_time_weight;
+                        if (timeRange == 'past') weight = data[api][metric][i].overall_weight;
+                        if (timeRange == 'future') weight = data[api][metric][i].future_weight;
+
+                        console.log(data[api][metric]);
                         //weight needs to be an absolute value -> otherwise heatmap will show squares and other polygons
                         createMarker({
-                                id:data[api][metric][i].poi_id,
+                                id: data[api][metric][i].nid,
                                 latitude: data[api][metric][i].latitude,
-                                longitude: data[api][metric][i].longitude
+                                longitude: data[api][metric][i].longitude,
+                                title: data[api][metric][i].name,
+                                icon: data[api][metric][i].marker_type,
                             },
                             data[api][metric][i].name, data[api][metric][i].name,
                             data[api][metric][i].marker_type, startDate,
@@ -137,18 +144,39 @@ app.controller("PrimeController", function ($scope, $http, $interval) {
             }
 
 //test
-
+            reorder_array();
             // console.log(data);
+
         });
         // console.log(startDate, endDate, timeRange, cache);
     }
 
 
-$scope.marker_0=[];
+    $scope.markers = [];
+    // $scope.markers['icons']={url: "images/markers/marker_0.png"};
     function createMarker(point, title, content, marker_type, start_time, api, metric, nid) {
-        $scope.marker_0.push(point);
-        console.log($scope.marker_0);
+        // console.log(point, title, content, marker_type, start_time, api, metric, nid)
+        if (!$scope.markers.hasOwnProperty(marker_type)) $scope.markers[marker_type] = [];
+        if (!$scope.markers[marker_type].hasOwnProperty(marker_type)) $scope.markers[marker_type]["icon"] = [marker_type];
+        $scope.markers[marker_type].push(point);
 
+    }
+
+
+    $scope.marker_type_of = function (marker) {
+        var object = false;
+        if (typeof marker == "object") {
+            console.log(marker);
+            object = true;
+        }
+        return object;
+    }
+    $scope.markerss = [];
+
+    function reorder_array() {
+        for (var i in $scope.markers) {
+            $scope.markerss.push($scope.markers[i]);
+        }
     }
 
     function initializeMap() {
@@ -158,13 +186,52 @@ $scope.marker_0=[];
                 latitude: 51.218826,
                 longitude: 4.402950
             },
-            zoom: 14
+            zoom: 14,
+            events: {
+                zoom_changed: function () {
+
+
+                        console.log("Zoom Changed To: " + $scope.map.zoom);
+                        alert("Zoom Changed To: " + $scope.map.zoom);
+
+
+                }
+            }
         };
         $scope.options = {
             scrollwheel: true
         };
         $scope.showMarkers = false;
         switchApplicationState(APP_STATE_LOAD_CURRENT_HOUR);
+
+        $scope.markersEvents = {
+            mouseover: function (marker, eventName, model) {
+                model.show = !model.show;
+                $scope.title = marker.model.title;
+            },
+            mouseout: function (marker, eventName, model) {
+                model.show = !model.show;
+            },
+            click: function (marker, eventName, model) {
+                var method = 'GET';
+                var url = 'http://localhost/edge/projects/kloppend-hart-antwerpen/version_002' +
+                    '/front/application/service/place/getCategoryByNid/'+marker.model.id
+                $http(
+                    {
+                        method: method,
+                        url: url,
+                    }
+                ).then(function (result) {
+                    console.log('clicked',Object.keys(result.data)[0]);
+                    console.log(marker.model.id)
+                });
+
+
+
+            },
+        };
+
+
         // var markers_0 = [{
         //     id:1,
         //     latitude: 51.218820,
@@ -177,11 +244,11 @@ $scope.marker_0=[];
         // var markers_1 = [];
         //
         //
-        $scope.marker = {
-            randomMarkers_0: {},
-            randomMarkers_1: {},
-            icon_0: {url: "images/markers/marker_0.png"},
-            icon_1: {url: "images/markers/marker_111.png"},
-        }
+        // $scope.markers = {
+        //     randomMarkers_0: {},
+        //     randomMarkers_1: {},
+        //     icon_0: {url: "images/markers/marker_0.png"},
+        //     icon_1: {url: "images/markers/marker_111.png"},
+        // }
     }
 });
