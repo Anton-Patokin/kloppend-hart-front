@@ -1,7 +1,8 @@
-app.controller("PrimeController", function ($scope, $http, $interval) {
-    var showHeatmapBool = true;
-    var showMarkersBool = true;
-
+app.controller("PrimeController", function ($scope, $http, $interval, $timeout) {
+    // var showHeatmapBool = true;
+    // var showMarkersBool = true;
+    $scope.showHeatmapBool = {visible: true};
+    $scope.showMarkerBool = {visible: false};
     var $slide;
 
 //application states
@@ -18,6 +19,7 @@ app.controller("PrimeController", function ($scope, $http, $interval) {
     var heatmap;
     var heatmapData = [];
     var markersArray = [];
+    $scope.heatmepData = [];
 
 //default date values
     var start_time = 0;
@@ -43,6 +45,10 @@ app.controller("PrimeController", function ($scope, $http, $interval) {
     var countPastAjaxCalls = 0;
 
     initialize();
+    $scope.unebaleScroll=function () {
+        console.log('working');
+        $scope.options.scrollwheel=false;
+    }
 
     function initialize() {
         switchApplicationState(APP_STATE_LOAD_MAP);
@@ -89,10 +95,9 @@ app.controller("PrimeController", function ($scope, $http, $interval) {
 
     function getHeatMapData(startDate, endDate, timeRange, cache) {
         var method = 'GET';
-        console.log(startDate,endDate);
         console.log(startDate, endDate);
-        // var url = 'http://localhost/edge/projects/kloppend-hart-antwerpen/version_002/front/' +
-        //     'application/service/heatmap/getMetricsByTimeRange/2017-02-01 13:00:00/ 2017-03-13 15:00:00'
+        console.log(startDate, endDate);
+        // var url = 'http://localhost/edge/projects/kloppend-hart-antwerpen/version_002/front/application/service/heatmap/getMetricsByTimeRange/2017-02-01 13:00:00/ 2017-03-13 15:00:00'
         var url = 'http://localhost/edge/projects/kloppend-hart-antwerpen/version_002/front/' +
             'application/service/heatmap/getMetricsByTimeRange/2017-03-01 13:00:00/' + endDate
         $http(
@@ -124,14 +129,20 @@ app.controller("PrimeController", function ($scope, $http, $interval) {
                         if (timeRange == 'past') weight = data[api][metric][i].overall_weight;
                         if (timeRange == 'future') weight = data[api][metric][i].future_weight;
 
-                        console.log(data[api][metric]);
-                        //weight needs to be an absolute value -> otherwise heatmap will show squares and other polygons
+                        heatmap({
+                            id: data[api][metric][i].nid,
+                            latitude: data[api][metric][i].latitude,
+                            longitude: data[api][metric][i].longitude,
+                            title: data[api][metric][i].name,
+                            icon: data[api][metric][i].marker_type
+                        });
+
                         createMarker({
                                 id: data[api][metric][i].nid,
                                 latitude: data[api][metric][i].latitude,
                                 longitude: data[api][metric][i].longitude,
                                 title: data[api][metric][i].name,
-                                icon: data[api][metric][i].marker_type,
+                                icon: data[api][metric][i].marker_type
                             },
                             data[api][metric][i].name, data[api][metric][i].name,
                             data[api][metric][i].marker_type, startDate,
@@ -143,9 +154,8 @@ app.controller("PrimeController", function ($scope, $http, $interval) {
                 }
             }
 
-//test
-            reorder_array();
-            // console.log(data);
+
+            reorder_array_heatmap();
 
         });
         // console.log(startDate, endDate, timeRange, cache);
@@ -162,6 +172,18 @@ app.controller("PrimeController", function ($scope, $http, $interval) {
 
     }
 
+    $scope.heatmepData_save = [];
+    function heatmap(point) {
+        $scope.heatmepData_save.push(point);
+
+    }
+
+    function reorder_array_heatmap() {
+        console.log($scope.heatmepData);
+        $scope.heatmepData = $scope.heatmepData_save;
+
+    }
+
 
     $scope.marker_type_of = function (marker) {
         var object = false;
@@ -171,15 +193,26 @@ app.controller("PrimeController", function ($scope, $http, $interval) {
         }
         return object;
     }
-    $scope.markerss = [];
 
+    $scope.markerss = [];
     function reorder_array() {
         for (var i in $scope.markers) {
             $scope.markerss.push($scope.markers[i]);
         }
+
     }
 
+
+
+
+
+
+
+
+
+
     function initializeMap() {
+        var show_heatmap = true;
 
         $scope.map = {
             center: {
@@ -187,13 +220,25 @@ app.controller("PrimeController", function ($scope, $http, $interval) {
                 longitude: 4.402950
             },
             zoom: 14,
+            show:true,
             events: {
                 zoom_changed: function () {
-
-
-                        console.log("Zoom Changed To: " + $scope.map.zoom);
-                        alert("Zoom Changed To: " + $scope.map.zoom);
-
+                    $timeout(function () {
+                        if ($scope.map.zoom > 14 && show_heatmap) {
+                            $scope.heatmepData = [];
+                            $timeout(function () {
+                                reorder_array();
+                            }, 200);
+                            show_heatmap = !show_heatmap;
+                        }
+                        if ($scope.map.zoom <= 14 && !show_heatmap) {
+                            $scope.markerss = [];
+                            $timeout(function () {
+                                reorder_array_heatmap();
+                            }, 200);
+                            show_heatmap = !show_heatmap;
+                        }
+                    }, 500)
 
                 }
             }
@@ -215,17 +260,20 @@ app.controller("PrimeController", function ($scope, $http, $interval) {
             click: function (marker, eventName, model) {
                 var method = 'GET';
                 var url = 'http://localhost/edge/projects/kloppend-hart-antwerpen/version_002' +
-                    '/front/application/service/place/getCategoryByNid/'+marker.model.id
+                    '/front/application/service/place/getCategoryByNid/' + marker.model.id
                 $http(
                     {
                         method: method,
                         url: url,
                     }
                 ).then(function (result) {
-                    console.log('clicked',Object.keys(result.data)[0]);
+                    console.log('clicked', Object.keys(result.data)[0]);
                     console.log(marker.model.id)
-                });
+                    // horeca/search/nid
+// console.log(ROOT_FRONT +Object.keys(result.data)[0]+'/search/'+marker.model.id);
+                    location.href = ROOT_FRONT + '#/section1/' + Object.keys(result.data)[0] + '/search/' + marker.model.id;
 
+                });
 
 
             },
