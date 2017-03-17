@@ -12,9 +12,9 @@ app.controller("searchFormController", function ($scope) {
 		    cache: false,
 		    success: function(data) {
 		    	console.log(data);
-		    	for (var i = 0; i < 10; i++) {
-		    		searchResults[] = data[i];
-		    	}
+		    	// for (var i = 0; i < 10; i++) {
+		    	// 	searchResults[] = data[i];
+		    	// }
 
 		    	
 		    },
