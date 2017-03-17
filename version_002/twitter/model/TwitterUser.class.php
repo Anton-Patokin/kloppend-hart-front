@@ -1,7 +1,8 @@
 <?php
 
 namespace twitter\model;
-require_once ('../../core/model/BaseModel.class.php');
+require_once('C:\xampp\htdocs\edge\projects\kloppend-hart-antwerpen\version_002\Settings.php');
+require_once (ROOT . 'core/model/BaseModel.class.php');
 
 class TwitterUser extends \core\model\BaseModel {
     

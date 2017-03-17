@@ -10,16 +10,16 @@
         
         //apen_dashboard_a twitter app
         //@stadantwerpen access token
-        private $config = array('key'               => '47MHPAfhtJE8IGMt5QPAA',
-                                'secret'            => '4OHIhz8AZUD5dYX9HfVn7enEfZGRg3MxgyFQWVoN8',
-                                'accessToken'       => '52012026-G16Pi0u3JLRaDmPKPbMKAbMzigCKNlwRyuet4ssBs',
-                                'accessTokenSecret' => 'qU3W2AkC2PnZ8ZRiMDVGTAysCEEvavSU26g6TVWDWI');
+        // private $config = array('key'               => '47MHPAfhtJE8IGMt5QPAA',
+        //                         'secret'            => '4OHIhz8AZUD5dYX9HfVn7enEfZGRg3MxgyFQWVoN8',
+        //                         'accessToken'       => '52012026-G16Pi0u3JLRaDmPKPbMKAbMzigCKNlwRyuet4ssBs',
+        //                         'accessTokenSecret' => 'qU3W2AkC2PnZ8ZRiMDVGTAysCEEvavSU26g6TVWDWI');
         
         
         protected $api; 
         public function __construct() {
             parent::__construct(new \twitter\model\Tweet());
-            $this->api = new \twitter\api\TwitterApi($this->config['accessToken'], $this->config['accessTokenSecret'], $this->config['key'], $this->config['secret']);
+            $this->api = new \twitter\api\TwitterApi();
             $this->twitterUserFactory = new TwitterUserFactory();
         } 
         

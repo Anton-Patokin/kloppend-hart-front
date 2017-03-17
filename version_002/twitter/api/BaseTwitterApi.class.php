@@ -6,10 +6,10 @@ class BaseTwitterApi {
     
     private $baseUrl = 'https://api.twitter.com/1.1/';
     
-    private $oauth_access_token;
-    private $oauth_access_token_secret;
-    private $consumer_key;
-    private $consumer_secret;
+    private $oauth_access_token = '52012026-G16Pi0u3JLRaDmPKPbMKAbMzigCKNlwRyuet4ssBs';
+    private $oauth_access_token_secret = 'qU3W2AkC2PnZ8ZRiMDVGTAysCEEvavSU26g6TVWDWI';
+    private $consumer_key = '47MHPAfhtJE8IGMt5QPAA';
+    private $consumer_secret = '4OHIhz8AZUD5dYX9HfVn7enEfZGRg3MxgyFQWVoN8';
     
     public function __construct($accessToken, $accessTokenSecret, $key, $secret){
         $this->oauth_access_token           = $accessToken;
