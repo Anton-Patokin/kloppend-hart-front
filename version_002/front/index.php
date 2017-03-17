@@ -9,11 +9,12 @@ if(isset($_GET['url'])){
 <?php include_once 'header.php'; ?>
 <?php include_once 'navbar.php'; ?>
 <body ng-app="myApp">
+	<div ng-controller="PrimeController">
             <?php include_once 'navbar_top.php'; ?>
                 <div class="ng-view-frame" ng-view></div>
-<div ng-controller="PrimeController">
+
     
-    <?php include_once 'google_maps.php'?>
+    <?php include_once 'google_maps.php' ;?>
 <!--    <ui-gmap-google-map center='map.center' zoom='map.zoom'></ui-gmap-google-map>-->
         
 
