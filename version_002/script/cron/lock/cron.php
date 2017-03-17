@@ -1,20 +1,22 @@
 <?php
-	header("Expires: Mon, 26 Jul 1990 05:00:00 GMT");
+	/*header("Expires: Mon, 26 Jul 1990 05:00:00 GMT");
 	header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
 	header("Cache-Control: no-store, no-cache, must-revalidate");
 	header("Cache-Control: post-check=0, pre-check=0", false);
-	header("Pragma: no-cache");
-
-    
-
-    echo "this is cron";
+	header("Pragma: no-cache");*/
+	
     error_reporting(E_ALL); ini_set('display_errors', '1');
     
-    require_once('C:\xampp\htdocs\edge\projects\kloppend-hart-antwerpen\version_002\Settings.php');
-    require_once (ROOT . 'core/config/DBConfig.class.php');
+    chdir(dirname(__FILE__));
+    require_once ('/media/drive-sdb1/www/' . 'initSettings.php');
+    
     require_once (ROOT . 'schedule/factory/ScheduleFactory.class.php');
     
     $scheduleFactory = new \schedule\factory\ScheduleFactory();
+    
+    if(isset($_SERVER['argv']) && count($_SERVER['argv']) > 1){
+    	$_GET['id'] = $_SERVER['argv'][1];
+    }
     
     if(isset($_GET['id']) && is_numeric($_GET['id'])){
         $schedule = $scheduleFactory->getScheduleById($_GET['id']);
@@ -25,22 +27,9 @@
         foreach($schedules as $schedule){
             executeSchedule($schedule, $scheduleFactory);
         }
-    }
-
-    $whoami = exec('whoami');
-
-    include_once('C:\xampp\htdocs\edge\projects\kloppend-hart-antwerpen\version_002\Settings.php');
-
-    require_once (ROOT . 'core/config/DBConfig.class.php');
-    $dbConfig = new \core\config\DBConfig();
-    $db = $dbConfig->conn();
+    }   
     
-    $query = $db->prepare("UPDATE schedule set last_message= ? where schedule_id = 4");
-    $query->execute(array($whoami));
-
-    echo 'executed';
-    
-    function executeSchedule($schedule, $scheduleFactory){     
+    function executeSchedule($schedule, $scheduleFactory){
         if(file_exists('schedules/'.$schedule->name.'.php') && time() - strtotime($schedule->last_started) > $schedule->time_interval){
             set_time_limit($schedule->time_limit);
             $scheduleFactory->startSchedule($schedule);
@@ -59,7 +48,7 @@
 
                 ftruncate($lock_file, 0);
                 fwrite($lock_file, getmypid() . "\n"); 
-            } 
+            }
 
             require_once('schedules/'.$schedule->name.'.php');
 
@@ -68,8 +57,7 @@
                 flock($lock_file, LOCK_UN);
             }
             
-
-            $scheduleFactory->stopSchedule($schedule);                
+            $scheduleFactory->stopSchedule($schedule);
         }
     }
 ?>

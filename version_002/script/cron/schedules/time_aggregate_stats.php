@@ -3,7 +3,9 @@
     
      $statsTimeAggregatedService = new \aggregated\service\PoiStatsTimeAggregatedService();
      
-     $aggregationBatchSize = 4000;
+     $aggregationBatchSize = 1000;
+
+     echo 'test';
      
      $statsTimeAggregatedService->aggregateNextPoiStatsTime($aggregationBatchSize);
 ?>
