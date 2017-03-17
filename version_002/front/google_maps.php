@@ -19,22 +19,20 @@
 </div>
 
 <div class="size_map">
-    <ui-gmap-google-map center="map.center" zoom="map.zoom" draggable="true" options="options" events="map.events">
+    <ui-gmap-google-map center="map.center" zoom="map.zoom" draggable="map.draggable" options="map.options" events="map.events">
 
 
-        <!--    <ui-gmap-layer type="TransitLayer" show="map.show"></ui-gmap-layer>-->
-<!--        <ui-gmap-layer namespace="visualization" type="'HeatmapLayer'" show="map.show"></ui-gmap-layer>-->
-        <!-- <ui-gmap-layer type="Data" show="map.showData" onCreated="map.dataLayerCallback"></ui-gmap-layer>--> 
+        <ui-gmap-layer namespace="visualization" type="HeatmapLayer" show="showHeat" onCreated="heatLayerCallback"></ui-gmap-layer>
 
-                <ui-gmap-markers doCluster="true" typeOptions="{minimumClusterSize : 1}" models="heatmepData"
-                                 events="markersEvents" coords="'self'" heatmap-layer="{}"
+        <ui-gmap-markers doCluster="true" typeOptions="{minimumClusterSize : 1}" models="heatmepData"
+                                 events="map.markersEvents" coords="'self'" heatmap-layer="{}"
                                  icon="{url: 'images/markers/marker_0.png'}" options="showHeatmapBool">
                 </ui-gmap-markers>
 
 
                 <div ng-repeat="marker in markerss">
                     <ui-gmap-markers doCluster="false" models="marker"
-                                     events="markersEvents" coords="'self'"
+                                     events="map.markersEvents" coords="'self'"
                                      icon="{url: 'images/markers/marker_'+marker[0].icon+'.png'}" options="showHeatmapBool">
                         <ui-gmap-windows show="show">
                             <div ng-non-bindable>{{title}}</div>

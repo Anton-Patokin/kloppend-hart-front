@@ -1,6 +1,6 @@
 app.controller("PrimeController", function ($scope, $http, $interval, $timeout) {
-    // var showHeatmapBool = true;
-    // var showMarkersBool = true;
+    var showHeatmapBool = true;
+    var showMarkersBool = true;
     $scope.showHeatmapBool = {visible: true};
     $scope.showMarkerBool = {visible: false};
     var $slide;
@@ -20,6 +20,10 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout) 
     var heatmapData = [];
     var markersArray = [];
     $scope.heatmepData = [];
+    $scope.show_apen_heatmap = true;
+    $scope.show_foursquare_heatmap = true;
+    $scope.show_facebook_heatmap = true;
+
 
 //default date values
     var start_time = 0;
@@ -45,14 +49,9 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout) 
     var countPastAjaxCalls = 0;
 
     initialize();
-    $scope.unebaleScroll=function () {
+    $scope.unebaleScroll = function () {
         console.log('working');
-        $scope.options.scrollwheel=false;
-    }
-
-    $scope.enableScroll=function(){
-        console.log('scroll enabled');
-        $scope.options.scrollwheel=true;
+        $scope.map.options.scrollwheel = false;
     }
 
     function initialize() {
@@ -63,7 +62,6 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout) 
     function switchApplicationState(newState) {
         switch (newState) {
             case APP_STATE_LOAD_MAP:
-
                 initializeMap();
                 break;
             case APP_STATE_LOAD_CURRENT_HOUR:
@@ -73,12 +71,93 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout) 
                 currentAppStateFunction = loadData;
                 break;
             case APP_STATE_DISPLAY_DATA:
-                currentAppStateFunction = displayData;
+                displayData();
                 break;
             case APP_STATE_LOAD_FUTURE_DATA:
                 currentAppStateFunction = loadFutureData;
                 break;
         }
+    }
+
+
+    function displayData() {
+
+        start_time = day + ' ' + calculateHour(startHour);
+        end_time = day + ' ' + calculateHour(endHour);
+
+        console.log('siqplayDate function date stard an end time', start_time, end_time);
+        //check if option for heatmap is checked
+        if (showHeatmapBool === true) showHeatmap(start_time, end_time);
+        // if(showMarkersBool === true) showMarkers(start_time, end_time);
+
+        // if(loaded == 'current' ){
+        //     switchApplicationState(APP_STATE_LOAD_DATA);
+        //     runApp();
+        // }
+        //
+        // if(loaded == 'past' ){
+        //     switchApplicationState(APP_STATE_LOAD_FUTURE_DATA);
+        //     //runApp();
+        // }
+    }
+
+    function showHeatmap(start_time, end_time) {
+
+        console.log('show heatmap');
+        var totalHeatmapData = [];
+
+        if ($scope.heatmepData) {
+            totalHeatmapData = extractHeatmapDataBySource('facebook', totalHeatmapData);
+        }
+
+        if ($scope.show_foursquare_heatmap) {
+            totalHeatmapData = extractHeatmapDataBySource('foursquare', totalHeatmapData);
+        }
+
+        if ($scope.show_facebook_heatmap) {
+            totalHeatmapData = extractHeatmapDataBySource('apen', totalHeatmapData);
+        }
+
+
+        $scope.heatLayerCallback = function (layer) {
+            //set the heat layers backend data
+            var mockHeatLayer = new MockHeatLayer(layer,totalHeatmapData);
+        };
+    }
+
+
+    function extractHeatmapDataBySource(source, totalHeatmapData) {
+        //need timestamps of dates for checkin
+        var tsStartTime = explodeDateFormat(start_time);
+        var tsEndTime = explodeDateFormat(end_time);
+
+        if (heatmapData.hasOwnProperty(source)) {
+            //get metric from facebook
+            for (var metric in heatmapData[source]) {
+                //get timeZones in Metric
+                for (var time in heatmapData[source][metric]) {
+                    //check if timeZone is active
+                    var ts = explodeDateFormat(time);
+                    if (ts >= tsStartTime && ts <= tsEndTime) {
+                        //only run this if timeZone meets requirements
+                        for (var i in heatmapData[source][metric][time]) {
+                            totalHeatmapData.push(heatmapData[source][metric][time][i]);
+                        }
+                    }
+                }
+            }
+        }
+        return totalHeatmapData;
+    }
+
+//convert '2013-01-27 12:12:12' to timestamp
+    function explodeDateFormat(dateFormat) {
+        var formatArray = [];
+        formatArray = dateFormat.split(' ');
+        dateFormat = formatArray[0].split('-');
+        timeFormat = formatArray[1].split(':');
+        return Math.round((new Date(dateFormat[0], dateFormat[1], dateFormat[2], timeFormat[0], timeFormat[1], timeFormat[2])).getTime() / 1000);
+
     }
 
     function loadCurrentHourData() {
@@ -101,7 +180,7 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout) 
     function getHeatMapData(startDate, endDate, timeRange, cache) {
         var method = 'GET';
         console.log(startDate, endDate);
-        console.log(startDate, endDate);
+        // console.log(startDate, endDate);
         // var url = 'http://localhost/edge/projects/kloppend-hart-antwerpen/version_002/front/application/service/heatmap/getMetricsByTimeRange/2017-02-01 13:00:00/ 2017-03-13 15:00:00'
         var url = 'http://localhost/edge/projects/kloppend-hart-antwerpen/version_002/front/' +
             'application/service/heatmap/getMetricsByTimeRange/2017-03-13 13:00:00/' + endDate
@@ -134,6 +213,16 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout) 
                         if (timeRange == 'past') weight = data[api][metric][i].overall_weight;
                         if (timeRange == 'future') weight = data[api][metric][i].future_weight;
 
+                        // heatmapData.push({
+                        //     location: new google.maps.LatLng(data[api][metric][i].latitude, data[api][metric][i].longitude),
+                        //     weight: Math.abs(weight)
+                        // });
+                        heatmapData[api][metric][startDate].push({
+                            location: new google.maps.LatLng(data[api][metric][i].latitude, data[api][metric][i].longitude),
+                            weight: Math.abs(weight)
+                        });
+
+
                         heatmap({
                             id: data[api][metric][i].nid,
                             latitude: data[api][metric][i].latitude,
@@ -160,7 +249,12 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout) 
             }
 
 
-            reorder_array_heatmap();
+            if (timeRange == 'current') {
+                loaded = 'current';
+                switchApplicationState(APP_STATE_DISPLAY_DATA);
+                show_marker_cluster();
+            }
+
 
         });
         // console.log(startDate, endDate, timeRange, cache);
@@ -183,12 +277,20 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout) 
 
     }
 
-    function reorder_array_heatmap() {
-        console.log($scope.heatmepData);
+    function show_marker_cluster() {
         $scope.heatmepData = $scope.heatmepData_save;
-
     }
 
+    function switch_between_marker_and_cluster(show_element) {
+        if (show_element == "marker") {
+            $scope.heatmepData = [];
+            show_markers();
+        }
+        if (show_element == "cluster") {
+            $scope.markerss = [];
+            show_marker_cluster();
+        }
+    }
 
     $scope.marker_type_of = function (marker) {
         var object = false;
@@ -200,7 +302,7 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout) 
     }
 
     $scope.markerss = [];
-    function reorder_array() {
+    function show_markers() {
         for (var i in $scope.markers) {
             $scope.markerss.push($scope.markers[i]);
         }
@@ -208,12 +310,20 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout) 
     }
 
 
+    function MockHeatLayer(heatLayer,totalHeatmapData) {
+        // Adding 500 Data Points
+        console.log('totle heatmap',totalHeatmapData);
+        var map, pointarray, heatmap;
 
+        // var taxiData = [
+        //     {location: new google.maps.LatLng(51.218826, 4.402050), weight: 3},
+        // ];
+        var taxiData = totalHeatmapData;
 
-
-
-
-
+        var pointArray = new google.maps.MVCArray(taxiData);
+        heatLayer.set('radius', heatMapRadius);
+        heatLayer.setData(pointArray);
+    };
 
 
     function initializeMap() {
@@ -225,83 +335,52 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout) 
                 longitude: 4.402950
             },
             zoom: 14,
-            show:true,
+            show: true,
+            options: {
+                scrollwheel: true
+            },
+            draggable: false,
             events: {
                 zoom_changed: function () {
                     $timeout(function () {
                         if ($scope.map.zoom > 14 && show_heatmap) {
-                            $scope.heatmepData = [];
-                            $timeout(function () {
-                                reorder_array();
-                            }, 200);
+                            switch_between_marker_and_cluster("marker");
                             show_heatmap = !show_heatmap;
                         }
                         if ($scope.map.zoom <= 14 && !show_heatmap) {
-                            $scope.markerss = [];
-                            $timeout(function () {
-                                reorder_array_heatmap();
-                            }, 200);
+                            switch_between_marker_and_cluster('cluster');
                             show_heatmap = !show_heatmap;
                         }
                     }, 500)
-
                 }
-            }
+            },
+            markersEvents: {
+                mouseover: function (marker, eventName, model) {
+                    model.show = !model.show;
+                    $scope.title = marker.model.title;
+                },
+                mouseout: function (marker, eventName, model) {
+                    model.show = !model.show;
+                },
+                click: function (marker, eventName, model) {
+                    var method = 'GET';
+                    var url = 'http://localhost/edge/projects/kloppend-hart-antwerpen/version_002' +
+                        '/front/application/service/place/getCategoryByNid/' + marker.model.id
+                    $http(
+                        {
+                            method: method,
+                            url: url,
+                        }
+                    ).then(function (result) {
+                        location.href = ROOT_FRONT + '#/section1/' + Object.keys(result.data)[0] + '/search/' + marker.model.id;
+
+                    });
+
+
+                },
+            },
         };
-        $scope.options = {
-            scrollwheel: true
-        };
-        $scope.showMarkers = false;
+        $scope.showHeat = true;
         switchApplicationState(APP_STATE_LOAD_CURRENT_HOUR);
-
-        $scope.markersEvents = {
-            mouseover: function (marker, eventName, model) {
-                model.show = !model.show;
-                $scope.title = marker.model.title;
-            },
-            mouseout: function (marker, eventName, model) {
-                model.show = !model.show;
-            },
-            click: function (marker, eventName, model) {
-                var method = 'GET';
-                var url = 'http://localhost/edge/projects/kloppend-hart-antwerpen/version_002' +
-                    '/front/application/service/place/getCategoryByNid/' + marker.model.id
-                $http(
-                    {
-                        method: method,
-                        url: url,
-                    }
-                ).then(function (result) {
-                    console.log('clicked', Object.keys(result.data)[0]);
-                    console.log(marker.model.id)
-                    // horeca/search/nid
-// console.log(ROOT_FRONT +Object.keys(result.data)[0]+'/search/'+marker.model.id);
-                    location.href = ROOT_FRONT + '#/section1/' + Object.keys(result.data)[0] + '/search/' + marker.model.id;
-
-                });
-
-
-            },
-        };
-
-
-        // var markers_0 = [{
-        //     id:1,
-        //     latitude: 51.218820,
-        //     longitude: 4.402900
-        // },{
-        //     id:2,
-        //     latitude: 51.218826,
-        //     longitude: 4.402950
-        // }];
-        // var markers_1 = [];
-        //
-        //
-        // $scope.markers = {
-        //     randomMarkers_0: {},
-        //     randomMarkers_1: {},
-        //     icon_0: {url: "images/markers/marker_0.png"},
-        //     icon_1: {url: "images/markers/marker_111.png"},
-        // }
     }
 });
