@@ -50,6 +50,11 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout) 
         $scope.options.scrollwheel=false;
     }
 
+    $scope.enableScroll=function(){
+        console.log('scroll enabled');
+        $scope.options.scrollwheel=true;
+    }
+
     function initialize() {
         switchApplicationState(APP_STATE_LOAD_MAP);
     }

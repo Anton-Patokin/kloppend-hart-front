@@ -65,6 +65,10 @@
     z-index: -10;
 }
 
+.detail-top-place {
+    cursor: pointer;
+}
+
 /* VERKEER SECION 7 */
 #verkeer-antwerpen h2, #verkeerscentrum-antwerpen h2, #ring-antwerpen h2 {
     text-align: center;

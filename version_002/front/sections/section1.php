@@ -89,7 +89,7 @@
                                     <?php for ($i=0; $i < 10; $i++): ?>
                                         <?php if(isset($topPlaces[$i])): ?>
                                             <!-- <a href="#section1/<?= $getCategory ?>/<?= $subcategory['link'] ?>/<?= $topPlaces[$i]->nid ?>"><li><?= $topPlaces[$i]->name ?></li></a> -->
-                                            <p ng-click="testFunction(<?= $topPlaces[$i]->nid ?>)"><?= $topPlaces[$i]->name ?></p>
+                                            <p class="detail-top-place" ng-click="testFunction(<?= $topPlaces[$i]->nid ?>)"><?= $topPlaces[$i]->name ?></p>
                                         <?php endif ?>
                                     <?php endfor ?>
                                     <?php else: ?>
@@ -153,9 +153,6 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div ng-class="testClass">
-        <p>test</p>
     </div>
     <!-- <div class="col-md-12">
         <div id="map_canvas" ng-controller="section1" style="height: 500px">

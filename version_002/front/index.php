@@ -7,9 +7,9 @@ if(isset($_GET['url'])){
 ?>
 
 <?php include_once 'header.php'; ?>
-<?php include_once 'navbar.php'; ?>
 <body ng-app="myApp">
 	<div ng-controller="PrimeController">
+		<?php include_once 'navbar.php'; ?>
             <?php include_once 'navbar_top.php'; ?>
                 <div class="ng-view-frame" ng-view></div>
 

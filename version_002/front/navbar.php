@@ -1,5 +1,5 @@
 <div class="navbar navbar-inverse navbar-fixed-left">
-    <a class="navbar-brand" href="#">Brand</a>
+    <a ng-click="enableScroll()" class="navbar-brand" href="#">Brand</a>
     <ul class="nav navbar-nav">
         <li><a href="#section1/horeca/show/restaurant" class="main-menu section-001"><span>Horeca</span></a></li>
         <li><a href="#section1/cultuur/show/gallerij" class="main-menu section-001"><span>Cultuur</span></a></li>
