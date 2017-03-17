@@ -105,7 +105,6 @@
             $poi = NULL;
             if(!$this->nodeHasMatchedPoi($node, $linkedPois)) $poi = $this->createPoiFromApenNode($node);
             $sourceReferences = $this->createSourceReferencesFromApenNode($node);
-            var_dump($sourceReferences);
             foreach ($sourceReferences as $sourceReference) {
                 if(!empty($poi)) $this->matchPoiToSourceReference($poi, $sourceReference);
                 if(!$this->sourceReferenceHasBeenLinked($sourceReference, $linkedSourceReferences))

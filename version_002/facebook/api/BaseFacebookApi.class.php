@@ -131,7 +131,7 @@ abstract class BaseFacebook
    * Default options for curl.
    */
   public static $CURL_OPTS = array(
-    CURLOPT_CONNECTTIMEOUT => 10,
+    CURLOPT_CONNECTTIMEOUT => 60,
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_TIMEOUT        => 60,
     CURLOPT_USERAGENT      => 'facebook-php-3.2',
@@ -638,11 +638,9 @@ abstract class BaseFacebook
    */
   public function api(/* polymorphic */) {
     $args = func_get_args();
-    // var_dump($args);
     if (is_array($args[0])) {
       return $this->_restserver($args[0]);
     } else {
-      // var_dump($this);
       return call_user_func_array(array($this, '_graph'), $args);
     }
   }
@@ -855,7 +853,7 @@ abstract class BaseFacebook
       $method = 'GET';
     }
     $params['method'] = $method; // method override as we always do a POST
-    // var_dump($params);
+
     if ($this->isVideoPost($path, $method)) {
       $domainKey = 'graph_video';
     } else {
@@ -866,18 +864,12 @@ abstract class BaseFacebook
       $this->getUrl($domainKey, $path),
       $params
     ), true);
+
     if (array_key_exists('error', $result )) {
-          echo '<pre> ';
-          var_dump($result);
-          echo '</pre>';
-          return;
-        }
-        // else {
-        //   echo '<pre> ';
-        //   var_dump($result);
-        //   echo '</pre>';
-        // }
-      // results are returned, errors are thrown
+      return;
+    }
+
+    // results are returned, errors are thrown
     if (is_array($result) && isset($result['error'])) {
       $this->throwAPIException($result);
       // @codeCoverageIgnoreStart
@@ -1253,7 +1245,7 @@ abstract class BaseFacebook
     $e = new FacebookApiException($result);
     switch ($e->getType()) {
       // OAuth 2.0 Draft 00 style
-      case 'OAuthException':
+      case 'OAuthException': return $result; break;
         // OAuth 2.0 Draft 10 style
       case 'invalid_token':
         // REST server errors are just Exceptions
@@ -1267,7 +1259,7 @@ abstract class BaseFacebook
         }
         break;
     }
-
+    return $result; //IGNORE ALL ERRORS!!!!!!!!
     throw $e;
   }
 

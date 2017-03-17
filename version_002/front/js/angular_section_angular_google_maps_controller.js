@@ -162,8 +162,6 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout) 
     }
 
 
-
-
     $scope.markers = [];
     // $scope.markers['icons']={url: "images/markers/marker_0.png"};
     function createMarker(point, title, content, marker_type, start_time, api, metric, nid) {
@@ -210,24 +208,7 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout) 
 
 
 
-    function MockHeatLayer(heatLayer) {
-        // Adding 500 Data Points
-        var map, pointarray, heatmap;
 
-        var taxiData = [
-            {location: new google.maps.LatLng(51.218826,4.402950), weight: 3},
-            {location: new google.maps.LatLng(51.218826,4.402950), weight: 3},
-
-            // new google.maps.LatLng(37.782551, -122.445368),
-            // new google.maps.LatLng(37.782745, -122.444586),
-            // new google.maps.LatLng(37.782842, -122.443688),
-            // new google.maps.visualization.HeatmapLayer(51.218826, 4.402950),
-        ];
-
-
-        var pointArray = new google.maps.MVCArray(taxiData);
-        heatLayer.setData(pointArray);
-    };
 
 
     function initializeMap() {
@@ -240,11 +221,6 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout) 
             },
             zoom: 14,
             show:true,
-            heatLayerCallback: function (layer) {
-                //set the heat layers backend data
-                var mockHeatLayer = new MockHeatLayer(layer);
-            },
-            showHeat: true,
             events: {
                 zoom_changed: function () {
                     $timeout(function () {

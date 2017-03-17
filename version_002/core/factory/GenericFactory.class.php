@@ -32,14 +32,12 @@ class GenericFactory {
     
     public function toObject($data, $propertySourceQueries = NULL){
         $object = clone $this->object;
-
         if(empty($this->objectProperties))
         $this->getObjectProperties();
-        
         $properties = array_keys($this->objectProperties);
-        
         //fill each property
         foreach($properties as $property){
+
             $object->$property = $this->fillProperty($property, $data, $object);
             
             //fill property by sourceQuery if provided

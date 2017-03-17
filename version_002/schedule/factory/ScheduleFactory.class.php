@@ -22,7 +22,7 @@ class ScheduleFactory extends \core\factory\GenericFactory{
     }
     
     public function startSchedule($schedule){    
-         if(strtotime($schedule->last_started) > strtotime($schedule->last_stopped) && strtotime(date('Y-m-d H:i:s')) - strtotime($schedule->last_started) < $schedule->time_limit){
+         if(strtotime($schedule->last_started) > strtotime($schedule->last_stopped) && time() - strtotime($schedule->last_started) < $schedule->time_limit){
             // throw new \Exception("Schedule with id " . $schedule->schedule_id . " and name " . $schedule->name . " might still be running for the next ". (time() - $schedule->last_started - $schedule->time_limit." seconds."));
             throw new \Exception("Schedule with id " . $schedule->schedule_id . " and name " . $schedule->name . " might still be running for the next " . (strtotime(date('Y-m-d H:i:s')) - strtotime($schedule->last_started) - $schedule->time_limit . " seconds."));
 

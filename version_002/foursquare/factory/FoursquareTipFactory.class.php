@@ -44,8 +44,10 @@ class FoursquareTipFactory extends \core\factory\GenericFactory{
     
     protected function customFillProperty($property, $data, &$object) {
          switch($property){
-           case 'user' : 
-                return $this->userFactory->toObject($data->user);
+           case 'user' :
+                if (isset($data->user)) {
+                   return $this->userFactory->toObject($data->user);
+                 }             
                 break;
            case 'source_reference_id':
                return  null;

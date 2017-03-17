@@ -151,6 +151,7 @@ class PoiStatsTimeAggregatedFactory extends \core\factory\GenericFactory{
         //$intervals indicate the number of intervals you want to aggregate, starting from the last
         if(!empty($intervals) && is_numeric($intervals)){
             $timeIntervals = array_slice($timeIntervals, count($timeIntervals) - $intervals);
+
         }
         
        while(count($timeIntervals) > 1){
@@ -158,7 +159,6 @@ class PoiStatsTimeAggregatedFactory extends \core\factory\GenericFactory{
                //get stats between this range
                $poiStatNow = $this->getTimeRangePoiStats($sourceReferencePoiMetric->source_reference_poi_metric_id, $timeIntervals[0], $timeIntervals[1]);
                $poiStatPast = $this->getTimeRangePoiStatsPast($sourceReferencePoiMetric->source_reference_poi_metric_id, $timeIntervals[0], $timeIntervals[1]);
-
                if(!empty($poiStatNow)){
                    //create poiStatsTimeAggregated Object for insertion
                    $poiStatsTimeAggregated = new \aggregated\model\PoiStatsTimeAggregated();
@@ -203,12 +203,10 @@ class PoiStatsTimeAggregatedFactory extends \core\factory\GenericFactory{
         //calculate the steps for our current timeInterval
         $day = 24 * 60 * 60;
         $interval = $day / $this->timeInterval;
-        
         for($i=0; $i < $interval; $i++){
             $date = date('Y-m-d H:i:s', strtotime($date) + ($this->timeInterval));
             $timeIntervals[] = $date;
         }
-        
         return $timeIntervals;
     }
     

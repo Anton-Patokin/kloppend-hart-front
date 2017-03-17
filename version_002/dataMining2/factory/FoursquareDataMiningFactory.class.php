@@ -31,7 +31,6 @@ class FoursquareDataMiningFactory extends \dataMining2\factory\DataMiningFactory
     
     //specific function to get all relevant references
     protected function getReferencesFromSource($city_id) {
-        
         $sourceCityGeolocations = $this->getSourceCityGeolocations($city_id, $this->sourceCityGeolocationLimit);
         $references = array();
         foreach($sourceCityGeolocations as $sourceCityGeolocation){
@@ -72,10 +71,8 @@ class FoursquareDataMiningFactory extends \dataMining2\factory\DataMiningFactory
     
     /*overrided function -> allways return poiStat Object */
     protected function extractPoiStatsFromMetrics($metrics) {
-        
         //only 1 api call for all metrics
         $venue = $this->venueFactory->getVenueBySourceReference($metrics[0]['source_reference']);
-        
         $poiStats = Array();
         foreach($metrics as $metric){
             $poiStat = new \poi\model\PoiStat();

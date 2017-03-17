@@ -9,7 +9,8 @@
         }
         
         public function insertRecord($properties) {
-            return parent::insertRecord($properties);
+            // var_dump($properties);
+            parent::insertRecord($properties);
         }
         
         public function getBySourceReferencePoiMetricId($sourceReferencePoiMetricId){

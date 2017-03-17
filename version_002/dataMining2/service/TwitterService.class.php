@@ -27,7 +27,9 @@ class TwitterService implements iService{
 
 	public function getMetricsBySourceReferencePoiIdRange($from, $batchSize)
 	{
-            return $this->twitterDataMiningFactory->getMetricsBySourceReferencePoiMetricIdRange($from, $batchSize);
+            // return $this->twitterDataMiningFactory->getMetricsBySourceReferencePoiMetricIdRange($from, $batchSize);
+            //return $this->foursquareDataMiningFactory->getMetricsBySourceReferencePoiIdRange($from, $batchSize);
+        return $this->twitterDataMiningFactory->getMetricsBySourceReferencePoiIdRange($from, $batchSize);
 	}
         
          public function getMetricsBySourceReferencePoiId($sourceReferencePoiId)

@@ -13,7 +13,7 @@ class FoursquareApi {
 	/** @var String $TokenUrl The url for obtaining an auth token */
 	private $TokenUrl = "https://foursquare.com/oauth2/access_token";
         /** @var String $Version YYYYMMDD */
-        private $Version = '20160228'; 
+        private $Version = '20160128'; 
         /** @var String $ClientID */
 	private $ClientID;
 	/** @var String $ClientSecret */

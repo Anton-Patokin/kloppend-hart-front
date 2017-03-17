@@ -18,7 +18,7 @@ $tweets = $tweet->searchTweetsUsers('frankdeboosere');
     <div class="row">
         <?php if (!isset($tweets)): ?>
             <div class="col-md-12">
-                <h1>now tweets are found</h1>
+                <h1>no tweets are found</h1>
             </div>
         <?php endif; ?>
         <div class="col-md-5">

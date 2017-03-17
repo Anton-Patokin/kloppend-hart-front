@@ -47,7 +47,6 @@
                return;
             }
             $result = $query->fetch(\PDO::FETCH_OBJ);
-
             return $result;
         }
         
@@ -81,8 +80,6 @@
             }
             $insertColsString = implode(', ', $insertCols);
             $insertVarsString = implode(',', $insertVars);
-
-            echo $this->table;
             $query = $this->DB->prepare("INSERT INTO $this->table ($insertColsString) VALUES ($insertVarsString)");
  
             $succes = $query->execute($insertVals);

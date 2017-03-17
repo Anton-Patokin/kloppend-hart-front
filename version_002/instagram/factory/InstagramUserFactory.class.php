@@ -1,7 +1,7 @@
 <?php
 
 namespace instagram\factory;
-
+require_once ('C:\xampp\htdocs\edge\projects\kloppend-hart-antwerpen\version_002/settings.php');
 require_once(ROOT . 'instagram/model/InstagramUser.class.php');
 require_once(ROOT . 'instagram/api/InstagramApi.class.php');
 require_once(ROOT . 'instagram/dao/InstagramUserDao.class.php');

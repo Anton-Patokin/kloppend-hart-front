@@ -121,6 +121,34 @@ class TwitterDataMiningFactory extends \dataMining2\factory\DataMiningFactory {
         $metrics = $this->twitterFactory->createMetricsFromReference($sourceReference->source_reference);
         return $metrics;
     }
+
+    protected function extractPoiStatsFromMetrics($metrics) {
+        // $place = $this->facebookFactory->getFacebookPlaceBySourceReference($metrics[0]['source_reference']);
+        
+        $poiStats = Array();
+        foreach($metrics as $metric){
+
+            $poiStat = new \poi\model\PoiStat();
+            $poiStat->source_reference_poi_metric_id = $metric['source_reference_poi_metric_id'];
+            $poiStat->timestamp = date('Y-m-d H:i:s');
+            
+            //you need to know the metrics
+            // if($metric['metric_name'] == 'checkin') $poiStat->number = (isset($place['checkins'])) ? $place['checkins'] : 0;
+            //talking abouts not accurate -> use facebook fql instead: possible solution
+            // if($metric['metric_name'] == 'talking_about')    $poiStat->number = (isset($place['talking_about_count'])) ? $place['talking_about_count'] : 0;
+            // if($metric['metric_name'] == 'like')     $poiStat->number = (isset($place['likes'])) ? $place['likes'] : 0;
+
+            /*
+            if($metric['metric_name'] == 'recent_mention') $poiStat->number = (isset($replaceThis['recent_mentions'])) ? $replaceThis['recent_mentions'] : 0;
+
+            if($metric['metric_name'] == 'recent_tweet') $poiStat->number = (isset($replaceThis['recent_tweets'])) ? $replaceThis['recent_tweets'] : 0;
+            */
+            $poiStat->number = 100;
+            $poiStats[] = $poiStat;
+        }
+
+        return $poiStats;
+    }
     
 }
 

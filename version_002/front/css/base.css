@@ -8,6 +8,7 @@
     left: 0;
     z-index: -10;
     background-color: #fff;
+    margin-top: 250px;
 }
 
 .angular-google-map-container {
@@ -49,4 +50,41 @@
 }
 .wheather-img{
     max-width: 400px;
+}
+
+/* DETAIL PAGE */
+
+.red {
+    color: red;
+}
+
+.test {
+    width: 400px;
+    height: 400px;
+    position:none;
+    z-index: -10;
+}
+
+/* VERKEER SECION 7 */
+#verkeer-antwerpen h2, #verkeerscentrum-antwerpen h2, #ring-antwerpen h2 {
+    text-align: center;
+}
+
+.verkeer .tweet {
+    padding: 15px 5px;
+}
+
+.nav-tweets ul {
+    list-style-type: none;
+    padding: 0;
+
+}
+.nav-tweets ul li {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+.nav-tweets {
+    margin-top: 20px;
+    text-align: center;
 }
