@@ -1,9 +1,9 @@
 <div class="top-navbar clearfix">
 	<div class="social-media-checklist pull-left">
 		<ul>
-			<li><input type="checkbox" name="facebookCheck">Facebook</li>
-			<li><input type="checkbox" name="foursquareCheck">Foursquare</li>
-			<li><input type="checkbox" name="apenCheck">Apen</li>
+			<li><input type="checkbox" ng-click="checkbox_social_media($event)" checked name="facebookCheck">Facebook</li>
+			<li><input type="checkbox" ng-click="checkbox_social_media($event)" checked name="foursquareCheck">Foursquare</li>
+			<li><input type="checkbox" ng-click="checkbox_social_media($event)" checked name="apenCheck">Apen</li>
 		</ul>
 	</div>
 	<div ng-controller="searchFormController" class="search-input col-md-4 pull-right">
