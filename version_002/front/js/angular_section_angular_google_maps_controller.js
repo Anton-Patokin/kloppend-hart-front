@@ -141,42 +141,7 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout) 
 
 
     }
-
-
-    function extractHeatmapDataBySource(source, totalHeatmapData) {
-        //need timestamps of dates for checkin
-        var tsStartTime = explodeDateFormat(start_time);
-        var tsEndTime = explodeDateFormat(end_time);
-
-        if (heatmapData.hasOwnProperty(source)) {
-            //get metric from facebook
-            for (var metric in heatmapData[source]) {
-                //get timeZones in Metric
-                for (var time in heatmapData[source][metric]) {
-                    //check if timeZone is active
-                    var ts = explodeDateFormat(time);
-                    if (ts >= tsStartTime && ts <= tsEndTime) {
-                        //only run this if timeZone meets requirements
-                        for (var i in heatmapData[source][metric][time]) {
-                            totalHeatmapData.push(heatmapData[source][metric][time][i]);
-                        }
-                    }
-                }
-            }
-        }
-        return totalHeatmapData;
-    }
-
-//convert '2013-01-27 12:12:12' to timestamp
-    function explodeDateFormat(dateFormat) {
-        var formatArray = [];
-        formatArray = dateFormat.split(' ');
-        dateFormat = formatArray[0].split('-');
-        timeFormat = formatArray[1].split(':');
-        return Math.round((new Date(dateFormat[0], dateFormat[1], dateFormat[2], timeFormat[0], timeFormat[1], timeFormat[2])).getTime() / 1000);
-
-    }
-
+    
     function loadCurrentHourData() {
         //current hour
         var startDate = day + ' ' + calculateHour(endHour - 1);
