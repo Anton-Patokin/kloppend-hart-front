@@ -8,13 +8,15 @@
 	</div>
 	<div ng-controller="searchFormController" class="search-input col-md-4 pull-right">
 		<div class="input-group">
-			<input ng-model="searchInput" ng-keyup="searchNode()"  type="text" class="form-control" name="searchInput">
+			<input ng-model="searchInput" ng-blur="dropdown()" ng-focus="showResults=true" ng-keyup="searchNode()"  type="text" class="form-control" name="searchInput">
 			<span class="input-group-btn">
 				<button class="btn btn-search" type="submit">Search</button>
 			</span>
 		</div>
-		<div class="results">
-			<ul></ul>
+		<div ng-show="showResults" class="results col-md-11">
+			<ul>
+				<a ng-repeat="searchResult in searchResults" href=#section1/test/search/{{searchResult['nid']}}><li>{{searchResult['name']}}</li></a>
+			</ul>
 		</div>
 	</div>
 </div>

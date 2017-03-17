@@ -23,39 +23,41 @@
 	// $ringAntwerpenTweets = $tweet->searchTweets('ring antwerpen');
 	// var_dump($verkeerAntwerpenTweets->statuses);
 ?>
-<div class="container verkeer">
-	<div class="nav-tweets">
-		<ul>
-			<?php foreach($tweets as $tweet): ?>
-				<a href="#section7#<?= $tweet['class_name'] ?>"><li><?= $tweet['title'] ?></li></a>
-			<?php endforeach ?>
-		</ul>
-	</div>
-	<?php foreach($tweets as $key => $tweet): ?>
-		<div class="row">
-			<div class="col-md-12">
-				<div id="<?= $tweet['class_name'] ?>">
-					<h2><?= $tweet['title'] ?></h2>
-					<?php foreach($tweet['tweet']->statuses as $key => $status): ?>
-						<?php if($key % 2 == 0): ?> 
-							<div class="row">
-						<?php endif ?>
-							<div class="col-md-6 tweet">
-								<a href="http://twitter.com/<?= $status->user->screen_name ?>">
-									<h4>
-										<img src="<?= $status->user->profile_image_url ?>">
-										<?= $status->user->name ?>
-									</h4>
-								</a>
-								<p><?= $status->text ?></p>
-								<p><?= $status->created_at ?></p>
-							</div>
-						<?php if($key % 2 != 0): ?>
-							</div>
-						<?php endif ?>
-					<?php endforeach ?>
+<div class="verkeer">
+	<div class="container">	
+		<div class="nav-tweets">
+			<ul>
+				<?php foreach($tweets as $tweet): ?>
+					<a href="#section7#<?= $tweet['class_name'] ?>"><li><?= $tweet['title'] ?></li></a>
+				<?php endforeach ?>
+			</ul>
+		</div>
+		<?php foreach($tweets as $key => $tweet): ?>
+			<div class="row">
+				<div class="col-md-12">
+					<div id="<?= $tweet['class_name'] ?>">
+						<h2><?= $tweet['title'] ?></h2>
+						<?php foreach($tweet['tweet']->statuses as $key => $status): ?>
+							<?php if($key % 2 == 0): ?> 
+								<div class="row">
+							<?php endif ?>
+								<div class="col-md-6 tweet">
+									<a href="http://twitter.com/<?= $status->user->screen_name ?>">
+										<h4>
+											<img src="<?= $status->user->profile_image_url ?>">
+											<?= $status->user->name ?>
+										</h4>
+									</a>
+									<p><?= $status->text ?></p>
+									<p><?= $status->created_at ?></p>
+								</div>
+							<?php if($key % 2 != 0): ?>
+								</div>
+							<?php endif ?>
+						<?php endforeach ?>
+					</div>
 				</div>
 			</div>
-		</div>
-	<?php endforeach ?>
+		<?php endforeach ?>
+	</div>
 </div>
