@@ -1,11 +1,10 @@
 <?php
-require_once '../../poi/service/PoiService.class.php';
+require_once '../../../poi/service/PoiService.class.php';
 
-class searchModel extends Model{
+class searchModel{
     protected $searchService;
     
     public function __construct() {
-        parent::__construct();
         $this->searchService = new \poi\service\PoiService();
     }
     

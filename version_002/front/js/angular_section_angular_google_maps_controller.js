@@ -104,7 +104,7 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout) 
         console.log(startDate, endDate);
         // var url = 'http://localhost/edge/projects/kloppend-hart-antwerpen/version_002/front/application/service/heatmap/getMetricsByTimeRange/2017-02-01 13:00:00/ 2017-03-13 15:00:00'
         var url = 'http://localhost/edge/projects/kloppend-hart-antwerpen/version_002/front/' +
-            'application/service/heatmap/getMetricsByTimeRange/2017-03-01 13:00:00/' + endDate
+            'application/service/heatmap/getMetricsByTimeRange/2017-03-13 13:00:00/' + endDate
         $http(
             {
                 method: method,
