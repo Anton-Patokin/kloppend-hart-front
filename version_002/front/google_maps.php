@@ -24,25 +24,25 @@
 
         <!--    <ui-gmap-layer type="TransitLayer" show="map.show"></ui-gmap-layer>-->
 <!--        <ui-gmap-layer namespace="visualization" type="'HeatmapLayer'" show="map.show"></ui-gmap-layer>-->
-        <ui-gmap-layer type="Data" show="map.showData" onCreated="map.dataLayerCallback"></ui-gmap-layer>
+        <!-- <ui-gmap-layer type="Data" show="map.showData" onCreated="map.dataLayerCallback"></ui-gmap-layer>--> 
 
-        <!--        <ui-gmap-markers doCluster="true" typeOptions="{minimumClusterSize : 1}" models="heatmepData"-->
-        <!--                         events="markersEvents" coords="'self'" heatmap-layer="{}"-->
-        <!--                         icon="{url: 'images/markers/marker_0.png'}" options="showHeatmapBool">-->
-        <!--        </ui-gmap-markers>-->
+                <ui-gmap-markers doCluster="true" typeOptions="{minimumClusterSize : 1}" models="heatmepData"
+                                 events="markersEvents" coords="'self'" heatmap-layer="{}"
+                                 icon="{url: 'images/markers/marker_0.png'}" options="showHeatmapBool">
+                </ui-gmap-markers>
 
 
-        <!--        <div ng-repeat="marker in markerss">-->
-        <!--            <ui-gmap-markers doCluster="false" models="marker"-->
-        <!--                             events="markersEvents" coords="'self'"-->
-        <!--                             icon="{url: 'images/markers/marker_'+marker[0].icon+'.png'}" options="showHeatmapBool">-->
-        <!--                <ui-gmap-windows show="show">-->
-        <!--                    <div ng-non-bindable>{{title}}</div>-->
-        <!--                </ui-gmap-windows>-->
-        <!---->
-        <!--            </ui-gmap-markers>-->
-        <!---->
-        <!--        </div>-->
+                <div ng-repeat="marker in markerss">
+                    <ui-gmap-markers doCluster="false" models="marker"
+                                     events="markersEvents" coords="'self'"
+                                     icon="{url: 'images/markers/marker_'+marker[0].icon+'.png'}" options="showHeatmapBool">
+                        <ui-gmap-windows show="show">
+                            <div ng-non-bindable>{{title}}</div>
+                        </ui-gmap-windows>
+        
+                    </ui-gmap-markers>
+        
+                </div>
 
     </ui-gmap-google-map>
 </div>

@@ -76,7 +76,7 @@
 
 
 ?>
-<div class="container">
+<div ng-init='unebaleScroll()' class="container">
     <?php if($_GET['action'] == 'show'): ?>
         <div class="row">
             <div class="col-md-12">

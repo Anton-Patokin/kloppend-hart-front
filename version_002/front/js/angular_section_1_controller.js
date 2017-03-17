@@ -26,7 +26,6 @@ app.controller("section1", function ($scope, $routeParams) {
 		    async: false,
 		    cache: false,
 		    success: function(data) {
-		    	console.log(data);
 		    	$('.nodeTitle').empty();
 		    	$('.nodeBody').empty();
 		    	$('.nodeTitle').append(data['title']);
@@ -44,7 +43,7 @@ app.controller("section1", function ($scope, $routeParams) {
 		    async: false,
 		    cache: false,
 		    success: function(data) {
-		    	console.log(data);
+		    	console.log('stats', data);
 		    	testVar.length = 0
 		    	for(metric in data){	    		
 		    		var apenDif = 0;
@@ -91,7 +90,6 @@ app.controller("section1", function ($scope, $routeParams) {
 		    	$('.stats-analytics .facebook-stats .facebook-title').html('<h3>Facebook</h3>');
 		    	$('.stats-analytics .foursquare-stats .foursquare-title').html('<h3>Foursquare</h3>');
 
-		    	console.log(data);
 		    	for (var i in data) {
 		    		if (data[i]['source_name'] == 'facebook') {
 		    			if (data[i]['metric_name'] == 'like') {$('.stats-analytics .facebook-stats .facebook-likes').html(data[i]['total_value']+' likes')}
