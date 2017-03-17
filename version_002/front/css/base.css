@@ -35,7 +35,7 @@
     width: 139px;
 }
 
-  .container {
+.container {
     padding-left: 160px;
 }
 
@@ -51,6 +51,50 @@
 .wheather-img{
     max-width: 400px;
 }
+
+/* TOP NAVBAR */
+
+.top-navbar {
+    background-color: #272727;
+    margin-left: 140px;
+    color: white;
+}
+
+.social-media-checklist ul{
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 0;
+}
+
+.social-media-checklist ul li {
+    display: inline-block;
+    padding: 20px;
+}
+.social-media-checklist input[type='checkbox'] {
+    margin-right: 7px;
+}
+
+.search-input {
+    padding: 15px;
+}
+
+.btn-search {
+    background-color: #ca2736;
+    color: #EBEBEB;
+}
+
+.btn-search:hover {
+    background-color: #b52330;
+    color: #dedede;
+}
+
+.search-input input[type='text'] {
+    height: 33px;
+}
+
+/* HOMEPAGE */
+
+
 
 /* DETAIL PAGE */
 
