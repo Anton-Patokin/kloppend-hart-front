@@ -1,5 +1,5 @@
 <?php
-	require_once('C:\xampp\htdocs\edge\projects\kloppend-hart-antwerpen\version_002\Settings.php');
+    require_once('C:\xampp\htdocs\edge\projects\kloppend-hart-antwerpen\version_002\Settings.php');
     DEFINE('ROOT_FRONT', 'C:\xampp\htdocs\edge\projects\kloppend-hart-antwerpen\version_002\front\\');
     require_once(ROOT_FRONT . 'application/controllers/placeController.php');
 
@@ -154,14 +154,17 @@
             </div>
         </div>
     </div>
-    <div class="col-md-12">
+    <div ng-class="testClass">
+        <p>test</p>
+    </div>
+    <!-- <div class="col-md-12">
         <div id="map_canvas" ng-controller="section1" style="height: 500px">
             <ui-gmap-google-map center="map.center" zoom="map.zoom" draggable="true" options="options">
-                <!-- <ui-gmap-marker idkey="marker.id" coords="marker.coords" options="marker.options" click="onClick()" events="marker.events" >
+                <ui-gmap-marker idkey="marker.id" coords="marker.coords" options="marker.options" click="onClick()" events="marker.events" >
                     <ui-gmap-window options="windowOptions" closeClick="closeClick()">
                     </ui-gmap-window>
-                </ui-gmap-marker> -->
+                </ui-gmap-marker>
             </ui-gmap-google-map>
         </div>
-    </div>
+    </div> -->
 </div>

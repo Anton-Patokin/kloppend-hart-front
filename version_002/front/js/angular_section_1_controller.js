@@ -134,6 +134,14 @@ app.controller("section1", function ($scope, $routeParams) {
 		        console.log("Status: " + textStatus); console.log("Error: " + errorThrown); 
 		    }
 		});
+
+		// $('.angular-google-map-container').addClass('test');
+
+		// $scope.options = {
+		// 	scrollwheel: false
+		// };
+
+
 	}
 
 	if ($routeParams.action == 'search') {
