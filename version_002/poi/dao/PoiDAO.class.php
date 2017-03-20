@@ -187,7 +187,8 @@
                                             WHERE source_id = ?
                                             AND differential_value >= ?
                                             AND from_time >= ? 
-                                            AND to_time <= ?");
+                                            AND to_time <= ?
+                                            LIMIT 5");
             
             $succes = $query->execute(array($sourceId, $trendingOffset, $startDate, $endDate));
             if(!$succes) {

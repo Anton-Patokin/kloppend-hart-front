@@ -86,7 +86,6 @@ class heatmapController{
             $diff_value[$key] = $row->differential_value;
         }
         array_multisort($diff_value, SORT_DESC, $trendingList);
-        
         echo json_encode($trendingList);
         
     }

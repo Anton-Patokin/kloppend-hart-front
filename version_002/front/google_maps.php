@@ -18,15 +18,24 @@
 
 </div>
 
-<div class="top-trending-list col-md-3 pull-right">
+<div ng-controller="topTrendingController" class="top-trending-list col-md-3 pull-right">
 
     <h2>Trending</h2>
     <div class="top-trending-now">
-        <h3>Now</h3>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3>Top 15 now</h3>
+            </div>
+            <div class="top-15 panel-body">
+                <ol>
+                    <li ng-repeat="poi in topTrendingList">{{ poi['name'] }}</li>
+                </ol>
+            </div>
+        </div>
     </div>
-    <div class="top-trending-near">
+    <!-- <div class="top-trending-near">
         <h3>Near</h3>
-    </div>
+    </div> -->
 
 </div>
 
