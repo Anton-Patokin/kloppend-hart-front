@@ -1,4 +1,7 @@
 var app = angular.module("myApp", ["ngRoute", 'uiGmapgoogle-maps', 'angular.morris','rzModule']);
+
+
+
 app.config(function ($routeProvider) {
     $routeProvider
         .when("/section1/:category/:action/:value", {
@@ -34,4 +37,9 @@ app.config(function ($routeProvider) {
             templateUrl: "sections/section8.php",
             controller: "section8"
         });
+});
+
+angular.module('MyApp',['ngMaterial', 'ngMessages', 'material.svgAssetsCache']).controller('AppCtrl', function() {
+    this.myDate = new Date();
+    this.isOpen = false;
 });

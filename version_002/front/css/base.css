@@ -177,17 +177,84 @@
 
 
 
-.time-slider-container {
+
+.div .overlay {
     position: absolute;
-    width: 100px;
-    height: 100px;
-    top: 0;
-    overflow: hidden;
-    background-color: #000; color: #FFF;
-    transition: all 1s;
+    bottom: 0;
+    height: 70px;
+    -webkit-transition: all 0.7s ease;
+    transition: all 0.7s ease;
+    padding: 0 35px;
+    right: 10%;
+    width: 70%;
+    background: #ffccff;
+}
+.div:hover .overlay {
+    height: 20%;
+}
+.div .overlay .cta {
+    padding: 10px 0;
+    background: #eee;
+    display: block;
+    width: auto;
+    position: absolute;
+    margin-bottom: 0;
+    text-align: center;
+    /* ===== Add Transition to CTA ===== */
+    -webkit-transition: all 0.7s ease;
+    transition: all 0.7s ease;
+    font-size: 16px;
+    /* ===== Move bottom off screen ===== */
+    bottom: -120px;
+}
+/* ===== Add :hover for CTA ===== */
+.div:hover .cta {
+    bottom: 20px;
 }
 
-.slider.close {
-    top: 100px;
-    height: 0;
+
+
+
+/*slider custumilization*/
+
+.custom-slider.rzslider .rz-bar {
+    background: #ffe4d1;
+    height: 2px;
 }
+.custom-slider.rzslider .rz-selection {
+    background: orange;
+}
+
+.custom-slider.rzslider .rz-pointer {
+    width: 8px;
+    height: 16px;
+    top: auto; /* to remove the default positioning */
+    bottom: 0;
+    background-color: #333;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+
+.custom-slider.rzslider .rz-pointer:after {
+    display: none;
+}
+
+.custom-slider.rzslider .rz-bubble {
+    bottom: 14px;
+}
+
+
+
+.custom-slider.rzslider .rz-tick {
+    width: 2px;
+    height: 30px;
+    margin-left: 4px;
+    border-radius: 0;
+    background: #000;
+    top: -30px;
+}
+
+.custom-slider.rzslider .rz-tick.rz-selected {
+    background: #000;
+}
+
