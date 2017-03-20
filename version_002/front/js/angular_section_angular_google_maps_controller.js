@@ -24,18 +24,19 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout) 
     $scope.show_foursquare_heatmap = true;
     $scope.show_facebook_heatmap = true;
     $scope.totalHeatmapData = [];
-    $scope.totalHeatmapData['facebook']=[];
-    $scope.totalHeatmapData['foursquare']=[];
-    $scope.totalHeatmapData['apen']=[];
+    $scope.totalHeatmapData['facebook'] = [];
+    $scope.totalHeatmapData['foursquare'] = [];
+    $scope.totalHeatmapData['apen'] = [];
     $scope.showHeat_foursquare = true;
     $scope.showHeat_facebook = true;
     $scope.showHeat_apen = true;
 
 
-
 //default date values
     var start_time = 0;
     var end_time = 0;
+    $scope.myDate = new Date();
+
 
 //heatmap Settings
     var center;
@@ -67,19 +68,45 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout) 
         $scope.showTrendingDiv = true;
     }
 
+
+    $scope.$watch('myDate', function () {
+        console.log('datum change', $scope.myDate);
+    });
+
+
+    $scope.myChangeListener = function (sliderId) {
+        console.log(sliderId, 'has changed with ', $scope.slider.minValue);
+        console.log(sliderId, 'has changed with ', $scope.slider.maxValue);
+        switchApplicationState(APP_STATE_LOAD_CURRENT_HOUR);
+
+    };
+    $scope.slider = {
+        minValue: 0.00,
+        maxValue: 24.00,
+        options: {
+            floor: 0.00,
+            ceil: 24.00,
+            showTicksValues: 1.00,
+            id: 'sliderA',
+            onChange: $scope.myChangeListener,
+            precision: 2,
+            translate: function (value) {
+                return value + '.00';
+            }
+        }
+    };
+
+
     $scope.checkbox_social_media = function (event) {
         switch (event.currentTarget.name) {
             case 'facebookCheck':
-                console.log('facebookCheck check');
-                $scope.showHeat_facebook =!$scope.showHeat_facebook;
+                $scope.showHeat_facebook = !$scope.showHeat_facebook;
                 break;
             case 'foursquareCheck':
-                console.log('foursquare check');
-                $scope.showHeat_foursquare=!$scope.showHeat_foursquare;
+                $scope.showHeat_foursquare = !$scope.showHeat_foursquare;
                 break;
             case 'apenCheck':
-                console.log('facebookCheck check');
-                $scope.showHeat_apen=!$scope.showHeat_apen;
+                $scope.showHeat_apen = !$scope.showHeat_apen;
                 break;
             default:
                 $scope.showHeat_foursquare = true;
@@ -91,7 +118,6 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout) 
     function initialize() {
         switchApplicationState(APP_STATE_LOAD_MAP);
     }
-
 
     function switchApplicationState(newState) {
         switch (newState) {
@@ -119,7 +145,6 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout) 
         start_time = day + ' ' + calculateHour(startHour);
         end_time = day + ' ' + calculateHour(endHour);
 
-        console.log('siqplayDate function date stard an end time', start_time, end_time);
         //check if option for heatmap is checked
         if (showHeatmapBool === true) showHeatmap(start_time, end_time);
         // if(showMarkersBool === true) showMarkers(start_time, end_time);
@@ -141,10 +166,10 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout) 
 
 
     }
-    
+
     function loadCurrentHourData() {
         //current hour
-        var startDate = day + ' ' + calculateHour(endHour - 1);
+        var startDate = day + ' ' + calculateHour(startHour - 1);
         //current hour + 1
         var endDate = day + ' ' + calculateHour(endHour);
         getHeatMapData(startDate, endDate, 'current', false)
@@ -165,7 +190,7 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout) 
         // console.log(startDate, endDate);
         // var url = 'http://localhost/edge/projects/kloppend-hart-antwerpen/version_002/front/application/service/heatmap/getMetricsByTimeRange/2017-02-01 13:00:00/ 2017-03-13 15:00:00'
         var url = 'http://localhost/edge/projects/kloppend-hart-antwerpen/version_002/front/' +
-            'application/service/heatmap/getMetricsByTimeRange/2017-03-13 13:00:00/' + endDate
+            'application/service/heatmap/getMetricsByTimeRange/' + startDate + '/' + endDate
         $http(
             {
                 method: method,
@@ -173,7 +198,7 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout) 
             }
         ).then(function (result) {
             var data = result['data'];
-
+            console.log('data result', result);
 
             for (var api in data) {
 
@@ -301,7 +326,6 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout) 
     $scope.marker_type_of = function (marker) {
         var object = false;
         if (typeof marker == "object") {
-            console.log(marker);
             object = true;
         }
         return object;
@@ -316,9 +340,8 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout) 
     }
 
 
-    function MockHeatLayer(heatLayer,data) {
+    function MockHeatLayer(heatLayer, data) {
         // Adding 500 Data Points
-        console.log('totle heatmap');
         var map, pointarray, heatmap;
 
         var taxiData = data;
@@ -385,18 +408,15 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout) 
         };
         $scope.heatLayerCallback_foursquare = function (layer) {
             //set the heat layers backend data
-            console.log('heatLayerCallback');
-            var mockHeatLayer = new MockHeatLayer(layer,$scope.totalHeatmapData['foursquare']);
+            var mockHeatLayer = new MockHeatLayer(layer, $scope.totalHeatmapData['foursquare']);
         };
         $scope.heatLayerCallback_facebook = function (layer) {
             //set the heat layers backend data
-            console.log('heatLayerCallback');
-            var mockHeatLayer = new MockHeatLayer(layer,$scope.totalHeatmapData['facebook']);
+            var mockHeatLayer = new MockHeatLayer(layer, $scope.totalHeatmapData['facebook']);
         };
         $scope.heatLayerCallback_apen = function (layer) {
             //set the heat layers backend data
-            console.log('heatLayerCallback');
-            var mockHeatLayer = new MockHeatLayer(layer,$scope.totalHeatmapData['apen']);
+            var mockHeatLayer = new MockHeatLayer(layer, $scope.totalHeatmapData['apen']);
         };
 
         switchApplicationState(APP_STATE_LOAD_CURRENT_HOUR);

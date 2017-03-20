@@ -7,8 +7,8 @@ if(isset($_GET['url'])){
 ?>
 
 <?php include_once 'header.php'; ?>
-<body ng-app="myApp">
-	<div ng-controller="PrimeController">
+<body ng-app="myApp" ng-controller="PrimeController">
+
 		<?php include_once 'navbar.php'; ?>
         <?php include_once 'navbar_top.php'; ?>
 		<div class="ng-view-frame" ng-view></div>    
@@ -17,7 +17,7 @@ if(isset($_GET['url'])){
         
 
 <!--    fit='true' doCluster="true"-->
-</div>
+
 <?php include_once 'footer.php'; ?>
 
 
