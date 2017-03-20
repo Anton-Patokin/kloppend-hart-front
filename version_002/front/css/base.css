@@ -133,6 +133,23 @@
     /*height: 100%;*/
 }
 
+.btn-trending {
+    margin-left: -82px;
+    margin-top: 50px;
+    transform: rotate(-90deg);
+    position: absolute;
+    background-color: white;
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    border-bottom: none;
+    padding: 10px;
+}
+
+.btn-trending-toggle {
+    right: -26px;
+}
+
 /* DETAIL PAGE */
 
 .red {

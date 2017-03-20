@@ -18,10 +18,11 @@
 
 </div>
 
-<div ng-controller="topTrendingController" class="top-trending-list col-md-3 pull-right">
-
-    <h2>Trending</h2>
-    <div class="top-trending-now">
+<div ng-show="showTrendingDiv" ng-controller="topTrendingController" class="top-trending-list col-md-3 pull-right">
+    <button ng-click="showTrending()" class="btn-trending btn-trending-toggle">TRENDING</button>
+    
+    <div ng-show="isTrending" class="top-trending-now">
+        <h2>Trending</h2>
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h3>Top 15 now</h3>
@@ -39,10 +40,10 @@
             <div class="panel-body">
                 <div ng-show="trendingList" class="top-10">
                     <ol>
-                        <li ng-repeat="poi in trendingList"></li>
+                        <li ng-repeat="poi in trendingList">{{ poi['name'] }}</li>
                     </ol>
                 </div>
-                <div ng-hide="false">
+                <div ng-hide="trendingList">
                     <p id="no-nearby-places">There are no hot nearby places</p>
                 </div>
             </div>

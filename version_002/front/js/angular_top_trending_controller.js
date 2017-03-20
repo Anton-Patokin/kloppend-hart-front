@@ -2,6 +2,7 @@ app.controller("topTrendingController", function ($scope) {
     console.log('top trending is loaded');
     $scope.topTrendingList;
     $scope.trendingList;
+    $scope.isTrending = false;
     var lon;
     var lat;
 
@@ -54,10 +55,14 @@ app.controller("topTrendingController", function ($scope) {
 		apiGetTrendingList(lat, lon, startDate, endDate);
 	}
 
-	function showPosition(position){
-		if (error.code == error.PERMISSION_DENIED) {console.log(test)};
-		// console.log(position);
-		
+	$scope.showTrending = function() {
+		if ($scope.isTrending == true) {
+			$scope.isTrending = false;
+			$('.btn-trending').addClass('btn-trending-toggle');
+		} else {
+			$scope.isTrending = true;
+			$('.btn-trending').removeClass('btn-trending-toggle');
+		}
 	}
 
 	function apiGetTrendingList(lat, lon, startDate, endDate){

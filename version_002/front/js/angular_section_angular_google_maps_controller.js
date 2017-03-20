@@ -58,13 +58,13 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout) 
 
     initialize();
     $scope.disableSroll = function () {
-        console.log('working');
         $scope.map.options.scrollwheel = false;
+        $scope.showTrendingDiv = false;
     }
 
     $scope.enableScroll = function () {
-        console.log('working');
         $scope.map.options.scrollwheel = true;
+        $scope.showTrendingDiv = true;
     }
 
     $scope.checkbox_social_media = function (event) {
