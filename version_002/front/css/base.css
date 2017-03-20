@@ -1,4 +1,4 @@
-.ng-view-frame{
+.ng-view-frame {
     position: absolute;
     height: 100%;
     width: 100%;
@@ -24,7 +24,8 @@
     bottom: 0;
     z-index: -150;
 }
-.margin_top_content{
+
+.margin_top_content {
     margin-top: 25px;
 }
 
@@ -36,7 +37,7 @@
 }
 
 .navbar-fixed-left .navbar-nav > li {
-    float: none;  /* Cancel default li float: left */
+    float: none; /* Cancel default li float: left */
     width: 139px;
 }
 
@@ -50,10 +51,11 @@
     margin-left: 140px;
 }
 
-.background_white{
+.background_white {
     background-color: #fff;
 }
-.wheather-img{
+
+.wheather-img {
     max-width: 400px;
 }
 
@@ -65,7 +67,7 @@
     color: white;
 }
 
-.social-media-checklist ul{
+.social-media-checklist ul {
     list-style-type: none;
     padding: 0;
     margin-bottom: 0;
@@ -75,6 +77,7 @@
     display: inline-block;
     padding: 20px;
 }
+
 .social-media-checklist input[type='checkbox'] {
     margin-right: 7px;
 }
@@ -125,8 +128,6 @@
 
 /* HOMEPAGE */
 
-
-
 /* DETAIL PAGE */
 
 .red {
@@ -136,7 +137,7 @@
 .test {
     width: 400px;
     height: 400px;
-    position:none;
+    position: none;
     z-index: -10;
 }
 
@@ -158,6 +159,7 @@
     padding: 0;
 
 }
+
 .nav-tweets ul li {
     display: inline-block;
     margin: 0 10px;
@@ -166,4 +168,21 @@
 .nav-tweets {
     margin-top: 20px;
     text-align: center;
+}
+
+
+
+.time-slider-container {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    top: 0;
+    overflow: hidden;
+    background-color: #000; color: #FFF;
+    transition: all 1s;
+}
+
+.slider.close {
+    top: 100px;
+    height: 0;
 }

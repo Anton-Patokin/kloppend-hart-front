@@ -5,6 +5,7 @@
     <!--    css-->
     <link rel="stylesheet" href="css/libs/bootstrap.min.css">
     <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/libs/rzslider.css">
     <script type="text/javascript" src="js/libs/lodash.min.js"></script>
     <script type="text/javascript" src="js/libs/angular.min.js"></script>
     <script src="js/angular-simple-logger.js"></script>
@@ -14,6 +15,7 @@
         type="text/javascript"></script>
     <script src="js/libs/angular-route.js"></script>
     <script src="js/libs/jquery.min.js"></script>
+    <script type="text/javascript" src="js/libs/rzslider.js"></script>
     <script src="js/libs/raphael-min.js"></script>
     <script src="js/libs/morris.min.js"></script>
     <script src="js/libs/angular-morris.min.js"></script>
@@ -24,4 +26,5 @@
     <script src="js/angular_section_7_controller.js"></script>
     <script src="js/angular_section_8_controller.js"></script>
     <script type="text/javascript" src="js/global_var.js"></script>
+    <script type="text/javascript" src="js/time_lineController.js"></script>
 </head>
