@@ -154,14 +154,11 @@
             </div>
         </div>
     </div>
-    <!-- <div class="col-md-12">
-        <div id="map_canvas" ng-controller="section1" style="height: 500px">
-            <ui-gmap-google-map center="map.center" zoom="map.zoom" draggable="true" options="options">
-                <ui-gmap-marker idkey="marker.id" coords="marker.coords" options="marker.options" click="onClick()" events="marker.events" >
-                    <ui-gmap-window options="windowOptions" closeClick="closeClick()">
-                    </ui-gmap-window>
-                </ui-gmap-marker>
-            </ui-gmap-google-map>
+    <div class="row social-media-stream">
+        <div class="col-md-12" ng-repeat="socialMedia in socialMediaStream">
+            <div class="col-md-6">
+                {{ socialMedia }}
+            </div>
         </div>
-    </div> -->
+    </div>
 </div>

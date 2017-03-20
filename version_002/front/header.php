@@ -20,6 +20,7 @@
     <script src="js/angular_main.js"></script>
     <script src="js/angular_section_angular_google_maps_controller.js"></script>
     <script src="js/searchFormController.js"></script>
+    <script type="text/javascript" src="js/angular_top_trending_controller.js"></script>
     <script src="js/angular_section_1_controller.js"></script>
     <script src="js/angular_section_7_controller.js"></script>
     <script src="js/angular_section_8_controller.js"></script>

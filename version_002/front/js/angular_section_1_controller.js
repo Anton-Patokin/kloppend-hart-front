@@ -1,5 +1,6 @@
 app.controller("section1", function ($scope, $routeParams) {
 	var testVar = [];
+	$scope.socialMediaStream;
 
 	$scope.map = {center: {latitude: 40.1451, longitude: -99.6680 }, zoom: 4 }
     $scope.options = {scrollwheel: false};
@@ -133,11 +134,20 @@ app.controller("section1", function ($scope, $routeParams) {
 		    }
 		});
 
-		// $('.angular-google-map-container').addClass('test');
-
-		// $scope.options = {
-		// 	scrollwheel: false
-		// };
+		$.ajax({
+			url: 'application/service/place/getSocialMediaStreamByNid/'+nid,
+			type: 'GET',
+		    dataType: 'json',
+		    async: false,
+		    cache: false,
+		    success: function(data) {
+		    	console.log(data);
+		    	$scope.socialMediaStream = data;
+		    },
+		    error: function(XMLHttpRequest, textStatus, errorThrown) { 
+		        console.log("Status: " + textStatus); console.log("Error: " + errorThrown); 
+		    }
+		});
 
 
 	}

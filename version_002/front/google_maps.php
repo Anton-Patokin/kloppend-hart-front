@@ -18,6 +18,18 @@
 
 </div>
 
+<div class="top-trending-list col-md-3 pull-right">
+
+    <h2>Trending</h2>
+    <div class="top-trending-now">
+        <h3>Now</h3>
+    </div>
+    <div class="top-trending-near">
+        <h3>Near</h3>
+    </div>
+
+</div>
+
 <div class="size_map">
     <ui-gmap-google-map center="map.center" zoom="map.zoom" draggable="map.draggable" options="map.options" events="map.events">
 
