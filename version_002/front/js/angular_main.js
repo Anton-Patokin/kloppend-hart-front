@@ -1,4 +1,4 @@
-var app = angular.module("myApp", ["ngRoute", 'uiGmapgoogle-maps', 'angular.morris']);
+var app = angular.module("myApp", ["ngRoute", 'uiGmapgoogle-maps', 'angular.morris','rzModule']);
 app.config(function ($routeProvider) {
     $routeProvider
         .when("/section1/:category/:action/:value", {
