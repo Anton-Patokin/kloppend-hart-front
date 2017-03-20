@@ -12,9 +12,7 @@
     <script src="js/angular-google-maps.js"></script>
 
     <!--    data picker-->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment-with-locales.js"></script>
-    <script src="//vendor/angular-moment-picker/angular-moment-picker.min.js"></script>
-    <link href="vendor/angular-moment-picker/angular-moment-picker.min.css" rel="stylesheet">
+    
 
     <script
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCrmTkGoBzp--pRgO5vRXIsbXPrk3VMp_w&libraries=places&language=nl&region=BE&sensor=false&libraries=drawing&libraries=visualization"
