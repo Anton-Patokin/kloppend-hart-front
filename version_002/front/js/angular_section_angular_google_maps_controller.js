@@ -58,6 +58,7 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout) 
     var countPastAjaxCalls = 0;
 
     initialize();
+    $scope.showTrendingDiv = true;
     $scope.disableSroll = function () {
         $scope.map.options.scrollwheel = false;
         $scope.showTrendingDiv = false;

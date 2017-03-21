@@ -26,19 +26,6 @@
             executeSchedule($schedule, $scheduleFactory);
         }
     }
-
-    $whoami = exec('whoami');
-
-    include_once('C:\xampp\htdocs\edge\projects\kloppend-hart-antwerpen\version_002\Settings.php');
-
-    require_once (ROOT . 'core/config/DBConfig.class.php');
-    $dbConfig = new \core\config\DBConfig();
-    $db = $dbConfig->conn();
-    
-    $query = $db->prepare("UPDATE schedule set last_message= ? where schedule_id = 4");
-    $query->execute(array($whoami));
-
-    echo 'executed';
     
     function executeSchedule($schedule, $scheduleFactory){     
         if(file_exists('schedules/'.$schedule->name.'.php') && time() - strtotime($schedule->last_started) > $schedule->time_interval){
