@@ -10,6 +10,7 @@
             <md-content>
                 <md-datepicker
                     ng-model="myDate"
+<!--                    ui-date="{dateFormat: 'yy-mm-dd'}"-->
 
                     md-placeholder="Enter date"></md-datepicker>
             </md-content>

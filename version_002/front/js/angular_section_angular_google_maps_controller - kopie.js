@@ -74,9 +74,10 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout) 
         var date_picker = new Date($scope.myDate.toISOString());
         day = date_picker.getFullYear() + '-' + ('0' + (date_picker.getMonth() + 1)).slice(-2) + '-' + ('0' + date_picker.getDate()).slice(-2);
         switchApplicationState(APP_STATE_LOAD_CURRENT_HOUR);
-        console.log("get map info", $scope.map.control.getGMap);
+        $scope.test_array=[1,2,3];
 
     });
+$scope.test_array=[1,2,3];
 
     $scope.myChangeListener = function (sliderId) {
         slider_start_time = $scope.slider.minValue;
@@ -86,12 +87,8 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout) 
             latitude: 51.218826,
             longitude: 4.402950
         });
-        // $scope.heatLayerCallback_foursquare($scope.layer_foursquare);
-        // $scope.heatLayerCallback_facebook($scope.layer_facebook);
-        // $scope.heatLayerCallback_apen($scope.layer_apen);
-
+        $scope.test_array=[];
     };
-    $scope.layer = "";
     $scope.slider = {
         minValue: slider_start_time,
         maxValue: slider_end_time,
@@ -288,8 +285,6 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout) 
                 loaded = 'current';
                 switchApplicationState(APP_STATE_DISPLAY_DATA);
             }
-            $scope.heatLayerCallback_facebook($scope.layer_facebook);
-
         }, function () {
             console.log('error');
             clean_map();
@@ -334,17 +329,12 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout) 
 
     }
 
-    $scope.array_test = [];
+
     function MockHeatLayer(heatLayer, data) {
         // Adding 500 Data Points
         var map, pointarray, heatmap;
-        console.log('markersvallback function',data);
-        $scope.array_test = [];
-        $scope.array_test.push(
-            {"location": new google.maps.LatLng(51.2176723, 4.405058800000006), "weight": 117},
-            {"location": new google.maps.LatLng(51.2146733+0.00733, 4.405958800000006+0.006733), "weight": 117});
 
-        var taxiData =$scope.totalHeatmapData['facebook'];
+        var taxiData = data;
 
         var pointArray = new google.maps.MVCArray(taxiData);
         heatLayer.set('radius', heatMapRadius);
@@ -363,7 +353,7 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout) 
             zoom: 14,
             show: true,
             options: {
-                // minZoom: 13,
+                minZoom:13,
                 scrollwheel: true
             },
             draggable: false,
@@ -416,27 +406,18 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout) 
                 },
             },
         };
-        $scope.layer_facebook = "";
-        $scope.layer_foursquare = "";
-        $scope.layer_apen = "";
-
-        // $scope.heatLayerCallback_foursquare = function (layer) {
-        //
-        //     //set the heat layers backend data
-        //     $scope.layer_foursquare = layer;
-        //     var mockHeatLayer = new MockHeatLayer(layer, $scope.totalHeatmapData['foursquare']);
-        // };
+        $scope.heatLayerCallback_foursquare = function (layer) {
+            //set the heat layers backend data
+            var mockHeatLayer = new MockHeatLayer(layer, $scope.totalHeatmapData['foursquare']);
+        };
         $scope.heatLayerCallback_facebook = function (layer) {
             //set the heat layers backend data
-            console.log('print binnen in call back function begin', $scope.totalHeatmapData['facebook']);
-            $scope.layer_facebook = layer;
             var mockHeatLayer = new MockHeatLayer(layer, $scope.totalHeatmapData['facebook']);
         };
-        // $scope.heatLayerCallback_apen = function (layer) {
-        //     //set the heat layers backend data
-        //     $scope.layer_apen = layer;
-        //     var mockHeatLayer = new MockHeatLayer(layer, $scope.totalHeatmapData['apen']);
-        // };
+        $scope.heatLayerCallback_apen = function (layer) {
+            //set the heat layers backend data
+            var mockHeatLayer = new MockHeatLayer(layer, $scope.totalHeatmapData['apen']);
+        };
         switchApplicationState(APP_STATE_LOAD_CURRENT_HOUR)
 
     }

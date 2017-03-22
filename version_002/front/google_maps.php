@@ -20,7 +20,7 @@
 
 <div ng-show="showTrendingDiv" ng-controller="topTrendingController" class="top-trending-list col-md-3 pull-right">
     <button ng-click="showTrending()" class="btn-trending btn-trending-toggle">TRENDING</button>
-    
+
     <div ng-show="isTrending" class="top-trending-now">
         <h2>Trending</h2>
         <div class="panel panel-default">
@@ -57,16 +57,18 @@
     </div> -->
 
 </div>
+<div class="container">
 
+</div>
 <div class="size_map">
-    <ui-gmap-google-map center="map.center" zoom="map.zoom" draggable="map.draggable" options="map.options" events="map.events">
+    <ui-gmap-google-map center="map.center" zoom="map.zoom" draggable="map.draggable"  options="map.options" events="map.events" control="map.control">
 
 
         <ui-gmap-layer namespace="visualization" type="HeatmapLayer" show="showHeat_facebook" onCreated="heatLayerCallback_facebook"></ui-gmap-layer>
-        <ui-gmap-layer namespace="visualization" type="HeatmapLayer" show="showHeat_foursquare" onCreated="heatLayerCallback_foursquare"></ui-gmap-layer>
-        <ui-gmap-layer namespace="visualization" type="HeatmapLayer" show="showHeat_apen" onCreated="heatLayerCallback_apen"></ui-gmap-layer>
+<!--        <ui-gmap-layer namespace="visualization" type="HeatmapLayer" show="showHeat_foursquare" onCreated="heatLayerCallback_foursquare"></ui-gmap-layer>-->
+<!--        <ui-gmap-layer namespace="visualization" type="HeatmapLayer" show="showHeat_apen" onCreated="heatLayerCallback_apen"></ui-gmap-layer>-->
 
-        <ui-gmap-markers doCluster="true" typeOptions="{minimumClusterSize : 1}" models="heatmepData"
+        <ui-gmap-markers doCluster="true" typeOptions="{minimumClusterSize : 1}" models="clusterData"
                                  events="map.markersEvents" coords="'self'" heatmap-layer="{}"
                                  icon="{url: 'images/markers/marker_0.png'}" options="showHeatmapBool">
                 </ui-gmap-markers>
@@ -79,9 +81,9 @@
                         <ui-gmap-windows show="show">
                             <div ng-non-bindable>{{title}}</div>
                         </ui-gmap-windows>
-        
+
                     </ui-gmap-markers>
-        
+
                 </div>
 
     </ui-gmap-google-map>
