@@ -87,7 +87,7 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout) 
             longitude: 4.402950
         });
         // $scope.heatLayerCallback_foursquare($scope.layer_foursquare);
-        // $scope.heatLayerCallback_facebook($scope.layer_facebook);
+        $scope.heatLayerCallback_facebook($scope.layer_facebook);
         // $scope.heatLayerCallback_apen($scope.layer_apen);
 
     };
@@ -288,8 +288,6 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout) 
                 loaded = 'current';
                 switchApplicationState(APP_STATE_DISPLAY_DATA);
             }
-            $scope.heatLayerCallback_facebook($scope.layer_facebook);
-
         }, function () {
             console.log('error');
             clean_map();
@@ -428,7 +426,7 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout) 
         // };
         $scope.heatLayerCallback_facebook = function (layer) {
             //set the heat layers backend data
-            console.log('print binnen in call back function begin', $scope.totalHeatmapData['facebook']);
+            console.log('print layer af', layer);
             $scope.layer_facebook = layer;
             var mockHeatLayer = new MockHeatLayer(layer, $scope.totalHeatmapData['facebook']);
         };
