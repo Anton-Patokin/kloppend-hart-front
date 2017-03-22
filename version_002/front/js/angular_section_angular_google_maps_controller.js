@@ -74,8 +74,6 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout) 
         var date_picker = new Date($scope.myDate.toISOString());
         day = date_picker.getFullYear() + '-' + ('0' + (date_picker.getMonth() + 1)).slice(-2) + '-' + ('0' + date_picker.getDate()).slice(-2);
         switchApplicationState(APP_STATE_LOAD_CURRENT_HOUR);
-        console.log("get map info", $scope.map.control.getGMap);
-
     });
 
     $scope.myChangeListener = function (sliderId) {
@@ -86,9 +84,7 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout) 
             latitude: 51.218826,
             longitude: 4.402950
         });
-        // $scope.heatLayerCallback_foursquare($scope.layer_foursquare);
-        $scope.heatLayerCallback_facebook($scope.layer_facebook);
-        // $scope.heatLayerCallback_apen($scope.layer_apen);
+
 
     };
     $scope.layer = "";
@@ -108,23 +104,34 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout) 
         }
     };
 
+    $scope.show_facebook_marker = true;
+    $scope.show_foursquare_marker = true;
+    $scope.show_apen_marker = true;
 
     $scope.checkbox_social_media = function (event) {
         switch (event.currentTarget.name) {
             case 'facebookCheck':
-                $scope.showHeat_facebook = !$scope.showHeat_facebook;
+                // $scope.showHeat_facebook = !$scope.showHeat_facebook;
+                $scope.show_facebook_marker = !$scope.show_facebook_marker;
                 break;
             case 'foursquareCheck':
-                $scope.showHeat_foursquare = !$scope.showHeat_foursquare;
+                // $scope.showHeat_foursquare = !$scope.showHeat_foursquare;
+                $scope.show_foursquare_marker = !$scope.show_foursquare_marker
                 break;
             case 'apenCheck':
-                $scope.showHeat_apen = !$scope.showHeat_apen;
+                // $scope.showHeat_apen = !$scope.showHeat_apen;
+                $scope.show_apen_marker = !$scope.show_apen_marker;
                 break;
             default:
                 $scope.showHeat_foursquare = true;
                 $scope.showHeat_facebook = true;
                 $scope.showHeat_apen = true;
+                $scope.show_facebook_marker = true;
+                $scope.show_foursquare_marker = true;
+                $scope.show_apen_marker = true;
         }
+        switchApplicationState(APP_STATE_LOAD_CURRENT_HOUR);
+
     }
 
     function initialize() {
@@ -163,6 +170,10 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout) 
         if ($scope.show_heatmap == true)switch_between_marker_and_cluster('cluster');
         if ($scope.show_heatmap != true) switch_between_marker_and_cluster("marker");
 
+            $scope.heatLayerCallback_foursquare($scope.layer_foursquare, $scope.totalHeatmapData['foursquare']);
+            $scope.heatLayerCallback_facebook($scope.layer_facebook, $scope.totalHeatmapData['facebook']);
+            $scope.heatLayerCallback_apen($scope.layer_apen, $scope.totalHeatmapData['apen']);
+        
     }
 
 
@@ -173,7 +184,7 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout) 
         var startDate = day + ' ' + calculateHour(slider_start_time);
         //current hour + 1
         var endDate = day + ' ' + calculateHour(slider_end_time);
-        getHeatMapData(startDate, endDate, 'current', false)
+        getHeatMapData(startDate, endDate, 'current')
     }
 
 
@@ -195,7 +206,6 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout) 
     }
 
     function getHeatMapData(startDate, endDate, timeRange) {
-        console.log(startDate, endDate, timeRange);
         var method = 'GET';
         var url = 'http://localhost/edge/projects/kloppend-hart-antwerpen/version_002/front/' +
             'application/service/heatmap/getMetricsByTimeRange/' + startDate + '/' + endDate
@@ -205,7 +215,6 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout) 
                 url: url,
             }
         ).then(function (result) {
-            console.log(result);
             var data = result['data'];
             clean_map();
             for (var api in data) {
@@ -231,55 +240,24 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout) 
                         //     location: new google.maps.LatLng(data[api][metric][i].latitude, data[api][metric][i].longitude),
                         //     weight: Math.abs(weight)
                         // });
-                        heatmapData[api][metric][startDate].push({
-                            location: new google.maps.LatLng(data[api][metric][i].latitude, data[api][metric][i].longitude),
-                            weight: Math.abs(weight)
-                        });
 
-
-                        if (api == 'facebook') {
-                            $scope.totalHeatmapData['facebook'].push({
-                                location: new google.maps.LatLng(data[api][metric][i].latitude, data[api][metric][i].longitude),
-                                weight: Math.abs(weight)
-                            });
+                        if (api == 'facebook' && $scope.show_facebook_marker == true) {
+                            console.log('show facebook');
+                            $scope.totalHeatmapData['facebook'].push(create_google_maps_latlang(data, api, metric, i, weight, startDate));
                         }
 
-                        if (api == 'foursquare') {
-                            $scope.totalHeatmapData['foursquare'].push({
-                                location: new google.maps.LatLng(data[api][metric][i].latitude, data[api][metric][i].longitude),
-                                weight: Math.abs(weight)
-                            });
+                        if (api == 'foursquare' && $scope.show_foursquare_marker == true) {
+                            console.log('show foursquare');
+
+                            $scope.totalHeatmapData['foursquare'].push(create_google_maps_latlang(data, api, metric, i, weight, startDate));
 
                         }
 
-                        if (api == 'apen') {
-                            $scope.totalHeatmapData['apen'].push({
-                                location: new google.maps.LatLng(data[api][metric][i].latitude, data[api][metric][i].longitude),
-                                weight: Math.abs(weight)
-                            });
+                        if (api == 'apen' && $scope.show_apen_marker == true) {
+                            console.log('show apen');
+
+                            $scope.totalHeatmapData['apen'].push(create_google_maps_latlang(data, api, metric, i, weight, startDate));
                         }
-
-
-                        heatmap({
-                            id: data[api][metric][i].nid,
-                            latitude: data[api][metric][i].latitude,
-                            longitude: data[api][metric][i].longitude,
-                            title: data[api][metric][i].name,
-                            icon: data[api][metric][i].marker_type
-                        });
-
-                        createMarker({
-                                id: data[api][metric][i].nid,
-                                latitude: data[api][metric][i].latitude,
-                                longitude: data[api][metric][i].longitude,
-                                title: data[api][metric][i].name,
-                                icon: data[api][metric][i].marker_type
-                            },
-                            data[api][metric][i].name, data[api][metric][i].name,
-                            data[api][metric][i].marker_type, startDate,
-                            api,
-                            metric,
-                            data[api][metric][i].nid);
 
                     }
                 }
@@ -289,11 +267,44 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout) 
                 switchApplicationState(APP_STATE_DISPLAY_DATA);
             }
         }, function () {
-            console.log('error');
             clean_map();
         });
     }
 
+
+    function create_google_maps_latlang(data, api, metric, i, weight, startDate) {
+
+        heatmapData[api][metric][startDate].push({
+            location: new google.maps.LatLng(data[api][metric][i].latitude, data[api][metric][i].longitude),
+            weight: Math.abs(weight)
+        });
+
+        heatmap({
+            id: data[api][metric][i].nid,
+            latitude: data[api][metric][i].latitude,
+            longitude: data[api][metric][i].longitude,
+            title: data[api][metric][i].name,
+            icon: data[api][metric][i].marker_type
+        });
+
+        createMarker({
+                id: data[api][metric][i].nid,
+                latitude: data[api][metric][i].latitude,
+                longitude: data[api][metric][i].longitude,
+                title: data[api][metric][i].name,
+                icon: data[api][metric][i].marker_type
+            },
+            data[api][metric][i].name, data[api][metric][i].name,
+            data[api][metric][i].marker_type, startDate,
+            api,
+            metric,
+            data[api][metric][i].nid);
+
+        return {
+            location: new google.maps.LatLng(data[api][metric][i].latitude, data[api][metric][i].longitude),
+            weight: Math.abs(weight)
+        }
+    }
 
     $scope.markers = [];
     function createMarker(point, title, content, marker_type, start_time, api, metric, nid) {
@@ -332,27 +343,19 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout) 
 
     }
 
-    $scope.array_test = [];
+    var start = false;
+
     function MockHeatLayer(heatLayer, data) {
-        // Adding 500 Data Points
-        var map, pointarray, heatmap;
-        console.log('markersvallback function',data);
-        $scope.array_test = [];
-        $scope.array_test.push(
-            {"location": new google.maps.LatLng(51.2176723, 4.405058800000006), "weight": 117},
-            {"location": new google.maps.LatLng(51.2146733+0.00733, 4.405958800000006+0.006733), "weight": 117});
-
-        var taxiData =$scope.totalHeatmapData['facebook'];
-
-        var pointArray = new google.maps.MVCArray(taxiData);
-        heatLayer.set('radius', heatMapRadius);
-        heatLayer.setData(pointArray);
-    };
-
+        if (data.length || start) {
+            var taxiData = data;
+            var pointArray = new google.maps.MVCArray(taxiData);
+            heatLayer.set('radius', heatMapRadius);
+            heatLayer.setData(pointArray);
+            start = true;
+        };
+    }
 
     function initializeMap() {
-
-
         $scope.map = {
             center: {
                 latitude: 51.218826,
@@ -361,13 +364,17 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout) 
             zoom: 14,
             show: true,
             options: {
-                // minZoom: 13,
+                minZoom: 13,
                 scrollwheel: true
             },
             draggable: false,
             control: {},
             events: {
                 zoom_changed: function () {
+                    if ($scope.map.zoom >= 15 && $scope.show_heatmap) {
+                        $scope.clusterData = [];
+                    }
+
                     $timeout(function () {
                         if ($scope.map.zoom > 14 && $scope.show_heatmap) {
                             switch_between_marker_and_cluster("marker");
@@ -377,7 +384,7 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout) 
                             switch_between_marker_and_cluster('cluster');
                             $scope.show_heatmap = !$scope.show_heatmap;
                         }
-                    }, 500)
+                    }, 300)
                 }
             },
             markersEvents: {
@@ -389,8 +396,6 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout) 
                     model.show = !model.show;
                 },
                 click: function (marker, eventName, model) {
-
-                    console.log('marker_lat', Number(marker.model.latitude) + 0.5);
                     $scope.map.zoom = 17
                     $scope.map.control.refresh(
                         {
@@ -418,23 +423,22 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout) 
         $scope.layer_foursquare = "";
         $scope.layer_apen = "";
 
-        // $scope.heatLayerCallback_foursquare = function (layer) {
-        //
-        //     //set the heat layers backend data
-        //     $scope.layer_foursquare = layer;
-        //     var mockHeatLayer = new MockHeatLayer(layer, $scope.totalHeatmapData['foursquare']);
-        // };
+        $scope.heatLayerCallback_foursquare = function (layer) {
+
+            //set the heat layers backend data
+            $scope.layer_foursquare = layer;
+            var mockHeatLayer = new MockHeatLayer(layer, $scope.totalHeatmapData['foursquare']);
+        };
         $scope.heatLayerCallback_facebook = function (layer) {
             //set the heat layers backend data
-            console.log('print layer af', layer);
             $scope.layer_facebook = layer;
             var mockHeatLayer = new MockHeatLayer(layer, $scope.totalHeatmapData['facebook']);
         };
-        // $scope.heatLayerCallback_apen = function (layer) {
-        //     //set the heat layers backend data
-        //     $scope.layer_apen = layer;
-        //     var mockHeatLayer = new MockHeatLayer(layer, $scope.totalHeatmapData['apen']);
-        // };
+        $scope.heatLayerCallback_apen = function (layer) {
+            //set the heat layers backend data
+            $scope.layer_apen = layer;
+            var mockHeatLayer = new MockHeatLayer(layer, $scope.totalHeatmapData['apen']);
+        };
         switchApplicationState(APP_STATE_LOAD_CURRENT_HOUR)
 
     }

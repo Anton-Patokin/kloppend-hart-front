@@ -58,15 +58,15 @@
 
 </div>
 <div class="container">
-
+<!--{{totalHeatmapData['facebook']}}-->
 </div>
 <div class="size_map">
     <ui-gmap-google-map center="map.center" zoom="map.zoom" draggable="map.draggable"  options="map.options" events="map.events" control="map.control">
 
 
         <ui-gmap-layer namespace="visualization" type="HeatmapLayer" show="showHeat_facebook" onCreated="heatLayerCallback_facebook"></ui-gmap-layer>
-<!--        <ui-gmap-layer namespace="visualization" type="HeatmapLayer" show="showHeat_foursquare" onCreated="heatLayerCallback_foursquare"></ui-gmap-layer>-->
-<!--        <ui-gmap-layer namespace="visualization" type="HeatmapLayer" show="showHeat_apen" onCreated="heatLayerCallback_apen"></ui-gmap-layer>-->
+        <ui-gmap-layer namespace="visualization" type="HeatmapLayer" show="showHeat_foursquare" onCreated="heatLayerCallback_foursquare"></ui-gmap-layer>
+        <ui-gmap-layer namespace="visualization" type="HeatmapLayer" show="showHeat_apen" onCreated="heatLayerCallback_apen"></ui-gmap-layer>
 
         <ui-gmap-markers doCluster="true" typeOptions="{minimumClusterSize : 1}" models="clusterData"
                                  events="map.markersEvents" coords="'self'" heatmap-layer="{}"
