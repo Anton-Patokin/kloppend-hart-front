@@ -76,13 +76,13 @@
 
 
 ?>
-<div ng-init='disableSroll()' class="container">
+<div ng-init='disableSroll()' class="poi-details-wrapper">
     <?php if($_GET['action'] == 'show'): ?>
-        <div class="row">
+        <div class="row subcategories-menu">
             <div class="col-md-12">
                 <ol>
-                    <?php foreach($subcategories as $subcategory): ?>
-                        <a href="#section1/<?= $getCategory ?>/show/<?= $subcategory['link'] ?>"><li><?= $subcategory['database'] ?></li></a>
+                    <?php foreach($subcategories as $key => $subcategory): ?>
+                        <a class="<?= (($key % 2) == 0) ? 'even' : 'oneven' ;?>" href="#section1/<?= $getCategory ?>/show/<?= $subcategory['link'] ?>"><li><?= $subcategory['database'] ?></li></a>
                         <ul>
                             <?php if(strtolower($subcategory['link']) == strtolower($getSubcategory)): ?>
                                 <?php if(isset($topPlaces) && count($topPlaces) > 0): ?>
@@ -103,61 +103,63 @@
             </div>
         </div>
     <?php endif ?>
-    <div class="row">
-        <div class="col-md-12">
-            <div class="nodeTitle">
-            </div>
-            <div class="nodeBody">
-            </div>
+    <div class="poi-details">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="nodeTitle">
+                </div>
+                <div class="nodeBody">
+                </div>
 
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            <div id="morris-analytics">
             </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            <div class="stats-analytics">
-                <div class="apen-stats col-md-4">
-                    <div class="apen-title">
-                    </div>
-                    <div class="apen-total">
-                    </div>
-                    <div class="apen-visits">
-                    </div>
-                </div>
-                <div class="facebook-stats col-md-4">
-                    <div class="facebook-title">
-                    </div>
-                    <div class="facebook-total">
-                    </div>
-                    <div class="facebook-likes">
-                    </div>
-                    <div class="facebook-checkins">
-                    </div>
-                    <div class="facebook-talking-abouts">
-                    </div>
-                </div>
-                <div class="foursquare-stats col-md-4">
-                    <div class="foursquare-title">
-                    </div>
-                    <div class="foursquare-total">
-                    </div>
-                    <div class="foursquare-checkins">
-                    </div>
-                    <div class="foursquare-users">
-                    </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div id="morris-analytics">
                 </div>
             </div>
         </div>
-    </div>
-    <div class="row social-media-stream">
-        <div class="col-md-12" ng-repeat="socialMedia in socialMediaStream">
-            <div class="col-md-6">
-                {{ socialMedia }}
+        <div class="row">
+            <div class="col-md-12">
+                <div class="stats-analytics">
+                    <div class="apen-stats col-md-4">
+                        <div class="apen-title">
+                        </div>
+                        <div class="apen-total">
+                        </div>
+                        <div class="apen-visits">
+                        </div>
+                    </div>
+                    <div class="facebook-stats col-md-4">
+                        <div class="facebook-title">
+                        </div>
+                        <div class="facebook-total">
+                        </div>
+                        <div class="facebook-likes">
+                        </div>
+                        <div class="facebook-checkins">
+                        </div>
+                        <div class="facebook-talking-abouts">
+                        </div>
+                    </div>
+                    <div class="foursquare-stats col-md-4">
+                        <div class="foursquare-title">
+                        </div>
+                        <div class="foursquare-total">
+                        </div>
+                        <div class="foursquare-checkins">
+                        </div>
+                        <div class="foursquare-users">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row social-media-stream">
+            <div class="col-md-12" ng-repeat="socialMedia in socialMediaStream">
+                <div class="col-md-6">
+                    {{ socialMedia }}
+                </div>
             </div>
         </div>
     </div>

@@ -1,4 +1,4 @@
-<div class="div">
+<!-- <div class="div">
     <div class="overlay">
         <rzslider class="custom-slider"
                   rz-slider-model="slider.minValue"
@@ -10,12 +10,11 @@
             <md-content>
                 <md-datepicker
                     ng-model="myDate"
-<!--                    ui-date="{dateFormat: 'yy-mm-dd'}"-->
 
                     md-placeholder="Enter date"></md-datepicker>
             </md-content>
         </div>
     </div>
-</div>
+</div> -->
 </body>
 </html>

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <!--    css-->
     <link rel="stylesheet" href="css/libs/bootstrap.min.css">
+    <link rel="stylesheet" href="css/libs/angular-material.min.css">
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/libs/rzslider.css">
     <script type="text/javascript" src="js/libs/lodash.min.js"></script>
@@ -12,7 +13,7 @@
     <script src="js/angular-google-maps.js"></script>
 
     <!--    data picker-->
-    <link rel="stylesheet" href="css/libs/angular-material.min.css">
+    
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
@@ -34,6 +35,8 @@
     <script src="js/angular_section_7_controller.js"></script>
     <script src="js/angular_section_8_controller.js"></script>
     <script type="text/javascript" src="js/angular_top_trending_controller.js"></script>
+    <script type="text/javascript" src="js/angular_nav_top_trending_controller.js"></script>
+    <script type="text/javascript" src="js/angular_side_bar_controller.js"></script>
     <script type="text/javascript" src="js/global_var.js"></script>
     <script type="text/javascript" src="js/time_lineController.js"></script>
 </head>
