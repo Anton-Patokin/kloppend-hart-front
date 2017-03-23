@@ -22,7 +22,7 @@
 <div class="container">
     <!--{{totalHeatmapData['facebook']}}-->
 </div>
-<div class="size_map">
+<div ng-class="size_map">
     <ui-gmap-google-map center="map.center" zoom="map.zoom" draggable="map.draggable" options="map.options"
                         events="map.events" control="map.control">
 

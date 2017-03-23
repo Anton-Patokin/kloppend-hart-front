@@ -4,16 +4,18 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout) 
     $scope.showHeatmapBool = {visible: true};
     $scope.showMarkerBool = {visible: false};
     var $slide;
-
+    var zoom = 14;
+    var save_position_lat_client=51.218826;
+    var save_position_long_client=4.402950
 //application states
     var APP_STATE_LOAD_MAP = 0;
     var APP_STATE_LOAD_CURRENT_HOUR = 1;
     var APP_STATE_LOAD_DATA = 2;
     var APP_STATE_DISPLAY_DATA = 3;
     var APP_STATE_LOAD_FUTURE_DATA = 4;
-
     var loaded;
-
+    var center_antwerpen_lat = 51.218826;
+    var center_antwerpen_long = 4.402950;
 //general variables
     var map;
     var heatmap;
@@ -80,12 +82,6 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout) 
         slider_start_time = $scope.slider.minValue;
         slider_end_time = $scope.slider.maxValue;
         switchApplicationState(APP_STATE_LOAD_CURRENT_HOUR);
-        $scope.map.control.refresh({
-            latitude: 51.218826,
-            longitude: 4.402950
-        });
-
-
     };
     $scope.layer = "";
     $scope.slider = {
@@ -109,16 +105,22 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout) 
     $scope.show_apen_marker = true;
 
     $scope.checkbox_social_media = function (event) {
+        console.log(event);
         switch (event.currentTarget.name) {
             case 'facebookCheck':
+                console.log('checkbox value',event.currentTarget.name);
                 // $scope.showHeat_facebook = !$scope.showHeat_facebook;
                 $scope.show_facebook_marker = !$scope.show_facebook_marker;
                 break;
             case 'foursquareCheck':
+                console.log('checkbox value',event.currentTarget.name);
+
                 // $scope.showHeat_foursquare = !$scope.showHeat_foursquare;
                 $scope.show_foursquare_marker = !$scope.show_foursquare_marker
                 break;
             case 'apenCheck':
+                console.log('checkbox value',event.currentTarget.name);
+
                 // $scope.showHeat_apen = !$scope.showHeat_apen;
                 $scope.show_apen_marker = !$scope.show_apen_marker;
                 break;
@@ -170,11 +172,11 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout) 
         if ($scope.show_heatmap == true)switch_between_marker_and_cluster('cluster');
         if ($scope.show_heatmap != true) switch_between_marker_and_cluster("marker");
 
-        if (start) {
-            $scope.heatLayerCallback_foursquare($scope.layer_foursquare, $scope.totalHeatmapData['foursquare']);
-            $scope.heatLayerCallback_facebook($scope.layer_facebook, $scope.totalHeatmapData['facebook']);
-            $scope.heatLayerCallback_apen($scope.layer_apen, $scope.totalHeatmapData['apen']);
-        }
+
+        $scope.heatLayerCallback_foursquare($scope.layer_foursquare, $scope.totalHeatmapData['foursquare']);
+        $scope.heatLayerCallback_facebook($scope.layer_facebook, $scope.totalHeatmapData['facebook']);
+        $scope.heatLayerCallback_apen($scope.layer_apen, $scope.totalHeatmapData['apen']);
+
     }
 
 
@@ -363,25 +365,53 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout) 
         ;
     }
 
-    function initializeMap() {
-        $scope.options_test = {};
+    $scope.refresh_google_maps = function () {
+        initialize_bounce_marker();
+        switchApplicationState(APP_STATE_LOAD_CURRENT_HOUR);
+        $scope.showHeat_facebook = true;
+        $scope.showHeat_foursquare = true;
+        $scope.showHeat_apen = true;
+        center_google_maps(save_position_lat_client, save_position_long_client, false)
+    }
+    function initialize_bounce_marker() {
         $scope.marker_center = {
             id: 1,
             coords: {
-                latitude: 51.218826,
-                longitude: 4.402950
+                latitude: {},
+                longitude: {}
             },
-            icon: '111',
-            title: "111",
+            icon: '',
+            title: "",
         };
+    }
+
+
+    function center_google_maps(lat, long, zoom) {
+        $scope.map.control.refresh(
+            {
+                latitude: lat,
+                longitude: long,
+            }
+        );
+        if (zoom) {
+            $scope.map.zoom = 17;
+        } else {
+            $scope.map.zoom = zoom;
+
+        }
+
+    }
+
+    function initializeMap() {
+        initialize_bounce_marker()
         $scope.bounce_marker_options = {};
 
         $scope.map = {
             center: {
-                latitude: 51.218826,
-                longitude: 4.402950
+                latitude: center_antwerpen_lat,
+                longitude: center_antwerpen_long
             },
-            zoom: 16,
+            zoom: zoom,
             show: true,
             options: {
                 minZoom: 13,
@@ -416,15 +446,11 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout) 
                     model.show = !model.show;
                 },
                 click: function (marker, eventName, model) {
+                    save_position_lat_client =marker.model.latitude;
+                    save_position_long_client=marker.model.longitude;
                     $scope.map.zoom = 17;
                     clean_map_from_markers_and_clusters();
-                    // $scope.map.control.refresh(
-                    //     {
-                    //         latitude: Number(marker.model.latitude) - 0.0015,
-                    //         longitude: marker.model.longitude,
-                    //
-                    //     }
-                    // );
+                    center_google_maps(Number(marker.model.latitude) - 0.0015, marker.model.longitude, true);
                     var method = 'GET';
                     var url = 'http://localhost/edge/projects/kloppend-hart-antwerpen/version_002' +
                         '/front/application/service/place/getCategoryByNid/' + marker.model.id

@@ -29,13 +29,13 @@
 
 			<li>HOTSPOTS</li>
 			<li>
-				<input type="checkbox" id="facebookCheck" class="regular-checkbox" ng-click="checkbox_social_media($event)" checked /><label for="facebookCheck"></label><label for="facebookCheck">FACEBOOK</label>
+				<input type="checkbox" id="facebookCheck" class="regular-checkbox" name="facebookCheck" ng-click="checkbox_social_media($event)" checked /><label for="facebookCheck"></label><label for="facebookCheck">FACEBOOK</label>
 			</li>
 			<li>
-				<input type="checkbox" id="foursquareCheck" class="regular-checkbox" ng-click="checkbox_social_media($event)" checked /><label for="foursquareCheck"></label><label for="foursquareCheck">FOURSQUARE</label>
+				<input type="checkbox" id="foursquareCheck" class="regular-checkbox" name="foursquareCheck" ng-click="checkbox_social_media($event)" checked /><label for="foursquareCheck"></label><label for="foursquareCheck">FOURSQUARE</label>
 			</li>
 			<li>
-				<input type="checkbox" id="apenCheck" class="regular-checkbox" ng-click="checkbox_social_media($event)" checked /><label for="apenCheck"></label><label for="apenCheck">APEN</label>
+				<input type="checkbox" id="apenCheck" class="regular-checkbox" name="apenCheck" ng-click="checkbox_social_media($event)" checked /><label for="apenCheck"></label><label for="apenCheck">APEN</label>
 			</li>
 		</ul>
 	</div>

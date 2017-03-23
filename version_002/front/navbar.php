@@ -18,7 +18,7 @@
 			<img src="images/newdesign/hamburger.png">
 		</div>
 		<div class="title">
-		 	<img src="images/newdesign/apenCityboard.png">
+		 	<img ng-click="refresh_google_maps()" src="images/newdesign/apenCityboard.png">
 		</div>
 		<div class="icons">
 			<ul>
