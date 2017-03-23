@@ -22,13 +22,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="angular_section_angular_google_maps_controller.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="angular_section_angular_google_maps_controller.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/front/js/angular_section_angular_google_maps_controller.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="543">
-              <caret line="175" column="8" selection-start-line="175" selection-start-column="8" selection-end-line="175" selection-end-column="8" />
+            <state relative-caret-position="224">
+              <caret line="327" column="28" selection-start-line="327" selection-start-column="28" selection-end-line="327" selection-end-column="28" />
               <folding />
             </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="marker_0.png" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/front/images/markers/marker_0.png">
+          <provider selected="true" editor-type-id="images">
+            <state />
           </provider>
         </entry>
       </file>
@@ -45,7 +52,7 @@
       <file leaf-file-name="section1.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/front/sections/section1.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
+            <state relative-caret-position="3036">
               <caret line="138" column="46" selection-start-line="138" selection-start-column="41" selection-end-line="138" selection-end-column="46" />
               <folding />
             </state>
@@ -65,18 +72,8 @@
       <file leaf-file-name="angular_section_angular_google_maps_controller - kopie.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/front/js/angular_section_angular_google_maps_controller - kopie.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="418">
+            <state relative-caret-position="2640">
               <caret line="120" column="16" selection-start-line="120" selection-start-column="16" selection-end-line="122" selection-end-column="44" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="global_var.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/front/js/global_var.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="110" selection-start-line="0" selection-start-column="110" selection-end-line="0" selection-end-column="110" />
               <folding />
             </state>
           </provider>
@@ -85,18 +82,18 @@
       <file leaf-file-name="google_maps.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/front/google_maps.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="291">
-              <caret line="66" column="92" selection-start-line="66" selection-start-column="75" selection-end-line="66" selection-end-column="92" />
+            <state relative-caret-position="652">
+              <caret line="90" column="85" selection-start-line="90" selection-start-column="64" selection-end-line="90" selection-end-column="85" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="angular_top_trending_controller.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="angular_top_trending_controller.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/front/js/angular_top_trending_controller.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="485">
-              <caret line="86" column="60" selection-start-line="86" selection-start-column="26" selection-end-line="86" selection-end-column="60" />
+            <state relative-caret-position="594">
+              <caret line="27" column="47" selection-start-line="27" selection-start-column="47" selection-end-line="27" selection-end-column="47" />
               <folding />
             </state>
           </provider>
@@ -127,7 +124,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/front/scripts/weatherStation.class.php" />
         <option value="$PROJECT_DIR$/../../../../../mysql/bin/kha_gb_small.sql" />
         <option value="$PROJECT_DIR$/facebook/factory/FacebookFactory.class.php" />
         <option value="$PROJECT_DIR$/apen/service/ApenService.class.php" />
@@ -175,8 +171,9 @@
         <option value="$PROJECT_DIR$/front/index.php" />
         <option value="$PROJECT_DIR$/front/js/global_var.js" />
         <option value="$PROJECT_DIR$/front/footer.php" />
-        <option value="$PROJECT_DIR$/front/google_maps.php" />
         <option value="$PROJECT_DIR$/front/navbar_top.php" />
+        <option value="$PROJECT_DIR$/front/js/angular_top_trending_controller.js" />
+        <option value="$PROJECT_DIR$/front/google_maps.php" />
         <option value="$PROJECT_DIR$/front/js/angular_section_angular_google_maps_controller.js" />
       </list>
     </option>
@@ -372,19 +369,20 @@
       <workItem from="1490093649178" duration="16285000" />
       <workItem from="1490123557990" duration="621000" />
       <workItem from="1490169800008" duration="24245000" />
+      <workItem from="1490256415834" duration="14218000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="179929000" />
+    <option name="totallyTimeSpent" value="194147000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
+    <frame x="-9" y="-9" width="1938" height="1048" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20989583" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.10940919" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.10940919" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -417,13 +415,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/settings.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="4" column="86" selection-start-line="4" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/front/application/models/model.class.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="110">
@@ -661,7 +652,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="120" selection-start-line="0" selection-start-column="120" selection-end-line="0" selection-end-column="120" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -669,13 +659,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="288046">
           <caret line="13093" column="33" selection-start-line="13093" selection-start-column="33" selection-end-line="13093" selection-end-column="33" />
-          <folding>
-            <element signature="e#239735#239906#2" expanded="false" />
-            <element signature="e#241041#241212#2" expanded="false" />
-            <element signature="e#241805#241976#2" expanded="false" />
-            <element signature="e#356583#357670#2" expanded="false" />
-            <element signature="e#357743#358826#2" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -683,7 +666,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="44">
           <caret line="2" column="4" selection-start-line="2" selection-start-column="4" selection-end-line="2" selection-end-column="4" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -691,15 +673,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1760">
           <caret line="80" column="13" selection-start-line="80" selection-start-column="12" selection-end-line="80" selection-end-column="13" />
-          <folding>
-            <marker date="1490180771226" expanded="true" signature="1254:1683" placeholder="select sourc... " />
-            <marker date="1490180771226" expanded="true" signature="1715:2090" placeholder="select sourc... " />
-            <marker date="1490180771226" expanded="true" signature="3218:4579" placeholder="SELECT (coal... source_metric" />
-            <marker date="1490180771226" expanded="true" signature="4991:5359" placeholder="SELECT AVG(d... " />
-            <marker date="1490180771226" expanded="true" signature="5878:6061" placeholder="DELETE FROM " />
-            <marker date="1490180771226" expanded="true" signature="6241:7262" placeholder="SELECT * FRO... source_name" />
-            <marker date="1490180771226" expanded="true" signature="6256:7196" placeholder="SELECT s.sou... poi" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -707,7 +680,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
           <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -727,14 +699,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/front/footer.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="18" column="6" selection-start-line="18" selection-start-column="6" selection-end-line="18" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/front/js/angular_section_1_controller.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="572">
@@ -745,7 +709,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/front/sections/section1.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
+        <state relative-caret-position="3036">
           <caret line="138" column="46" selection-start-line="138" selection-start-column="41" selection-end-line="138" selection-end-column="46" />
           <folding />
         </state>
@@ -759,34 +723,47 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/front/google_maps.php">
+    <entry file="file://$PROJECT_DIR$/front/js/angular_section_angular_google_maps_controller - kopie.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="291">
-          <caret line="66" column="92" selection-start-line="66" selection-start-column="75" selection-end-line="66" selection-end-column="92" />
+        <state relative-caret-position="2640">
+          <caret line="120" column="16" selection-start-line="120" selection-start-column="16" selection-end-line="122" selection-end-column="44" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/front/js/angular_section_angular_google_maps_controller - kopie.js">
+    <entry file="file://$PROJECT_DIR$/front/footer.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="120" column="16" selection-start-line="120" selection-start-column="16" selection-end-line="122" selection-end-column="44" />
+        <state relative-caret-position="396">
+          <caret line="18" column="6" selection-start-line="18" selection-start-column="6" selection-end-line="18" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/front/images/markers/marker_0.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/front/js/angular_top_trending_controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="594">
+          <caret line="27" column="47" selection-start-line="27" selection-start-column="47" selection-end-line="27" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/front/google_maps.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="652">
+          <caret line="90" column="85" selection-start-line="90" selection-start-column="64" selection-end-line="90" selection-end-column="85" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/front/js/angular_section_angular_google_maps_controller.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="543">
-          <caret line="175" column="8" selection-start-line="175" selection-start-column="8" selection-end-line="175" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/front/js/angular_top_trending_controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="485">
-          <caret line="86" column="60" selection-start-line="86" selection-start-column="26" selection-end-line="86" selection-end-column="60" />
+        <state relative-caret-position="224">
+          <caret line="327" column="28" selection-start-line="327" selection-start-column="28" selection-end-line="327" selection-end-column="28" />
           <folding />
         </state>
       </provider>

@@ -170,10 +170,11 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout) 
         if ($scope.show_heatmap == true)switch_between_marker_and_cluster('cluster');
         if ($scope.show_heatmap != true) switch_between_marker_and_cluster("marker");
 
+        if (start) {
             $scope.heatLayerCallback_foursquare($scope.layer_foursquare, $scope.totalHeatmapData['foursquare']);
             $scope.heatLayerCallback_facebook($scope.layer_facebook, $scope.totalHeatmapData['facebook']);
             $scope.heatLayerCallback_apen($scope.layer_apen, $scope.totalHeatmapData['apen']);
-        
+        }
     }
 
 
@@ -292,13 +293,10 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout) 
                 latitude: data[api][metric][i].latitude,
                 longitude: data[api][metric][i].longitude,
                 title: data[api][metric][i].name,
-                icon: data[api][metric][i].marker_type
+                icon: data[api][metric][i].marker_type,
+                options: {}
             },
-            data[api][metric][i].name, data[api][metric][i].name,
-            data[api][metric][i].marker_type, startDate,
-            api,
-            metric,
-            data[api][metric][i].nid);
+            data[api][metric][i].marker_type);
 
         return {
             location: new google.maps.LatLng(data[api][metric][i].latitude, data[api][metric][i].longitude),
@@ -307,7 +305,7 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout) 
     }
 
     $scope.markers = [];
-    function createMarker(point, title, content, marker_type, start_time, api, metric, nid) {
+    function createMarker(point, marker_type) {
         if (!$scope.markers.hasOwnProperty(marker_type)) $scope.markers[marker_type] = [];
         if (!$scope.markers[marker_type].hasOwnProperty(marker_type)) $scope.markers[marker_type]["icon"] = [marker_type];
         $scope.markers[marker_type].push(point);
@@ -322,6 +320,15 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout) 
 
     function show_marker_cluster() {
         $scope.clusterData = $scope.cluster_save;
+    }
+
+    function clean_map_from_markers_and_clusters() {
+        $scope.clusterData = [];
+        $scope.markerss = [];
+        $scope.markers = [];
+        $scope.showHeat_facebook = false;
+        $scope.showHeat_foursquare = false;
+        $scope.showHeat_apen = false;
     }
 
     function switch_between_marker_and_cluster(show_element) {
@@ -352,16 +359,29 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout) 
             heatLayer.set('radius', heatMapRadius);
             heatLayer.setData(pointArray);
             start = true;
-        };
+        }
+        ;
     }
 
     function initializeMap() {
+        $scope.options_test = {};
+        $scope.marker_center = {
+            id: 1,
+            coords: {
+                latitude: 51.218826,
+                longitude: 4.402950
+            },
+            icon: '111',
+            title: "111",
+        };
+        $scope.bounce_marker_options = {};
+
         $scope.map = {
             center: {
                 latitude: 51.218826,
                 longitude: 4.402950
             },
-            zoom: 14,
+            zoom: 16,
             show: true,
             options: {
                 minZoom: 13,
@@ -396,14 +416,15 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout) 
                     model.show = !model.show;
                 },
                 click: function (marker, eventName, model) {
-                    $scope.map.zoom = 17
-                    $scope.map.control.refresh(
-                        {
-                            latitude: Number(marker.model.latitude) - 0.0015,
-                            longitude: marker.model.longitude,
-
-                        }
-                    );
+                    $scope.map.zoom = 17;
+                    clean_map_from_markers_and_clusters();
+                    // $scope.map.control.refresh(
+                    //     {
+                    //         latitude: Number(marker.model.latitude) - 0.0015,
+                    //         longitude: marker.model.longitude,
+                    //
+                    //     }
+                    // );
                     var method = 'GET';
                     var url = 'http://localhost/edge/projects/kloppend-hart-antwerpen/version_002' +
                         '/front/application/service/place/getCategoryByNid/' + marker.model.id
@@ -415,6 +436,37 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout) 
                     ).then(function (result) {
                         // location.href = ROOT_FRONT + '#/section1/' + Object.keys(result.data)[0] + '/search/' + marker.model.id;
 
+                    });
+
+                    $http(
+                        {
+                            method: 'GET',
+                            url: 'application/service/place/getPlaceNearbyPlacesByNid/' + marker.model.id,
+                        }
+                    ).then(function (result) {
+
+
+                        result.data.near.forEach(function (element) {
+                            createMarker({
+                                    id: element.nid,
+                                    latitude: element.latitude,
+                                    longitude: element.longitude,
+                                    title: element.name,
+                                    icon: element.marker_type
+                                },
+                                element.marker_type);
+                        });
+                        switch_between_marker_and_cluster("marker");
+                        $scope.marker_center = {
+                            id: result.data.center.nid,
+                            coords: {
+                                latitude: result.data.center.latitude,
+                                longitude: result.data.center.longitude
+                            },
+                            icon: result.data.center.marker_type,
+                            title: result.data.center.name,
+                        };
+                        $scope.bounce_marker_options = {animation: google.maps.Animation.BOUNCE};
                     });
                 },
             },
