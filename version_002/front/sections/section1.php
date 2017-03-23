@@ -76,20 +76,20 @@
 
 
 ?>
-<div ng-init='disableSroll()' class="poi-details-wrapper">
+<div ng-init='disableSroll()' class="section-wrapper">
     <?php if($_GET['action'] == 'show'): ?>
-        <div class="row subcategories-menu">
-            <div class="col-md-12">
-                <ol>
+        <div class="row subcategories-menu-wrapper">
+            <div class="col-md-12 subcategories-menu">
+                <ul>
                     <?php foreach($subcategories as $key => $subcategory): ?>
-                        <a class="<?= (($key % 2) == 0) ? 'even' : 'oneven' ;?>" href="#section1/<?= $getCategory ?>/show/<?= $subcategory['link'] ?>"><li><?= $subcategory['database'] ?></li></a>
+                        <a href="#section1/<?= $getCategory ?>/show/<?= $subcategory['link'] ?>"><li class="<?= (strtolower($subcategory['link']) == strtolower($getSubcategory))? 'subcategory-active' : '' ?> <?= (($key % 2) == 0) ? 'even' : 'oneven' ;?>"><?= $subcategory['database'] ?><span class="subcategory-arrow pull-right"><img src="<?= (strtolower($subcategory['link']) == strtolower($getSubcategory))? 'images/newdesign/arrow-active.png' : 'images/newdesign/arrow.png' ?>"></span></li></a>
                         <ul>
                             <?php if(strtolower($subcategory['link']) == strtolower($getSubcategory)): ?>
                                 <?php if(isset($topPlaces) && count($topPlaces) > 0): ?>
                                     <?php for ($i=0; $i < 10; $i++): ?>
                                         <?php if(isset($topPlaces[$i])): ?>
                                             <!-- <a href="#section1/<?= $getCategory ?>/<?= $subcategory['link'] ?>/<?= $topPlaces[$i]->nid ?>"><li><?= $topPlaces[$i]->name ?></li></a> -->
-                                            <p class="detail-top-place" ng-click="testFunction(<?= $topPlaces[$i]->nid ?>)"><?= $topPlaces[$i]->name ?></p>
+                                            <p class="detail-top-place" ng-click="testFunction(<?= $topPlaces[$i]->nid ?>)"><span class="place"><?= ($i == 9)? '0' : '00' ?><?= $i + 1 ?>.</span><?= $topPlaces[$i]->name ?></p>
                                         <?php endif ?>
                                     <?php endfor ?>
                                     <?php else: ?>
@@ -98,67 +98,69 @@
                             <?php endif ?>
                         </ul>
                     <?php endforeach ?>
-                </ol>
+                </ul>
                 <?= $message ?>
             </div>
         </div>
     <?php endif ?>
-    <div class="poi-details">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="nodeTitle">
-                </div>
-                <div class="nodeBody">
-                </div>
+    <div class="poi-details-wrapper">
+        <div class="poi-details">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="nodeTitle">
+                    </div>
+                    <div class="nodeBody">
+                    </div>
 
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div id="morris-analytics">
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="stats-analytics">
-                    <div class="apen-stats col-md-4">
-                        <div class="apen-title">
-                        </div>
-                        <div class="apen-total">
-                        </div>
-                        <div class="apen-visits">
-                        </div>
-                    </div>
-                    <div class="facebook-stats col-md-4">
-                        <div class="facebook-title">
-                        </div>
-                        <div class="facebook-total">
-                        </div>
-                        <div class="facebook-likes">
-                        </div>
-                        <div class="facebook-checkins">
-                        </div>
-                        <div class="facebook-talking-abouts">
-                        </div>
-                    </div>
-                    <div class="foursquare-stats col-md-4">
-                        <div class="foursquare-title">
-                        </div>
-                        <div class="foursquare-total">
-                        </div>
-                        <div class="foursquare-checkins">
-                        </div>
-                        <div class="foursquare-users">
-                        </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="morris-analytics">
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row social-media-stream">
-            <div class="col-md-12" ng-repeat="socialMedia in socialMediaStream">
-                <div class="col-md-6">
-                    {{ socialMedia }}
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="stats-analytics">
+                        <div class="apen-stats col-md-4">
+                            <div class="apen-title">
+                            </div>
+                            <div class="apen-total">
+                            </div>
+                            <div class="apen-visits">
+                            </div>
+                        </div>
+                        <div class="facebook-stats col-md-4">
+                            <div class="facebook-title">
+                            </div>
+                            <div class="facebook-total">
+                            </div>
+                            <div class="facebook-likes">
+                            </div>
+                            <div class="facebook-checkins">
+                            </div>
+                            <div class="facebook-talking-abouts">
+                            </div>
+                        </div>
+                        <div class="foursquare-stats col-md-4">
+                            <div class="foursquare-title">
+                            </div>
+                            <div class="foursquare-total">
+                            </div>
+                            <div class="foursquare-checkins">
+                            </div>
+                            <div class="foursquare-users">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row social-media-stream">
+                <div class="col-md-12" ng-repeat="socialMedia in socialMediaStream">
+                    <div class="col-md-6">
+                        {{ socialMedia }}
+                    </div>
                 </div>
             </div>
         </div>
