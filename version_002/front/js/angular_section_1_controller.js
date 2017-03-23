@@ -6,17 +6,6 @@ app.controller("section1", function ($scope, $routeParams) {
     $scope.options = {scrollwheel: false};
 
 	$scope.testVar = testVar;
-	// console.log($scope.testVar);
-	$scope.testVar2 = [
-	    { y: "2017-03-14", a: 100, b: 90 },
-	    { y: "2017-03-15", a: 75,  b: 65 },
-	    { y: "2017-03-16", a: 50,  b: 40 },
-	    { y: "2017-03-17", a: 75,  b: 65 },
-	    { y: "2017-03-18", a: 50,  b: 40 },
-	    { y: "2017-03-19", a: 75,  b: 65 },
-	    { y: "2017-03-20", a: 100, b: 90 }
-	];
-	// console.log($scope.testVar2);
 
 	$scope.testFunction = function(nid){
 		console.log(nid);
