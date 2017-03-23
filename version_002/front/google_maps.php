@@ -18,44 +18,6 @@
 
 </div>
 
-<div ng-show="showTrendingDiv" ng-controller="topTrendingController" class="top-trending-list col-md-3 pull-right">
-    <button ng-click="showTrending()" class="btn-trending btn-trending-toggle">TRENDING</button>
-
-    <div ng-show="isTrending" class="top-trending-now">
-        <h2>Trending</h2>
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3>Top 15 now</h3>
-            </div>
-            <div class="top-15 panel-body">
-                <ol>
-                    <li ng-repeat="poi in topTrendingList">{{ poi['name'] }}</li>
-                </ol>
-            </div>
-        </div>
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3>Top places nearby</h3>
-            </div>
-            <div class="panel-body">
-                <div ng-show="trendingList" class="top-10">
-                    <ol>
-                        <li ng-repeat="poi in trendingList">{{ poi['name'] }}</li>
-                    </ol>
-                </div>
-                <div ng-hide="trendingList">
-                    <p id="no-nearby-places">There are no hot nearby places</p>
-                </div>
-            </div>
-        </div>
-        <!-- <div class="test">
-            <p id="demo"></p>
-        </div> -->
-    </div>
-    <!-- <div class="top-trending-near">
-        <h3>Near</h3>
-    </div> -->
-
 </div>
 <div class="container">
     <!--{{totalHeatmapData['facebook']}}-->
