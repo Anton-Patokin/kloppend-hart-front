@@ -13,7 +13,7 @@
     <script src="js/angular-google-maps.js"></script>
 
     <!--    data picker-->
-    
+    <script type="text/javascript" src="js/libs/angular-masonry.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
@@ -28,6 +28,8 @@
     <script src="js/libs/raphael-min.js"></script>
     <script src="js/libs/morris.min.js"></script>
     <script src="js/libs/angular-morris.min.js"></script>
+    <!-- <script type="text/javascript" src="js/libs/masonry.pkgd.min.js"></script> -->
+    
     <script src="js/angular_main.js"></script>
     <script src="js/angular_section_angular_google_maps_controller.js"></script>
     <script src="js/searchFormController.js"></script>    

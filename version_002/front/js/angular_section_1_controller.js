@@ -6,30 +6,55 @@ app.controller("section1", function ($scope, $routeParams) {
     $scope.options = {scrollwheel: false};
 
 	$scope.testVar = testVar;
+	$scope.loadInfo = false;
+	$scope.loadChart = false;
 
 	$scope.testFunction = function(nid){
+		$scope.loadInfo = true;
+		$scope.loadChart = true;
 		$.ajax({
 			url: 'application/service/place/getPlaceInfoByNid/'+nid,
 			type: 'GET',
 		    dataType: 'json',
-		    async: false,
+		    async: true,
 		    cache: false,
 		    success: function(data) {
-		    	$('.nodeTitle').empty();
-		    	$('.nodeBody').empty();
-		    	$('.nodeTitle').append(data['title']);
-		    	$('.nodeBody').append(data['body']);
+		    	// console.log('POI DATA: ', data);
+		    	$('.node-title').empty();
+		    	$('.node-body').empty();
+		    	$('.apen-link').empty();
+		    	$('.node-title').append(data['title'].toUpperCase());
+		    	$('.node-title').append('<div class="small-seperator"></div>');
+		    	$('.node-body').append(data['body']);
+		    	$('.apen-link').append('<a href="https://apen.be/node/' + nid + '">Meer weten over ' + data['title'] + '<img src="images/newdesign/arrow-black.png"></a>');
+		    	$scope.$apply(function(){
+		    		$scope.loadInfo = false;
+		    	});
 		    },
 		    error: function(XMLHttpRequest, textStatus, errorThrown) { 
 		        console.log("Status: " + textStatus); console.log("Error: " + errorThrown); 
 		    }
 		});
 
+		// $.ajax({
+		// 	url: 'application/service/place/getPlaceImageByNid/'+nid,
+		// 	type: 'GET',
+		//     dataType: 'json',
+		//     async: true,
+		//     cache: false,
+		//     success: function(data) {
+		//     	console.log('IMAGE: ', data);
+		//     },
+		//     error: function(XMLHttpRequest, textStatus, errorThrown) { 
+		//         console.log("Status: " + textStatus); console.log("Error: " + errorThrown); 
+		//     }
+		// });
+
 		$.ajax({
 			url: 'application/service/place/getPlaceStatsByNid/'+nid,
 			type: 'GET',
 		    dataType: 'json',
-		    async: false,
+		    async: true,
 		    cache: false,
 		    success: function(data) {
 		    	testVar.length = 0
@@ -57,6 +82,9 @@ app.controller("section1", function ($scope, $routeParams) {
 					labels: ["Apen", "Facebook", "Foursquare"],
 					pointSize: 4,
 				});
+				$scope.$apply(function(){
+		    		$scope.loadChart = false;
+		    	});
 		    },
 		    error: function(XMLHttpRequest, textStatus, errorThrown) { 
 		        console.log("Status: " + textStatus); console.log("Error: " + errorThrown); 
@@ -68,7 +96,7 @@ app.controller("section1", function ($scope, $routeParams) {
 			url: 'application/service/place/getPlaceTotalMetricsByNid/'+nid,
 			type: 'GET',
 		    dataType: 'json',
-		    async: false,
+		    async: true,
 		    cache: false,
 		    success: function(data) {
 		    	facebook = 0;
@@ -121,21 +149,20 @@ app.controller("section1", function ($scope, $routeParams) {
 		    }
 		});
 
-		$.ajax({
-			url: 'application/service/place/getSocialMediaStreamByNid/'+nid,
-			type: 'GET',
-		    dataType: 'json',
-		    async: false,
-		    cache: false,
-		    success: function(data) {
-		    	$scope.socialMediaStream = data;
-		    },
-		    error: function(XMLHttpRequest, textStatus, errorThrown) { 
-		        console.log("Status: " + textStatus); console.log("Error: " + errorThrown); 
-		    }
-		});
-
-
+		// $.ajax({
+		// 	url: 'application/service/place/getSocialMediaStreamByNid/'+nid,
+		// 	type: 'GET',
+		//     dataType: 'json',
+		//     async: false,
+		//     cache: false,
+		//     success: function(data) {
+		//     	$scope.socialMediaStream = data;
+		//     	$scope.loading = false;
+		//     },
+		//     error: function(XMLHttpRequest, textStatus, errorThrown) { 
+		//         console.log("Status: " + textStatus); console.log("Error: " + errorThrown); 
+		//     }
+		// });
 	}
 
 	if ($routeParams.action == 'search') {

@@ -4,7 +4,7 @@
     
     $apenService = new \dataMining2\service\ApenService();
     
-    $batchSize = 500;
+    $batchSize = 1000;
     
     $apenService->getMetricsBySourceReferencePoiIdRange(0,$batchSize);
 ?>

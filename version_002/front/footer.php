@@ -1,5 +1,5 @@
  <div class="div">
-    <div class="overlay">
+    <!-- <div class="overlay">
         <rzslider class="custom-slider"
                   rz-slider-model="slider.minValue"
                   rz-slider-high="slider.maxValue"
@@ -14,7 +14,7 @@
                     md-placeholder="Enter date"></md-datepicker>
             </md-content>
         </div>
-    </div>
+    </div> -->
 </div>
 </body>
 </html>

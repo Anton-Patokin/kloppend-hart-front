@@ -23,6 +23,7 @@ app.controller("searchFormController", function ($scope, $timeout) {
 					for (var i = 0; i < 10; i++) {
 						if (data[i] != null) {$scope.searchResults.push(data[i]);}		    		
 					}
+					console.log($scope.searchResults);
 				} else {
 					$scope.showResults = false;
 					$scope.searchResults = [];

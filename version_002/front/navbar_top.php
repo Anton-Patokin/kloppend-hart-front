@@ -39,10 +39,10 @@
 			</li>
 		</ul>
 	</div>
-	<div class="search-input pull-right">
+	<div ng-controller="searchFormController" class="search-input pull-right">
 		<ul>
 			<li>
-				<input type="text" name="search" placeholder="search...">
+				<input ng-model="searchInput" ng-keyup="searchNode()" type="text" name="searchInput" placeholder="search...">
 			</li>
 			<li>
 				<p class="btn-search"><img src="images/newdesign/search.png"></p>
