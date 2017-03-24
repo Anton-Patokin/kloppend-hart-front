@@ -8,7 +8,6 @@ app.controller("section1", function ($scope, $routeParams) {
 	$scope.testVar = testVar;
 
 	$scope.testFunction = function(nid){
-		console.log(nid);
 		$.ajax({
 			url: 'application/service/place/getPlaceInfoByNid/'+nid,
 			type: 'GET',
@@ -33,7 +32,6 @@ app.controller("section1", function ($scope, $routeParams) {
 		    async: false,
 		    cache: false,
 		    success: function(data) {
-		    	console.log('stats', data);
 		    	testVar.length = 0
 		    	for(metric in data){	    		
 		    		var apenDif = 0;
@@ -130,7 +128,6 @@ app.controller("section1", function ($scope, $routeParams) {
 		    async: false,
 		    cache: false,
 		    success: function(data) {
-		    	console.log(data);
 		    	$scope.socialMediaStream = data;
 		    },
 		    error: function(XMLHttpRequest, textStatus, errorThrown) { 

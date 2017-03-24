@@ -342,7 +342,7 @@ label {
     margin-top: -298px;
     height: calc(100% - 50px); 
     border-right: 1px solid #343434;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 .subcategories-menu .even {
@@ -360,7 +360,6 @@ label {
 
 .subcategories-menu ul li {
     padding: 10px;
-    margin-bottom: 5px;
 }
 
 .subcategories-menu ul ul p {

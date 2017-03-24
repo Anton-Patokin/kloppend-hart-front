@@ -32,7 +32,6 @@ app.controller("navTopTrendingController", function ($scope) {
 
 	if (navigator.geolocation) {
 		navigator.geolocation.getCurrentPosition(function(position){
-			console.log(position);
 			lon = position.coords.longitude;
 			lat = position.coords.latitude;
 			apiGetTrendingList(lat, lon, startDate, endDate);
@@ -64,7 +63,6 @@ app.controller("navTopTrendingController", function ($scope) {
 			    } else {
 		    		$scope.trendingNearList = false
 		    	};
-		    	console.log('trendingNearList:', $scope.trendingNearList);
 		    	
 		    },
 		    error: function(XMLHttpRequest, textStatus, errorThrown) { 
@@ -83,13 +81,10 @@ app.controller("navTopTrendingController", function ($scope) {
 	    	if (data.length != 0) {
 	    		for (var i = 0; i < 5 ; i++) {
 		    		$scope.topTrendingList.push(data[i]);
-		    		console.log('test');
 		    	}
 	    	} else {
 	    		$scope.topTrendingList = false;
 	    	}
-	    	
-		    console.log('topTrendingList', $scope.topTrendingList);
 	    },
 	    error: function(XMLHttpRequest, textStatus, errorThrown) { 
 	        console.log("Status: " + textStatus); console.log("Error: " + errorThrown); 
