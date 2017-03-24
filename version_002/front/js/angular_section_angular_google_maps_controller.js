@@ -30,6 +30,8 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout) 
     $scope.showHeat_foursquare = true;
     $scope.showHeat_facebook = true;
     $scope.showHeat_apen = true;
+    $scope.size_map_small = false;
+    $scope.size_map=false;
 
 
 //default date values
@@ -153,17 +155,14 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout) 
 
 
     function displayData() {
-
         start_time = day + ' ' + calculateHour(startHour);
         end_time = day + ' ' + calculateHour(endHour);
 
         //check if option for heatmap is checked
-
-
         if ($scope.show_heatmap == true)switch_between_marker_and_cluster('cluster');
         if ($scope.show_heatmap != true) switch_between_marker_and_cluster("marker");
 
-        if($scope.layer_foursquare&&$scope.layer_facebook&&$scope.layer_apen){
+        if ($scope.layer_foursquare && $scope.layer_facebook && $scope.layer_apen) {
             $scope.heatLayerCallback_foursquare($scope.layer_foursquare, $scope.totalHeatmapData['foursquare']);
             $scope.heatLayerCallback_facebook($scope.layer_facebook, $scope.totalHeatmapData['facebook']);
             $scope.heatLayerCallback_apen($scope.layer_apen, $scope.totalHeatmapData['apen']);
@@ -172,8 +171,6 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout) 
 
 
     function loadCurrentHourData() {
-
-
         //current hour
         var startDate = day + ' ' + calculateHour(slider_start_time);
         //current hour + 1
@@ -230,11 +227,8 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout) 
                         if (timeRange == 'past') weight = data[api][metric][i].overall_weight;
                         if (timeRange == 'future') weight = data[api][metric][i].future_weight;
 
-                        // heatmapData.push({
-                        //     location: new google.maps.LatLng(data[api][metric][i].latitude, data[api][metric][i].longitude),
-                        //     weight: Math.abs(weight)
-                        // });
 
+                        //sort google marker to categories sort function
                         if (api == 'facebook' && $scope.show_facebook_marker == true) {
                             $scope.totalHeatmapData['facebook'].push(create_google_maps_latlang(data, api, metric, i, weight, startDate));
                         }
@@ -264,10 +258,13 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout) 
     function create_google_maps_latlang(data, api, metric, i, weight, startDate) {
 
         heatmapData[api][metric][startDate].push({
+            // weight must by absolut for making heat map round other way you can get diferent chaps
             location: new google.maps.LatLng(data[api][metric][i].latitude, data[api][metric][i].longitude),
             weight: Math.abs(weight)
         });
 
+
+        //this needed for clustering the markers.
         heatmap({
             id: data[api][metric][i].nid,
             latitude: data[api][metric][i].latitude,
@@ -275,6 +272,7 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout) 
             title: data[api][metric][i].name,
             icon: data[api][metric][i].marker_type
         });
+
 
         createMarker({
                 id: data[api][metric][i].nid,
@@ -294,6 +292,7 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout) 
 
     $scope.markers = [];
     function createMarker(point, marker_type) {
+        //sort to diferent marker categories, for loping in html page with ng-repeat=> make markers by marker type
         if (!$scope.markers.hasOwnProperty(marker_type)) $scope.markers[marker_type] = [];
         if (!$scope.markers[marker_type].hasOwnProperty(marker_type)) $scope.markers[marker_type]["icon"] = [marker_type];
         $scope.markers[marker_type].push(point);
@@ -320,6 +319,7 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout) 
     }
 
     function switch_between_marker_and_cluster(show_element) {
+        //on zoom in change view of markers
         if (show_element == "marker") {
             $scope.clusterData = [];
             show_markers();
@@ -340,19 +340,26 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout) 
 
 
     function MockHeatLayer(heatLayer, data) {
-            var taxiData = data;
-            var pointArray = new google.maps.MVCArray(taxiData);
-            heatLayer.set('radius', heatMapRadius);
-            heatLayer.setData(pointArray);
+        //use google callback information of google maps to fill heatmap data to the map by categorie => facebook, apen...
+        var taxiData = data;
+        var pointArray = new google.maps.MVCArray(taxiData);
+        heatLayer.set('radius', heatMapRadius);
+        heatLayer.setData(pointArray);
     }
 
     $scope.refresh_google_maps = function () {
+        //on click brand or on return to home page
         initialize_bounce_marker();
         switchApplicationState(APP_STATE_LOAD_CURRENT_HOUR);
         $scope.showHeat_facebook = true;
         $scope.showHeat_foursquare = true;
         $scope.showHeat_apen = true;
-        center_google_maps(save_position_lat_client, save_position_long_client, false)
+        $scope.size_map=false;
+        $timeout(function () {
+            center_google_maps(save_position_lat_client, save_position_long_client, false)
+
+        },50)
+        location.href ='#';
     }
     function initialize_bounce_marker() {
         $scope.marker_center = {
@@ -377,7 +384,7 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout) 
         if (zoom_bool) {
             $scope.map.zoom = 17;
         } else {
-            $scope.map.zoom = zoom;
+            $scope.map.zoom = $scope.map.zoom;
 
         }
 
@@ -405,7 +412,6 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout) 
                     if ($scope.map.zoom >= 15 && $scope.show_heatmap) {
                         $scope.clusterData = [];
                     }
-
                     $timeout(function () {
                         if ($scope.map.zoom > 14 && $scope.show_heatmap) {
                             switch_between_marker_and_cluster("marker");
@@ -427,10 +433,11 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout) 
                     model.show = !model.show;
                 },
                 click: function (marker, eventName, model) {
+
+                    $scope.size_map = true;
                     save_position_lat_client = marker.model.latitude;
                     save_position_long_client = marker.model.longitude;
                     clean_map_from_markers_and_clusters();
-                    center_google_maps(Number(marker.model.latitude) - 0.0015, marker.model.longitude, true);
                     var method = 'GET';
                     var url = 'http://localhost/edge/projects/kloppend-hart-antwerpen/version_002' +
                         '/front/application/service/place/getCategoryByNid/' + marker.model.id
@@ -440,18 +447,19 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout) 
                             url: url,
                         }
                     ).then(function (result) {
-                        // location.href = ROOT_FRONT + '#/section1/' + Object.keys(result.data)[0] + '/search/' + marker.model.id;
+                        //redirect to page witch clicket marker
+                        location.href ='#/section1/' + Object.keys(result.data)[0] + '/search/' + marker.model.id;
 
                     });
 
+
+                    //set nearby markers and bounce to active marker center
                     $http(
                         {
                             method: 'GET',
                             url: 'application/service/place/getPlaceNearbyPlacesByNid/' + marker.model.id,
                         }
                     ).then(function (result) {
-
-
                         result.data.near.forEach(function (element) {
                             createMarker({
                                     id: element.nid,
@@ -473,6 +481,8 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout) 
                             title: result.data.center.name,
                         };
                         $scope.bounce_marker_options = {animation: google.maps.Animation.BOUNCE};
+                        center_google_maps(Number(marker.model.latitude), marker.model.longitude, true);
+
                     });
                 },
             },
@@ -481,8 +491,9 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout) 
         $scope.layer_foursquare = "";
         $scope.layer_apen = "";
 
-        $scope.heatLayerCallback_foursquare = function (layer) {
 
+        //this function run only after google maps is total loaded/ html=> googleMaps=>onCreated=> function below.
+        $scope.heatLayerCallback_foursquare = function (layer) {
             //set the heat layers backend data
             $scope.layer_foursquare = layer;
             var mockHeatLayer = new MockHeatLayer(layer, $scope.totalHeatmapData['foursquare']);

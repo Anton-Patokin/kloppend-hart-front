@@ -20,10 +20,12 @@
 
 </div>
 <div class="container">
-    <!--{{totalHeatmapData['facebook']}}-->
+
+
 </div>
+
 <div ng-class="size_map">
-    <ui-gmap-google-map center="map.center" zoom="map.zoom" draggable="map.draggable" options="map.options"
+    <ui-gmap-google-map ng-class="{'size_map_small' : size_map,'size_map_full' : !size_map}" center="map.center" zoom="map.zoom" draggable="map.draggable" options="map.options"
                         events="map.events" control="map.control">
 
 
