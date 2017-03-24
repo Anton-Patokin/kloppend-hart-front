@@ -8,7 +8,7 @@ app.controller("searchFormController", function ($scope, $timeout) {
 			$timeout(function(){
 				console.log($scope.showResults);
 				$scope.showResults = false;
-			}, 100);
+			}, 300);
 		};
 		console.log('searching :');
 		$.ajax({

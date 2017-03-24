@@ -31,7 +31,7 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout) 
     $scope.showHeat_facebook = true;
     $scope.showHeat_apen = true;
     $scope.size_map_small = false;
-    $scope.size_map=false;
+    $scope.size_map = false;
 
 
 //default date values
@@ -63,7 +63,8 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout) 
 
     initialize();
     $scope.showTrendingDiv = true;
-    $scope.disableSroll = function () {
+    $scope.disableSroll = function (nid) {
+        load_nearby_places(nid);
         $scope.map.options.scrollwheel = false;
         $scope.showTrendingDiv = false;
     }
@@ -71,6 +72,7 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout) 
     $scope.enableScroll = function () {
         $scope.map.options.scrollwheel = true;
         $scope.showTrendingDiv = true;
+
     }
 
 
@@ -347,19 +349,20 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout) 
         heatLayer.setData(pointArray);
     }
 
-    $scope.refresh_google_maps = function () {
+    $scope.home = function () {
         //on click brand or on return to home page
+        $scope.enableScroll();
         initialize_bounce_marker();
         switchApplicationState(APP_STATE_LOAD_CURRENT_HOUR);
         $scope.showHeat_facebook = true;
         $scope.showHeat_foursquare = true;
         $scope.showHeat_apen = true;
-        $scope.size_map=false;
+        $scope.size_map = false;
         $timeout(function () {
             center_google_maps(save_position_lat_client, save_position_long_client, false)
 
-        },50)
-        location.href ='#';
+        }, 50)
+        location.href = '#';
     }
     function initialize_bounce_marker() {
         $scope.marker_center = {
@@ -390,6 +393,64 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout) 
 
     }
 
+
+    function load_nearby_places(nid) {
+        $scope.bounce_marker_options = {animation: false};
+        $scope.size_map = true;
+        // save_position_lat_client = marker.model.latitude;
+        // save_position_long_client = marker.model.longitude;
+        clean_map_from_markers_and_clusters();
+
+
+        //set nearby markers and bounce to active marker center
+        $http(
+            {
+                method: 'GET',
+                url: 'application/service/place/getPlaceNearbyPlacesByNid/' + nid,
+            }
+        ).then(function (result) {
+
+            var lat = result.data.center.latitude;
+            var long = result.data.center.longitude;
+            var marker_type = result.data.center.marker_type;
+            var title = result.data.center.name;
+
+            console.log('foreachresult', result)
+            if (result.data.near) {
+                result.data.near.forEach(function (element) {
+                    createMarker({
+                            id: element.nid,
+                            latitude: element.latitude,
+                            longitude: element.longitude,
+                            title: element.name,
+                            icon: element.marker_type
+                        },
+                        element.marker_type);
+                });
+            }
+            switch_between_marker_and_cluster("marker");
+            $scope.marker_center = {
+                id: result.data.center.nid,
+                coords: {
+                    latitude: lat,
+                    longitude: long
+                },
+                icon: marker_type,
+                title: title,
+            };
+            center_google_maps(Number(lat), long, true);
+            $timeout(function () {
+                $scope.bounce_marker_options = {animation: google.maps.Animation.BOUNCE};
+            }, 100)
+
+        });
+
+
+    }
+
+    $scope.getNearbyPlaceses = function (nid) {
+        load_nearby_places(nid);
+    }
     function initializeMap() {
         initialize_bounce_marker()
         $scope.bounce_marker_options = {};
@@ -433,11 +494,6 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout) 
                     model.show = !model.show;
                 },
                 click: function (marker, eventName, model) {
-
-                    $scope.size_map = true;
-                    save_position_lat_client = marker.model.latitude;
-                    save_position_long_client = marker.model.longitude;
-                    clean_map_from_markers_and_clusters();
                     var method = 'GET';
                     var url = 'http://localhost/edge/projects/kloppend-hart-antwerpen/version_002' +
                         '/front/application/service/place/getCategoryByNid/' + marker.model.id
@@ -448,42 +504,10 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout) 
                         }
                     ).then(function (result) {
                         //redirect to page witch clicket marker
-                        location.href ='#/section1/' + Object.keys(result.data)[0] + '/search/' + marker.model.id;
+                        location.href = '#/section1/' + Object.keys(result.data)[0] + '/search/' + marker.model.id;
 
                     });
-
-
-                    //set nearby markers and bounce to active marker center
-                    $http(
-                        {
-                            method: 'GET',
-                            url: 'application/service/place/getPlaceNearbyPlacesByNid/' + marker.model.id,
-                        }
-                    ).then(function (result) {
-                        result.data.near.forEach(function (element) {
-                            createMarker({
-                                    id: element.nid,
-                                    latitude: element.latitude,
-                                    longitude: element.longitude,
-                                    title: element.name,
-                                    icon: element.marker_type
-                                },
-                                element.marker_type);
-                        });
-                        switch_between_marker_and_cluster("marker");
-                        $scope.marker_center = {
-                            id: result.data.center.nid,
-                            coords: {
-                                latitude: result.data.center.latitude,
-                                longitude: result.data.center.longitude
-                            },
-                            icon: result.data.center.marker_type,
-                            title: result.data.center.name,
-                        };
-                        $scope.bounce_marker_options = {animation: google.maps.Animation.BOUNCE};
-                        center_google_maps(Number(marker.model.latitude), marker.model.longitude, true);
-
-                    });
+                    load_nearby_places(marker.model.id);
                 },
             },
         };

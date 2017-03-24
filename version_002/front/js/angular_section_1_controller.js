@@ -9,7 +9,7 @@ app.controller("section1", function ($scope, $routeParams) {
 	$scope.loadInfo = false;
 	$scope.loadChart = false;
 
-	$scope.testFunction = function(nid){
+	$scope.getPoiById = function(nid){
 		$scope.loadInfo = true;
 		$scope.loadChart = true;
 		$.ajax({
@@ -166,6 +166,6 @@ app.controller("section1", function ($scope, $routeParams) {
 	}
 
 	if ($routeParams.action == 'search') {
-		$scope.testFunction($routeParams.value);
+		$scope.getPoiById($routeParams.value);
 	}
 });

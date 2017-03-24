@@ -76,7 +76,7 @@
 
 
 ?>
-<div ng-init='disableSroll()' class="section-wrapper">
+<div ng-init='disableSroll(<?= ($_GET['action']=="search"&&isset($_GET['value']))? $_GET['value']: "";?>)' class="section-wrapper">
     <?php if($_GET['action'] == 'show'): ?>
         <div class="row subcategories-menu-wrapper">
             <div class="col-md-12 subcategories-menu">
@@ -89,7 +89,7 @@
                                     <?php for ($i=0; $i < 10; $i++): ?>
                                         <?php if(isset($topPlaces[$i])): ?>
                                             <!-- <a href="#section1/<?= $getCategory ?>/<?= $subcategory['link'] ?>/<?= $topPlaces[$i]->nid ?>"><li><?= $topPlaces[$i]->name ?></li></a> -->
-                                            <p class="detail-top-place" ng-click="testFunction(<?= $topPlaces[$i]->nid ?>)"><span class="place"><?= ($i == 9)? '0' : '00' ?><?= $i + 1 ?>.</span><?= $topPlaces[$i]->name ?></p>
+                                            <p class="detail-top-place" ng-click="getPoiById(<?= $topPlaces[$i]->nid ?>);getNearbyPlaceses(<?= $topPlaces[$i]->nid ?>)" ><span class="place"><?= ($i == 9)? '0' : '00' ?><?= $i + 1 ?>.</span><?= $topPlaces[$i]->name ?></p>
                                         <?php endif ?>
                                     <?php endfor ?>
                                     <?php else: ?>
