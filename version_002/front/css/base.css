@@ -281,11 +281,34 @@ md-backdrop.md-sidenav-backdrop{
 
 .btn-search {
     background: linear-gradient(45deg, #cd1739 0%,#a41c18 100%);
-    padding: 19px 20px 15px 20px;
+    padding: 19px 20px 16.5px 20px;
 }
 
 .btn-search img {
     width: 15px;
+}
+
+.search-results {
+    background-color: #202020;
+    color: black;
+    position: absolute;
+    margin-top: 1.5px;
+    width: 100%;
+}
+
+ul.search-results {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+ul.search-results li {
+    display: block;
+    height: auto;
+    padding: 15px;
+}
+
+ul.search-results a {
+    color: white;
 }
 
 label {

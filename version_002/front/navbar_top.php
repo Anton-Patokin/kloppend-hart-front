@@ -42,11 +42,14 @@
 	<div ng-controller="searchFormController" class="search-input pull-right">
 		<ul>
 			<li>
-				<input ng-model="searchInput" ng-keyup="searchNode()" type="text" name="searchInput" placeholder="search...">
+				<input ng-model="searchInput" ng-blur="dropdown()" ng-keyup="searchNode()" type="text" name="searchInput" placeholder="search...">
 			</li>
 			<li>
 				<p class="btn-search"><img src="images/newdesign/search.png"></p>
 			</li>
+			<ul ng-show="showResults" class="search-results">
+				<a ng-repeat="searchResult in searchResults" href=#section1/test/search/{{searchResult['nid']}}><li>{{searchResult['name']}}</li></a>
+			</ul>
 		</ul>
 	</div>
 <!-- 	<div ng-controller="searchFormController" class="search-input col-md-4 pull-right">
