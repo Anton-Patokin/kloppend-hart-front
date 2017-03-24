@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e52a6108-9e38-4956-b67a-092b36cdf213" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/version_002/front/js/angular_section_1_controller.js" afterPath="$PROJECT_DIR$/version_002/front/js/angular_section_1_controller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/version_002/front/js/angular_section_angular_google_maps_controller.js" afterPath="$PROJECT_DIR$/version_002/front/js/angular_section_angular_google_maps_controller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/version_002/front/js/searchFormController.js" afterPath="$PROJECT_DIR$/version_002/front/js/searchFormController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/version_002/front/navbar.php" afterPath="$PROJECT_DIR$/version_002/front/navbar.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/version_002/front/css/base.css" afterPath="$PROJECT_DIR$/version_002/front/css/base.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/version_002/front/sections/section1.php" afterPath="$PROJECT_DIR$/version_002/front/sections/section1.php" />
     </list>
     <ignored path="kloppend-hart-front.iws" />
@@ -39,7 +35,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="angular_section_angular_google_maps_controller.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="angular_section_angular_google_maps_controller.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/version_002/front/js/angular_section_angular_google_maps_controller.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="312">
@@ -99,14 +95,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="section1.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="section1.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/version_002/front/sections/section1.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="308">
-              <caret line="78" column="26" selection-start-line="78" selection-start-column="14" selection-end-line="78" selection-end-column="26" />
-              <folding>
-                <marker date="1490368889447" expanded="true" signature="3097:3208" placeholder="..." />
-              </folding>
+            <state relative-caret-position="-1839">
+              <caret line="77" column="1" selection-start-line="77" selection-start-column="1" selection-end-line="77" selection-end-column="1" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -126,7 +120,9 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="660">
               <caret line="65" column="1" selection-start-line="65" selection-start-column="1" selection-end-line="65" selection-end-column="1" />
-              <folding />
+              <folding>
+                <marker date="1490369571968" expanded="true" signature="15:53" placeholder="{...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -479,12 +475,12 @@
       <updated>1489996520738</updated>
       <workItem from="1489996522069" duration="495000" />
       <workItem from="1490001953786" duration="5195000" />
-      <workItem from="1490341486977" duration="23078000" />
+      <workItem from="1490341486977" duration="23361000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="28768000" />
+    <option name="totallyTimeSpent" value="29051000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -599,7 +595,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4158">
           <caret line="189" column="14" selection-start-line="189" selection-start-column="0" selection-end-line="189" selection-end-column="14" />
-          <folding />
+          <folding>
+            <marker date="1490369571968" expanded="true" signature="15:53" placeholder="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -732,7 +730,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="660">
           <caret line="65" column="1" selection-start-line="65" selection-start-column="1" selection-end-line="65" selection-end-column="1" />
-          <folding />
+          <folding>
+            <marker date="1490369571968" expanded="true" signature="15:53" placeholder="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -768,16 +768,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/version_002/front/sections/section1.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="78" column="26" selection-start-line="78" selection-start-column="14" selection-end-line="78" selection-end-column="26" />
-          <folding>
-            <marker date="1490368889447" expanded="true" signature="3097:3208" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/version_002/front/navbar_top.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="22">
@@ -798,6 +788,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="312">
           <caret line="353" column="30" selection-start-line="353" selection-start-column="30" selection-end-line="353" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/version_002/front/sections/section1.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1839">
+          <caret line="77" column="1" selection-start-line="77" selection-start-column="1" selection-end-line="77" selection-end-column="1" />
           <folding />
         </state>
       </provider>
