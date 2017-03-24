@@ -76,7 +76,7 @@
 
 
 ?>
-<div ng-init='disableSroll()' class="section-wrapper">
+<div ng-init='disableSroll()' class="section-wrapper no-info">
     <?php if($_GET['action'] == 'show'): ?>
         <div class="row subcategories-menu-wrapper">
             <div class="col-md-12 subcategories-menu">
@@ -89,7 +89,7 @@
                                     <?php for ($i=0; $i < 10; $i++): ?>
                                         <?php if(isset($topPlaces[$i])): ?>
                                             <!-- <a href="#section1/<?= $getCategory ?>/<?= $subcategory['link'] ?>/<?= $topPlaces[$i]->nid ?>"><li><?= $topPlaces[$i]->name ?></li></a> -->
-                                            <p class="detail-top-place" ng-click="testFunction(<?= $topPlaces[$i]->nid ?>)"><span class="place"><?= ($i == 9)? '0' : '00' ?><?= $i + 1 ?>.</span><?= $topPlaces[$i]->name ?></p>
+                                            <p <?= ($i == 0)? 'ng-init="testFunction('. $topPlaces[$i]->nid .')"' : "" ?> class="detail-top-place" ng-click="testFunction(<?= $topPlaces[$i]->nid ?>)"><span class="place"><?= ($i == 9)? '0' : '00' ?><?= $i + 1 ?>.</span><?= $topPlaces[$i]->name ?></p>
                                         <?php endif ?>
                                     <?php endfor ?>
                                     <?php else: ?>
@@ -103,7 +103,7 @@
             </div>
         </div>
     <?php endif ?>
-    <div class="<?= ($_GET['action'] == 'show')? '' : 'poi-search-details'?> poi-details-wrapper clearfix">
+    <div ng-hide="hideInfo" class="<?= ($_GET['action'] == 'show')? '' : 'poi-search-details'?> poi-details-wrapper clearfix">
         <div masonry="true" class="poi-details">
             <div class="col-md-6 clearfix">
                 <div class="poi-text masonry-brick">

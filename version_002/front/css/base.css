@@ -1,6 +1,6 @@
 .ng-view-frame {
     position: absolute;
-    height: 100%;
+    height: calc(100% - 350px);
     width: 100%;
     top: 0;
     bottom: 0;
@@ -265,6 +265,7 @@ md-backdrop.md-sidenav-backdrop{
     width: 240px;
     padding-left: 20px;
     margin-right: -2px;
+    outline: none;
 }
 
 .search-input ul {
@@ -369,6 +370,22 @@ label {
 
 
 /* DETAIL PAGE */
+
+.no-info {
+    min-height: 100%;
+    background-color: #e0e0e0;
+}
+
+.hide-info {
+    margin-left: 250px;
+}
+
+.hide-info .col-md-6{
+    text-align: center;
+    background-color: white;
+    padding: 20px;
+    margin-top: 50px;
+}
 
 .section-wrapper {
     margin-left: 50px;
