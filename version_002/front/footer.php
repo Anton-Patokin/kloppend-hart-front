@@ -1,4 +1,4 @@
-<!-- <div class="div">
+ <div class="div">
     <div class="overlay">
         <rzslider class="custom-slider"
                   rz-slider-model="slider.minValue"
@@ -15,6 +15,6 @@
             </md-content>
         </div>
     </div>
-</div> -->
+</div>
 </body>
 </html>
