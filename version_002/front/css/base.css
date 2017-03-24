@@ -24,6 +24,23 @@
     bottom: 0;
     z-index: -150;
 }
+.size_map_small {
+    position: absolute;
+    height: 350px;
+    width: 100%;
+    top: 0;
+    bottom: 0;
+    z-index: -150;
+}
+
+.size_map_full {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    bottom: 0;
+    z-index: -150;
+}
 
 .margin_top_content {
     margin-top: 25px;
