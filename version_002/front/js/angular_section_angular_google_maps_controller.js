@@ -72,7 +72,17 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout) 
     $scope.enableScroll = function () {
         $scope.map.options.scrollwheel = true;
         $scope.showTrendingDiv = true;
+    }
 
+    $scope.toggleTrending = function(place){
+        if (place == 'topNav') {
+            $scope.dropdownToggle = !$scope.dropdownToggle;
+        }
+        else {
+            if ($scope.dropdownToggle == true) {
+                $scope.dropdownToggle = false
+            }
+        }        
     }
 
 

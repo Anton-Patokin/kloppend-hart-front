@@ -6,13 +6,13 @@
 	<div class="social-media-checklist pull-left">
 		<ul>
 			<li class="date"><?= strtoupper($date) ?></li>
-			<li><span ng-click="dropdownToggle = !dropdownToggle">TRENDING</span>
+			<li><span ng-click="toggleTrending('topNav')">TRENDING</span>
 				<ul id="trending-wrapper" ng-class="{'dropdownTest' : !dropdownToggle, 'dropdownShow' : dropdownToggle}">
 					<div class="top-trending">
 						<div class="trending-now">
 							<h4>Top trending op deze moment:</h4>
 							<ul>
-								<a ng-repeat="(key, poi) in topTrendingList" href="#section1/top/search/{{poi.nid}}"><li><span class="place">00{{ key + 1 }}.</span>{{ poi.name }}</li></a>
+								<a ng-click="toggleTrending('close')" ng-repeat="(key, poi) in topTrendingList" href="#section1/top/search/{{poi.nid}}"><li><span class="place">00{{ key + 1 }}.</span>{{ poi.name }}</li></a>
 							</ul>
 						</div>
 						<div class="trending-near">

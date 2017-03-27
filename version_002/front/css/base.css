@@ -365,6 +365,10 @@ label {
     color: white;
 }
 
+#trending-wrapper {
+    overflow-y: auto;
+}
+
 /* HOMEPAGE */
 
 
