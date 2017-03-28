@@ -349,18 +349,18 @@
            return $result;
         }
         
-        public function getImageByNid($nid){
+        public function getImageByNid($nid, $size = "slideshow"){
           $query = $this->DB->prepare("
                                   SELECT f.* FROM image_attach ia
                                     JOIN node n ON n.nid = ia.iid
                                     JOIN image i On i.nid = n.nid
                                     JOIN files f ON f.fid = i.fid
                                     WHERE ia.nid = ?
-                                    AND image_size = 'slideshow'
+                                    AND image_size = ?
                                     ORDER BY RAND()
                                     LIMIT 1
            ");
-           $succes = $query->execute(array($nid));
+           $succes = $query->execute(array($nid, $size));
            if(!$succes) {
                errorHandler();
                return;

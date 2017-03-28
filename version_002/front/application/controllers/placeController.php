@@ -27,9 +27,9 @@ class placeController {
         echo json_encode($this->placeModel->getPlaceNearbyPlacesByNid($nid));
     }
     
-    public function getPlaceImageByNid($nid){
+    public function getPlaceImageByNid($nid, $size = "slideshow"){
         $this->doNotRenderHeader = 1;
-        echo json_encode($this->placeModel->getPlaceImageByNid($nid));
+        echo json_encode($this->placeModel->getPlaceImageByNid($nid, $size));
     }
     
     public function getSocialMediaStreamByNid($nid){

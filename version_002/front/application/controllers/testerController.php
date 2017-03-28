@@ -106,6 +106,7 @@ echo $test;
 					$category = "vrije_tijd";
 					break;
 			}
+
 			$model =new  homeModel();
 			$items = $model->getCategoriesByName($category);
 
@@ -147,14 +148,37 @@ echo $test;
 		}
 
 		public function getTopPlaces($category, $subcategory){
+			switch ($category) {
+				case 'shopping':
+					$category = "winkel";
+					break;
+				
+				case 'over-de-stad':
+					$category = "over_de_stad";
+					break;
+
+				case 'vrije-tijd':
+					$category = "vrije_tijd";
+					break;
+			}
+
+			if(strtolower($subcategory) == 'youth-hostels') $subcategory = 'Youth hostels';
+	        if(strtolower($subcategory) == 'bed-and-breakfast') $subcategory = 'Bed and Breakfast';
+	        if(strtolower($subcategory) == 'openbare-diensten') $subcategory = 'Openbare diensten';
+	        if(strtolower($subcategory) == 'openbare-plaatsen') $subcategory = 'Openbare Plaatsen';
+	        if(strtolower($subcategory) == 'park-tuin') $subcategory = 'Park/tuin';
+	        if(strtolower($subcategory) == 'monument-gebouw') $subcategory = 'Monument/gebouw';
+	        if(strtolower($subcategory) == 'concertzalen-music-halls') $subcategory = 'Concertzalen/Music Halls';
+	        if(strtolower($subcategory) == 'club-discotheek') $subcategory = 'Club/Discotheek';
+	        if(strtolower($subcategory) == '2de-hands') $subcategory = '2de hands';
+
 			$placeModel = new placeModel();
 
-			$test = $placeModel->getTopPlacesByCategory($category, $subcategory);
+			$topPlaces = $placeModel->getTopPlacesByCategory($category, $subcategory);
 
-			// var_dump($test[0]);
 
-			$creat_custom_json = ['messages' => []];
-			array_push($creat_custom_json['messages'],
+			$create_custom_json = ['messages' => []];
+			array_push($create_custom_json['messages'],
 			["attachment" => [
 			"type" => "template",
 			"payload" => ["template_type" => "generic",
@@ -163,7 +187,35 @@ echo $test;
 			]],
 			]]);
 
-			echo json_encode($creat_custom_json["messages"][0]["attachment"]["payload"]["elements"]);
+
+			for ($i=0; $i < 9; $i++) { 
+				if (isset($topPlaces[$i])) {
+					$placeImage = $placeModel->getPlaceImageByNid($topPlaces[$i]["nid"], '_original');
+					if (!$placeImage) {
+						$placeImage["filepath"] = "sites/all/themes/zen/apen/site-images/img-logo.png";
+					} else {
+						$placeImage = get_object_vars($placeImage);
+					}
+
+					$placeInfo = $placeModel->getPlaceInfoByNid($topPlaces[$i]["nid"]);
+
+					if (strlen($placeInfo->body) > 80) {
+						$subtitle = strip_tags($placeInfo->body);
+						$subtitle = substr($subtitle, 0, 77) . '...';
+					}
+
+					$create_custom_json["messages"][0]["attachment"]["payload"]["elements"][] = array("title" => $topPlaces[$i]["name"], "image_url" => "https://apen.be/".$placeImage["filepath"], "subtitle" => trim($subtitle), "item_url" => "https://apen.be/node/".$topPlaces[$i]["nid"], "buttons" => [] );
+
+					$create_custom_json["messages"][0]["attachment"]["payload"]["elements"][$i]["buttons"][] = array("type" => "web_url", "url" => "https://apen.be/node/".$topPlaces[$i]["nid"], "title" => "Meer info");
+				}
+			}
+
+			$count = count($create_custom_json["messages"][0]["attachment"]["payload"]["elements"]);
+			$create_custom_json["messages"][0]["attachment"]["payload"]["elements"][] = array("title" => "Kloppend Hart Antwerpen", "image_url" => "https://apen.be/sites/all/themes/zen/apen/site-images/img-logo.png", "subtitle" => "Bekijk de populairste plaatsen in Antwerpen op deze moment", "item_url" => "https://apen.be/kloppend-hart-antwerpen", "buttons" => [] );
+
+			$create_custom_json["messages"][0]["attachment"]["payload"]["elements"][$count]["buttons"][] = array("type" => "web_url", "url" => "https://apen.be/kloppend-hart-antwerpen", "title" => "Meer info");
+
+			echo json_encode($create_custom_json);
 		}
 
 	}

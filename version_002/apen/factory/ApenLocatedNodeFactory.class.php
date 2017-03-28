@@ -143,8 +143,8 @@
             return parent::toArray($this->dao->getLocatedNodesWithoutMatchedPoiForSourceId($sourceId));
         }
         
-        public function getImageByNid($nid){
-            return $this->dao->getImageByNid($nid);
+        public function getImageByNid($nid, $size = "slideshow"){
+            return $this->dao->getImageByNid($nid, $size);
         }
         
     }

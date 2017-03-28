@@ -32,8 +32,8 @@
             return $this->factory->checkCategoryByNid($nid);
         }
         
-        public function getImageByNid($nid){
-            return $this->factory->getImageByNid($nid);
+        public function getImageByNid($nid, $size = "slideshow"){
+            return $this->factory->getImageByNid($nid, $size);
         }
             
     }

@@ -39,8 +39,8 @@ class placeModel{
         return $this->poiService->getNearbyPlacesByNid($nid);
     }
     
-    public function getPlaceImageByNid($nid){
-        return $this->apenService->getImageByNid($nid);
+    public function getPlaceImageByNid($nid, $size = "slideshow"){
+        return $this->apenService->getImageByNid($nid, $size);
     }
     
     public function getSocialMediaStreamByNid($nid){
