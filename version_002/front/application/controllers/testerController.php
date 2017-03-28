@@ -93,9 +93,6 @@ echo $test;
 
 		public function category($category)
 		{
-			if ($category == "shopping") {
-				$category = "winkel";
-			}
 			switch ($category) {
 				case 'shopping':
 					$category = "winkel";
