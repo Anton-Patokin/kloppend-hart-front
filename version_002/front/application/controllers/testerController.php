@@ -91,61 +91,83 @@ echo $test;
 		}
 
 
-		public function category($category)
-		{
-			switch ($category) {
-				case 'shopping':
-					$category = "winkel";
-					break;
-				
-				case 'over-de-stad':
-					$category = "over_de_stad";
-					break;
+		public function category($category, $page)
+    {
+        switch ($category) {
+            case 'shopping':
+                $category = "winkel";
+                break;
 
-				case 'vrije-tijd':
-					$category = "vrije_tijd";
-					break;
-			}
+            case 'over-de-stad':
+                $category = "over_de_stad";
+                break;
 
-			$model =new  homeModel();
-			$items = $model->getCategoriesByName($category);
-
-			$quick_reply_array = new stdClass();
-
-			$quick_reply_array->messages = [array("text" => "testRedirectInQuickReply", "quick_replies"=>[])];
-
-			foreach ($items as $key => $place) {
+            case 'vrije-tijd':
+                $category = "vrije_tijd";
+                break;
+        }
+        $model = new  homeModel();
+        $items = $model->getCategoriesByName($category);
 
 
-				switch ($category) {
-					case 'horeca':
-						$place = $place->field_soort_horeca_value;
-						break;
+        $page = isset($page) ? $page : 1;
+        $current_page = $page;
+        $total = count($items); //total items in array
+        $limit = 9; //per page
+        $totalPages = ceil($total / $limit); //calculate total pages
+        $page = max($page, 1); //get 1 page when $_GET['page'] <= 0
+        $page = min($page, $totalPages); //get last page when $_GET['page'] > $totalPages
+        $offset = ($page - 1) * $limit;
+        if ($offset < 0) $offset = 0;
+        $items = array_slice($items, $offset, $limit);
+        $foreach_last_element = count($items);
 
-					case 'uitgaan':
-						$place = $place->field_soort_uitgaan_value;
-						break;
+        $quick_reply_array = new stdClass();
 
-					case 'cultuur':
-						$place = $place->field_soort_cultuur_value;
-						break;
+        $quick_reply_array->messages = [array("text" => "testRedirectInQuickReply", "quick_replies" => [])];
 
-					case 'over_de_stad':
-						$place = $place->field_soort_over_de_stad_value;
-						break;
+        foreach ($items as $key => $place) {
 
-					case 'winkel':
-						$place = $place->field_soort_winkel_value;
-						break;
+            switch ($category) {
+                case 'horeca':
+                    $place = $place->field_soort_horeca_value;
+                    break;
 
-					case 'vrije_tijd':
-						$place = $place->field_soort_vrije_tijd_value;
-						break;
-				}
-					$quick_reply_array->messages[0]["quick_replies"][] = array("set_attributes"=>array("typeZaak" => str_replace(array(' ', '/'), '-', $place)), "title" => $place, "block_names" => array("TopZaken"));
-			}
-			echo json_encode($quick_reply_array);
-		}
+                case 'uitgaan':
+                    $place = $place->field_soort_uitgaan_value;
+                    break;
+
+                case 'cultuur':
+                    $place = $place->field_soort_cultuur_value;
+                    break;
+
+                case 'over_de_stad':
+                    $place = $place->field_soort_over_de_stad_value;
+                    break;
+
+                case 'winkel':
+                    $place = $place->field_soort_winkel_value;
+                    break;
+
+                case 'vrije_tijd':
+                    $place = $place->field_soort_vrije_tijd_value;
+                    break;
+            }
+            $top_zaken="TopZaken";
+
+            if ($key == $foreach_last_element - 1) {
+                if ($current_page >= $totalPages) {
+                    $place = 1;
+                } else {
+                    $place = $current_page+1;
+                }
+                $top_zaken='next_page_'.$place;
+            }
+            $quick_reply_array->messages[0]["quick_replies"][] = array("set_attributes" => array("typeZaak" => str_replace(array(' ', '/'), '-', $place)), "title" => $place, "block_names" => array($top_zaken));
+
+        }
+        echo json_encode($quick_reply_array);
+    }
 
 		public function getTopPlaces($category, $subcategory){
 			switch ($category) {
