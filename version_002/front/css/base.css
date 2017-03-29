@@ -508,6 +508,10 @@ label {
     margin: 0 auto;
 }
 
+.carousel-inner>.item>a>img, .carousel-inner>.item>img, .img-responsive, .thumbnail a>img, .thumbnail>img {
+    height: 350px;
+}
+
 .carousel-control.left, .carousel-control.right {
     background-image: none;
 }
