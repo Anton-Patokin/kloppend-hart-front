@@ -1,14 +1,28 @@
-<?php 
+<?php
 
 require_once ROOT_FRONT . '/application/models/homeModel.php';
 require_once ROOT_FRONT . '/application/models/placeModel.php';
+require_once(ROOT . 'core/config/DBConfig.class.php');
 
-	class testerController{
-			
-			public function test(){
-				// $test = json_encode(array("messages" => array("text" => "testRedirectInQuickReply", "quick_replies" => array("title" => "restaurant", "block_name" => "TopZaken"))));
-				// echo $test;
-				$test = '{
+
+class testerController
+{
+
+    protected $db;
+    protected $dbConfig;
+
+    public function __construct()
+    {
+
+        $this->dbConfig = new \core\config\DBConfig();
+        $this->db = $this->dbConfig->conn();
+    }
+
+    public function test()
+    {
+        // $test = json_encode(array("messages" => array("text" => "testRedirectInQuickReply", "quick_replies" => array("title" => "restaurant", "block_name" => "TopZaken"))));
+        // echo $test;
+        $test = '{
 	"messages": [
 		{
 			"text": "testRedirectInQuickReply",
@@ -26,14 +40,15 @@ require_once ROOT_FRONT . '/application/models/placeModel.php';
 		}
 	]
 }';
-			// $test = json_encode($test);
-		//       echo json_decode($test);
-			// echo json_encode($test);
-echo $test;
-			}
+        // $test = json_encode($test);
+        //       echo json_decode($test);
+        // echo json_encode($test);
+        echo $test;
+    }
 
-			public function test2() {
-				$test2 = ';{
+    public function test2()
+    {
+        $test2 = ';{
 					"messages": [{
 						"attachment":{
 							"type":"template",
@@ -46,7 +61,7 @@ echo $test;
 						}
 					}]
 				}';
-				$test3 = '{
+        $test3 = '{
 	"messages": [
 		{
 			"attachment": {
@@ -87,11 +102,11 @@ echo $test;
 	]
 }
 ';
-			echo $test3;
-		}
+        echo $test3;
+    }
 
 
-		public function category($category, $page)
+    public function category($category, $page)
     {
         switch ($category) {
             case 'shopping':
@@ -153,15 +168,15 @@ echo $test;
                     $place = $place->field_soort_vrije_tijd_value;
                     break;
             }
-            $top_zaken="TopZaken";
+            $top_zaken = "TopZaken";
 
             if ($key == $foreach_last_element - 1) {
                 if ($current_page >= $totalPages) {
                     $place = 1;
                 } else {
-                    $place = $current_page+1;
+                    $place = $current_page + 1;
                 }
-                $top_zaken='next_page_'.$place;
+                $top_zaken = 'next_page_' . $place;
             }
             $quick_reply_array->messages[0]["quick_replies"][] = array("set_attributes" => array("typeZaak" => str_replace(array(' ', '/'), '-', $place)), "title" => $place, "block_names" => array($top_zaken));
 
@@ -169,78 +184,97 @@ echo $test;
         echo json_encode($quick_reply_array);
     }
 
-		public function getTopPlaces($category, $subcategory){
-			switch ($category) {
-				case 'shopping':
-					$category = "winkel";
-					break;
-				
-				case 'over-de-stad':
-					$category = "over_de_stad";
-					break;
+    public function getTopPlaces($category, $subcategory)
+    {
+        switch ($category) {
+            case 'shopping':
+                $category = "winkel";
+                break;
 
-				case 'vrije-tijd':
-					$category = "vrije_tijd";
-					break;
-			}
+            case 'over-de-stad':
+                $category = "over_de_stad";
+                break;
 
-			if(strtolower($subcategory) == 'youth-hostels') $subcategory = 'Youth hostels';
-	        if(strtolower($subcategory) == 'bed-and-breakfast') $subcategory = 'Bed and Breakfast';
-	        if(strtolower($subcategory) == 'openbare-diensten') $subcategory = 'Openbare diensten';
-	        if(strtolower($subcategory) == 'openbare-plaatsen') $subcategory = 'Openbare Plaatsen';
-	        if(strtolower($subcategory) == 'park-tuin') $subcategory = 'Park/tuin';
-	        if(strtolower($subcategory) == 'monument-gebouw') $subcategory = 'Monument/gebouw';
-	        if(strtolower($subcategory) == 'concertzalen-music-halls') $subcategory = 'Concertzalen/Music Halls';
-	        if(strtolower($subcategory) == 'club-discotheek') $subcategory = 'Club/Discotheek';
-	        if(strtolower($subcategory) == '2de-hands') $subcategory = '2de hands';
+            case 'vrije-tijd':
+                $category = "vrije_tijd";
+                break;
+        }
 
-			$placeModel = new placeModel();
+        if (strtolower($subcategory) == 'youth-hostels') $subcategory = 'Youth hostels';
+        if (strtolower($subcategory) == 'bed-and-breakfast') $subcategory = 'Bed and Breakfast';
+        if (strtolower($subcategory) == 'openbare-diensten') $subcategory = 'Openbare diensten';
+        if (strtolower($subcategory) == 'openbare-plaatsen') $subcategory = 'Openbare Plaatsen';
+        if (strtolower($subcategory) == 'park-tuin') $subcategory = 'Park/tuin';
+        if (strtolower($subcategory) == 'monument-gebouw') $subcategory = 'Monument/gebouw';
+        if (strtolower($subcategory) == 'concertzalen-music-halls') $subcategory = 'Concertzalen/Music Halls';
+        if (strtolower($subcategory) == 'club-discotheek') $subcategory = 'Club/Discotheek';
+        if (strtolower($subcategory) == '2de-hands') $subcategory = '2de hands';
 
-			$topPlaces = $placeModel->getTopPlacesByCategory($category, $subcategory);
+        $placeModel = new placeModel();
 
-
-			$create_custom_json = ['messages' => []];
-			array_push($create_custom_json['messages'],
-			["attachment" => [
-			"type" => "template",
-			"payload" => ["template_type" => "generic",
-			"elements" => [
-
-			]],
-			]]);
+        $topPlaces = $placeModel->getTopPlacesByCategory($category, $subcategory);
 
 
-			for ($i=0; $i < 9; $i++) { 
-				if (isset($topPlaces[$i])) {
-					$placeImage = $placeModel->getPlaceImageByNid($topPlaces[$i]["nid"], '_original');
-					if (!$placeImage) {
-						$placeImage["filepath"] = "sites/all/themes/zen/apen/site-images/img-logo.png";
-					} else {
-						$placeImage = get_object_vars($placeImage);
-					}
+        $create_custom_json = ['messages' => []];
+        array_push($create_custom_json['messages'],
+            ["attachment" => [
+                "type" => "template",
+                "payload" => ["template_type" => "generic",
+                    "elements" => [
 
-					$placeInfo = $placeModel->getPlaceInfoByNid($topPlaces[$i]["nid"]);
+                    ]],
+            ]]);
 
-					if (strlen($placeInfo->body) > 80) {
-						$subtitle = strip_tags($placeInfo->body);
-						$subtitle = substr($subtitle, 0, 77) . '...';
-					}
 
-					$create_custom_json["messages"][0]["attachment"]["payload"]["elements"][] = array("title" => $topPlaces[$i]["name"], "image_url" => "https://apen.be/".$placeImage["filepath"], "subtitle" => trim($subtitle), "item_url" => "https://apen.be/node/".$topPlaces[$i]["nid"], "buttons" => [] );
+        for ($i = 0; $i < 9; $i++) {
+            if (isset($topPlaces[$i])) {
+                $placeImage = $placeModel->getPlaceImageByNid($topPlaces[$i]["nid"], '_original');
+                if (!$placeImage) {
+                    $placeImage["filepath"] = "sites/all/themes/zen/apen/site-images/img-logo.png";
+                } else {
+                    $placeImage = get_object_vars($placeImage);
+                }
 
-					$create_custom_json["messages"][0]["attachment"]["payload"]["elements"][$i]["buttons"][] = array("type" => "web_url", "url" => "https://apen.be/node/".$topPlaces[$i]["nid"], "title" => "Meer info");
-				}
-			}
+                $placeInfo = $placeModel->getPlaceInfoByNid($topPlaces[$i]["nid"]);
 
-			$count = count($create_custom_json["messages"][0]["attachment"]["payload"]["elements"]);
-			$create_custom_json["messages"][0]["attachment"]["payload"]["elements"][] = array("title" => "Kloppend Hart Antwerpen", "image_url" => "https://apen.be/sites/all/themes/zen/apen/site-images/img-logo.png", "subtitle" => "Bekijk de populairste plaatsen in Antwerpen op deze moment", "item_url" => "https://apen.be/kloppend-hart-antwerpen", "buttons" => [] );
+                if (strlen($placeInfo->body) > 80) {
+                    $subtitle = strip_tags($placeInfo->body);
+                    $subtitle = substr($subtitle, 0, 77) . '...';
+                }
 
-			$create_custom_json["messages"][0]["attachment"]["payload"]["elements"][$count]["buttons"][] = array("type" => "web_url", "url" => "https://apen.be/kloppend-hart-antwerpen", "title" => "Meer info");
+                $create_custom_json["messages"][0]["attachment"]["payload"]["elements"][] = array("title" => $topPlaces[$i]["name"], "image_url" => "https://apen.be/" . $placeImage["filepath"], "subtitle" => trim($subtitle), "item_url" => "https://apen.be/node/" . $topPlaces[$i]["nid"], "buttons" => []);
 
-			echo json_encode($create_custom_json);
-		}
+                $create_custom_json["messages"][0]["attachment"]["payload"]["elements"][$i]["buttons"][] = array("type" => "web_url", "url" => "https://apen.be/node/" . $topPlaces[$i]["nid"], "title" => "Meer info");
+            }
+        }
 
-	}
+        $count = count($create_custom_json["messages"][0]["attachment"]["payload"]["elements"]);
+        $create_custom_json["messages"][0]["attachment"]["payload"]["elements"][] = array("title" => "Kloppend Hart Antwerpen", "image_url" => "https://apen.be/sites/all/themes/zen/apen/site-images/img-logo.png", "subtitle" => "Bekijk de populairste plaatsen in Antwerpen op deze moment", "item_url" => "https://apen.be/kloppend-hart-antwerpen", "buttons" => []);
+
+        $create_custom_json["messages"][0]["attachment"]["payload"]["elements"][$count]["buttons"][] = array("type" => "web_url", "url" => "https://apen.be/kloppend-hart-antwerpen", "title" => "Meer info");
+
+        echo json_encode($create_custom_json);
+    }
+
+
+    public function translate($string)
+    {
+        $word_array = explode(' ', $string);
+        $new_fras = [];
+        foreach ($word_array as $word) {
+            $query = $this->db->prepare('SELECT * FROM antwerps_language WHERE nederlands = "' . $word . '"');
+            $query->execute(array());
+            $result = $query->fetchAll(\PDO::FETCH_ASSOC);
+            if (count($result) && isset($result)) {
+                $word = $result[0]["antwerps"];
+            }
+            array_push($new_fras, $word);
+        }
+        echo implode(' ', $new_fras);
+
+    }
+
+}
 
 
 ?>
