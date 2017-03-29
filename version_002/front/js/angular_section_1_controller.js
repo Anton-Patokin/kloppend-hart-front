@@ -1,4 +1,4 @@
-app.controller("section1", function ($scope, $routeParams) {
+app.controller("section1", function ($scope, $routeParams, $animate) {
 	var testVar = [];
 	$scope.socialMediaStream;
 
@@ -8,6 +8,24 @@ app.controller("section1", function ($scope, $routeParams) {
 	$scope.testVar = testVar;
 	$scope.loadInfo = false;
 	$scope.loadChart = false;
+
+	$animate.enabled(false);
+
+	$scope.myInterval = 3000;
+  $scope.slides = [
+    {
+      image: 'http://lorempixel.com/400/200/'
+    },
+    {
+      image: 'http://lorempixel.com/400/200/food'
+    },
+    {
+      image: 'http://lorempixel.com/400/200/sports'
+    },
+    {
+      image: 'http://lorempixel.com/400/200/people'
+    }
+  ];
 
 	$scope.getPoiById = function(nid){
 		$scope.loadInfo = true;
@@ -37,13 +55,20 @@ app.controller("section1", function ($scope, $routeParams) {
 		});
 
 		// $.ajax({
-		// 	url: 'application/service/place/getPlaceImageByNid/'+nid,
+		// 	url: 'application/service/place/getPlaceImageByNid/'+nid+'/_original',
 		// 	type: 'GET',
 		//     dataType: 'json',
 		//     async: true,
 		//     cache: false,
 		//     success: function(data) {
 		//     	console.log('IMAGE: ', data);
+		//     	if (data) {
+		//     		photo = data.filepath;
+		//     	} else {
+		//     		photo = "sites/all/themes/zen/apen/site-images/img-logo.png";
+		//     	}
+		//     	$('.poi-photo-wrapper').empty();
+		//     	$('.poi-photo-wrapper').append('<img src="https://apen.be/'+ photo +'">');
 		//     },
 		//     error: function(XMLHttpRequest, textStatus, errorThrown) { 
 		//         console.log("Status: " + textStatus); console.log("Error: " + errorThrown); 
@@ -158,6 +183,38 @@ app.controller("section1", function ($scope, $routeParams) {
 		//     success: function(data) {
 		//     	$scope.socialMediaStream = data;
 		//     	$scope.loading = false;
+		//     },
+		//     error: function(XMLHttpRequest, textStatus, errorThrown) { 
+		//         console.log("Status: " + textStatus); console.log("Error: " + errorThrown); 
+		//     }
+		// });
+
+		function imageExists(url, callback) {
+			var img = new Image();
+			img.onload = function() { callback(true); };
+			img.onerror = function() { callback(false); };
+			img.src = url;
+			}
+
+		// $.ajax({
+		// 	url: 'application/service/place/getSocialMediaPhotos/'+nid,
+		// 	type: 'GET',
+		//     dataType: 'json',
+		//     async: false,
+		//     cache: false,
+		//     success: function(data) {
+		//     	// $scope.socialMediaStream = data;
+		//     	// $scope.loading = false;
+		//     	console.log('Photos: ', data)
+		//     	photo = data.foursquare[1].url;
+		//     	imageExists(photo, function(exists) {
+		// 			if (true) {
+
+		// 			}
+		// 		});
+		//     	$('.poi-photo-wrapper').empty();
+		//     	$('.poi-photo-wrapper').append('<img src="'+ photo +'">');
+
 		//     },
 		//     error: function(XMLHttpRequest, textStatus, errorThrown) { 
 		//         console.log("Status: " + textStatus); console.log("Error: " + errorThrown); 

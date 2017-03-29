@@ -7,7 +7,7 @@ if(isset($_GET['url'])){
 ?>
 
 <?php include_once 'header.php'; ?>
-<body ng-app="myApp" ng-controller="PrimeController">
+<body ng-app="myApp" ng-controller="PrimeController" ng-class="{'hide-overflow' : showOverflow, 'show-overflow' : !showOverflow}">
 
 		<?php include_once 'navbar.php'; ?>
         <?php include_once 'navbar_top.php'; ?>

@@ -24,6 +24,7 @@
         type="text/javascript"></script>
     <script src="js/libs/angular-route.js"></script>
     <script src="js/libs/jquery.min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.10.0/ui-bootstrap-tpls.min.js"></script>
     <script type="text/javascript" src="js/libs/rzslider.js"></script>
     <script src="js/libs/raphael-min.js"></script>
     <script src="js/libs/morris.min.js"></script>

@@ -1,6 +1,7 @@
 app.controller("PrimeController", function ($scope, $http, $interval, $timeout) {
     var showHeatmapBool = true;
     var showMarkersBool = true;
+    $scope.toggleSlider = false;
     $scope.showHeatmapBool = {visible: true};
     $scope.showMarkerBool = {visible: false};
     var $slide;
@@ -32,6 +33,7 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout) 
     $scope.showHeat_apen = true;
     $scope.size_map_small = false;
     $scope.size_map = false;
+    $scope.showFooter = true;
 
 
 //default date values
@@ -55,6 +57,7 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout) 
     var currentAppStateFunction = null;
 
     var date = new Date();
+    $scope.showCurrentTime = date.getHours() + '.' + date.getMinutes() + 'u';
     var startHour = date.getHours() - 2;
     var endHour = date.getHours() + 1;
     var day = date.getFullYear() + '-' + ('0' + (date.getMonth() + 1)).slice(-2) + '-' + ('0' + date.getDate()).slice(-2);
@@ -66,12 +69,22 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout) 
     $scope.disableSroll = function (nid) {
         load_nearby_places(nid);
         $scope.map.options.scrollwheel = false;
-        $scope.showTrendingDiv = false;
     }
 
     $scope.enableScroll = function () {
         $scope.map.options.scrollwheel = true;
-        $scope.showTrendingDiv = true;
+    }
+
+    $scope.showOverflow = true;
+
+    $scope.disableFooter = function() {
+        $scope.showFooter = false;
+        $scope.showOverflow = false;
+    }
+
+    $scope.enableFooter = function() {
+        $scope.showFooter = true;
+        $scope.showOverflow = true;
     }
 
     $scope.toggleTrending = function(place){
@@ -84,6 +97,16 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout) 
             }
         }        
     }
+
+    // $scope.showOverflow = false;
+
+    // $scope.enableOverflow = function() {
+    //     $scope.showOverflow = true;
+    // }
+
+    // $scope.disableOverflow = function() {
+    //     $scope.showOverflow = false;
+    // }
 
 
     $scope.$watch('myDate', function () {

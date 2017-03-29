@@ -76,7 +76,7 @@
 
 
 ?>
-<div ng-init='disableSroll(<?= ($_GET['action']=="search"&&isset($_GET['value']))? $_GET['value']: "";?>)' class="section-wrapper">
+<div ng-init='disableSroll(<?= ($_GET['action']=="search"&&isset($_GET['value']))? $_GET['value']: "";?>); disableFooter();' class="section-wrapper">
     <?php if($_GET['action'] == 'show'): ?>
         <div class="row subcategories-menu-wrapper">
             <div class="col-md-12 subcategories-menu">
@@ -105,62 +105,59 @@
     <?php endif ?>
     <div class="<?= ($_GET['action'] == 'show')? '' : 'poi-search-details'?> poi-details-wrapper clearfix">
         <div masonry="true" class="poi-details">
-            <div class="col-md-6 clearfix">
-                <div class="poi-text masonry-brick">
-                    <div ng-show="loadInfo" layout="row" layout-sm="column" layout-align="space-around">
-                        <md-progress-circular md-mode="indeterminate"></md-progress-circular>
-                    </div>
-                    <div class="node-title">
-                    </div>
-                    <div class="node-body">
-                    </div>
-                    <div class="apen-link">
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 clearfix">
-                <div class="poi-photo masonry-brick">
-                    <div class="temp-photo">
-                    </div>
-                </div>
-            </div>
-            <div class="poi-chart">
-                <div class="col-md-6 clearfix">
-                    <div class="masonry-brick">
-                        <div id="morris-analytics">
-                            <div ng-show="loadChart" layout="row" layout-sm="column" layout-align="space-around">
-                                <md-progress-circular md-mode="indeterminate"></md-progress-circular>
-                            </div>
+
+            <div class="col-md-6">
+                <div class="col-md-12 clearfix">
+                    <div class="poi-text masonry-brick">
+                        <div ng-show="loadInfo" layout="row" layout-sm="column" layout-align="space-around">
+                            <md-progress-circular md-mode="indeterminate"></md-progress-circular>
                         </div>
-                        <div class="stats-analytics clearfix">
-                            <div class="apen-stats col-md-4">
-                                <div class="apen-title">
-                                </div>
-                                <div class="apen-total">
-                                </div>
-                                <div class="apen-visits">
-                                </div>
-                            </div>
-                            <div class="facebook-stats col-md-4">
-                                <div class="facebook-title">
-                                </div>
-                                <div class="facebook-total">
-                                </div>
-                                <div class="facebook-likes">
-                                </div>
-                                <div class="facebook-checkins">
-                                </div>
-                                <div class="facebook-talking-abouts">
+                        <div class="node-title">
+                        </div>
+                        <div class="node-body">
+                        </div>
+                        <div class="apen-link">
+                        </div>
+                    </div>
+                </div>
+                <div class="poi-chart">
+                    <div class="col-md-12 clearfix">
+                        <div class="masonry-brick">
+                            <div id="morris-analytics">
+                                <div ng-show="loadChart" layout="row" layout-sm="column" layout-align="space-around">
+                                    <md-progress-circular md-mode="indeterminate"></md-progress-circular>
                                 </div>
                             </div>
-                            <div class="foursquare-stats col-md-4">
-                                <div class="foursquare-title">
+                            <div class="stats-analytics clearfix">
+                                <div class="apen-stats col-md-4">
+                                    <div class="apen-title">
+                                    </div>
+                                    <div class="apen-total">
+                                    </div>
+                                    <div class="apen-visits">
+                                    </div>
                                 </div>
-                                <div class="foursquare-total">
+                                <div class="facebook-stats col-md-4">
+                                    <div class="facebook-title">
+                                    </div>
+                                    <div class="facebook-total">
+                                    </div>
+                                    <div class="facebook-likes">
+                                    </div>
+                                    <div class="facebook-checkins">
+                                    </div>
+                                    <div class="facebook-talking-abouts">
+                                    </div>
                                 </div>
-                                <div class="foursquare-checkins">
-                                </div>
-                                <div class="foursquare-users">
+                                <div class="foursquare-stats col-md-4">
+                                    <div class="foursquare-title">
+                                    </div>
+                                    <div class="foursquare-total">
+                                    </div>
+                                    <div class="foursquare-checkins">
+                                    </div>
+                                    <div class="foursquare-users">
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -168,11 +165,25 @@
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="social-media-stream masonry-brick">
+                <div class="col-md-12 clearfix">
+                    <div class="poi-photo-wrapper masonry-brick">
+                        <div class="temp-photo">
+                            <div>
+      <carousel interval="myInterval">
+        <slide ng-repeat="slide in slides" active="slide.active">
+          <img ng-src="{{slide.image}}">
+        </slide>
+      </carousel>
+    </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="social-media-stream masonry-brick">
 
+                    </div>
                 </div>
             </div>
-            
         </div>
     </div>
 </div>

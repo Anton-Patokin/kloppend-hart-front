@@ -18,7 +18,7 @@
 			<img src="images/newdesign/hamburger.png">
 		</div>
 		<div class="title">
-		 	<img ng-click="home(); toggleTrending('close')" src="images/newdesign/apenCityboard.png">
+		 	<img ng-click="home(); toggleTrending('close'); enableFooter();" src="images/newdesign/apenCityboard.png">
 		</div>
 		<div class="icons">
 			<ul>
