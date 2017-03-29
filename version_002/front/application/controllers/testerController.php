@@ -53,7 +53,15 @@ class testerController
 
         $quick_reply_array = new stdClass();
 
-        $quick_reply_array->messages = [array("text" => "testRedirectInQuickReply", "quick_replies" => [])];
+        if ($totalPages == 1) {
+            $text = "Resultaten voor ". $category;
+        } elseif ($totalPages > 1){
+            $text = "Resultaten voor ". $category .": pagina ". $current_page;
+        } elseif ($totalPages == 0) {
+            $text = "Geen resultaten voor ". $category;
+        }
+
+        $quick_reply_array->messages = [array("text" => $text, "quick_replies" => [])];
 
         foreach ($items as $key => $place) {
 
@@ -84,7 +92,7 @@ class testerController
             }
             $top_zaken = "TopZaken";
 
-            if ($key == $foreach_last_element - 1 ) {
+            if ($key == $foreach_last_element - 1 && $totalPages > 1) {
                 if ($current_page >= $totalPages) {
                     $place = 1;
                 } else {
