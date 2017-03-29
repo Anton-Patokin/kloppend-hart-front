@@ -9,23 +9,11 @@ app.controller("section1", function ($scope, $routeParams, $animate) {
 	$scope.loadInfo = false;
 	$scope.loadChart = false;
 
-	// $animate.enabled(false);
-
+	
+	var element = document.getElementsByClassName("poi-photo-wrapper");
+	$animate.enabled(false, element);
 	$scope.myInterval = 3000;
-  $scope.slides = [
-    {
-      image: 'http://lorempixel.com/400/200/'
-    },
-    {
-      image: 'http://lorempixel.com/400/200/food'
-    },
-    {
-      image: 'http://lorempixel.com/400/200/sports'
-    },
-    {
-      image: 'http://lorempixel.com/400/200/people'
-    }
-  ];
+ 	$scope.slides = [];
 
 	$scope.getPoiById = function(nid){
 		$scope.loadInfo = true;
@@ -196,30 +184,45 @@ app.controller("section1", function ($scope, $routeParams, $animate) {
 			img.src = url;
 			}
 
-		// $.ajax({
-		// 	url: 'application/service/place/getSocialMediaPhotos/'+nid,
-		// 	type: 'GET',
-		//     dataType: 'json',
-		//     async: false,
-		//     cache: false,
-		//     success: function(data) {
-		//     	// $scope.socialMediaStream = data;
-		//     	// $scope.loading = false;
-		//     	console.log('Photos: ', data)
-		//     	photo = data.foursquare[1].url;
-		//     	imageExists(photo, function(exists) {
-		// 			if (true) {
+		$.ajax({
+			url: 'application/service/place/getSocialMediaPhotos/'+nid,
+			type: 'GET',
+		    dataType: 'json',
+		    async: false,
+		    cache: false,
+		    success: function(data) {
+		    	// $scope.socialMediaStream = data;
+		    	// $scope.loading = false;
+		  //   	console.log('Photos: ', data)
+		  //   	photo = data.foursquare[1].url;
+		  //   	imageExists(photo, function(exists) {
+				// 	if (true) {
 
-		// 			}
-		// 		});
-		//     	$('.poi-photo-wrapper').empty();
-		//     	$('.poi-photo-wrapper').append('<img src="'+ photo +'">');
+				// 	}
+				// });
+		    	// $('.poi-photo-wrapper').empty();
+		    	// $('.poi-photo-wrapper').append('<img src="'+ photo +'">');
+		    	// console.log(data.foursquare[1].url);
+		    	for (var i = data.foursquare.length - 1; i >= 0; i--) {
+		    		photo = {image: data.foursquare[i].url};
+		    		imageExists(data.foursquare[i].url, function(exists) {
 
-		//     },
-		//     error: function(XMLHttpRequest, textStatus, errorThrown) { 
-		//         console.log("Status: " + textStatus); console.log("Error: " + errorThrown); 
-		//     }
-		// });
+						if (exists) {
+							console.log("photoooo: ", photo);
+							$scope.slides.push(photo);
+						}
+					});		    		
+		    	}
+		    	
+		    	console.log('test ', $scope.slides);
+		    	// console.log($scope.slides);
+		    	// console.log("image: ", $scope.slides);
+
+		    },
+		    error: function(XMLHttpRequest, textStatus, errorThrown) { 
+		        console.log("Status: " + textStatus); console.log("Error: " + errorThrown); 
+		    }
+		});
 	}
 
 	if ($routeParams.action == 'search') {

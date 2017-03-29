@@ -19,6 +19,94 @@ class testerController
         $this->db = $this->dbConfig->conn();
     }
 
+    public function test()
+    {
+        // $test = json_encode(array("messages" => array("text" => "testRedirectInQuickReply", "quick_replies" => array("title" => "restaurant", "block_name" => "TopZaken"))));
+        // echo $test;
+        $test = '{
+	"messages": [
+		{
+			"text": "testRedirectInQuickReply",
+			"quick_replies": [
+				{
+					"set_attributes": {
+						"typeZaak": "restaurant"
+					},
+					"title": "restaurant",
+					"block_names": [
+						"TopZaken"
+					]
+				}
+			]
+		}
+	]
+}';
+        // $test = json_encode($test);
+        //       echo json_decode($test);
+        // echo json_encode($test);
+        echo $test;
+    }
+
+    public function test2()
+    {
+        $test2 = ';{
+					"messages": [{
+						"attachment":{
+							"type":"template",
+							"payload":{
+								"template_type":"generic",
+								"elements":[{
+
+								}]
+							}
+						}
+					}]
+				}';
+        $test3 = '{
+	"messages": [
+		{
+			"attachment": {
+				"type": "template",
+				"payload": {
+					"template_type": "generic",
+					"elements": [
+						{
+							"title": "Barnini",
+							"image_url": "http://ontbijteninantwerpen.be/wp-content/uploads/2016/03/barnini1.jpg",
+							"subtitle": "test subtitle",
+							"item_url": "https://apen.be/barnini-restaurant-antwerpen",
+							"buttons": [
+								{
+									"type": "web_url",
+									"url": "https://apen.be/barnini-restaurant-antwerpen",
+									"title": "Meer info"
+								}
+							]
+						},
+						{
+							"title": "Het pomphuis",
+							"image_url": "http://assets.digi.persgroep.be/location_photo/w500/22/L_0000043022.jpg",
+							"subtitle": "test subtitle",
+							"item_url": "https://apen.be/pomphuis-restaurant-haven-antwerpen",
+							"buttons": [
+								{
+									"type": "web_url",
+									"url": "https://apen.be/pomphuis-restaurant-haven-antwerpen",
+									"title": "Meer info"
+								}
+							]
+						}
+					]
+				}
+			}
+		}
+	]
+}
+';
+        echo $test3;
+    }
+
+
     public function category($category, $page)
     {
         switch ($category) {
@@ -143,11 +231,17 @@ class testerController
             if (isset($topPlaces[$i])) {
                 $placeImage = $placeModel->getPlaceImageByNid($topPlaces[$i]["nid"], '_original');
                 if (!$placeImage) { //IF GEEN IMAGE GEBRUIK GOOGLE IMAGE
-                    $url = "https://www.googleapis.com/customsearch/v1?key=AIzaSyBgS1zv6lH9C0n0M-ejCbkjkKoA54WS46U&cx=015945210282342840624:ix97xk25vk4&q=" + $topPlaces[$i]["name"] + "&num=1&searchType=image&fileType=jpg&imgSize=xlarge&alt=json";
-                    $cURL = new \util\cURL($url);
-                    $results =  $cURL->Request();
-                    var_dump($results);
-                    $placeImage = $data['items'][0]['link'];
+                    $topPlaceName = str_replace(' ', '%20', $topPlaces[$i]['name']);
+                    $url = "https://www.googleapis.com/customsearch/v1?key=AIzaSyBgS1zv6lH9C0n0M-ejCbkjkKoA54WS46U&cx=015945210282342840624:ix97xk25vk4&q=". $topPlaceName ."%20Antwerpen&num=1&searchType=image&fileType=jpg&imgSize=xlarge&alt=json";
+                    $ch = curl_init();
+                    curl_setopt($ch, CURLOPT_URL, $url);
+                    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                    $result = json_decode(curl_exec($ch), true);
+                        // var_dump($result["items"][0]["link"]);
+                        // $data = json_decode($result);
+                        // $placeImage = $data['items'][0]['link'];
+                    $placeImage = $result['items'][0]['link'];
+                        // $placeImage = "";
                 } else {
                     $placeImage = get_object_vars($placeImage);
                     $placeImage = "https://apen.be/".$placeImage["filepath"];
