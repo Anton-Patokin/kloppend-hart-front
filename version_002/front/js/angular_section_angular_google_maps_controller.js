@@ -22,6 +22,7 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout) 
     var heatmap;
     var heatmapData = [];
     var markersArray = [];
+    $scope.show_traffic = false;
     $scope.show_heatmap = true;
     $scope.clusterData = [];
     $scope.show_apen_heatmap = true;
@@ -77,17 +78,17 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout) 
 
     $scope.showOverflow = true;
 
-    $scope.disableFooter = function() {
+    $scope.disableFooter = function () {
         $scope.showFooter = false;
         $scope.showOverflow = false;
     }
 
-    $scope.enableFooter = function() {
+    $scope.enableFooter = function () {
         $scope.showFooter = true;
         $scope.showOverflow = true;
     }
 
-    $scope.toggleTrending = function(place){
+    $scope.toggleTrending = function (place) {
         if (place == 'topNav') {
             $scope.dropdownToggle = !$scope.dropdownToggle;
         }
@@ -95,7 +96,7 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout) 
             if ($scope.dropdownToggle == true) {
                 $scope.dropdownToggle = false
             }
-        }        
+        }
     }
 
     // $scope.showOverflow = false;
@@ -109,6 +110,10 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout) 
     // }
 
 
+    $scope.toggle_show_traffic = function () {
+        $scope.show_traffic = !$scope.show_traffic;
+    }
+    
     $scope.$watch('myDate', function () {
         var date_picker = new Date($scope.myDate.toISOString());
         day = date_picker.getFullYear() + '-' + ('0' + (date_picker.getMonth() + 1)).slice(-2) + '-' + ('0' + date_picker.getDate()).slice(-2);

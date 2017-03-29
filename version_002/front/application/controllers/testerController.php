@@ -84,7 +84,7 @@ class testerController
             }
             $top_zaken = "TopZaken";
 
-            if ($key == $foreach_last_element - 1) {
+            if ($key == $foreach_last_element - 1 ) {
                 if ($current_page >= $totalPages) {
                     $place = 1;
                 } else {
@@ -153,7 +153,12 @@ class testerController
                         // var_dump($result["items"][0]["link"]);
                         // $data = json_decode($result);
                         // $placeImage = $data['items'][0]['link'];
-                    $placeImage = $result['items'][0]['link'];
+//                    $placeImage = $result['items'][0]['link'];
+                    if (isset($result['items'][0]['link'])) {
+                        $placeImage = $result['items'][0]['link'];
+                    } else {
+                        $placeImage = "https://apen.be/sites/all/themes/zen/apen/site-images/img-logo.png";
+                    }
                         // $placeImage = "";
                 } else {
                     $placeImage = get_object_vars($placeImage);
@@ -182,13 +187,13 @@ class testerController
     }
 
 
-    public function translate($string)
+    public function translate()
     {
         if (isset($_POST['string'])) {
-            $string= $_POST['string'];
+            $string = $_POST['string'];
 
             $word_array = explode(' ', $string);
-            $new_fras = [];
+            $new_frans = [];
 
             foreach ($word_array as $word) {
                 $query = $this->db->prepare('SELECT * FROM antwerps_language WHERE nederlands = "' . $word . '"');
@@ -197,9 +202,18 @@ class testerController
                 if (count($result) && isset($result)) {
                     $word = $result[0]["antwerps"];
                 }
-                array_push($new_fras, $word);
+                array_push($new_frans, $word);
             }
-            echo implode(' ', $new_fras);
+
+            $array = ["messages" => []];
+            $text = ["text" => implode(' ',$new_frans)];
+            array_push($array["messages"], $text);
+            echo json_encode($array);
+        }else{
+            $array = ["messages" => []];
+            $text = ["text" => 'Er ging iets fout'];
+            array_push($array["messages"], $text);
+            echo json_encode($array);
         };
     }
 
