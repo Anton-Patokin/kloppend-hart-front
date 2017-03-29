@@ -513,7 +513,11 @@ label {
 }
 
 .carousel-indicators li {
-    border: 1px solid red;
+    border: 1px solid #a31c18;
+}
+
+.carousel-indicators .active {
+    background-color: #cd1738;
 }
 
 .poi-text {
