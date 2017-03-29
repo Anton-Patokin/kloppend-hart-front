@@ -3,6 +3,7 @@
 require_once ROOT_FRONT . '/application/models/homeModel.php';
 require_once ROOT_FRONT . '/application/models/placeModel.php';
 require_once(ROOT . 'core/config/DBConfig.class.php');
+require_once (ROOT. 'util/cURL.class.php');
 
 
 class testerController
@@ -142,8 +143,10 @@ class testerController
             if (isset($topPlaces[$i])) {
                 $placeImage = $placeModel->getPlaceImageByNid($topPlaces[$i]["nid"], '_original');
                 if (!$placeImage) { //IF GEEN IMAGE GEBRUIK GOOGLE IMAGE
-                    $data = "https://www.googleapis.com/customsearch/v1?key=AIzaSyBgS1zv6lH9C0n0M-ejCbkjkKoA54WS46U&cx=015945210282342840624:ix97xk25vk4&q=" + $topPlaces[$i]["name"] + "&num=1&searchType=image&fileType=jpg&imgSize=xlarge&alt=json";
-                    var_dump($data);
+                    $url = "https://www.googleapis.com/customsearch/v1?key=AIzaSyBgS1zv6lH9C0n0M-ejCbkjkKoA54WS46U&cx=015945210282342840624:ix97xk25vk4&q=" + $topPlaces[$i]["name"] + "&num=1&searchType=image&fileType=jpg&imgSize=xlarge&alt=json";
+                    $cURL = new \util\cURL($url);
+                    $results =  $cURL->Request();
+                    var_dump($results);
                     $placeImage = $data['items'][0]['link'];
                 } else {
                     $placeImage = get_object_vars($placeImage);

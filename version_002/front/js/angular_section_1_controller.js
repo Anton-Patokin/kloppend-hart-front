@@ -9,7 +9,7 @@ app.controller("section1", function ($scope, $routeParams, $animate) {
 	$scope.loadInfo = false;
 	$scope.loadChart = false;
 
-	$animate.enabled(false);
+	// $animate.enabled(false);
 
 	$scope.myInterval = 3000;
   $scope.slides = [
