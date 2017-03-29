@@ -28,6 +28,7 @@
     <ui-gmap-google-map ng-class="{'size_map_small' : size_map,'size_map_full' : !size_map}" center="map.center" zoom="map.zoom" draggable="map.draggable" options="map.options"
                         events="map.events" control="map.control">
 
+        <ui-gmap-layer type="TrafficLayer" show="showHeat_facebook"></ui-gmap-layer>
 
         <ui-gmap-layer namespace="visualization" type="HeatmapLayer" show="showHeat_facebook"
                        onCreated="heatLayerCallback_facebook"></ui-gmap-layer>

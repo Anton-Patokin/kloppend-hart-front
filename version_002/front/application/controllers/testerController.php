@@ -177,19 +177,23 @@ class testerController
 
     public function translate($string)
     {
-        $word_array = explode(' ', $string);
-        $new_fras = [];
-        foreach ($word_array as $word) {
-            $query = $this->db->prepare('SELECT * FROM antwerps_language WHERE nederlands = "' . $word . '"');
-            $query->execute(array());
-            $result = $query->fetchAll(\PDO::FETCH_ASSOC);
-            if (count($result) && isset($result)) {
-                $word = $result[0]["antwerps"];
-            }
-            array_push($new_fras, $word);
-        }
-        echo implode(' ', $new_fras);
+        if (isset($_POST['string'])) {
+            $string= $_POST['string'];
 
+            $word_array = explode(' ', $string);
+            $new_fras = [];
+
+            foreach ($word_array as $word) {
+                $query = $this->db->prepare('SELECT * FROM antwerps_language WHERE nederlands = "' . $word . '"');
+                $query->execute(array());
+                $result = $query->fetchAll(\PDO::FETCH_ASSOC);
+                if (count($result) && isset($result)) {
+                    $word = $result[0]["antwerps"];
+                }
+                array_push($new_fras, $word);
+            }
+            echo implode(' ', $new_fras);
+        };
     }
 
 }

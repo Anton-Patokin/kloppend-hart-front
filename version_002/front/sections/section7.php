@@ -23,7 +23,7 @@
 	// $ringAntwerpenTweets = $tweet->searchTweets('ring antwerpen');
 	// var_dump($verkeerAntwerpenTweets->statuses);
 ?>
-<div class="verkeer">
+<div class="verkeer" ng-init='disableFooter()'>
 	<div class="container">	
 		<div class="nav-tweets">
 			<ul>

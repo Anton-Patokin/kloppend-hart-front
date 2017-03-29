@@ -26,9 +26,10 @@
 				<a ng-click="closeSideNav()" href="#section1/cultuur/show/gallerij"><li><img src="images/newdesign/film.png"></li></a>
 				<a ng-click="closeSideNav()" href="#section1/over_de_stad/show/Openbare-diensten"><li><img src="images/newdesign/city.png"></li></a>
 				<a ng-click="closeSideNav()" href="#section1/winkel/show/kleding"><li><img src="images/newdesign/sale.png"></li></a>
-				<a ng-click="closeSideNav()" href="#section1/uitgaan/show/film"><li><img src="images/newdesign/car.png"></li></a>
+				<a ng-click="closeSideNav()" href="#section1/uitgaan/show/film"><li><img src="images/newdesign/pint.png"></li></a>
+				<a ng-click="closeSideNav()" href="#section7"><li><img src="images/newdesign/car.png"></li></a>
 				<a ng-click="closeSideNav()" href="#section1/vrije_tijd/show/sport"><li><img src="images/newdesign/plane.png"></li></a>
-				<a ng-click="closeSideNav()" href="#section7"><li><img src="images/newdesign/sun.png"></li></a>
+				<a ng-click="closeSideNav()" href="#section8"><li><img src="images/newdesign/sun.png"></li></a>
 				<li></li>
 			</ul>
 		</div>

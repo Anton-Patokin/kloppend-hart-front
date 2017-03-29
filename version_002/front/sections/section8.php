@@ -9,7 +9,7 @@ $tweet = new \twitter\api\TwitterApi($config['accessToken'], $config['accessToke
 $tweets = $tweet->searchTweetsUsers('frankdeboosere');
 
 ?>
-<div class="weather">
+<div class="weather" ng-init='disableFooter()'>
     <div class="container">
         <div class="row ">
             <div class="col-md-12 margin_top_content">
