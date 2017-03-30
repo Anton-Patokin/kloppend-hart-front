@@ -34,11 +34,6 @@ body {
     margin-top: 350px;
 }
 
-.verkeer, .weather {
-    margin-top: -300px;
-    background-color: white;
-}
-
 .angular-google-map-container {
     position: absolute;
     height: 100%;
@@ -184,7 +179,7 @@ md-backdrop.md-sidenav-backdrop {
 }
 
 .icon-titles ul li {
-    padding: 14px;
+    padding: 13.5px 14px 14px 14px;
     border-bottom: 1px solid #232323;
 }
 
@@ -211,7 +206,7 @@ md-backdrop.md-sidenav-backdrop {
     width: calc(100% - 50px);
 }
 
-.date {
+.top-navbar .date {
     width: 250px;
     text-align: center;
 }
@@ -472,6 +467,7 @@ label {
 .poi-details-wrapper {
     margin-left: 250px;
     background-color: #e0e0e0;
+    padding-bottom: 30px;
 }
 
 .poi-details {
@@ -533,11 +529,6 @@ label {
     margin-bottom: 20px;
 }
 
-/*.temp-photo {
-    width: 100%;
-    
-}*/
-
 .small-seperator {
     width: 20px;
     height: 2px;
@@ -575,8 +566,34 @@ label {
 }
 
 .social-media-stream {
-    height: 100px;
     background-color: white;
+}
+
+.social-media-stream .user-photo img {
+    width: 100px;
+    border-radius: 100%;
+}
+
+.social-media-stream .social-media-item {
+    padding: 20px;
+}
+
+.pagination {
+    text-align: center;
+}
+
+.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
+    background-color: #cc1739;
+    border: 1px solid #a31c18;
+    cursor: pointer;
+}
+
+.pagination>li>a, .pagination>li>span {
+    cursor: pointer;
+}
+
+.social-media-stream .date {
+    padding-top: 10px;
 }
 
 .poi-search-details {
@@ -611,7 +628,37 @@ label {
 
 /* VERKEER SECION 7 */
 
-#verkeer-antwerpen h2, #verkeerscentrum-antwerpen h2, #ring-antwerpen h2 {
+.tweets {
+    margin-top: 20px;
+}
+
+.tweet-photo img {
+    width: 60px;
+    border-radius: 100%;
+    margin-bottom: 10px;
+}
+
+.tweet-photo {
+    text-align: center;
+}
+
+.tweets .panel-heading {
+    background: linear-gradient(45deg, #cd1739 0%, #a41c18 100%);
+}
+
+.tweets .twitter-logo img {
+    width: 25px;
+}
+
+.tweets .panel-heading a {
+    color: white;
+}
+
+.tweets .tweet-title {
+    text-align: center;
+}
+
+/*#verkeer-antwerpen h2, #verkeerscentrum-antwerpen h2, #ring-antwerpen h2 {
     text-align: center;
 }
 
@@ -632,7 +679,7 @@ label {
 .nav-tweets {
     margin-top: 20px;
     text-align: center;
-}
+}*/
 
 .div .overlay_1_1-able {
     position: absolute;
@@ -656,6 +703,38 @@ label {
     right: 0;
     width: calc(100% - 56px);
     background: #151515;
+}
+
+/* WEATHER PAGE */
+
+.weather {
+    margin-top: -300px;
+    background-color: white;
+}
+
+.weather {
+    padding-top: 30px;
+}
+
+.black {
+    background-color: black;
+    border: 1px solid blue;
+    height: 200px;
+}
+.green {
+    background-color: green;
+    border: 1px solid blue;
+    height: 200px;
+}
+.yellow {
+    background-color: yellow;
+    border: 1px solid blue;
+    height: 200px;
+}
+.red {
+    background-color: red;
+    border: 1px solid blue;
+    height: 200px;
 }
 
 /* slider customization*/

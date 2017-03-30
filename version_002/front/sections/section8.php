@@ -11,11 +11,11 @@ $tweets = $tweet->searchTweetsUsers('frankdeboosere');
 ?>
 <div class="weather" ng-init='disableFooter()'>
     <div class="container">
-        <div class="row ">
+        <!-- <div class="row ">
             <div class="col-md-12 margin_top_content">
                 <div class="pull-right"><a href="#">x</a></div>
             </div>
-        </div>
+        </div> -->
         <div class="row">
             <?php if (!isset($tweets)): ?>
                 <div class="col-md-12">

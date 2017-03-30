@@ -23,41 +23,98 @@
 	// $ringAntwerpenTweets = $tweet->searchTweets('ring antwerpen');
 	// var_dump($verkeerAntwerpenTweets->statuses);
 ?>
-<div class="section-wrapper" ng-init='disableFooter();toggle_show_traffic(true)'>
+<div class="section-wrapper verkeer" ng-init='disableFooter();toggle_show_traffic(true)'>
 	<div class="container-fluid">
-		<div class="nav-tweets">
-			<ul>
-				<?php foreach($tweets as $tweet): ?>
-					<a href="#section7#<?= $tweet['class_name'] ?>"><li><?= $tweet['title'] ?></li></a>
-				<?php endforeach ?>
-			</ul>
-		</div>
-		<?php foreach($tweets as $key => $tweet): ?>
-			<div class="row">
-				<div class="col-md-12">
-					<div id="<?= $tweet['class_name'] ?>">
-						<h2><?= $tweet['title'] ?></h2>
-						<?php foreach($tweet['tweet']->statuses as $key => $status): ?>
-							<?php if($key % 2 == 0): ?> 
-								<div class="row">
+		<div class="col-md-12 tweets">
+			<?php foreach($tweets as $key => $tweet): ?>
+				<div id="<?= $key ?>" class="row">
+					<div class="tweet-title"><h2><?= $tweet['title'] ?></h2></div>
+					<div class="col-sm-6 col-md-3">
+						<?php foreach($tweet["tweet"]->statuses as $key => $status): ?>
+							<?php if($key % 4 == 0): ?>
+								
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<a href="http://twitter.com/<?= $status->user->screen_name ?>"><?= $status->user->screen_name ?></a>
+										<span class="pull-right twitter-logo"><img src="images/newdesign/twitter-logo.png"></span>
+									</div>
+									<div class="panel-body">
+										<div class="tweet-photo"><img src="<?= $status->user->profile_image_url ?>"></div>
+										<div class="tweet-text">
+											<p><?= $status->text ?></p>
+											<span class="pull-right"><?= $status->created_at ?></span>
+										</div>
+									</div>
+								</div>
+								
 							<?php endif ?>
-								<div class="col-md-6 tweet">
-									<a href="http://twitter.com/<?= $status->user->screen_name ?>">
-										<h4>
-											<img src="<?= $status->user->profile_image_url ?>">
-											<?= $status->user->name ?>
-										</h4>
-									</a>
-									<p><?= $status->text ?></p>
-									<p><?= $status->created_at ?></p>
+						<?php endforeach ?>
+					</div>
+					<div class="col-sm-6 col-md-3">
+						<?php foreach($tweet["tweet"]->statuses as $key => $status): ?>
+							<?php if($key % 4 == 1): ?>
+								
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<a href="http://twitter.com/<?= $status->user->screen_name ?>"><?= $status->user->screen_name ?></a>
+										<span class="pull-right twitter-logo"><img src="images/newdesign/twitter-logo.png"></span>
+									</div>
+									<div class="panel-body">
+										<div class="tweet-photo"><img src="<?= $status->user->profile_image_url ?>"></div>
+										<div class="tweet-text">
+											<p><?= $status->text ?></p>
+											<span class="pull-right"><?= $status->created_at ?></span>
+										</div>
+									</div>
 								</div>
-							<?php if($key % 2 != 0): ?>
+								
+							<?php endif ?>
+						<?php endforeach ?>
+					</div>
+					<div class="col-sm-6 col-md-3">
+						<?php foreach($tweet["tweet"]->statuses as $key => $status): ?>
+							<?php if($key % 4 == 2): ?>
+								
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<a href="http://twitter.com/<?= $status->user->screen_name ?>"><?= $status->user->screen_name ?></a>
+										<span class="pull-right twitter-logo"><img src="images/newdesign/twitter-logo.png"></span>
+									</div>
+									<div class="panel-body">
+										<div class="tweet-photo"><img src="<?= $status->user->profile_image_url ?>"></div>
+										<div class="tweet-text">
+											<p><?= $status->text ?></p>
+											<span class="pull-right"><?= $status->created_at ?></span>
+										</div>
+									</div>
 								</div>
+								
+							<?php endif ?>
+						<?php endforeach ?>
+					</div>
+					<div class="col-sm-6 col-md-3">
+						<?php foreach($tweet["tweet"]->statuses as $key => $status): ?>
+							<?php if($key % 4 == 3): ?>
+								
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<a href="http://twitter.com/<?= $status->user->screen_name ?>"><?= $status->user->screen_name ?></a>
+										<span class="pull-right twitter-logo"><img src="images/newdesign/twitter-logo.png"></span>
+									</div>
+									<div class="panel-body">
+										<div class="tweet-photo"><img src="<?= $status->user->profile_image_url ?>"></div>
+										<div class="tweet-text">
+											<p><?= $status->text ?></p>
+											<span class="pull-right"><?= $status->created_at ?></span>
+										</div>
+									</div>
+								</div>
+								
 							<?php endif ?>
 						<?php endforeach ?>
 					</div>
 				</div>
-			</div>
-		<?php endforeach ?>
+			<?php endforeach ?>
+		</div>
 	</div>
 </div>

@@ -9,9 +9,22 @@ app.controller("section1", function ($scope, $routeParams) {
 	$scope.loadInfo = false;
 	$scope.loadChart = false;
 	$scope.imageExist;
+	$scope.socialMediaItems;
 
 	$scope.myInterval = 6000;
  	$scope.slides = [];
+
+ 	$scope.filteredSocialMediaItems = [];
+ 	$scope.currentPage = 1;
+	$scope.numPerPage = 4;
+	$scope.maxSize = 5;
+
+ 	$scope.$watch('currentPage + numPerPage', function() {
+		var begin = (($scope.currentPage - 1) * $scope.numPerPage)
+		, end = begin + $scope.numPerPage;
+
+		$scope.filteredSocialMediaItems = $scope.socialMediaItems.slice(begin, end);
+	});
 
 	$scope.getPoiById = function(nid){
 		$scope.loadInfo = true;
@@ -169,7 +182,12 @@ app.controller("section1", function ($scope, $routeParams) {
 		    success: function(data) {
 		    	// $scope.socialMediaStream = data;
 		    	// $scope.loading = false;
-		    	console.log('social media stream: ', data);
+		    	
+		    	// $scope.$apply(function(){
+		    	// 	$scope.socialMediaItems = data;
+		    	// });
+		    	$scope.socialMediaItems = data.foursquare;
+		    	console.log('social media stream: ', $scope.socialMediaItems);
 		    },
 		    error: function(XMLHttpRequest, textStatus, errorThrown) { 
 		        console.log("Status: " + textStatus); console.log("Error: " + errorThrown); 

@@ -108,7 +108,7 @@
 
 			<div class="col-md-6">
 				<div class="col-md-12 clearfix">
-					<div class="poi-text masonry-brick">
+					<div class="poi-text ">
 						<div ng-show="loadInfo" layout="row" layout-sm="column" layout-align="space-around">
 							<md-progress-circular md-mode="indeterminate"></md-progress-circular>
 						</div>
@@ -122,7 +122,7 @@
 				</div>
 				<div class="poi-chart">
 					<div class="col-md-12 clearfix">
-						<div class="masonry-brick">
+						<div class="">
 							<div id="morris-analytics">
 								<div ng-show="loadChart" layout="row" layout-sm="column" layout-align="space-around">
 									<md-progress-circular md-mode="indeterminate"></md-progress-circular>
@@ -179,8 +179,30 @@
 					</div>
 				</div>
 				<div class="col-md-12">
-					<div class="social-media-stream masonry-brick">
-
+					<div class="social-media-stream clearfix">
+						<div ng-repeat="socialMediaItem in filteredSocialMediaItems" class="social-media-item col-md-12">
+							<div class="user-photo col-md-3">
+								<img src="{{ socialMediaItem.photo }}">
+							</div>
+							<div class="user-name col-md-9">
+								<div class="col-md-12">
+									<h4>{{ socialMediaItem.first_name }} {{ socialeMediaItem.last_name }}</h4>
+								</div>
+								<div class="user-text col-md-12">
+									<p>{{ socialMediaItem.text }}</p>
+									<p class="date pull-right">{{ socialMediaItem.created_at }}</p>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-12 pagination">
+							<pagination 
+							  page="currentPage"
+							  total-items="socialMediaItems.length"
+							  max-size="maxSize"  
+							  boundary-links="true"
+							  items-per-page="numPerPage">
+							</pagination>
+						</div>
 					</div>
 				</div>
 			</div>
