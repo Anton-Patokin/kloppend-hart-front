@@ -73,6 +73,7 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout) 
     }
 
     $scope.enableScroll = function () {
+        $scope.map.zoom = 10;
         $scope.map.options.scrollwheel = true;
     }
 
@@ -110,10 +111,13 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout) 
     // }
 
 
-    $scope.toggle_show_traffic = function () {
-        $scope.show_traffic = !$scope.show_traffic;
+    $scope.toggle_show_traffic = function ($show) {
+        if($show){
+            center_google_maps(save_position_lat_client, save_position_long_client, false)
+        }
+        $scope.show_traffic = $show;
     }
-    
+
     $scope.$watch('myDate', function () {
         var date_picker = new Date($scope.myDate.toISOString());
         day = date_picker.getFullYear() + '-' + ('0' + (date_picker.getMonth() + 1)).slice(-2) + '-' + ('0' + date_picker.getDate()).slice(-2);
@@ -349,6 +353,8 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout) 
         $scope.clusterData = $scope.cluster_save;
     }
 
+
+//if new marker ar added or removed from google maps you need to clean drowing palet.
     function clean_map_from_markers_and_clusters() {
         $scope.clusterData = [];
         $scope.markerss = [];
@@ -396,6 +402,7 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout) 
         $scope.showHeat_foursquare = true;
         $scope.showHeat_apen = true;
         $scope.size_map = false;
+        $scope.toggle_show_traffic(false);
         $timeout(function () {
             center_google_maps(save_position_lat_client, save_position_long_client, false)
 
