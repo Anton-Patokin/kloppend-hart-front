@@ -166,11 +166,11 @@
 			</div>
 			<div class="col-md-6">
 				<div class="col-md-12 clearfix">
-					<div class="poi-photo-wrapper masonry-brick">
+					<div class="poi-photo-wrapper">
 						<div class="temp-photo">
 						</div>
 						<div>
-						  <carousel class="testClass" interval="myInterval">
+						  <carousel class="carousel" interval="myInterval">
 							<slide ng-repeat="slide in slides" active="slide.active">
 							  <img ng-src="{{slide.image}}" isImage>
 							</slide>

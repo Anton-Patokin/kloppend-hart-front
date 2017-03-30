@@ -50,6 +50,7 @@ class testerController
         if ($offset < 0) $offset = 0;
         $items = array_slice($items, $offset, $limit);
         $foreach_last_element = count($items);
+        $volgendeTitle = "Volgende";
 
         $quick_reply_array = new stdClass();
 
@@ -100,7 +101,11 @@ class testerController
                 }
                 $top_zaken = 'next_page_' . $place;
             }
-            $quick_reply_array->messages[0]["quick_replies"][] = array("set_attributes" => array("typeZaak" => str_replace(array(' ', '/'), '-', $place)), "title" => $place, "block_names" => array($top_zaken));
+            if (is_numeric($place)) {
+                $quick_reply_array->messages[0]["quick_replies"][] = array("set_attributes" => array("typeZaak" => str_replace(array(' ', '/'), '-', $place)), "title" => $volgendeTitle, "block_names" => array($top_zaken));
+            } else {
+                $quick_reply_array->messages[0]["quick_replies"][] = array("set_attributes" => array("typeZaak" => str_replace(array(' ', '/'), '-', $place)), "title" => $place, "block_names" => array($top_zaken));
+            }
 
         }
         echo json_encode($quick_reply_array);
