@@ -1,4 +1,4 @@
-app.controller("section1", function ($scope, $routeParams) {
+app.controller("section1", function ($scope, $routeParams, $http) {
 	var testVar = [];
 	$scope.socialMediaStream;
 
@@ -8,6 +8,7 @@ app.controller("section1", function ($scope, $routeParams) {
 	$scope.testVar = testVar;
 	$scope.loadInfo = false;
 	$scope.loadChart = false;
+	$scope.loadPhotos = false;
 	$scope.imageExist;
 	$scope.socialMediaItems;
 
@@ -29,28 +30,27 @@ app.controller("section1", function ($scope, $routeParams) {
 	$scope.getPoiById = function(nid){
 		$scope.loadInfo = true;
 		$scope.loadChart = true;
-		$.ajax({
-			url: 'application/service/place/getPlaceInfoByNid/'+nid,
-			type: 'GET',
-		    dataType: 'json',
-		    async: true,
-		    cache: false,
-		    success: function(data) {
-		    	// console.log('POI DATA: ', data);
-		    	$('.node-title').empty();
+		$scope.loadPhotos = true;
+
+		$http({
+			method: 'GET',
+			dataType: 'json',
+			async: true,
+			cache: false,
+			url: 'application/service/place/getPlaceInfoByNid/'+nid
+			}).then(function successCallback(response) {
+				data = response.data;
+				$('.node-title').empty();
 		    	$('.node-body').empty();
 		    	$('.apen-link').empty();
 		    	$('.node-title').append(data['title'].toUpperCase());
 		    	$('.node-title').append('<div class="small-seperator"></div>');
 		    	$('.node-body').append(data['body']);
 		    	$('.apen-link').append('<a href="https://apen.be/node/' + nid + '">Meer weten over ' + data['title'] + '<img src="images/newdesign/arrow-black.png"></a>');
-		    	$scope.$apply(function(){
-		    		$scope.loadInfo = false;
-		    	});
-		    },
-		    error: function(XMLHttpRequest, textStatus, errorThrown) { 
-		        console.log("Status: " + textStatus); console.log("Error: " + errorThrown); 
-		    }
+
+		    	$scope.loadInfo = false;
+			}, function errorCallback(response) {
+				console.log("Status: " + response);
 		});
 
 		// $.ajax({
@@ -74,14 +74,15 @@ app.controller("section1", function ($scope, $routeParams) {
 		//     }
 		// });
 
-		$.ajax({
-			url: 'application/service/place/getPlaceStatsByNid/'+nid,
-			type: 'GET',
-		    dataType: 'json',
-		    async: true,
-		    cache: false,
-		    success: function(data) {
-		    	testVar.length = 0
+		$http({
+			method: 'GET',
+			dataType: 'json',
+			async: true,
+			cache: false,
+			url: 'application/service/place/getPlaceStatsByNid/'+nid
+			}).then(function successCallback(response) {
+				data = response.data;
+				testVar.length = 0
 		    	for(metric in data){	    		
 		    		var apenDif = 0;
 		    		var apenTotal = 0;
@@ -106,24 +107,21 @@ app.controller("section1", function ($scope, $routeParams) {
 					labels: ["Apen", "Facebook", "Foursquare"],
 					pointSize: 4,
 				});
-				$scope.$apply(function(){
-		    		$scope.loadChart = false;
-		    	});
-		    },
-		    error: function(XMLHttpRequest, textStatus, errorThrown) { 
-		        console.log("Status: " + textStatus); console.log("Error: " + errorThrown); 
-		    }
 
+		    	$scope.loadChart = false;
+			}, function errorCallback(response) {
+				console.log("Status: " + response);
 		});
 
-		$.ajax({
-			url: 'application/service/place/getPlaceTotalMetricsByNid/'+nid,
-			type: 'GET',
-		    dataType: 'json',
-		    async: true,
-		    cache: false,
-		    success: function(data) {
-		    	facebook = 0;
+		$http({
+			method: 'GET',
+			dataType: 'json',
+			async: true,
+			cache: false,
+			url: 'application/service/place/getPlaceTotalMetricsByNid/'+nid
+			}).then(function successCallback(response) {
+				data = response.data;
+				facebook = 0;
 		    	apen = 0;
 		    	foursquare = 0;
 		    	$('.stats-analytics .apen-stats .apen-title').html('<h3>Apen</h3>');
@@ -167,11 +165,23 @@ app.controller("section1", function ($scope, $routeParams) {
 		        }else{
 		           $('.stats-analytics .foursquare-stats .foursquare-total').html('total ' + foursquare); 
 		        }
-		    },
-		    error: function(XMLHttpRequest, textStatus, errorThrown) { 
-		        console.log("Status: " + textStatus); console.log("Error: " + errorThrown); 
-		    }
+			}, function errorCallback(response) {
+				console.log("Status: " + response);
 		});
+
+		// $http({
+		// 	method: 'GET',
+		// 	dataType: 'json',
+		// 	async: false,
+		// 	cache: false,
+		// 	url: 'application/service/place/getSocialMediaStreamByNid/'+nid
+		// 	}).then(function successCallback(response) {
+		// 		data = response.data;
+		// 		$scope.socialMediaItems = data.foursquare;
+		// 		console.log('SOCIAL MEDIA ITEMS: ', data);
+		// 	}, function errorCallback(response) {
+		// 		console.log("Status: " + response);
+		// });
 
 		$.ajax({
 			url: 'application/service/place/getSocialMediaStreamByNid/'+nid,
@@ -180,14 +190,7 @@ app.controller("section1", function ($scope, $routeParams) {
 		    async: false,
 		    cache: false,
 		    success: function(data) {
-		    	// $scope.socialMediaStream = data;
-		    	// $scope.loading = false;
-		    	
-		    	// $scope.$apply(function(){
-		    	// 	$scope.socialMediaItems = data;
-		    	// });
 		    	$scope.socialMediaItems = data.foursquare;
-		    	console.log('social media stream: ', $scope.socialMediaItems);
 		    },
 		    error: function(XMLHttpRequest, textStatus, errorThrown) { 
 		        console.log("Status: " + textStatus); console.log("Error: " + errorThrown); 
@@ -199,21 +202,21 @@ app.controller("section1", function ($scope, $routeParams) {
 			img.onload = function() { callback(url, true); };
 			img.onerror = function() { callback(url, false); };
 			img.src = url;
-			}
+		}
 
-		$.ajax({
-			url: 'application/service/place/getSocialMediaPhotos/'+nid,
-			type: 'GET',
-		    dataType: 'json',
-		    async: false,
-		    cache: false,
-		    success: function(data) {
-		    	$('.temp-photo').empty();
+		$http({
+			method: 'GET',
+			dataType: 'json',
+			async: true,
+			cache: false,
+			url: 'application/service/place/getSocialMediaPhotos/'+nid
+			}).then(function successCallback(response) {
+				data = response.data;
+				$('.temp-photo').empty();
 		    	// console.log(data);
 		    	if (data.foursquare.length != 0) {
-			    		for (var i = data.foursquare.length - 1; i >= 0; i--) {
+			    	for (var i = data.foursquare.length - 1; i >= 0; i--) {
 			    		imageExists(data.foursquare[i].url, function(url, exists) {
-			    			console.log(url);
 							if (exists) {
 								photo = {image: url};
 								$scope.slides.push(photo);	
@@ -223,12 +226,13 @@ app.controller("section1", function ($scope, $routeParams) {
 		    	} else {
 		    		console.log()
 		    		$('.temp-photo').append('Er is geen foto van deze plaats');
-		    	}		    	
-		    },
-		    error: function(XMLHttpRequest, textStatus, errorThrown) { 
-		        console.log("Status: " + textStatus); console.log("Error: " + errorThrown); 
-		    }
+		    	}
+
+		    	$scope.loadPhotos = false;
+			}, function errorCallback(response) {
+				console.log("Status: " + response);
 		});
+
 	}
 
 	if ($routeParams.action == 'search') {

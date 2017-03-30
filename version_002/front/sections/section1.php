@@ -167,6 +167,9 @@
 			<div class="col-md-6">
 				<div class="col-md-12 clearfix">
 					<div class="poi-photo-wrapper">
+						<div ng-show="loadPhotos" layout="row" layout-sm="column" layout-align="space-around">
+							<md-progress-circular md-mode="indeterminate"></md-progress-circular>
+						</div>
 						<div class="temp-photo">
 						</div>
 						<div>

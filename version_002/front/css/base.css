@@ -258,7 +258,7 @@ md-backdrop.md-sidenav-backdrop {
     cursor: pointer;
 }
 
-.social-media-checklist ul li:nth-child(-n+3) {
+.social-media-checklist ul li:nth-child(-n+2) {
     border-right: solid 1px #232323;
     margin-left: -2px;
 }
