@@ -1,4 +1,4 @@
-app.controller("section1", function ($scope, $routeParams, $animate) {
+app.controller("section1", function ($scope, $routeParams) {
 	var testVar = [];
 	$scope.socialMediaStream;
 
@@ -10,11 +10,7 @@ app.controller("section1", function ($scope, $routeParams, $animate) {
 	$scope.loadChart = false;
 	$scope.imageExist;
 
-	
-	// var element = document.getElementsByClassName("testClass");
-	// console.log('photo element: ', element);
-	$animate.enabled(false, element);
-	$scope.myInterval = 3000;
+	$scope.myInterval = 6000;
  	$scope.slides = [];
 
 	$scope.getPoiById = function(nid){
@@ -164,20 +160,21 @@ app.controller("section1", function ($scope, $routeParams, $animate) {
 		    }
 		});
 
-		// $.ajax({
-		// 	url: 'application/service/place/getSocialMediaStreamByNid/'+nid,
-		// 	type: 'GET',
-		//     dataType: 'json',
-		//     async: false,
-		//     cache: false,
-		//     success: function(data) {
-		//     	$scope.socialMediaStream = data;
-		//     	$scope.loading = false;
-		//     },
-		//     error: function(XMLHttpRequest, textStatus, errorThrown) { 
-		//         console.log("Status: " + textStatus); console.log("Error: " + errorThrown); 
-		//     }
-		// });
+		$.ajax({
+			url: 'application/service/place/getSocialMediaStreamByNid/'+nid,
+			type: 'GET',
+		    dataType: 'json',
+		    async: false,
+		    cache: false,
+		    success: function(data) {
+		    	// $scope.socialMediaStream = data;
+		    	// $scope.loading = false;
+		    	console.log('social media stream: ', data);
+		    },
+		    error: function(XMLHttpRequest, textStatus, errorThrown) { 
+		        console.log("Status: " + textStatus); console.log("Error: " + errorThrown); 
+		    }
+		});
 
 		function imageExists(url, callback) {
 			var img = new Image();

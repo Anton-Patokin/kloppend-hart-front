@@ -1,4 +1,4 @@
-app.controller("PrimeController", function ($scope, $http, $interval, $timeout) {
+app.controller("PrimeController", function ($scope, $http, $interval, $timeout, $animate) {
     var showHeatmapBool = true;
     var showMarkersBool = true;
     $scope.toggleSlider = false;
@@ -35,7 +35,7 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout) 
     $scope.size_map_small = false;
     $scope.size_map = false;
     $scope.showFooter = true;
-
+    $animate.enabled(false);
 
 //default date values
     $scope.myDate = new Date();

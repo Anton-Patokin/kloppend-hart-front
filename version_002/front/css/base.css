@@ -132,14 +132,6 @@ body {
     width: 250px;
 }
 
-.left2 {
-    width: 520px;
-    margin-left: 48px;
-    z-index: -6;
-    background-color: #202020;
-    max-width: 520px;
-}
-
 md-sidenav {
     position: fixed;
 }
@@ -510,6 +502,11 @@ label {
 
 .carousel-inner>.item>a>img, .carousel-inner>.item>img, .img-responsive, .thumbnail a>img, .thumbnail>img {
     height: 350px;
+}
+
+.no-animate {
+   -webkit-transition: none !important;
+   transition: none !important;
 }
 
 .carousel-control.left, .carousel-control.right {
