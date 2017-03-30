@@ -76,7 +76,7 @@
 
 
 ?>
-<div ng-init='disableSroll(<?= ($_GET['action']=="search"&&isset($_GET['value']))? $_GET['value']: "";?>); disableFooter();' class="section-wrapper">
+<div ng-init='disableSroll(<?= ($_GET['action']=="search"&&isset($_GET['value']))? $_GET['value']: "";?>); disableFooter();toggle_show_traffic(false);' class="section-wrapper">
 	<?php if($_GET['action'] == 'show'): ?>
 		<div class="row subcategories-menu-wrapper">
 			<div class="col-md-12 subcategories-menu">
