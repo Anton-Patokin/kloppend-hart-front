@@ -233,7 +233,6 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout, 
 
     function clean_map() {
         $scope.markers = [];
-        $scope.markerss = [];
         $scope.cluster_save = [];
         $scope.totalHeatmapData['facebook'] = [];
         $scope.totalHeatmapData['foursquare'] = [];
@@ -357,7 +356,6 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout, 
 //if new marker ar added or removed from google maps you need to clean drowing palet.
     function clean_map_from_markers_and_clusters() {
         $scope.clusterData = [];
-        $scope.markerss = [];
         $scope.markers = [];
         $scope.showHeat_facebook = false;
         $scope.showHeat_foursquare = false;
@@ -378,6 +376,7 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout, 
 
     $scope.markerss = [];
     function show_markers() {
+        $scope.markerss = [];
         for (var i in $scope.markers) {
             $scope.markerss.push($scope.markers[i]);
         }
@@ -406,7 +405,7 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout, 
         $timeout(function () {
             center_google_maps(save_position_lat_client, save_position_long_client, false)
 
-        }, 50)
+        }, 100)
         location.href = '#';
     }
     function initialize_bounce_marker() {
@@ -519,11 +518,11 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout, 
                         $scope.clusterData = [];
                     }
                     $timeout(function () {
-                        if ($scope.map.zoom > 14 && $scope.show_heatmap) {
+                        if ($scope.map.zoom > 13 && $scope.show_heatmap) {
                             switch_between_marker_and_cluster("marker");
                             $scope.show_heatmap = !$scope.show_heatmap;
                         }
-                        if ($scope.map.zoom <= 14 && !$scope.show_heatmap) {
+                        if ($scope.map.zoom <= 13 && !$scope.show_heatmap) {
                             switch_between_marker_and_cluster('cluster');
                             $scope.show_heatmap = !$scope.show_heatmap;
                         }
