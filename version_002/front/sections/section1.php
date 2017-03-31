@@ -170,8 +170,6 @@
 						<div ng-show="loadPhotos" layout="row" layout-sm="column" layout-align="space-around">
 							<md-progress-circular md-mode="indeterminate"></md-progress-circular>
 						</div>
-						<div class="temp-photo">
-						</div>
 						<div>
 						  <carousel class="carousel" interval="myInterval">
 							<slide ng-repeat="slide in slides" active="slide.active">
@@ -183,7 +181,7 @@
 				</div>
 				<div class="col-md-12">
 					<div class="social-media-stream clearfix">
-						<div ng-repeat="socialMediaItem in filteredSocialMediaItems" class="social-media-item col-md-12">
+						<div ng-show="socialMediaItems" ng-repeat="socialMediaItem in filteredSocialMediaItems" class="social-media-item col-md-12">
 							<div class="user-photo col-md-3">
 								<img src="{{ socialMediaItem.photo }}">
 							</div>
@@ -197,7 +195,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-md-12 pagination">
+						<div ng-show="socialMediaItems" class="col-md-12 pagination">
 							<pagination 
 							  page="currentPage"
 							  total-items="socialMediaItems.length"
@@ -205,6 +203,9 @@
 							  boundary-links="true"
 							  items-per-page="numPerPage">
 							</pagination>
+						</div>
+						<div ng-hide="socialMediaItems" class="no-social-media-items">
+							<p>Er is geen social media stream beschikbaar.</p>
 						</div>
 					</div>
 				</div>

@@ -1,4 +1,4 @@
-var app = angular.module("myApp", ["ngRoute", 'uiGmapgoogle-maps', 'angular.morris','rzModule','ngMaterial','ngMessages','ui.bootstrap']);
+var app = angular.module("myApp", ["ngRoute", 'uiGmapgoogle-maps', 'angular.morris','rzModule','ngMaterial','ngMessages','ui.bootstrap', 'ngCookies']);
 
 
 
@@ -37,6 +37,30 @@ app.config(function ($routeProvider) {
             templateUrl: "sections/section8.php",
             controller: "section8"
         });
+});
+
+app.run(function run( $rootScope, $cookies ){
+    $rootScope.firstTimeVisited = true;
+    // if ($cookies.get('firstTimeVisited') == null) {
+    //     $rootScope.firstTimeVisited = true;
+    //     var now = new Date();
+    //     var expirationDate = new Date(now.getFullYear(), now.getMonth()+1, now.getDate());
+    //     $cookies.put('firstTimeVisited', 'true', {'expires': expirationDate});
+    // } else {
+    //     $rootScope.firstTimeVisited = false;
+    // }
+    
+    // $cookies.put('myFavorite', 'oatmeal');
+    $rootScope.toggleMenu = function(event){
+        console.log('EVENT: ', event.path[1]['id']);
+
+        $("#"+event.path[1]['id']).next('div').slideToggle();
+
+        $("#"+event.path[1]['id']).parent().siblings().children().next().slideUp();
+        // console.log('DIV ID: ', divId);
+        // $('#'+divId).slideToggle();
+        // $('.instuction').slideUp();
+    }
 });
 
 angular.module('MyApp',['ngMaterial', 'ngMessages', 'material.svgAssetsCache']).controller('AppCtrl', function() {

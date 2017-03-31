@@ -387,6 +387,60 @@ label {
 
 /* HOMEPAGE */
 
+.welcome-message {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    z-index: 3000;
+    position: absolute;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.welcome-message .title h3 {
+    margin-top: 0;
+}
+
+.welcome-message .title {
+    margin-bottom: 15px;
+}
+
+.overlay-back {
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    opacity: 0.6;
+    z-index: 3000;
+    position: absolute;
+    padding: 20px;
+}
+
+.instructions .small-seperator {
+    margin-top: 2px;
+}
+
+.instructions h4 {
+    margin-bottom: 0;
+}
+
+.instructions .title {
+    margin-bottom: 10px;
+}
+
+.instruction {
+    display: none;
+}
+
+.not-active-arrow img {
+    height: 15px;
+    /*transform: rotate(50deg);*/
+}
+
+.active-arrow img {
+    transform: rotate(50deg);
+}
+
 /* DETAIL PAGE */
 
 .no-info {
@@ -496,6 +550,10 @@ label {
     margin: 0 auto;
 }
 
+.temp-photo {
+    padding: 20px;
+}
+
 .carousel-inner>.item>a>img, .carousel-inner>.item>img, .img-responsive, .thumbnail a>img, .thumbnail>img {
     height: 350px;
 }
@@ -575,6 +633,11 @@ label {
 }
 
 .social-media-stream .social-media-item {
+    padding: 20px;
+}
+
+.no-social-media-items {
+    text-align: center;
     padding: 20px;
 }
 

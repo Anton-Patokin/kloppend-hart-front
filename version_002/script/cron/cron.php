@@ -32,28 +32,28 @@
             set_time_limit($schedule->time_limit);
             $scheduleFactory->startSchedule($schedule);
 
-            if ($schedule->schedule_id == 4) {
-                $lock_file = fopen('lock/yourlock.pid', 'c');
-                $got_lock = flock($lock_file, LOCK_EX | LOCK_NB, $wouldblock);
-                if ($lock_file === false || (!$got_lock && !$wouldblock)) {
-                    throw new Exception(
-                        "Unexpected error opening or locking lock file."
-                    );
-                }
-                else if (!$got_lock && $wouldblock) {
-                    exit("Another instance is already running; terminating.\n");
-                }
+            // if ($schedule->schedule_id == 4) {
+            //     $lock_file = fopen('lock/yourlock.pid', 'c');
+            //     $got_lock = flock($lock_file, LOCK_EX | LOCK_NB, $wouldblock);
+            //     if ($lock_file === false || (!$got_lock && !$wouldblock)) {
+            //         throw new Exception(
+            //             "Unexpected error opening or locking lock file."
+            //         );
+            //     }
+            //     else if (!$got_lock && $wouldblock) {
+            //         exit("Another instance is already running; terminating.\n");
+            //     }
 
-                ftruncate($lock_file, 0);
-                fwrite($lock_file, getmypid() . "\n"); 
-            } 
+            //     ftruncate($lock_file, 0);
+            //     fwrite($lock_file, getmypid() . "\n"); 
+            // } 
 
             require_once('schedules/'.$schedule->name.'.php');
 
-            if ($schedule->schedule_id == 4) {
-                ftruncate($lock_file, 0);
-                flock($lock_file, LOCK_UN);
-            }
+            // if ($schedule->schedule_id == 4) {
+            //     ftruncate($lock_file, 0);
+            //     flock($lock_file, LOCK_UN);
+            // }
             
 
             $scheduleFactory->stopSchedule($schedule);                

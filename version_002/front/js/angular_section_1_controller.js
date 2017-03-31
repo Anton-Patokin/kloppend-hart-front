@@ -9,6 +9,7 @@ app.controller("section1", function ($scope, $routeParams, $http) {
 	$scope.loadInfo = false;
 	$scope.loadChart = false;
 	$scope.loadPhotos = false;
+	$scope.loadMediaStream = false;
 	$scope.imageExist;
 	$scope.socialMediaItems;
 
@@ -21,16 +22,19 @@ app.controller("section1", function ($scope, $routeParams, $http) {
 	$scope.maxSize = 5;
 
  	$scope.$watch('currentPage + numPerPage', function() {
-		var begin = (($scope.currentPage - 1) * $scope.numPerPage)
-		, end = begin + $scope.numPerPage;
+ 		if ($scope.socialMediaItems.length > 0) {
+ 			var begin = (($scope.currentPage - 1) * $scope.numPerPage)
+			, end = begin + $scope.numPerPage;
 
-		$scope.filteredSocialMediaItems = $scope.socialMediaItems.slice(begin, end);
+			$scope.filteredSocialMediaItems = $scope.socialMediaItems.slice(begin, end);
+		}		
 	});
 
 	$scope.getPoiById = function(nid){
 		$scope.loadInfo = true;
 		$scope.loadChart = true;
 		$scope.loadPhotos = true;
+		$scope.loadMediaStream = true;
 
 		$http({
 			method: 'GET',
@@ -190,7 +194,12 @@ app.controller("section1", function ($scope, $routeParams, $http) {
 		    async: false,
 		    cache: false,
 		    success: function(data) {
-		    	$scope.socialMediaItems = data.foursquare;
+		    	if (data.foursquare.length > 0) {
+		    		$scope.socialMediaItems = data.foursquare;
+		    	} else {
+		    		$scope.socialMediaItems = false;
+		    	}
+		    	$scope.loadMediaStream = false;
 		    },
 		    error: function(XMLHttpRequest, textStatus, errorThrown) { 
 		        console.log("Status: " + textStatus); console.log("Error: " + errorThrown); 
@@ -225,7 +234,7 @@ app.controller("section1", function ($scope, $routeParams, $http) {
 			    	}
 		    	} else {
 		    		console.log()
-		    		$('.temp-photo').append('Er is geen foto van deze plaats');
+		    		$('.poi-photo-wrapper').append('<p class="temp-photo">Er zijn geen foto\'s van deze plaats.</p>');
 		    	}
 
 		    	$scope.loadPhotos = false;
