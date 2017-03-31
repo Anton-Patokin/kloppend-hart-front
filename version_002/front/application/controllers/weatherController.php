@@ -2,7 +2,7 @@
 require_once ROOT_FRONT . DS .'scripts' . DS .'cURL.class.php';
 require_once ROOT_FRONT . DS .'scripts' . DS .'weatherStation.class.php';
 
-class weatherController extends controller{
+class weatherController{
     
     public function rainFallForecast(){
         $this->doNotRenderHeader = 1;

@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="css/libs/angular-material.min.css">
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/libs/rzslider.css">
+    <link rel="stylesheet" href="css/weather-icons.min.css">
+    <link rel="stylesheet" href="css/weather-icons-wind.min.css">
     <script type="text/javascript" src="js/libs/lodash.min.js"></script>
     <script type="text/javascript" src="js/libs/angular.min.js"></script>
     <script src="js/angular-simple-logger.js"></script>
@@ -37,6 +39,8 @@
     <script src="js/angular_section_1_controller.js"></script>
     <script src="js/angular_section_7_controller.js"></script>
     <script src="js/angular_section_8_controller.js"></script>
+    <script src="js/weatherController.js"></script>
+
     <script type="text/javascript" src="js/angular_top_trending_controller.js"></script>
     <script type="text/javascript" src="js/angular_nav_top_trending_controller.js"></script>
     <script type="text/javascript" src="js/angular_side_bar_controller.js"></script>
