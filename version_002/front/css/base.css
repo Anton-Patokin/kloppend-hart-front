@@ -438,9 +438,18 @@ label {
 }
 
 .active-arrow img {
-    transform: rotate(50deg);
+    transform: rotate(90deg);
 }
 
+.btn-default {
+    background: linear-gradient(45deg, #cd1739 0%, #a41c18 100%);
+    color: white;
+}
+
+.btn-default:hover {
+    color: white;
+    background: linear-gradient(45deg, #be1739 0%, #981511 100%);
+}
 /* DETAIL PAGE */
 
 .no-info {

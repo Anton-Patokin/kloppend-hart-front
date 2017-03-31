@@ -40,27 +40,33 @@ app.config(function ($routeProvider) {
 });
 
 app.run(function run( $rootScope, $cookies ){
-    $rootScope.firstTimeVisited = true;
-    // if ($cookies.get('firstTimeVisited') == null) {
-    //     $rootScope.firstTimeVisited = true;
-    //     var now = new Date();
-    //     var expirationDate = new Date(now.getFullYear(), now.getMonth()+1, now.getDate());
-    //     $cookies.put('firstTimeVisited', 'true', {'expires': expirationDate});
-    // } else {
-    //     $rootScope.firstTimeVisited = false;
-    // }
-    
-    // $cookies.put('myFavorite', 'oatmeal');
-    $rootScope.toggleMenu = function(event){
-        console.log('EVENT: ', event.path[1]['id']);
+    if ($cookies.get('firstTimeVisited') == null) {
+        $rootScope.firstTimeVisited = true;
+        $rootScope.toggleMenu = function(event){
+            var alreadyHasClass = $("#"+event.target.parentElement.id +" ."+event.target.children[0].classList[0]).hasClass('active-arrow');
 
-        $("#"+event.path[1]['id']).next('div').slideToggle();
+            $('.not-active-arrow').removeClass('active-arrow');
+            if (alreadyHasClass) {
+                $('.not-active-arrow').removeClass('active-arrow');
+            } else {
+                $("#"+event.target.parentElement.id +" ."+event.target.children[0].classList[0]).addClass('active-arrow');
+            }        
 
-        $("#"+event.path[1]['id']).parent().siblings().children().next().slideUp();
-        // console.log('DIV ID: ', divId);
-        // $('#'+divId).slideToggle();
-        // $('.instuction').slideUp();
+            $("#"+event.path[1]['id']).next('div').slideToggle();
+
+            $("#"+event.path[1]['id']).parent().siblings().children().next().slideUp();
+        }
+
+        $rootScope.closeWelcome = function(){
+            $rootScope.firstTimeVisited = false;
+        }
+        var now = new Date();
+        var expirationDate = new Date(now.getFullYear(), now.getMonth()+1, now.getDate());
+        $cookies.put('firstTimeVisited', 'true', {'expires': expirationDate});
+    } else {
+        $rootScope.firstTimeVisited = false;
     }
+
 });
 
 angular.module('MyApp',['ngMaterial', 'ngMessages', 'material.svgAssetsCache']).controller('AppCtrl', function() {

@@ -28,7 +28,7 @@
         <p>We zien dat dit de eerste keer is dat je de website bezoekt dus gaan we even kort uitleggen hoe het kha juist werkt.</p>
         <div class="homepage-instructions">
             <div ng-click="toggleMenu($event)" id="homepage-title" class="title">
-                <h4>Homepage <span ng-class="active-arrow" class="not-active-arrow pull-right"><img src="images/newdesign/arrow-black.png"></span></h4>
+                <h4>Homepage <span class="not-active-arrow pull-right"><img src="images/newdesign/arrow-black.png"></span></h4>
                 <div class="small-seperator"></div>
             </div>
             <div class="instruction" id="body-homepage">
@@ -74,6 +74,7 @@
                 <p>Op de pagina "Weer" krijg je een overzicht van de temperatuur in Antwerpen voor de komende dagen, een buienradar, tweets over het weer en een webcam feed van de schelde/haven van Antwerpen. Op de pagina "Verkeer" krijg je een mapje met de huidige verkeersituatie en tweets over ongevallen, vertragingen, werken,... in en rond Antwerpen.</p>
             </div>
         </div>
+        <p ng-click="closeWelcome()" class="btn btn-default pull-right">Ga verder</p>
     </div>
 </div>
 
