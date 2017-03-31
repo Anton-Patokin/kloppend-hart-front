@@ -26,8 +26,6 @@
 					</div>
 				</ul>
 			</li>
-
-			<li>HOTSPOTS</li>
 			<li>
 				<input type="checkbox" id="facebookCheck" class="regular-checkbox" name="facebookCheck" ng-click="checkbox_social_media($event)" checked /><label for="facebookCheck"></label><label for="facebookCheck">FACEBOOK</label>
 			</li>
