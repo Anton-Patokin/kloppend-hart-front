@@ -25,7 +25,6 @@ app.controller("section1", function ($scope, $routeParams, $http) {
  		if ($scope.socialMediaItems.length > 0) {
  			var begin = (($scope.currentPage - 1) * $scope.numPerPage)
 			, end = begin + $scope.numPerPage;
-
 			$scope.filteredSocialMediaItems = $scope.socialMediaItems.slice(begin, end);
 		}		
 	});
@@ -41,7 +40,7 @@ app.controller("section1", function ($scope, $routeParams, $http) {
 			dataType: 'json',
 			async: true,
 			cache: false,
-			url: 'application/service/place/getPlaceInfoByNid/'+nid
+			url: 'place/getPlaceInfoByNid/'+nid
 			}).then(function successCallback(response) {
 				data = response.data;
 				$('.node-title').empty();
@@ -50,7 +49,7 @@ app.controller("section1", function ($scope, $routeParams, $http) {
 		    	$('.node-title').append(data['title'].toUpperCase());
 		    	$('.node-title').append('<div class="small-seperator"></div>');
 		    	$('.node-body').append(data['body']);
-		    	$('.apen-link').append('<a href="https://apen.be/node/' + nid + '">Meer weten over ' + data['title'] + '<img src="images/newdesign/arrow-black.png"></a>');
+		    	$('.apen-link').append('<a href="https://apen.be/node/' + nid + '">Meer weten over ' + data['title'] + '<img src="https://apen.be/kloppend-hart-antwerpen/front/images/newdesign/arrow-black.png"></a>');
 
 		    	$scope.loadInfo = false;
 			}, function errorCallback(response) {
@@ -83,7 +82,7 @@ app.controller("section1", function ($scope, $routeParams, $http) {
 			dataType: 'json',
 			async: true,
 			cache: false,
-			url: 'application/service/place/getPlaceStatsByNid/'+nid
+			url: 'place/getPlaceStatsByNid/'+nid
 			}).then(function successCallback(response) {
 				data = response.data;
 				testVar.length = 0
@@ -122,7 +121,7 @@ app.controller("section1", function ($scope, $routeParams, $http) {
 			dataType: 'json',
 			async: true,
 			cache: false,
-			url: 'application/service/place/getPlaceTotalMetricsByNid/'+nid
+			url: 'place/getPlaceTotalMetricsByNid/'+nid
 			}).then(function successCallback(response) {
 				data = response.data;
 				facebook = 0;
@@ -188,7 +187,7 @@ app.controller("section1", function ($scope, $routeParams, $http) {
 		// });
 
 		$.ajax({
-			url: 'application/service/place/getSocialMediaStreamByNid/'+nid,
+			url: 'place/getSocialMediaStreamByNid/'+nid,
 			type: 'GET',
 		    dataType: 'json',
 		    async: false,
@@ -218,7 +217,7 @@ app.controller("section1", function ($scope, $routeParams, $http) {
 			dataType: 'json',
 			async: true,
 			cache: false,
-			url: 'application/service/place/getSocialMediaPhotos/'+nid
+			url: 'place/getSocialMediaPhotos/'+nid
 			}).then(function successCallback(response) {
 				data = response.data;
 				$('.temp-photo').empty();

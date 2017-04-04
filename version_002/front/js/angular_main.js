@@ -5,17 +5,36 @@ var app = angular.module("myApp", ["ngRoute", 'uiGmapgoogle-maps', 'angular.morr
 app.config(function ($routeProvider) {
     $routeProvider
         .when("/section1/:category/:action/:value", {
-            templateUrl: function(attrs){ 
-                return 'sections/section1.php?category=' + attrs.category + '&action=' + attrs.action + '&value=' + attrs.value; },
+            templateUrl: function(attrs){
+                return  'section/detail_page/1/' + attrs.category + '/' + attrs.action + '/' + attrs.value; },
             controller  : 'section1'
         })
+        .when("/section1", {
+            templateUrl: "section/detail_page/1/horeca/show/cafe",
+            controller: "section2"
+        })
         .when("/section7", {
-            templateUrl: "index.php?url=sections/section7",
-            // templateUrl: "index.php?section='section7'",
+            templateUrl: "section/test/7/horeca/show/cafe",
+            controller: "section3"
+        })
+        .when("/section4", {
+            templateUrl: "sections/section4.php",
+            controller: "section4"
+        })
+        .when("/section5", {
+            templateUrl: "sections/section5.php",
+            controller: "section5"
+        })
+        .when("/section6", {
+            templateUrl: "sections/section6.php",
+            controller: "section6"
+        })
+        .when("/section7", {
+            templateUrl: "section/everything/7",
             controller: "section7"
         })
         .when("/section8", {
-            templateUrl: "sections/section8.php",
+            templateUrl: "section/everything/8",
             controller: "section8"
         });
 });

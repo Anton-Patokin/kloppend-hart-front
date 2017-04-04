@@ -1,3 +1,8 @@
+<?php
+
+    $rootScope = "https://apen.be/kloppend-hart-antwerpen/front/";
+
+?>
 <div class="container background_white">
 </div>
 <div ng-show="firstTimeVisited" class="overlay-back"></div>
@@ -13,7 +18,7 @@
         <div class="homepage-instructions">
             <div ng-click="toggleMenu($event)" id="homepage-title" class="title">
                 <h4>Homepage <span class="not-active-arrow pull-right"><img
-                            src="images/newdesign/arrow-black.png"></span></h4>
+                            src="<?= $rootScope ?>images/newdesign/arrow-black.png"></span></h4>
                 <div class="small-seperator"></div>
             </div>
             <div class="instruction" id="body-homepage">
@@ -27,7 +32,7 @@
         <div class="top-navbar-instructions">
             <div ng-click="toggleMenu($event)" id="top-navbar-title" class="title">
                 <h4>Top navbar <span class="not-active-arrow pull-right"><img
-                            src="images/newdesign/arrow-black.png"></span></h4>
+                            src="<?= $rootScope ?>images/newdesign/arrow-black.png"></span></h4>
                 <div class="small-seperator"></div>
             </div>
             <div class="instruction" id="body-top-navbar">
@@ -41,7 +46,7 @@
         <div class="side-navbar-instructions">
             <div ng-click="toggleMenu($event)" id="side-navbar-title" class="title">
                 <h4>Side navbar <span class="not-active-arrow pull-right"><img
-                            src="images/newdesign/arrow-black.png"></span></h4>
+                            src="<?= $rootScope ?>images/newdesign/arrow-black.png"></span></h4>
                 <div class="small-seperator"></div>
             </div>
             <div class="instruction" id="body-side-navbar">
@@ -51,7 +56,7 @@
         </div>
         <div class="detailpage-instructions">
             <div ng-click="toggleMenu($event)" id="detailpage-title" class="title">
-                <h4>Detail pagina <span class="not-active-arrow pull-right"><img src="images/newdesign/arrow-black.png"></span>
+                <h4>Detail pagina <span class="not-active-arrow pull-right"><img src="<?= $rootScope ?>images/newdesign/arrow-black.png"></span>
                 </h4>
                 <div class="small-seperator"></div>
             </div>
@@ -66,7 +71,7 @@
         <div class="weer-verkeer-instructions">
             <div ng-click="toggleMenu($event)" id="weer-verkeer-title" class="title">
                 <h4>Weer & verkeer pagina <span class="not-active-arrow pull-right"><img
-                            src="images/newdesign/arrow-black.png"></span></h4>
+                            src="<?= $rootScope ?>images/newdesign/arrow-black.png"></span></h4>
                 <div class="small-seperator"></div>
             </div>
             <div class="instruction" id="body-weer-verkeer">
@@ -96,14 +101,14 @@
 
         <ui-gmap-markers doCluster="true" typeOptions="{minimumClusterSize : 1}" models="clusterData"
                          events="map.markersEvents" coords="'self'" heatmap-layer="{}"
-                         icon="{url: 'images/markers/marker_0.png'}" options="showHeatmapBool">
+                         icon="{url: 'front/images/markers/marker_0.png'}" options="showHeatmapBool">
         </ui-gmap-markers>
 
 
         <div ng-repeat="marker in markerss">
             <ui-gmap-markers doCluster="false" models="marker"
                              events="map.markersEvents" coords="'self'"
-                             icon="{url: 'images/markers/marker_'+marker[0].icon+'.png'}" options="showHeatmapBool">
+                             icon="{url: 'front/images/markers/marker_'+marker[0].icon+'.png'}" options="showHeatmapBool">
                 <ui-gmap-windows show="show">
                     <div ng-non-bindable>{{title}}</div>
                 </ui-gmap-windows>
@@ -111,7 +116,7 @@
             </ui-gmap-markers>
         </div>
         <ui-gmap-marker coords="marker_center.coords" options="bounce_marker_options" idkey="marker_center.id"
-                        icon="{url: 'images/markers/marker_'+marker_center.icon+'.png'}">
+                        icon="{url: 'front/images/markers/marker_'+marker_center.icon+'.png'}">
         </ui-gmap-marker>
 
     </ui-gmap-google-map>

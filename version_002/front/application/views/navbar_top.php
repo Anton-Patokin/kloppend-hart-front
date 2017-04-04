@@ -1,5 +1,6 @@
 <?php
 	$date = date('l\, d M Y', time());
+	$rootPath = "https://apen.be/kloppend-hart-antwerpen/front/";
 ?>
 
 <div ng-controller="navTopTrendingController" class="top-navbar clearfix">
@@ -43,11 +44,24 @@
 				<input ng-model="searchInput" ng-blur="dropdown()" ng-keyup="searchNode()" type="text" name="searchInput" placeholder="search...">
 			</li>
 			<li>
-				<p class="btn-search"><img src="images/newdesign/search.png"></p>
+				<p class="btn-search"><img src="<?= $rootPath ?>images/newdesign/search.png"></p>
 			</li>
 			<ul ng-show="showResults" class="search-results">
 				<a ng-repeat="searchResult in searchResults" href=#section1/test/search/{{searchResult['nid']}}><li>{{searchResult['name']}}</li></a>
 			</ul>
 		</ul>
 	</div>
+<!-- 	<div ng-controller="searchFormController" class="search-input col-md-4 pull-right">
+		<div class="input-group">
+			<input ng-model="searchInput" ng-blur="dropdown()" ng-focus="showResults=true" ng-keyup="searchNode()"  type="text" class="form-control" name="searchInput">
+			<span class="input-group-btn">
+				<button class="btn btn-search" type="submit">Search</button>
+			</span>
+		</div>
+		<div ng-show="showResults" class="results col-md-11">
+			<ul>
+				<a ng-repeat="searchResult in searchResults" href=#section1/test/search/{{searchResult['nid']}}><li>{{searchResult['name']}}</li></a>
+			</ul>
+		</div>
+	</div> -->
 </div>

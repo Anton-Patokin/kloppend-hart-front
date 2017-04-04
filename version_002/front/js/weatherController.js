@@ -1,11 +1,11 @@
 app.controller("WeatherController", function ($scope, $http, $interval, $timeout, $animate) {
+
     $http(
         {
             method: 'get',
-            url: ROOT_FRONT + 'application/service/weather/generalWeatherForecast',
+            url: 'weather/generalWeatherForecast',
         }
     ).then(function (result) {
-
         icon = result.data.condition.text.split(" ");
         icon = icon[icon.length - 1].toLowerCase();
 
