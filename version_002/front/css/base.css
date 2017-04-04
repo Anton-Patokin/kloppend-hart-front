@@ -74,7 +74,7 @@ body {
     height: 100%;
 }
 
-.navbar-fixed-left .navbar-nav>li {
+.navbar-fixed-left .navbar-nav > li {
     float: none;
     /* Cancel default li float: left */
     width: 139px;
@@ -86,7 +86,7 @@ body {
 
 /* On using dropdown menu (To right shift popuped) */
 
-.navbar-fixed-left .navbar-nav>li>.dropdown-menu {
+.navbar-fixed-left .navbar-nav > li > .dropdown-menu {
     margin-top: -50px;
     margin-left: 140px;
 }
@@ -350,7 +350,7 @@ label {
     display: none;
 }
 
-.regular-checkbox+label {
+.regular-checkbox + label {
     background-color: #151515;
     border: 1px solid #a41c18;
     padding: 6px;
@@ -360,7 +360,7 @@ label {
     cursor: pointer;
 }
 
-.regular-checkbox:checked+label {
+.regular-checkbox:checked + label {
     background: linear-gradient(45deg, #cd1739 0%, #a41c18 100%);
     border: 1px solid #a41c18;
     color: #99a1a7;
@@ -587,7 +587,7 @@ label {
     padding: 20px;
 }
 
-.carousel-inner>.item>a>img, .carousel-inner>.item>img, .img-responsive, .thumbnail a>img, .thumbnail>img {
+.carousel-inner > .item > a > img, .carousel-inner > .item > img, .img-responsive, .thumbnail a > img, .thumbnail > img {
     height: 350px;
 }
 
@@ -679,13 +679,13 @@ label {
     text-align: center;
 }
 
-.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
+.pagination > .active > a, .pagination > .active > a:focus, .pagination > .active > a:hover, .pagination > .active > span, .pagination > .active > span:focus, .pagination > .active > span:hover {
     background-color: #cc1739;
     border: 1px solid #a31c18;
     cursor: pointer;
 }
 
-.pagination>li>a, .pagination>li>span {
+.pagination > li > a, .pagination > li > span {
     cursor: pointer;
 }
 
@@ -1154,24 +1154,30 @@ button.md-datepicker-button {
     .social-media-checklist ul li:nth-child(3), .social-media-checklist ul li:nth-child(4), .social-media-checklist ul li:last-child {
         display: none !important;
     }
+
     .left1 {
         width: 100%;
     }
+
     md-sidenav {
         max-width: 100% !important;
         width: 100%;
     }
+
     md-sidenav div {
         width: inherit;
     }
+
     .social-media-checklist {
         width: -webkit-calc(100% - 55px);
         width: -moz-calc(100% - 55px);
         width: calc(100% - 55px);
     }
+
     .social-media-checklist ul {
         width: 100%;
     }
+
     .social-media-checklist ul li:first-child, .social-media-checklist ul li:nth-child(2) {
         font-size: 80%;
         height: 55px;
@@ -1179,13 +1185,25 @@ button.md-datepicker-button {
         text-align: center;
         width: 50%;
     }
+
     .search-input {
         width: 55px;
     }
+
     .search-input ul {
-        margin-left: -40px;
+        margin-left: -142px;
     }
-    .search-input ul li:first-child {
+
+    ul li.date {
         display: none;
     }
+
+    .search-input input[type="text"] {
+        width: 100px
+    }
+
+    .search-results {
+        right: 0;
+    }
+
 }
