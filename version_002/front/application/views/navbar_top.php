@@ -7,7 +7,7 @@
 	<div class="social-media-checklist pull-left">
 		<ul>
 			<li class="date"><?= strtoupper($date) ?></li>
-			<li><span ng-click="toggleTrending('topNav')">TRENDING</span>
+			<li class="btn-trending"><span ng-click="toggleTrending('topNav')">TRENDING</span>
 				<ul id="trending-wrapper" ng-class="{'dropdownTest' : !dropdownToggle, 'dropdownShow' : dropdownToggle}">
 					<div class="top-trending">
 						<div class="trending-now">
@@ -27,13 +27,13 @@
 					</div>
 				</ul>
 			</li>
-			<li>
+			<li class="map-checkbox">
 				<input type="checkbox" id="facebookCheck" class="regular-checkbox" name="facebookCheck" ng-click="checkbox_social_media($event)" checked /><label for="facebookCheck"></label><label for="facebookCheck">FACEBOOK</label>
 			</li>
-			<li>
+			<li class="map-checkbox">
 				<input type="checkbox" id="foursquareCheck" class="regular-checkbox" name="foursquareCheck" ng-click="checkbox_social_media($event)" checked /><label for="foursquareCheck"></label><label for="foursquareCheck">FOURSQUARE</label>
 			</li>
-			<li>
+			<li class="map-checkbox">
 				<input type="checkbox" id="apenCheck" class="regular-checkbox" name="apenCheck" ng-click="checkbox_social_media($event)" checked /><label for="apenCheck"></label><label for="apenCheck">APEN</label>
 			</li>
 		</ul>
