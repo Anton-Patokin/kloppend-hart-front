@@ -2,8 +2,10 @@
 <html lang="en">
 <?php
 
+
     $rootPath = "http://localhost/edge/projects/kloppend-hart-antwerpen/kloppend-hart-front/version_002/front/";
 //$rootPath = "https://apen.be/kloppend-hart-antwerpen/front/";
+
 
 ?>
 <head>

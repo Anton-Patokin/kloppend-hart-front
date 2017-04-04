@@ -148,9 +148,9 @@ md-backdrop.md-sidenav-backdrop {
     border-right: 1px solid #232323;
 }
 
-.sidenav .icons {
+/*.sidenav .icons {
     margin-top: 64px;
-}
+}*/
 
 .sidenav .icons ul li {
     border-top: 1px solid #232323;
@@ -1151,7 +1151,7 @@ button.md-datepicker-button {
 }
 
 @media screen and (max-device-width: 480px) and (orientation: portrait) {
-    .social-media-checklist ul li:nth-child(3), .social-media-checklist ul li:nth-child(4), .social-media-checklist ul li:last-child {
+    .map-checkbox {
         display: none !important;
     }
 
@@ -1178,7 +1178,7 @@ button.md-datepicker-button {
         width: 100%;
     }
 
-    .social-media-checklist ul li:first-child, .social-media-checklist ul li:nth-child(2) {
+    .social-media-checklist .btn-trending {
         font-size: 80%;
         height: 55px;
         padding: 20px 0;

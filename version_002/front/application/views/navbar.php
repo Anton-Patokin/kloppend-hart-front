@@ -27,14 +27,14 @@
 		</div>
 		<div class="icons">
 			<ul>
-				<a ng-click="closeSideNav()" href="#section1/horeca/show/restaurant"><li><img src="<?= $rootPath ?>images/newdesign/coffee.png"></li></a>
-				<a ng-click="closeSideNav()" href="#section1/cultuur/show/gallerij"><li><img src="<?= $rootPath ?>images/newdesign/film.png"></li></a>
-				<a ng-click="closeSideNav()" href="#section1/over_de_stad/show/Openbare-diensten"><li><img src="<?= $rootPath ?>images/newdesign/city.png"></li></a>
-				<a ng-click="closeSideNav()" href="#section1/winkel/show/kleding"><li><img src="<?= $rootPath ?>images/newdesign/sale.png"></li></a>
-				<a ng-click="closeSideNav()" href="#section1/uitgaan/show/film"><li><img src="<?= $rootPath ?>images/newdesign/pint.png"></li></a>
-				<a ng-click="closeSideNav()" href="#section1/vrije_tijd/show/sport"><li><img src="<?= $rootPath ?>images/newdesign/plane.png"></li></a>
-				<a ng-click="closeSideNav()" href="#section8"><li><img src="<?= $rootPath ?>images/newdesign/sun.png"></li></a>
-				<a ng-click="closeSideNav()" href="#section7"><li><img src="<?= $rootPath ?>images/newdesign/car.png"></li></a>
+				<a ng-click="closeSideNav(); toggleTrending('close');" href="#section1/horeca/show/restaurant"><li><img src="<?= $rootPath ?>images/newdesign/coffee.png"></li></a>
+				<a ng-click="closeSideNav(); toggleTrending('close');" href="#section1/cultuur/show/gallerij"><li><img src="<?= $rootPath ?>images/newdesign/film.png"></li></a>
+				<a ng-click="closeSideNav(); toggleTrending('close');" href="#section1/over_de_stad/show/Openbare-diensten"><li><img src="<?= $rootPath ?>images/newdesign/city.png"></li></a>
+				<a ng-click="closeSideNav(); toggleTrending('close');" href="#section1/winkel/show/kleding"><li><img src="<?= $rootPath ?>images/newdesign/sale.png"></li></a>
+				<a ng-click="closeSideNav(); toggleTrending('close');" href="#section1/uitgaan/show/film"><li><img src="<?= $rootPath ?>images/newdesign/pint.png"></li></a>
+				<a ng-click="closeSideNav(); toggleTrending('close');" href="#section1/vrije_tijd/show/sport"><li><img src="<?= $rootPath ?>images/newdesign/plane.png"></li></a>
+				<a ng-click="closeSideNav(); toggleTrending('close');" href="#section8"><li><img src="<?= $rootPath ?>images/newdesign/sun.png"></li></a>
+				<a ng-click="closeSideNav(); toggleTrending('close');" href="#section7"><li><img src="<?= $rootPath ?>images/newdesign/car.png"></li></a>
 				<li></li>
 			</ul>
 		</div>
@@ -55,14 +55,14 @@
 					<li ng-click="toggleLeft()">Verkeer<span class="pull-right">></span></li>
 					<li ng-click="toggleLeft()">Vrije tijd<span class="pull-right">></span></li>
 					<a href="#section7"><li>Weer<span class="pull-right">></span></li></a> -->
-					<a ng-click="toggleLeft()" href="#section1/horeca/show/restaurant"><li>Horeca<span class="pull-right">></span></li></a>
-					<a ng-click="toggleLeft()" href="#section1/cultuur/show/gallerij"><li>Cultuur<span class="pull-right">></span></li></a>
-					<a ng-click="toggleLeft()" href="#section1/over_de_stad/show/Openbare-diensten"><li>Over de stad<span class="pull-right">></span></li></a>
-					<a ng-click="toggleLeft()" href="#section1/winkel/show/kleding"><li>Shopping<span class="pull-right">></span></li></a>
-					<a ng-click="toggleLeft()" href="#section1/uitgaan/show/film"><li>Uitgaan<span class="pull-right">></span></li></a>
-					<a ng-click="toggleLeft()" href="#section1/vrije_tijd/show/sport"><li>Vrije tijd<span class="pull-right">></span></li></a>
-					<a ng-click="toggleLeft()" href="#section8"><li>Weer<span class="pull-right">></span></li></a>
-					<a ng-click="toggleLeft()" href="#section7"><li>Verkeer<span class="pull-right">></span></li></a>
+					<a ng-click="toggleLeft(); toggleTrending('close');" href="#section1/horeca/show/restaurant"><li>Horeca<span class="pull-right">></span></li></a>
+					<a ng-click="toggleLeft(); toggleTrending('close');" href="#section1/cultuur/show/gallerij"><li>Cultuur<span class="pull-right">></span></li></a>
+					<a ng-click="toggleLeft(); toggleTrending('close');" href="#section1/over_de_stad/show/Openbare-diensten"><li>Over de stad<span class="pull-right">></span></li></a>
+					<a ng-click="toggleLeft(); toggleTrending('close');" href="#section1/winkel/show/kleding"><li>Shopping<span class="pull-right">></span></li></a>
+					<a ng-click="toggleLeft(); toggleTrending('close');" href="#section1/uitgaan/show/film"><li>Uitgaan<span class="pull-right">></span></li></a>
+					<a ng-click="toggleLeft(); toggleTrending('close');" href="#section1/vrije_tijd/show/sport"><li>Vrije tijd<span class="pull-right">></span></li></a>
+					<a ng-click="toggleLeft(); toggleTrending('close');" href="#section8"><li>Weer<span class="pull-right">></span></li></a>
+					<a ng-click="toggleLeft(); toggleTrending('close');" href="#section7"><li>Verkeer<span class="pull-right">></span></li></a>
 				</ul>
 			</div>
 		</md-sidenav>
