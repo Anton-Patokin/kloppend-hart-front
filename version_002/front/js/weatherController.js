@@ -1,10 +1,8 @@
 app.controller("WeatherController", function ($scope, $http, $interval, $timeout, $animate) {
-
-    console.log('teeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeest');
     $http(
         {
             method: 'get',
-            url: ROOT_FRONT + 'weather/generalWeatherForecast',
+            url: ROOT_FRONT + 'application/service/weather/generalWeatherForecast',
         }
     ).then(function (result) {
 

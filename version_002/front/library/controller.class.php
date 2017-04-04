@@ -20,7 +20,7 @@ class Controller {
         $this->$model = new $model;
         $this->_template = new Template($controller, $action);
     }
-
+    
     function set($name, $value){
         $this->_template->set($name, $value);
     }

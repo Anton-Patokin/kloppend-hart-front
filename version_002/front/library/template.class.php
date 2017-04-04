@@ -20,7 +20,6 @@ class Template {
 
     function render($doNotRenderHeader = 0) {
 
-		
 		$html = new HTML;
 		extract($this->variables);
 
@@ -28,9 +27,9 @@ class Template {
 			if (file_exists(ROOT_FRONT . DS . 'application' . DS . 'views' . DS . $this->_controller . DS . 'header.php')) {
 				include (ROOT_FRONT . DS . 'application' . DS . 'views' . DS . $this->_controller . DS . 'header.php');
 			} else {
-//				echo 'error no data here';
-//				return ;
-				include (ROOT_FRONT . DS . 'application' . DS . 'views' . DS . 'header.php');
+				echo 'error no data here';
+				return ;
+//				include (ROOT_FRONT . DS . 'application' . DS . 'views' . DS . 'header.php');
 			}
 		}
 

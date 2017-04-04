@@ -12,7 +12,7 @@ app.controller("searchFormController", function ($scope, $timeout) {
 		};
 		console.log('searching :');
 		$.ajax({
-			url: ROOT_FRONT+'search/getSearchResults/'+$scope.searchInput,
+			url: 'application/service/search/getSearchResults/'+$scope.searchInput,
 			type: 'GET',
 			dataType: 'json',
 			async: false,
@@ -28,6 +28,8 @@ app.controller("searchFormController", function ($scope, $timeout) {
 					$scope.showResults = false;
 					$scope.searchResults = [];
 				}
+				
+
 			},
 			error: function(XMLHttpRequest, textStatus, errorThrown) { 
 				console.log("Status: " + textStatus); console.log("Error: " + errorThrown); 

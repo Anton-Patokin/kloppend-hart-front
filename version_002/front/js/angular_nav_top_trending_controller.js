@@ -49,7 +49,7 @@ app.controller("navTopTrendingController", function ($scope) {
 
 	function apiGetTrendingList(lat, lon, startDate, endDate){
 		$.ajax({
-			url: ROOT_FRONT+'heatmap/getTrendingList/'+lat+'/'+lon+'/'+startDate+'/'+endDate,
+			url: 'application/service/heatmap/getTrendingList/'+lat+'/'+lon+'/'+startDate+'/'+endDate,
 			type: 'GET',
 		    dataType: 'Json',
 		    async: true,
@@ -72,7 +72,7 @@ app.controller("navTopTrendingController", function ($scope) {
 	}
 
     $.ajax({
-		url: ROOT_FRONT+'heatmap/getTopTrendingList/'+startDate+'/'+endDate,
+		url: 'application/service/heatmap/getTopTrendingList/'+startDate+'/'+endDate,
 		type: 'GET',
 	    dataType: 'Json',
 	    async: false,
