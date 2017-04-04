@@ -21,14 +21,6 @@ app.controller("section1", function ($scope, $routeParams, $http) {
 	$scope.numPerPage = 4;
 	$scope.maxSize = 5;
 
- 	$scope.$watch('currentPage + numPerPage', function() {
- 		if ($scope.socialMediaItems != null && $scope.socialMediaItems.length > 0) {
- 			var begin = (($scope.currentPage - 1) * $scope.numPerPage)
-			, end = begin + $scope.numPerPage;
-			$scope.filteredSocialMediaItems = $scope.socialMediaItems.slice(begin, end);
-		}		
-	});
-
 	$scope.getPoiById = function(nid){
 		$scope.loadInfo = true;
 		$scope.loadChart = true;
@@ -55,27 +47,6 @@ app.controller("section1", function ($scope, $routeParams, $http) {
 			}, function errorCallback(response) {
 				console.log("Status: " + response);
 		});
-
-		// $.ajax({
-		// 	url: 'application/service/place/getPlaceImageByNid/'+nid+'/_original',
-		// 	type: 'GET',
-		//     dataType: 'json',
-		//     async: true,
-		//     cache: false,
-		//     success: function(data) {
-		//     	console.log('IMAGE: ', data);
-		//     	if (data) {
-		//     		photo = data.filepath;
-		//     	} else {
-		//     		photo = "sites/all/themes/zen/apen/site-images/img-logo.png";
-		//     	}
-		//     	$('.poi-photo-wrapper').empty();
-		//     	$('.poi-photo-wrapper').append('<img src="https://apen.be/'+ photo +'">');
-		//     },
-		//     error: function(XMLHttpRequest, textStatus, errorThrown) { 
-		//         console.log("Status: " + textStatus); console.log("Error: " + errorThrown); 
-		//     }
-		// });
 
 		$http({
 			method: 'GET',
@@ -136,16 +107,16 @@ app.controller("section1", function ($scope, $routeParams, $http) {
 		    			if (data[i]['metric_name'] == 'like') {$('.stats-analytics .facebook-stats .facebook-likes').html(data[i]['total_value']+' likes')}
 		    			if (data[i]['metric_name'] == 'checkin') {$('.stats-analytics .facebook-stats .facebook-checkins').html(data[i]['total_value']+' chekins')}
 		    			if (data[i]['metric_name'] == 'talking_about') {$('.stats-analytics .facebook-stats .facebook-talking-abouts').html(data[i]['total_value']+' talking abouts')}
-		    			facebook = facebook + data[i]['total_value'];
+		    			facebook = facebook + Number(data[i]['total_value']);
 		    		}
 		    		if (data[i]['source_name'] == 'foursquare') {
 		    			if (data[i]['metric_name'] == 'checkin') {$('.stats-analytics .foursquare-stats .foursquare-checkins').html(data[i]['total_value']+' checkins')}
 		    			if (data[i]['metric_name'] == 'user') {$('.stats-analytics .foursquare-stats .foursquare-users').html(data[i]['total_value']+' users')}
-		    			foursquare = foursquare + data[i]['total_value'];
+		    			foursquare = foursquare + Number(data[i]['total_value']);
 		    		}
 		    		if (data[i]['source_name'] == 'apen') {
 		    			if (data[i]['metric_name'] == 'visit') {$('.stats-analytics .apen-stats .apen-visits').html(data[i]['total_value']+' visits')}
-		    			apen = apen + data[i]['total_value'];
+		    			apen = apen + Number(data[i]['total_value']);
 		    		}
 		    	}
 		    	if(facebook == 0){
@@ -181,30 +152,18 @@ app.controller("section1", function ($scope, $routeParams, $http) {
 			}).then(function successCallback(response) {
 				data = response.data;
 				$scope.socialMediaItems = data.foursquare;
-				console.log('SOCIAL MEDIA ITEMS: ', data);
+				if ($scope.socialMediaItems != null && $scope.socialMediaItems.length > 0) {
+		 			var begin = (($scope.currentPage - 1) * $scope.numPerPage)
+					, end = begin + $scope.numPerPage;
+					$scope.filteredSocialMediaItems = $scope.socialMediaItems.slice(begin, end);
+				} else {
+					$scope.filteredSocialMediaItems = [];
+					$scope.socialMediaItems = false;
+				}
+				$scope.loadMediaStream = false;
 			}, function errorCallback(response) {
 				console.log("Status: " + response);
 		});
-
-		// $.ajax({
-		// 	url: 'place/getSocialMediaStreamByNid/'+nid,
-		// 	type: 'GET',
-		//     dataType: 'json',
-		//     async: false,
-		//     cache: false,
-		//     success: function(data) {
-		//     	if (data.foursquare.length > 0) {
-		//     		$scope.socialMediaItems = [];
-		//     		$scope.socialMediaItems = data.foursquare;
-		//     	} else {
-		//     		$scope.socialMediaItems = false;
-		//     	}
-		//     	$scope.loadMediaStream = false;
-		//     },
-		//     error: function(XMLHttpRequest, textStatus, errorThrown) { 
-		//         console.log("Status: " + textStatus); console.log("Error: " + errorThrown); 
-		//     }
-		// });
 
 		function imageExists(url, callback) {
 			var img = new Image();
@@ -242,6 +201,14 @@ app.controller("section1", function ($scope, $routeParams, $http) {
 		});
 
 	}
+
+	$scope.$watch('currentPage + numPerPage', function() {
+ 		if ($scope.socialMediaItems != null && $scope.socialMediaItems.length > 0) {
+ 			var begin = (($scope.currentPage - 1) * $scope.numPerPage)
+			, end = begin + $scope.numPerPage;
+			$scope.filteredSocialMediaItems = $scope.socialMediaItems.slice(begin, end);
+		}		
+	});
 
 	if ($routeParams.action == 'search') {
 		$scope.getPoiById($routeParams.value);
