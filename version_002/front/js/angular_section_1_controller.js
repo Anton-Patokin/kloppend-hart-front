@@ -25,7 +25,6 @@ app.controller("section1", function ($scope, $routeParams, $http) {
  		if ($scope.socialMediaItems.length > 0) {
  			var begin = (($scope.currentPage - 1) * $scope.numPerPage)
 			, end = begin + $scope.numPerPage;
-
 			$scope.filteredSocialMediaItems = $scope.socialMediaItems.slice(begin, end);
 		}		
 	});
@@ -41,7 +40,7 @@ app.controller("section1", function ($scope, $routeParams, $http) {
 			dataType: 'json',
 			async: true,
 			cache: false,
-			url: 'application/service/place/getPlaceInfoByNid/'+nid
+			url: ROOT_FRONT+'place/getPlaceInfoByNid/'+nid
 			}).then(function successCallback(response) {
 				data = response.data;
 				$('.node-title').empty();
@@ -83,7 +82,7 @@ app.controller("section1", function ($scope, $routeParams, $http) {
 			dataType: 'json',
 			async: true,
 			cache: false,
-			url: 'application/service/place/getPlaceStatsByNid/'+nid
+			url: ROOT_FRONT+'place/getPlaceStatsByNid/'+nid
 			}).then(function successCallback(response) {
 				data = response.data;
 				testVar.length = 0
@@ -122,7 +121,7 @@ app.controller("section1", function ($scope, $routeParams, $http) {
 			dataType: 'json',
 			async: true,
 			cache: false,
-			url: 'application/service/place/getPlaceTotalMetricsByNid/'+nid
+			url: ROOT_FRONT+'place/getPlaceTotalMetricsByNid/'+nid
 			}).then(function successCallback(response) {
 				data = response.data;
 				facebook = 0;
@@ -188,7 +187,7 @@ app.controller("section1", function ($scope, $routeParams, $http) {
 		// });
 
 		$.ajax({
-			url: 'application/service/place/getSocialMediaStreamByNid/'+nid,
+			url: ROOT_FRONT+'place/getSocialMediaStreamByNid/'+nid,
 			type: 'GET',
 		    dataType: 'json',
 		    async: false,
@@ -218,7 +217,7 @@ app.controller("section1", function ($scope, $routeParams, $http) {
 			dataType: 'json',
 			async: true,
 			cache: false,
-			url: 'application/service/place/getSocialMediaPhotos/'+nid
+			url: ROOT_FRONT+'place/getSocialMediaPhotos/'+nid
 			}).then(function successCallback(response) {
 				data = response.data;
 				$('.temp-photo').empty();

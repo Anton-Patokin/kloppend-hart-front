@@ -241,8 +241,7 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout, 
 
     function getHeatMapData(startDate, endDate, timeRange) {
         var method = 'GET';
-        var url = 'http://localhost/edge/projects/kloppend-hart-antwerpen/version_002/front/' +
-            'application/service/heatmap/getMetricsByTimeRange/' + startDate + '/' + endDate
+        var url = ROOT_FRONT+ 'heatmap/getMetricsByTimeRange/' + startDate + '/' + endDate
         $http(
             {
                 method: method,
@@ -450,7 +449,7 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout, 
         $http(
             {
                 method: 'GET',
-                url: 'application/service/place/getPlaceNearbyPlacesByNid/' + nid,
+                url: ROOT_FRONT+'place/getPlaceNearbyPlacesByNid/' + nid,
             }
         ).then(function (result) {
 
@@ -539,8 +538,7 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout, 
                 },
                 click: function (marker, eventName, model) {
                     var method = 'GET';
-                    var url = 'http://localhost/edge/projects/kloppend-hart-antwerpen/version_002' +
-                        '/front/application/service/place/getCategoryByNid/' + marker.model.id
+                    var url = ROOT_FRONT+'place/getCategoryByNid/' + marker.model.id
                     $http(
                         {
                             method: method,

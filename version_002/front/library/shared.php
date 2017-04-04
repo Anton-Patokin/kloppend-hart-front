@@ -106,6 +106,7 @@ function callHook() {
 		}
                 //url parameter after controller and action
 		$queryString = $urlArray;
+
 	}
 	
         $model = $controller . 'Model';
