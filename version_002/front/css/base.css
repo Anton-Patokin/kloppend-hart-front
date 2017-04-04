@@ -23,6 +23,8 @@ body {
 
 .ng-view-frame {
     position: absolute;
+    height: -webkit-calc(100% - 350px);
+    height: -moz-calc(100% - 350px);
     height: calc(100% - 350px);
     width: 100%;
     top: 0;
@@ -98,6 +100,8 @@ body {
 }
 
 .test05 {
+    -webkit-transition-duration: 1s;
+    -moz-transition-duration: 1s;
     transition-duration: 1s;
 }
 
@@ -142,6 +146,10 @@ md-backdrop.md-sidenav-backdrop {
 .sidenav {
     color: white;
     border-right: 1px solid #232323;
+}
+
+.sidenav .icons {
+    margin-top: 64px;
 }
 
 .sidenav .icons ul li {
@@ -203,6 +211,8 @@ md-backdrop.md-sidenav-backdrop {
     font-size: 14px;
     border-bottom: solid 1px #232323;
     position: fixed;
+    width: -webkit-calc(100% - 50px);
+    width: -moz-calc(100% - 50px);
     width: calc(100% - 50px);
 }
 
@@ -219,6 +229,8 @@ md-backdrop.md-sidenav-backdrop {
     top: 0;
     margin-top: 52.44px;
     overflow: hidden;
+    -webkit-transition-duration: 0.3s;
+    -moz-transition-duration: 0.3s;
     transition-duration: 0.3s;
     z-index: -7;
 }
@@ -229,6 +241,8 @@ md-backdrop.md-sidenav-backdrop {
 }
 
 .dropdownShow {
+    height: -webkit-calc(100% - 52.44px);
+    height: -moz-calc(100% - 52.44px);
     height: calc(100% - 52.44px);
     visibility: show;
 }
@@ -390,6 +404,8 @@ label {
 .welcome-message {
     top: 50%;
     left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
     background-color: white;
     z-index: 3000;
@@ -435,10 +451,14 @@ label {
 
 .not-active-arrow img {
     height: 15px;
-    /*transform: rotate(50deg);*/
+    /*transform: rotate(50deg);
+    -webkit-transform: rotate(50deg);
+    -moz-transform: rotate(50deg);*/
 }
 
 .active-arrow img {
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
     transform: rotate(90deg);
 }
 
@@ -451,6 +471,7 @@ label {
     color: white;
     background: linear-gradient(45deg, #be1739 0%, #981511 100%);
 }
+
 /* DETAIL PAGE */
 
 .no-info {
@@ -479,6 +500,8 @@ label {
     margin-left: 5px;
     position: fixed;
     margin-top: -298px;
+    height: -webkit-calc(100% - 50px);
+    height: -moz-calc(100% - 50px);
     height: calc(100% - 50px);
     border-right: 1px solid #232323;
     overflow-y: auto;
@@ -569,8 +592,9 @@ label {
 }
 
 .no-animate {
-   -webkit-transition: none !important;
-   transition: none !important;
+    -webkit-transition: none !important;
+    -moz-transition: none !important;
+    transition: none !important;
 }
 
 .carousel-control.left, .carousel-control.right {
@@ -758,10 +782,13 @@ label {
     position: absolute;
     bottom: -56px;
     height: 56px;
-    -webkit-transition: all 0.7s ease;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
     transition: all 0.5s ease;
     padding: 0 35px;
     right: 0;
+    width: -webkit-calc(100% - 56px);
+    width: -moz-calc(100% - 56px);
     width: calc(100% - 56px);
     background: #151515;
 }
@@ -770,10 +797,13 @@ label {
     position: absolute;
     bottom: 0;
     height: 56px;
-    -webkit-transition: all 0.7s ease;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
     transition: all 0.5s ease;
     padding: 0 35px;
     right: 0;
+    width: -webkit-calc(100% - 56px);
+    width: -moz-calc(100% - 56px);
     width: calc(100% - 56px);
     background: #151515;
 }
@@ -815,15 +845,9 @@ label {
 
 #card {
     background: #fff;
-
-    -webkit-box-shadow: 0px 1px 10px 0px rgba(207, 207, 207, 1);
-    -moz-box-shadow: 0px 1px 10px 0px rgba(207, 207, 207, 1);
     box-shadow: 0px 1px 10px 0px rgba(207, 207, 207, 1);
-
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
-    -ms-transition: all 0.5s ease;
-    -o-transition: all 0.5s ease;
     transition: all 0.5s ease;
 }
 
@@ -864,7 +888,6 @@ label {
     margin: 15px;
     font-size: 20px;
     font-weight: bold;
-
     text-transform: uppercase;
 }
 
@@ -950,7 +973,7 @@ label {
     right: 2%;
 }
 
-.weather .tweets{
+.weather .tweets {
     margin-top: 0;
 }
 
@@ -1020,6 +1043,8 @@ label {
 
 .custom-slider.rzslider {
     /*float: left;
+    width: -webkit-calc(100% - 296px);
+    width: -moz-calc(100% - 296px);
     width: calc(100% - 296px);*/
 }
 
@@ -1040,8 +1065,6 @@ label {
 }
 
 @media screen and (max-width: 1024px) {
-
-
     .rz-tick-value {
         opacity: 0;
     }
@@ -1058,7 +1081,7 @@ label {
     margin: 0 !important;
     padding: 0 !important;
     position: relative;
-    right: -34px;
+    right: -200px;
     width: 296px;
 }
 
@@ -1107,10 +1130,62 @@ button.md-datepicker-button {
     padding: 10px 12px 8px 12px;
     position: absolute;
     top: -38px;
+    right: -webkit-calc(50% - 56px);
+    right: -moz-calc(50% - 56px);
     right: calc(50% - 56px);
     text-transform: uppercase;
 }
 
 .toggleSlider {
     height: 100px;
+}
+
+/* scrollbar */
+
+::-webkit-scrollbar {
+    width: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(45deg, #cd1739 0%, #a41c18 100%);
+}
+
+@media screen and (max-device-width: 480px) and (orientation: portrait) {
+    .social-media-checklist ul li:nth-child(3), .social-media-checklist ul li:nth-child(4), .social-media-checklist ul li:last-child {
+        display: none !important;
+    }
+    .left1 {
+        width: 100%;
+    }
+    md-sidenav {
+        max-width: 100% !important;
+        width: 100%;
+    }
+    md-sidenav div {
+        width: inherit;
+    }
+    .social-media-checklist {
+        width: -webkit-calc(100% - 55px);
+        width: -moz-calc(100% - 55px);
+        width: calc(100% - 55px);
+    }
+    .social-media-checklist ul {
+        width: 100%;
+    }
+    .social-media-checklist ul li:first-child, .social-media-checklist ul li:nth-child(2) {
+        font-size: 80%;
+        height: 55px;
+        padding: 20px 0;
+        text-align: center;
+        width: 50%;
+    }
+    .search-input {
+        width: 55px;
+    }
+    .search-input ul {
+        margin-left: -40px;
+    }
+    .search-input ul li:first-child {
+        display: none;
+    }
 }
