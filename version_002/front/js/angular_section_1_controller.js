@@ -194,6 +194,7 @@ app.controller("section1", function ($scope, $routeParams, $http) {
 		    cache: false,
 		    success: function(data) {
 		    	if (data.foursquare.length > 0) {
+		    		$scope.socialMediaItems = [];
 		    		$scope.socialMediaItems = data.foursquare;
 		    	} else {
 		    		$scope.socialMediaItems = false;
@@ -220,8 +221,8 @@ app.controller("section1", function ($scope, $routeParams, $http) {
 			url: 'place/getSocialMediaPhotos/'+nid
 			}).then(function successCallback(response) {
 				data = response.data;
-				$('.temp-photo').empty();
-		    	// console.log(data);
+				$('.photo-info').empty();
+				$scope.slides = [];
 		    	if (data.foursquare.length != 0) {
 			    	for (var i = data.foursquare.length - 1; i >= 0; i--) {
 			    		imageExists(data.foursquare[i].url, function(url, exists) {
@@ -232,8 +233,7 @@ app.controller("section1", function ($scope, $routeParams, $http) {
 						});	
 			    	}
 		    	} else {
-		    		console.log()
-		    		$('.poi-photo-wrapper').append('<p class="temp-photo">Er zijn geen foto\'s van deze plaats.</p>');
+		    		$('.photo-info').append('<p class="temp-photo">Er zijn geen foto\'s van deze plaats.</p>');
 		    	}
 
 		    	$scope.loadPhotos = false;
