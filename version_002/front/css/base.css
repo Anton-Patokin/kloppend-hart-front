@@ -1262,4 +1262,8 @@ button.md-datepicker-button {
     .buienradar {
         height: 150px;
     }
+
+    .div .overlay_1_1-disabled, .div .overlay_1_1-able {
+        width: 100%;
+    }
 }
