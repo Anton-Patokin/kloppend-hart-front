@@ -42,7 +42,7 @@
 	<section>
 		<md-sidenav class="left1" md-component-id="left1">
 			<div class="kha-logo-wrapper">
-				<div ng-click="home(); closeSideNav(); toggleTrending('close');" class="kha-logo">
+				<div ng-click="home(); closeSideNav(); toggleTrending('close'); enableFooter();" class="kha-logo">
 					
 				</div>				
 			</div>
