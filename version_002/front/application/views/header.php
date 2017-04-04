@@ -2,8 +2,8 @@
 <html lang="en">
 <?php
 
-    $rootPath = "http://localhost/edge/projects/kloppend-hart-antwerpen/version_002/front/";
-    // $rootPath = "http://localhost/edge/projects/kloppend-hart-antwerpen/kloppend-hart-front/version_002/front/";
+//    $rootPath = "http://localhost/edge/projects/kloppend-hart-antwerpen/version_002/front/";
+     $rootPath = "http://localhost/edge/projects/kloppend-hart-antwerpen/kloppend-hart-front/version_002/front/";
 //$rootPath = "https://apen.be/kloppend-hart-antwerpen/front/";
 
 
@@ -29,7 +29,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
+    <script src="<?= $rootPath ?>js/libs/angular-material.js"></script>
 
     <script
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCrmTkGoBzp--pRgO5vRXIsbXPrk3VMp_w&libraries=places&language=nl&region=BE&sensor=false&libraries=drawing&libraries=visualization"
