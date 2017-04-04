@@ -12,6 +12,7 @@ app.controller("section1", function ($scope, $routeParams, $http) {
 	$scope.loadMediaStream = false;
 	$scope.imageExist;
 	$scope.socialMediaItems;
+	$scope.showSubcategories = true;
 
 	$scope.myInterval = 6000;
  	$scope.slides = [];
@@ -199,7 +200,10 @@ app.controller("section1", function ($scope, $routeParams, $http) {
 			}, function errorCallback(response) {
 				console.log("Status: " + response);
 		});
+	}
 
+	$scope.toggleSubcategories = function() {
+		$scope.showSubcategories = !$scope.showSubcategories;
 	}
 
 	$scope.$watch('currentPage + numPerPage', function() {

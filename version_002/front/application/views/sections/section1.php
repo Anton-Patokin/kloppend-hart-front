@@ -8,8 +8,9 @@
 			<div class="col-md-12 subcategories-menu">
 				<ul>
 					<?php foreach($subcategories as $key => $subcategory): ?>
-						<a href="#section1/<?= $getCategory ?>/show/<?= $subcategory['link'] ?>"><li class="<?= (strtolower($subcategory['link']) == strtolower($getSubcategory))? 'subcategory-active' : '' ?> <?= (($key % 2) == 0) ? 'even' : 'oneven' ;?>"><?= $subcategory['database'] ?><span class="subcategory-arrow pull-right"><img src="<?= (strtolower($subcategory['link']) == strtolower($getSubcategory))? $rootScope.'images/newdesign/arrow-active.png' : $rootScope.'images/newdesign/arrow.png' ?>"></span></li></a>
-						<ul>
+						<?php if($key == 0): ?><a ng-click="toggleSubcategories()"><li><span ng-hide="showSubcategories">Open</span><span ng-show="showSubcategories">Close</span> subcategories</li></a><?php endif ?>
+						<a ng-show="showSubcategories" href="#section1/<?= $getCategory ?>/show/<?= $subcategory['link'] ?>"><li class="<?= (strtolower($subcategory['link']) == strtolower($getSubcategory))? 'subcategory-active' : '' ?> <?= (($key % 2) == 0) ? 'even' : 'oneven' ;?>"><?= $subcategory['database'] ?><span class="subcategory-arrow pull-right"><img src="<?= (strtolower($subcategory['link']) == strtolower($getSubcategory))? $rootScope.'images/newdesign/arrow-active.png' : $rootScope.'images/newdesign/arrow.png' ?>"></span></li></a>
+						<ul ng-show="showSubcategories">
 							<?php if(strtolower($subcategory['link']) == strtolower($getSubcategory)): ?>
 								<?php if(isset($topPlaces) && count($topPlaces) > 0): ?>
 									<?php for ($i=0; $i < 10; $i++): ?>

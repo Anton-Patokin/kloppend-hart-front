@@ -19,7 +19,7 @@
 ?>
 <div ng-controller="SideBarController">
 	<div class="navbar navbar-inverse navbar-fixed-left sidenav">
-		<div ng-click="toggleLeft()" class="hamburger-icon">
+		<div ng-click="toggleLeft(); toggleTrending('close');" class="hamburger-icon">
 			<img src="<?= $rootPath ?>images/newdesign/hamburger.png">
 		</div>
 		<div class="title">
@@ -42,7 +42,7 @@
 	<section>
 		<md-sidenav class="left1" md-component-id="left1">
 			<div class="kha-logo-wrapper">
-				<div class="kha-logo">
+				<div ng-click="home(); closeSideNav(); toggleTrending('close');" class="kha-logo">
 					
 				</div>				
 			</div>

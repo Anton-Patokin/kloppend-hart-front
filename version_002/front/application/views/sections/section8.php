@@ -75,9 +75,9 @@ $tweets = $tweet->searchTweetsUsers('frankdeboosere');
                             <?php if ($key % 2 == 0): ?>
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
-                                        <a href="http://twitter.com/<?php echo $value->user->name; ?>"><?php echo $value->user->name; ?></a>
+                                        <a href="http://twitter.com/<?php echo $value->user->name; ?>"><?php echo $value->user->name; ?>
                                         <span class="pull-right twitter-logo"><img
-                                                src="images/newdesign/twitter-logo.png"></span>
+                                                src="images/newdesign/twitter-logo.png"></span></a>
                                     </div>
                                     <div class="panel-body">
                                         <div class="tweet-photo"><img
@@ -96,9 +96,9 @@ $tweets = $tweet->searchTweetsUsers('frankdeboosere');
                             <?php if ($key % 2 == 1): ?>
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
-                                        <a href="http://twitter.com/<?php echo $value->user->name; ?>"><?php echo $value->user->name; ?></a>
+                                        <a href="http://twitter.com/<?php echo $value->user->name; ?>"><?php echo $value->user->name; ?>
                                         <span class="pull-right twitter-logo"><img
-                                                src="images/newdesign/twitter-logo.png"></span>
+                                                src="images/newdesign/twitter-logo.png"></span></a>
                                     </div>
                                     <div class="panel-body">
                                         <div class="tweet-photo"><img
