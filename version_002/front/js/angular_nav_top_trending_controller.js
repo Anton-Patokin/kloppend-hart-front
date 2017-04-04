@@ -1,4 +1,4 @@
-app.controller("navTopTrendingController", function ($scope) {
+app.controller("navTopTrendingController", function ($scope, $http) {
 
     $scope.topTrendingList = [];
     $scope.trendingNearList = [];
@@ -8,7 +8,7 @@ app.controller("navTopTrendingController", function ($scope) {
 
     var today = new Date();
 	var day = today.getDate();
-	var month = today.getMonth()+1; //January is 0!
+	var month = today.getMonth()+1;
 	var year = today.getFullYear();
 	if(day<10){
 	    day='0'+day;
@@ -16,9 +16,7 @@ app.controller("navTopTrendingController", function ($scope) {
 	if(month<10){
 	    month='0'+month;
 	}
-	// var hours = today.getHours();
-	// var minutes = today.getMinutes();
-	// var seconds = today.getSeconds();
+
 	var hours = 23;
 	var minutes = 59;
 	var seconds = 59;
@@ -47,47 +45,81 @@ app.controller("navTopTrendingController", function ($scope) {
 		apiGetTrendingList(lat, lon, startDate, endDate);
 	}
 
+	
+
 	function apiGetTrendingList(lat, lon, startDate, endDate){
-		$.ajax({
-			url: 'heatmap/getTrendingList/'+lat+'/'+lon+'/'+startDate+'/'+endDate,
-			type: 'GET',
-		    dataType: 'Json',
-		    async: true,
-		    cache: false,
-		    success: function(data) {
-		    	// console.log(data);
-		    	if (data.length != 0) {
-		    		for (var i = 0; i < 5 ; i++) {
-			    		$scope.trendingNearList.push(data[i]);
-			    	} 
-			    } else {
-		    		$scope.trendingNearList = false
-		    	};
-		    	
-		    },
-		    error: function(XMLHttpRequest, textStatus, errorThrown) { 
-		        console.log("Status: " + textStatus); console.log("Error: " + errorThrown); 
-		    }
+		$http({
+			method: 'GET',
+			dataType: 'json',
+			async: true,
+			cache: false,
+			url: 'heatmap/getTrendingList/'+lat+'/'+lon+'/'+startDate+'/'+endDate
+			}).then(function successCallback(response) {
+				data = response.data;
+				if (data.length != 0) {
+			    	counter = 0;
+			    	for(poi in data){
+			    		if ($scope.trendingNearList.length == 0) {
+			    			$scope.trendingNearList.push(data[counter]);
+			    		}
+			    		if (counter > 0) {
+			    			exists = false;
+			    			for(trendingPoi in $scope.trendingNearList){
+			    				if (data[counter].poi_id == $scope.trendingNearList[trendingPoi].poi_id) {
+			    					exists = true;
+			    				}
+			    			}	
+			    			if(!exists) {
+		    					$scope.trendingNearList.push(data[counter]);
+		    				}	    			
+			    		}		    				    		
+			    		counter++;
+			    		if ($scope.trendingNearList.length == 5) {
+			    			break;
+			    		}
+			    	}
+		    	} else {
+		    		$scope.trendingNearList = false;
+		    	}
+			}, function errorCallback(response) {
+				console.log("Status: " + response);
 		});
 	}
 
-    $.ajax({
-		url: 'heatmap/getTopTrendingList/'+startDate+'/'+endDate,
-		type: 'GET',
-	    dataType: 'Json',
-	    async: false,
-	    cache: false,
-	    success: function(data) {
-	    	if (data.length != 0) {
-	    		for (var i = 0; i < 5 ; i++) {
-		    		$scope.topTrendingList.push(data[i]);
+	$http({
+		method: 'GET',
+		dataType: 'json',
+		async: true,
+		cache: false,
+		url: 'heatmap/getTopTrendingList/'+startDate+'/'+endDate
+		}).then(function successCallback(response) {
+			data = response.data;
+			if (data.length != 0) {
+		    	counter = 0;
+		    	for(poi in data){
+		    		if ($scope.topTrendingList.length == 0) {
+		    			$scope.topTrendingList.push(data[counter]);
+		    		}
+		    		if (counter > 0) {
+		    			exists = false;
+		    			for(trendingPoi in $scope.topTrendingList){
+		    				if (data[counter].poi_id == $scope.topTrendingList[trendingPoi].poi_id) {
+		    					exists = true;
+		    				}
+		    			}	
+		    			if(!exists) {
+	    					$scope.topTrendingList.push(data[counter]);
+	    				}	    			
+		    		}		    				    		
+		    		counter++;
+		    		if ($scope.topTrendingList.length == 5) {
+		    			break;
+		    		}
 		    	}
 	    	} else {
 	    		$scope.topTrendingList = false;
 	    	}
-	    },
-	    error: function(XMLHttpRequest, textStatus, errorThrown) { 
-	        console.log("Status: " + textStatus); console.log("Error: " + errorThrown); 
-	    }
+		}, function errorCallback(response) {
+			console.log("Status: " + response);
 	});
 });
