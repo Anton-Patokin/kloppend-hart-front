@@ -1,6 +1,6 @@
 <?php
 
-    $rootScope = "http://localhost/edge/projects/kloppend-hart-antwerpen/kloppend-hart-front/version_002/front/";
+    $rootScope = "https://apen.be/kloppend-hart-antwerpen/front/";
 
 ?>
 <div class="container background_white">
