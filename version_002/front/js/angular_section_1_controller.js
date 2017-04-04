@@ -22,7 +22,7 @@ app.controller("section1", function ($scope, $routeParams, $http) {
 	$scope.maxSize = 5;
 
  	$scope.$watch('currentPage + numPerPage', function() {
- 		if ($scope.socialMediaItems.length > 0) {
+ 		if ($scope.socialMediaItems != null && $scope.socialMediaItems.length > 0) {
  			var begin = (($scope.currentPage - 1) * $scope.numPerPage)
 			, end = begin + $scope.numPerPage;
 			$scope.filteredSocialMediaItems = $scope.socialMediaItems.slice(begin, end);
@@ -172,39 +172,39 @@ app.controller("section1", function ($scope, $routeParams, $http) {
 				console.log("Status: " + response);
 		});
 
-		// $http({
-		// 	method: 'GET',
-		// 	dataType: 'json',
-		// 	async: false,
-		// 	cache: false,
-		// 	url: 'application/service/place/getSocialMediaStreamByNid/'+nid
-		// 	}).then(function successCallback(response) {
-		// 		data = response.data;
-		// 		$scope.socialMediaItems = data.foursquare;
-		// 		console.log('SOCIAL MEDIA ITEMS: ', data);
-		// 	}, function errorCallback(response) {
-		// 		console.log("Status: " + response);
-		// });
-
-		$.ajax({
-			url: 'place/getSocialMediaStreamByNid/'+nid,
-			type: 'GET',
-		    dataType: 'json',
-		    async: false,
-		    cache: false,
-		    success: function(data) {
-		    	if (data.foursquare.length > 0) {
-		    		$scope.socialMediaItems = [];
-		    		$scope.socialMediaItems = data.foursquare;
-		    	} else {
-		    		$scope.socialMediaItems = false;
-		    	}
-		    	$scope.loadMediaStream = false;
-		    },
-		    error: function(XMLHttpRequest, textStatus, errorThrown) { 
-		        console.log("Status: " + textStatus); console.log("Error: " + errorThrown); 
-		    }
+		$http({
+			method: 'GET',
+			dataType: 'json',
+			async: true,
+			cache: false,
+			url: 'place/getSocialMediaStreamByNid/'+nid
+			}).then(function successCallback(response) {
+				data = response.data;
+				$scope.socialMediaItems = data.foursquare;
+				console.log('SOCIAL MEDIA ITEMS: ', data);
+			}, function errorCallback(response) {
+				console.log("Status: " + response);
 		});
+
+		// $.ajax({
+		// 	url: 'place/getSocialMediaStreamByNid/'+nid,
+		// 	type: 'GET',
+		//     dataType: 'json',
+		//     async: false,
+		//     cache: false,
+		//     success: function(data) {
+		//     	if (data.foursquare.length > 0) {
+		//     		$scope.socialMediaItems = [];
+		//     		$scope.socialMediaItems = data.foursquare;
+		//     	} else {
+		//     		$scope.socialMediaItems = false;
+		//     	}
+		//     	$scope.loadMediaStream = false;
+		//     },
+		//     error: function(XMLHttpRequest, textStatus, errorThrown) { 
+		//         console.log("Status: " + textStatus); console.log("Error: " + errorThrown); 
+		//     }
+		// });
 
 		function imageExists(url, callback) {
 			var img = new Image();

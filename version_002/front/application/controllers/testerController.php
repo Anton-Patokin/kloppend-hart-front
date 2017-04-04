@@ -183,6 +183,8 @@ class testerController
                 if (strlen($placeInfo->body) > 80) {
                     $subtitle = strip_tags($placeInfo->body);
                     $subtitle = substr($subtitle, 0, 77) . '...';
+                } elseif (empty($placeInfo->body)) {
+                    $subtitle = "Er is geen info voor deze plaats op deze moment.";
                 }
 
                 $create_custom_json["messages"][0]["attachment"]["payload"]["elements"][] = array("title" => $topPlaces[$i]["name"], "image_url" => $placeImage, "subtitle" => trim($subtitle), "item_url" => "https://apen.be/node/".$topPlaces[$i]["nid"], "buttons" => [] );
