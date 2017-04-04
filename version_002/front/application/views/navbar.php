@@ -1,17 +1,3 @@
-<!-- <div class="navbar navbar-inverse navbar-fixed-left">
-	<a ng-click="enableScroll()" class="navbar-brand" href="#">Brand</a>
-	<ul class="nav navbar-nav">
-		<li><a href="#section1/horeca/show/restaurant" class="main-menu section-001"><span>Horeca</span></a></li>
-		<li><a href="#section1/cultuur/show/gallerij" class="main-menu section-001"><span>Cultuur</span></a></li>
-		<li><a href="#section1/over_de_stad/show/Openbare-diensten" class="main-menu section-001"><span>Over de stad</span></a></li>
-		<li><a href="#section1/winkel/show/kleding" class="main-menu section-001"><span>Shopping</span></a></li>
-		<li><a href="#section1/uitgaan/show/film" class="main-menu section-001"><span>Uitgaan</span></a></li>
-		<li><a href="#section1/vrije_tijd/show/sport" class="main-menu section-001"><span>Vrije tijd</span></a></li>
-		<li><a href="#section7" class="main-menu section-007"><span>Verkeer</span></a></li>        
-		<li><a href="#section8" class="main-menu section-008"><span>Weer</span></a></li>
-		<li><a href="#sectionvelo" class="main-menu section-010"><span>Velo</span></a></li>
-	</ul>
-</div> -->
 <div ng-controller="SideBarController">
 	<div class="navbar navbar-inverse navbar-fixed-left sidenav">
 		<div ng-click="toggleLeft()" class="hamburger-icon">
@@ -43,13 +29,6 @@
 			</div>
 			<div class="icon-titles">
 				<ul>
-					<!-- <li ng-click="toggleLeft()">Horeca<span class="pull-right">></span></li>
-					<li ng-click="toggleLeft()">Cultuur<span class="pull-right">></span></li>
-					<li ng-click="toggleLeft()">Over de stad<span class="pull-right">></span></li>
-					<li ng-click="toggleLeft()">Shopping<span class="pull-right">></span></li>
-					<li ng-click="toggleLeft()">Verkeer<span class="pull-right">></span></li>
-					<li ng-click="toggleLeft()">Vrije tijd<span class="pull-right">></span></li>
-					<a href="#section7"><li>Weer<span class="pull-right">></span></li></a> -->
 					<a ng-click="toggleLeft()" href="#section1/horeca/show/restaurant"><li>Horeca<span class="pull-right">></span></li></a>
 					<a ng-click="toggleLeft()" href="#section1/cultuur/show/gallerij"><li>Cultuur<span class="pull-right">></span></li></a>
 					<a ng-click="toggleLeft()" href="#section1/over_de_stad/show/Openbare-diensten"><li>Over de stad<span class="pull-right">></span></li></a>
@@ -62,5 +41,4 @@
 			</div>
 		</md-sidenav>
 	</section>
-	
 </div>

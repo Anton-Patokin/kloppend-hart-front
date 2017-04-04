@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <!--    css-->
+    <base href="http://localhost/edge/projects/kloppend-hart-antwerpen/version_002/front/">
     <link rel="stylesheet" href="css/libs/bootstrap.min.css">
     <link rel="stylesheet" href="css/libs/angular-material.min.css">
     <link rel="stylesheet" href="css/base.css">
@@ -32,18 +33,26 @@
     <script src="js/libs/morris.min.js"></script>
     <script src="js/libs/angular-morris.min.js"></script>
     <!-- <script type="text/javascript" src="js/libs/masonry.pkgd.min.js"></script> -->
-    
+
     <script src="js/angular_main.js"></script>
     <script src="js/angular_section_angular_google_maps_controller.js"></script>
-    <script src="js/searchFormController.js"></script>    
+    <script src="js/searchFormController.js"></script>
     <script src="js/angular_section_1_controller.js"></script>
     <script src="js/angular_section_7_controller.js"></script>
     <script src="js/angular_section_8_controller.js"></script>
     <script src="js/weatherController.js"></script>
 
-    <script type="text/javascript" src="js/angular_top_trending_controller.js"></script>
     <script type="text/javascript" src="js/angular_nav_top_trending_controller.js"></script>
     <script type="text/javascript" src="js/angular_side_bar_controller.js"></script>
     <script type="text/javascript" src="js/global_var.js"></script>
     <script type="text/javascript" src="js/time_lineController.js"></script>
 </head>
+<?php
+    if (file_exists('application/views/index.php')) {
+        include_once 'application/views/index.php';
+        // var_dump(file("application/views/index.php"));
+    } else {
+        echo "FALSEEE";
+    }
+    
+?>
