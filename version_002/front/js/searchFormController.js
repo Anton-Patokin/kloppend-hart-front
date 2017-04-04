@@ -1,4 +1,4 @@
-app.controller("searchFormController", function ($scope, $timeout) {
+app.controller("searchFormController", function ($scope, $timeout, $http) {
 
 	$scope.searchNode=function(){
 		$scope.searchResults = [];
@@ -8,13 +8,15 @@ app.controller("searchFormController", function ($scope, $timeout) {
 				$scope.showResults = false;
 			}, 300);
 		};
-		$.ajax({
-			url: 'search/getSearchResults/'+$scope.searchInput,
-			type: 'GET',
+
+		$http({
+			method: 'GET',
 			dataType: 'json',
-			async: false,
+			async: true,
 			cache: false,
-			success: function(data) {
+			url: 'search/getSearchResults/'+$scope.searchInput
+			}).then(function successCallback(response) {
+				data = response.data;
 				if ($scope.searchInput != '') {
 					$scope.showResults = true;
 					for (var i = 0; i < 10; i++) {
@@ -24,10 +26,8 @@ app.controller("searchFormController", function ($scope, $timeout) {
 					$scope.showResults = false;
 					$scope.searchResults = [];
 				}
-			},
-			error: function(XMLHttpRequest, textStatus, errorThrown) { 
-				console.log("Status: " + textStatus); console.log("Error: " + errorThrown); 
-			}
+			}, function errorCallback(response) {
+				console.log("Status: " + response);
 		});
 	}
 });
