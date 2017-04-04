@@ -102,7 +102,9 @@
 							  <img ng-src="{{slide.image}}" isImage>
 							</slide>
 						  </carousel>
-						</div>						
+						</div>
+						<div class="photo-info">
+						</div>
 					</div>
 				</div>
 				<div class="col-md-12">

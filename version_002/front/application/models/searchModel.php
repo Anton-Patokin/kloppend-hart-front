@@ -1,5 +1,6 @@
 <?php
-require_once '../../../poi/service/PoiService.class.php';
+require_once('C:\xampp\htdocs\edge\projects\kloppend-hart-antwerpen\version_002\Settings.php');
+require_once ROOT . 'poi/service/PoiService.class.php';
 
 class searchModel{
     protected $searchService;
