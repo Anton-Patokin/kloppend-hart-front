@@ -10,7 +10,7 @@
         </div>
         <div class="col-md-2 datepicker_1">
             <md-content>
-                <md-datepicker ng-model="myDate" md-placeholder="Enter date"></md-datepicker>
+                <md-datepicker ng-model="myDate" ></md-datepicker>
             </md-content>
         </div>
     </div>

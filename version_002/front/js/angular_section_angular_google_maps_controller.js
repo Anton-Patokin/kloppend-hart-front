@@ -38,11 +38,15 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout, 
     $animate.enabled(false);
 
 //default date values
-    $scope.myDate = new Date();
+
+
+    var d = new Date();
+    $scope.minDate = d;
+    $scope.myDate = $scope.minDate;
     var start_time = 0;
     var end_time = 0;
-    var slider_start_time = $scope.myDate.getHours() - 3;
-    var slider_end_time = $scope.myDate.getHours() + 1;
+    var slider_start_time = $scope.minDate.getHours() - 3;
+    var slider_end_time = $scope.minDate.getHours() + 1;
 
 
 //heatmap Settings
