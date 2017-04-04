@@ -46,7 +46,7 @@
 			<li>
 				<p class="btn-search"><img src="<?= $rootPath ?>images/newdesign/search.png"></p>
 			</li>
-			<ul ng-click="dropdown(); toggleTrending('close');" ng-show="showResults" class="search-results">
+			<ul ng-click="dropdown(); toggleTrending('close'); closeSideNav();" ng-show="showResults" class="search-results">
 				<a ng-repeat="searchResult in searchResults" href=#section1/test/search/{{searchResult['nid']}}><li>{{searchResult['name']}}</li></a>
 			</ul>
 		</ul>

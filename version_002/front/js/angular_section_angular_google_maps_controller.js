@@ -1,4 +1,4 @@
-app.controller("PrimeController", function ($scope, $http, $interval, $timeout, $animate) {
+app.controller("PrimeController", function ($scope, $http, $interval, $timeout, $animate, $mdSidenav) {
     var showHeatmapBool = true;
     var showMarkersBool = true;
     $scope.toggleSlider = false;
@@ -101,6 +101,16 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout, 
         else {
             if ($scope.dropdownToggle == true) {
                 $scope.dropdownToggle = false
+            }
+        }
+    }
+
+    $scope.closeSideNav = buildToggler2('left1');
+
+    function buildToggler2(componentId){
+        return function() {
+            if ($mdSidenav(componentId).isOpen()) {
+                $mdSidenav(componentId).toggle();
             }
         }
     }
