@@ -462,7 +462,6 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout, 
             var marker_type = result.data.center.marker_type;
             var title = result.data.center.name;
 
-            console.log('foreachresult', result)
             if (result.data.near) {
                 result.data.near.forEach(function (element) {
                     createMarker({
