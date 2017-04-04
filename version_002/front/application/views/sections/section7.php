@@ -35,8 +35,8 @@
 								
 								<div class="panel panel-default">
 									<div class="panel-heading">
-										<a href="http://twitter.com/<?= $status->user->screen_name ?>"><?= $status->user->screen_name ?></a>
-										<span class="pull-right twitter-logo"><img src="images/newdesign/twitter-logo.png"></span>
+										<a href="http://twitter.com/<?= $status->user->screen_name ?>"><?= $status->user->screen_name ?>
+										<span class="pull-right twitter-logo"><img src="images/newdesign/twitter-logo.png"></span></a>
 									</div>
 									<div class="panel-body">
 										<div class="tweet-photo"><img src="<?= $status->user->profile_image_url ?>"></div>
@@ -56,8 +56,8 @@
 								
 								<div class="panel panel-default">
 									<div class="panel-heading">
-										<a href="http://twitter.com/<?= $status->user->screen_name ?>"><?= $status->user->screen_name ?></a>
-										<span class="pull-right twitter-logo"><img src="images/newdesign/twitter-logo.png"></span>
+										<a href="http://twitter.com/<?= $status->user->screen_name ?>"><?= $status->user->screen_name ?>
+										<span class="pull-right twitter-logo"><img src="images/newdesign/twitter-logo.png"></span></a>
 									</div>
 									<div class="panel-body">
 										<div class="tweet-photo"><img src="<?= $status->user->profile_image_url ?>"></div>
@@ -77,8 +77,8 @@
 								
 								<div class="panel panel-default">
 									<div class="panel-heading">
-										<a href="http://twitter.com/<?= $status->user->screen_name ?>"><?= $status->user->screen_name ?></a>
-										<span class="pull-right twitter-logo"><img src="images/newdesign/twitter-logo.png"></span>
+										<a href="http://twitter.com/<?= $status->user->screen_name ?>"><?= $status->user->screen_name ?>
+										<span class="pull-right twitter-logo"><img src="images/newdesign/twitter-logo.png"></span></a>
 									</div>
 									<div class="panel-body">
 										<div class="tweet-photo"><img src="<?= $status->user->profile_image_url ?>"></div>
@@ -98,8 +98,8 @@
 								
 								<div class="panel panel-default">
 									<div class="panel-heading">
-										<a href="http://twitter.com/<?= $status->user->screen_name ?>"><?= $status->user->screen_name ?></a>
-										<span class="pull-right twitter-logo"><img src="images/newdesign/twitter-logo.png"></span>
+										<a href="http://twitter.com/<?= $status->user->screen_name ?>"><?= $status->user->screen_name ?>
+										<span class="pull-right twitter-logo"><img src="images/newdesign/twitter-logo.png"></span></a>
 									</div>
 									<div class="panel-body">
 										<div class="tweet-photo"><img src="<?= $status->user->profile_image_url ?>"></div>

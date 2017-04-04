@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="<?= $rootPath ?>css/libs/bootstrap.min.css">
     <link rel="stylesheet" href="<?= $rootPath ?>css/libs/angular-material.min.css">
     <link rel="stylesheet" href="<?= $rootPath ?>css/base.css">
+    <link rel="stylesheet" href="<?= $rootPath ?>css/samStyling.css">
     <link rel="stylesheet" href="<?= $rootPath ?>css/libs/rzslider.css">
     <link rel="stylesheet" href="<?= $rootPath ?>css/weather-icons.min.css">
     <link rel="stylesheet" href="<?= $rootPath ?>css/weather-icons-wind.min.css">
