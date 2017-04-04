@@ -227,7 +227,7 @@ md-backdrop.md-sidenav-backdrop {
     width: 300px;
     margin-left: -19px;
     top: 0;
-    margin-top: 52.44px;
+    margin-top: 55px;
     overflow: hidden;
     -webkit-transition-duration: 0.3s;
     -moz-transition-duration: 0.3s;
@@ -1221,9 +1221,45 @@ button.md-datepicker-button {
 
     }
 
+    .sidenav .icons, .sidenav .title  {
+        display: none;
+    }
 
+    .sidenav {
+        height: auto;
+        border-bottom: none;
+    }
 
+    .left1 {
+        margin-left: 0;
+    }
 
+    .top-trending {
+        /*margin-left: -20px;*/
+    }
 
+    .subcategories-menu-wrapper {
+        margin-top: 0;
+        margin-left: 0;
+        width: 100%;
+        position: static;
+    } 
 
+    .section-wrapper, .poi-details-wrapper {
+        margin-left: 0;
+    }
+
+    .poi-details, .poi-details .col-md-12 {
+        padding-left: 0;
+        padding-right: 0; 
+    }
+
+    .dropdownTest, .dropdownShow {
+        left: 0;
+        margin-left: 0;
+    }
+
+    .buienradar {
+        height: 150px;
+    }
 }
