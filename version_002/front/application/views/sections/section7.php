@@ -23,7 +23,7 @@
 	// $ringAntwerpenTweets = $tweet->searchTweets('ring antwerpen');
 	// var_dump($verkeerAntwerpenTweets->statuses);
 ?>
-<div class="section-wrapper verkeer" ng-init='disableFooter();toggle_show_traffic(true)'>
+<div class="section-wrapper verkeer" ng-init='disableFooter();toggle_show_traffic(true);enableScroll()'>
 	<div class="container-fluid">
 		<div class="col-md-12 tweets">
 			<?php foreach($tweets as $key => $tweet): ?>

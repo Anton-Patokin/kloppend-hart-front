@@ -71,6 +71,7 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout, 
         load_nearby_places(nid);
         $scope.map.options.scrollwheel = false;
     }
+    
 
     $scope.enableScroll = function () {
         $scope.map.zoom = 10;
@@ -114,6 +115,9 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout, 
     $scope.toggle_show_traffic = function ($show) {
         if($show){
             center_google_maps(save_position_lat_client, save_position_long_client, false)
+            clean_map();
+            clean_map_from_markers_and_clusters();
+            initialize_bounce_marker();
         }
         $scope.show_traffic = $show;
     }
