@@ -145,6 +145,9 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout, 
     $scope.myChangeListener = function (sliderId) {
         slider_start_time = $scope.slider.minValue;
         slider_end_time = $scope.slider.maxValue;
+        if($scope.slider.maxValue == "24"){
+            slider_end_time ="23.59";
+        }
         switchApplicationState(APP_STATE_LOAD_CURRENT_HOUR);
     };
     $scope.layer = "";

@@ -15,5 +15,4 @@ function get_lat_long($url)
 
 
 }
-
 ?>

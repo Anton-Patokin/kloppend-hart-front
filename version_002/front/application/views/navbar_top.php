@@ -38,10 +38,10 @@
 			</li>
 		</ul>
 	</div>
-	<div ng-controller="searchFormController" class="search-input pull-right">
+	<div ng-controller="searchFormController" class="search-input pull-right" >
 		<ul>
 			<li>
-				<input ng-model="searchInput" ng-blur="dropdown()" ng-keyup="searchNode()" type="text" name="searchInput" placeholder="search...">
+				<input id="search-input" ng-model="searchInput" ng-blur="dropdown()" id="search" ng-keyup="searchNode()" type="text" name="searchInput" placeholder="search...">
 			</li>
 			<li>
 				<p class="btn-search"><img src="<?= $rootPath ?>images/newdesign/search.png"></p>

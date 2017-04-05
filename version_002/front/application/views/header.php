@@ -1,16 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
 <?php
 
    $rootPath = "http://localhost/edge/projects/kloppend-hart-antwerpen/version_002/front/";
      // $rootPath = "http://localhost/edge/projects/kloppend-hart-antwerpen/kloppend-hart-front/version_002/front/";
 // $rootPath = "https://apen.be/kloppend-hart-antwerpen/front/";
 
-
 ?>
+<!DOCTYPE html>
+<html lang="nl-BE">
+
 <head>
     <meta charset="UTF-8">
     <meta name=viewport content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="<?= $rootPath ?>/images/icon-002.png">
 
     <!--    css-->
     <link rel="stylesheet" href="<?= $rootPath ?>css/libs/bootstrap.min.css">
@@ -44,7 +45,7 @@
     <script src="<?= $rootPath ?>js/libs/angular-morris.min.js"></script>
     <script src="<?= $rootPath ?>js/angular_main.js"></script>
     <script src="<?= $rootPath ?>js/angular_section_angular_google_maps_controller.js"></script>
-    <script src="<?= $rootPath ?>js/searchFormController.js"></script>    
+    <script src="<?= $rootPath ?>js/searchFormController.js"></script>
     <script src="<?= $rootPath ?>js/angular_section_1_controller.js"></script>
     <script src="<?= $rootPath ?>js/angular_section_7_controller.js"></script>
     <script src="<?= $rootPath ?>js/angular_section_8_controller.js"></script>
