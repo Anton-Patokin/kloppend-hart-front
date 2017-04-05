@@ -790,7 +790,7 @@ label {
     width: -webkit-calc(100% - 56px);
     width: -moz-calc(100% - 56px);
     width: calc(100% - 56px);
-    background: #151515;
+    background: #fff;
 }
 
 .div .overlay_1_1-disabled {
@@ -805,7 +805,7 @@ label {
     width: -webkit-calc(100% - 56px);
     width: -moz-calc(100% - 56px);
     width: calc(100% - 56px);
-    background: #151515;
+    background: #fff;
 }
 
 /* WEATHER PAGE */
@@ -1001,17 +1001,19 @@ label {
     margin-left: 4px;
 }
 
+/*slider line between two circle */
 .custom-slider.rzslider .rz-selection {
-    background: #bf2336;
+    background: #000;
 }
 
+/*two circle of slider*/
 .custom-slider.rzslider .rz-pointer {
     width: 14px;
     height: 14px;
     top: -14px;
     /* to remove the default positioning */
     bottom: 0;
-    background-color: #fff;
+    background-color: #bf2336;
     border-radius: 100%;
     margin-left: 4px;
 }
@@ -1021,14 +1023,20 @@ label {
 }
 
 .custom-slider.rzslider .rz-bubble {
-    display: none;
+    /*display: none;*/
+    padding-left: 15px;
+    top: -35px; /* to remove the default positioning */
+}
+
+.custom-slider.rzslider .rz-bubble:after {
+    content: " Uur";
 }
 
 .custom-slider.rzslider .rz-tick {
     width: 1px;
     height: 18px;
     border-radius: 0;
-    background: #fff;
+    background: #000;
     top: -13px
 }
 
@@ -1038,7 +1046,7 @@ label {
 }
 
 .custom-slider.rzslider .rz-tick.rz-selected {
-    background: #fff;
+    background: #000;
 }
 
 .custom-slider.rzslider {
@@ -1050,6 +1058,26 @@ label {
 
 .rz-bar-wrapper {
     max-width: 100%;
+}
+
+.datapicker_custom {
+    float: right;
+    display: inline-block;
+    max-width: 20%;
+}
+
+.time_line {
+    max-width: 100%;
+}
+
+.slider_custom {
+    float: left;
+    display: inline-block;
+    width: 80%;
+}
+
+.custom-slider.rzslider .rz-bar {
+    background-color: rgba(13, 13, 13, 0.5);
 }
 
 .rz-tick-value {
@@ -1085,18 +1113,13 @@ label {
     width: 296px;
 }
 
-.col-md-4 md-content, .col-md-4 md-datepicker {
-    height: inherit;
-    width: inherit;
-}
-
 md-content, md-datepicker {
-    background: #151515;
+    background: #fff;
 }
 
 button.md-datepicker-button {
     background: linear-gradient(45deg, #cd1739 0%, #a41c18 100%);
-    float: right;
+    /*float: right;*/
     height: 56px !important;
     margin: 0 !important;
     padding: 0 !important;
@@ -1113,7 +1136,7 @@ button.md-datepicker-button {
 }
 
 .md-datepicker-input-container input {
-    color: #fff;
+    color: #000;
     font-family: 'Ropa Sans', sans-serif;
     font-size: 14px;
     padding: 18px 0;
@@ -1148,6 +1171,51 @@ button.md-datepicker-button {
 
 ::-webkit-scrollbar-thumb {
     background: linear-gradient(45deg, #cd1739 0%, #a41c18 100%);
+}
+
+@media screen and (max-width: 1066px) {
+    .datapicker_custom {
+        float: right;
+        display: inline-block;
+        max-width: 30%;
+    }
+
+    .slider_custom {
+        float: left;
+        display: inline-block;
+        width: 70%;
+    }
+}
+
+@media screen and (max-width: 765px) {
+    .datapicker_custom {
+        padding-left: 15px;
+        max-width: 15%;
+    }
+
+    .slider_custom {
+        max-width: 85%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .datapicker_custom {
+        padding-left: 15px;
+        max-width: 30%;
+    }
+
+    .slider_custom {
+        max-width: 70%;
+    }
+}
+@media screen and (max-width: 480px) {
+    .datapicker_custom {
+        max-width: 100%;
+    }
+
+    .slider_custom {
+        max-width: 100%;
+    }
 }
 
 @media screen and (max-device-width: 480px) and (orientation: portrait) {
@@ -1206,8 +1274,6 @@ button.md-datepicker-button {
         right: 0;
     }
 
-
-
     .div .overlay_1_1-able {
         position: absolute;
         bottom: -112px;
@@ -1221,7 +1287,7 @@ button.md-datepicker-button {
 
     }
 
-    .sidenav .icons, .sidenav .title  {
+    .sidenav .icons, .sidenav .title {
         display: none;
     }
 
@@ -1243,7 +1309,7 @@ button.md-datepicker-button {
         margin-left: 0;
         width: 100%;
         position: static;
-    } 
+    }
 
     .section-wrapper, .poi-details-wrapper {
         margin-left: 0;
@@ -1251,7 +1317,7 @@ button.md-datepicker-button {
 
     .poi-details, .poi-details .col-md-12 {
         padding-left: 0;
-        padding-right: 0; 
+        padding-right: 0;
     }
 
     .dropdownTest, .dropdownShow {
@@ -1266,4 +1332,17 @@ button.md-datepicker-button {
     .div .overlay_1_1-disabled, .div .overlay_1_1-able {
         width: 100%;
     }
+
+    .datapicker_custom {
+        float: right;
+        display: inline-block;
+        max-width: 100%;
+    }
+
+    .slider_custom {
+        float: left;
+        display: inline-block;
+        width: 100%;
+    }
+
 }
