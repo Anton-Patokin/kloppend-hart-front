@@ -1,16 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
 <?php
 
-   $rootPath = "http://localhost/edge/projects/kloppend-hart-antwerpen/version_002/front/";
-     // $rootPath = "http://localhost/edge/projects/kloppend-hart-antwerpen/kloppend-hart-front/version_002/front/";
+//   $rootPath = "http://localhost/edge/projects/kloppend-hart-antwerpen/version_002/front/";
+$rootPath = "http://localhost/edge/projects/kloppend-hart-antwerpen/kloppend-hart-front/version_002/front/";
 //$rootPath = "https://apen.be/kloppend-hart-antwerpen/front/";
 
 
 ?>
+<!DOCTYPE html>
+<html lang="nl-BE">
+
 <head>
     <meta charset="UTF-8">
     <meta name=viewport content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="<?= $rootPath ?>/images/icon-002.png">
 
     <!--    css-->
     <link rel="stylesheet" href="<?= $rootPath ?>css/libs/bootstrap.min.css">
@@ -36,16 +38,17 @@
     <script type="text/javascript" src="<?= $rootPath ?>js/libs/angular-cookies.min.js"></script>
     <script src="<?= $rootPath ?>js/libs/angular-route.js"></script>
     <script src="<?= $rootPath ?>js/libs/jquery.min.js"></script>
-    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.10.0/ui-bootstrap-tpls.min.js"></script>
+    <script type="text/javascript"
+            src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.10.0/ui-bootstrap-tpls.min.js"></script>
     <script type="text/javascript" src="<?= $rootPath ?>js/libs/rzslider.js"></script>
     <script src="<?= $rootPath ?>js/libs/raphael-min.js"></script>
     <script src="<?= $rootPath ?>js/libs/morris.min.js"></script>
     <script src="<?= $rootPath ?>js/libs/angular-morris.min.js"></script>
     <!-- <script type="text/javascript" src="js/libs/masonry.pkgd.min.js"></script> -->
-    
+
     <script src="<?= $rootPath ?>js/angular_main.js"></script>
     <script src="<?= $rootPath ?>js/angular_section_angular_google_maps_controller.js"></script>
-    <script src="<?= $rootPath ?>js/searchFormController.js"></script>    
+    <script src="<?= $rootPath ?>js/searchFormController.js"></script>
     <script src="<?= $rootPath ?>js/angular_section_1_controller.js"></script>
     <script src="<?= $rootPath ?>js/angular_section_7_controller.js"></script>
     <script src="<?= $rootPath ?>js/angular_section_8_controller.js"></script>
