@@ -1,4 +1,4 @@
-var app = angular.module("myApp", ["ngRoute", 'uiGmapgoogle-maps', 'angular.morris','rzModule','ngMaterial','ngMessages','ui.bootstrap', 'ngCookies']);
+var app = angular.module("myApp", ["ngRoute", 'uiGmapgoogle-maps', 'angular.morris','rzModule','ngMaterial','ngMessages', 'ngCookies', 'ngAnimate']);
 
 
 

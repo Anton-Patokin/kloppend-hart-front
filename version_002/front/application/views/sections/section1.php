@@ -31,7 +31,7 @@
 		</div>
 	<?php endif ?>
 	<div class="<?= ($show == 'show')? '' : 'poi-search-details'?> poi-details-wrapper clearfix">
-		<div masonry="true" class="poi-details">
+		<div class="poi-details">
 
 			<div class="col-md-6">
 				<div class="col-md-12 clearfix">
@@ -94,18 +94,9 @@
 			<div class="col-md-6">
 				<div class="col-md-12 clearfix">
 					<div class="poi-photo-wrapper">
-						<div ng-show="loadPhotos" layout="row" layout-sm="column" layout-align="space-around">
-							<md-progress-circular md-mode="indeterminate"></md-progress-circular>
-						</div>
-						<div>
-						  <carousel class="carousel" interval="myInterval">
-							<slide ng-repeat="slide in slides" active="slide.active">
-							  <img ng-src="{{slide.image}}" isImage>
-							</slide>
-						  </carousel>
-						</div>
-						<div class="photo-info">
-						</div>
+						<img class="slide slide-animation" ng-class="{'show' : isCurrentSlideIndex($index)}" ng-hide="!isCurrentSlideIndex($index)" ng-repeat="slide in slides" ng-src="{{ slide.image }}">
+						<div class="left-arrow" ng-click="nextSlide()"><img src="<?= $rootScope ?>images/newdesign/arrow-black-prev.png"></div>
+    					<div class="right-arrow" ng-click="prevSlide()"><img src="<?= $rootScope ?>images/newdesign/arrow-black.png"></a></div>
 					</div>
 				</div>
 				<div class="col-md-12">

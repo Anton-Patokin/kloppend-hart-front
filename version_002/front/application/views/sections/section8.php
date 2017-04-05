@@ -1,12 +1,14 @@
 <?php
-require_once('C:\xampp\htdocs\edge\projects\kloppend-hart-antwerpen\version_002\Settings.php');
-require_once(ROOT . 'twitter/api/twitterApi.class.php');
+include_once('/media/drive-sdb1/www/apen.be/htdocs/kloppend-hart-antwerpen/settings.php');
+require_once(ROOT . 'twitter/api/TwitterApi.class.php');
 $config = array('key' => '47MHPAfhtJE8IGMt5QPAA',
     'secret' => '4OHIhz8AZUD5dYX9HfVn7enEfZGRg3MxgyFQWVoN8',
     'accessToken' => '52012026-G16Pi0u3JLRaDmPKPbMKAbMzigCKNlwRyuet4ssBs',
     'accessTokenSecret' => 'qU3W2AkC2PnZ8ZRiMDVGTAysCEEvavSU26g6TVWDWI');
 $tweet = new \twitter\api\TwitterApi($config['accessToken'], $config['accessTokenSecret'], $config['key'], $config['secret']);
 $tweets = $tweet->searchTweetsUsers('frankdeboosere');
+
+    $rootPath = "https://apen.be/kloppend-hart-antwerpen/front/";
 
 ?>
 <div class="section-wrapper weather" ng-init='disableFooter()' ng-controller="WeatherController">
@@ -75,13 +77,13 @@ $tweets = $tweet->searchTweetsUsers('frankdeboosere');
                             <?php if ($key % 2 == 0): ?>
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
-                                        <a href="http://twitter.com/<?php echo $value->user->name; ?>"><?php echo $value->user->name; ?>
+                                        <a href="https://twitter.com/<?php echo $value->user->name; ?>"><?php echo $value->user->name; ?>
                                         <span class="pull-right twitter-logo"><img
-                                                src="images/newdesign/twitter-logo.png"></span></a>
+                                                src="<?= $rootPath ?>images/newdesign/twitter-logo.png"></span></a>
                                     </div>
                                     <div class="panel-body">
                                         <div class="tweet-photo"><img
-                                                src="<?php echo $value->user->profile_image_url; ?>"></div>
+                                                src="https<?= substr($value->user->profile_image_url, 4) ?>"></div>
                                         <div class="tweet-text">
                                             <p><?php echo $value->text; ?></p>
                                             <span class="pull-right"><?php echo $value->created_at; ?></span>
@@ -96,13 +98,13 @@ $tweets = $tweet->searchTweetsUsers('frankdeboosere');
                             <?php if ($key % 2 == 1): ?>
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
-                                        <a href="http://twitter.com/<?php echo $value->user->name; ?>"><?php echo $value->user->name; ?>
+                                        <a href="https://twitter.com/<?php echo $value->user->name; ?>"><?php echo $value->user->name; ?>
                                         <span class="pull-right twitter-logo"><img
-                                                src="images/newdesign/twitter-logo.png"></span></a>
+                                                src="<?= $rootPath ?>images/newdesign/twitter-logo.png"></span></a>
                                     </div>
                                     <div class="panel-body">
                                         <div class="tweet-photo"><img
-                                                src="<?php echo $value->user->profile_image_url; ?>"></div>
+                                                src="https<?= substr($value->user->profile_image_url, 4) ?>"></div>
                                         <div class="tweet-text">
                                             <p><?php echo $value->text; ?></p>
                                             <span class="pull-right"><?php echo $value->created_at; ?></span>

@@ -4,7 +4,7 @@
 
    $rootPath = "http://localhost/edge/projects/kloppend-hart-antwerpen/version_002/front/";
      // $rootPath = "http://localhost/edge/projects/kloppend-hart-antwerpen/kloppend-hart-front/version_002/front/";
-//$rootPath = "https://apen.be/kloppend-hart-antwerpen/front/";
+// $rootPath = "https://apen.be/kloppend-hart-antwerpen/front/";
 
 
 ?>
@@ -16,6 +16,8 @@
     <link rel="stylesheet" href="<?= $rootPath ?>css/libs/bootstrap.min.css">
     <link rel="stylesheet" href="<?= $rootPath ?>css/libs/angular-material.min.css">
     <link rel="stylesheet" href="<?= $rootPath ?>css/base.css">
+    <link rel="stylesheet" href="<?= $rootPath ?>css/samStyling.css">
+    <link rel="stylesheet" href="<?= $rootPath ?>js/angular-carousel.css">
     <link rel="stylesheet" href="<?= $rootPath ?>css/libs/rzslider.css">
     <link rel="stylesheet" href="<?= $rootPath ?>css/weather-icons.min.css">
     <link rel="stylesheet" href="<?= $rootPath ?>css/weather-icons-wind.min.css">
@@ -25,9 +27,9 @@
     <script src="<?= $rootPath ?>js/angular-google-maps.js"></script>
 
     <!--    data picker-->
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular-animate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular-aria.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular-messages.min.js"></script>
     <script src="<?= $rootPath ?>js/libs/angular-material.js"></script>
 
     <script
@@ -36,13 +38,10 @@
     <script type="text/javascript" src="<?= $rootPath ?>js/libs/angular-cookies.min.js"></script>
     <script src="<?= $rootPath ?>js/libs/angular-route.js"></script>
     <script src="<?= $rootPath ?>js/libs/jquery.min.js"></script>
-    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.10.0/ui-bootstrap-tpls.min.js"></script>
     <script type="text/javascript" src="<?= $rootPath ?>js/libs/rzslider.js"></script>
     <script src="<?= $rootPath ?>js/libs/raphael-min.js"></script>
     <script src="<?= $rootPath ?>js/libs/morris.min.js"></script>
     <script src="<?= $rootPath ?>js/libs/angular-morris.min.js"></script>
-    <!-- <script type="text/javascript" src="js/libs/masonry.pkgd.min.js"></script> -->
-    
     <script src="<?= $rootPath ?>js/angular_main.js"></script>
     <script src="<?= $rootPath ?>js/angular_section_angular_google_maps_controller.js"></script>
     <script src="<?= $rootPath ?>js/searchFormController.js"></script>    

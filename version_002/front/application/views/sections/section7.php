@@ -1,6 +1,6 @@
 <?php
-	require_once('C:\xampp\htdocs\edge\projects\kloppend-hart-antwerpen\version_002\Settings.php');
-	require_once(ROOT . 'twitter/api/twitterApi.class.php');
+	include_once('/media/drive-sdb1/www/apen.be/htdocs/kloppend-hart-antwerpen/settings.php');
+	require_once(ROOT . 'twitter/api/TwitterApi.class.php');
 	$config = array('key' => '47MHPAfhtJE8IGMt5QPAA',
 	    'secret' => '4OHIhz8AZUD5dYX9HfVn7enEfZGRg3MxgyFQWVoN8',
 	    'accessToken' => '52012026-G16Pi0u3JLRaDmPKPbMKAbMzigCKNlwRyuet4ssBs',
@@ -17,6 +17,7 @@
 		$tweets[$key]['title'] = $value;	
 	}
 
+	$rootPath = "https://apen.be/kloppend-hart-antwerpen/front/";
 	
 	// $verkeerAntwerpenTweets = $tweet->searchTweets('verkeer antwerpen');
 	// $verkeerscentrumAntwerpenTweets = $tweet->searchTweets('verkeerscentrum antwerpen');
@@ -35,11 +36,11 @@
 								
 								<div class="panel panel-default">
 									<div class="panel-heading">
-										<a href="http://twitter.com/<?= $status->user->screen_name ?>"><?= $status->user->screen_name ?>
-										<span class="pull-right twitter-logo"><img src="images/newdesign/twitter-logo.png"></span></a>
+										<a href="https://twitter.com/<?= $status->user->screen_name ?>"><?= $status->user->screen_name ?>
+										<span class="pull-right twitter-logo"><img src="<?= $rootPath ?>images/newdesign/twitter-logo.png"></span></a>
 									</div>
 									<div class="panel-body">
-										<div class="tweet-photo"><img src="<?= $status->user->profile_image_url ?>"></div>
+										<div class="tweet-photo"><img src="https<?= substr($status->user->profile_image_url, 4) ?>"></div>
 										<div class="tweet-text">
 											<p><?= $status->text ?></p>
 											<span class="pull-right"><?= $status->created_at ?></span>
@@ -56,11 +57,11 @@
 								
 								<div class="panel panel-default">
 									<div class="panel-heading">
-										<a href="http://twitter.com/<?= $status->user->screen_name ?>"><?= $status->user->screen_name ?>
-										<span class="pull-right twitter-logo"><img src="images/newdesign/twitter-logo.png"></span></a>
+										<a href="https://twitter.com/<?= $status->user->screen_name ?>"><?= $status->user->screen_name ?>
+										<span class="pull-right twitter-logo"><img src="<?= $rootPath ?>images/newdesign/twitter-logo.png"></span></a>
 									</div>
 									<div class="panel-body">
-										<div class="tweet-photo"><img src="<?= $status->user->profile_image_url ?>"></div>
+										<div class="tweet-photo"><img src="https<?= substr($status->user->profile_image_url, 4) ?>"></div>
 										<div class="tweet-text">
 											<p><?= $status->text ?></p>
 											<span class="pull-right"><?= $status->created_at ?></span>
@@ -77,11 +78,11 @@
 								
 								<div class="panel panel-default">
 									<div class="panel-heading">
-										<a href="http://twitter.com/<?= $status->user->screen_name ?>"><?= $status->user->screen_name ?>
-										<span class="pull-right twitter-logo"><img src="images/newdesign/twitter-logo.png"></span></a>
+										<a href="https://twitter.com/<?= $status->user->screen_name ?>"><?= $status->user->screen_name ?>
+										<span class="pull-right twitter-logo"><img src="<?= $rootPath ?>images/newdesign/twitter-logo.png"></span></a>
 									</div>
 									<div class="panel-body">
-										<div class="tweet-photo"><img src="<?= $status->user->profile_image_url ?>"></div>
+										<div class="tweet-photo"><img src="https<?= substr($status->user->profile_image_url, 4) ?>"></div>
 										<div class="tweet-text">
 											<p><?= $status->text ?></p>
 											<span class="pull-right"><?= $status->created_at ?></span>
@@ -98,11 +99,11 @@
 								
 								<div class="panel panel-default">
 									<div class="panel-heading">
-										<a href="http://twitter.com/<?= $status->user->screen_name ?>"><?= $status->user->screen_name ?>
-										<span class="pull-right twitter-logo"><img src="images/newdesign/twitter-logo.png"></span></a>
+										<a href="https://twitter.com/<?= $status->user->screen_name ?>"><?= $status->user->screen_name ?>
+										<span class="pull-right twitter-logo"><img src="<?= $rootPath ?>images/newdesign/twitter-logo.png"></span></a>
 									</div>
 									<div class="panel-body">
-										<div class="tweet-photo"><img src="<?= $status->user->profile_image_url ?>"></div>
+										<div class="tweet-photo"><img src="https<?= substr($status->user->profile_image_url, 4) ?>"></div>
 										<div class="tweet-text">
 											<p><?= $status->text ?></p>
 											<span class="pull-right"><?= $status->created_at ?></span>

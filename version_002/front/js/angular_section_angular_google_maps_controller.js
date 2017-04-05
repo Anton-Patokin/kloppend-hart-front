@@ -35,7 +35,7 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout, 
     $scope.size_map_small = false;
     $scope.size_map = false;
     $scope.showFooter = true;
-    $animate.enabled(false);
+    // $animate.enabled(false);
 
 //default date values
 
