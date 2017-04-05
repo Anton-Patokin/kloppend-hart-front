@@ -1,5 +1,6 @@
 app.controller("searchFormController", function ($scope, $timeout, $http) {
 
+    
     $scope.searchNode = function () {
         $scope.searchResults = [];
         $scope.showResults;

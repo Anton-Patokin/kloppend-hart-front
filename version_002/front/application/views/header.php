@@ -1,7 +1,7 @@
 <?php
 
-   $rootPath = "http://localhost/edge/projects/kloppend-hart-antwerpen/version_002/front/";
-     // $rootPath = "http://localhost/edge/projects/kloppend-hart-antwerpen/kloppend-hart-front/version_002/front/";
+//   $rootPath = "http://localhost/edge/projects/kloppend-hart-antwerpen/version_002/front/";
+      $rootPath = "http://localhost/edge/projects/kloppend-hart-antwerpen/kloppend-hart-front/version_002/front/";
 // $rootPath = "https://apen.be/kloppend-hart-antwerpen/front/";
 
 ?>
@@ -10,7 +10,10 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name=viewport content="width=device-width, initial-scale=1">
+<!--    <meta name=viewport content="width=device-width, initial-scale=1">-->
+<!--    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />-->
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+
     <link rel="icon" type="image/png" href="<?= $rootPath ?>/images/icon-002.png">
 
     <!--    css-->

@@ -1350,3 +1350,133 @@ button.md-datepicker-button {
     }
 
 }
+
+
+@media screen and (max-device-width: 480px) , (orientation: landscape) {
+    .map-checkbox {
+        display: none !important;
+    }
+
+    .left1 {
+        width: 100%;
+    }
+
+    md-sidenav {
+        max-width: 100% !important;
+        width: 100%;
+    }
+
+    md-sidenav div {
+        width: inherit;
+    }
+
+    .social-media-checklist {
+        width: -webkit-calc(100% - 55px);
+        width: -moz-calc(100% - 55px);
+        width: calc(100% - 55px);
+    }
+
+    .social-media-checklist ul {
+        width: 100%;
+    }
+
+    .social-media-checklist .btn-trending {
+        font-size: 80%;
+        height: 55px;
+        padding: 20px 0;
+        text-align: center;
+        width: 50%;
+    }
+
+    .search-input {
+        width: 55px;
+    }
+
+    .search-input ul {
+        margin-left: -142px;
+    }
+
+    ul li.date {
+        display: none;
+    }
+
+    .search-input input[type="text"] {
+        width: 100px
+    }
+
+    .search-results {
+        right: 0;
+    }
+
+    .div .overlay_1_1-able {
+        position: absolute;
+        bottom: -112px;
+        height: 112px;
+    }
+
+    .div .overlay_1_1-disabled {
+        position: absolute;
+        bottom: 0;
+        height: 112px;
+
+    }
+
+    .sidenav .icons, .sidenav .title {
+        display: none;
+    }
+
+    .sidenav {
+        height: auto;
+        border-bottom: none;
+    }
+
+    .left1 {
+        margin-left: 0;
+    }
+
+    .top-trending {
+        /*margin-left: -20px;*/
+    }
+
+    .subcategories-menu-wrapper {
+        margin-top: 0;
+        margin-left: 0;
+        width: 100%;
+        position: static;
+    }
+
+    .section-wrapper, .poi-details-wrapper {
+        margin-left: 0;
+    }
+
+    .poi-details, .poi-details .col-md-12 {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .dropdownTest, .dropdownShow {
+        left: 0;
+        margin-left: 0;
+    }
+
+    .buienradar {
+        height: 150px;
+    }
+
+    .div .overlay_1_1-disabled, .div .overlay_1_1-able {
+        width: 100%;
+    }
+
+    .datapicker_custom {
+        float: right;
+        display: inline-block;
+        max-width: 100%;
+    }
+
+    .slider_custom {
+        float: left;
+        display: inline-block;
+        width: 100%;
+    }
+
+}
