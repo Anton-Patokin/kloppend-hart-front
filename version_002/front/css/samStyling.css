@@ -86,3 +86,51 @@
 	}
 }
 
+@media screen and (max-width: 1110px) {
+    .map-checkbox {
+        display: none !important;
+    }
+}
+
+@media screen and (max-width: 735px) {
+    .social-media-checklist .date {
+        display: none !important;
+    }
+}
+
+.tweets.col-md-12 {
+	transition-duration: 0.3s;
+	width: 100%;
+}
+
+.tweets.sidenav-open.col-md-12 {
+	transition-duration: 0.3s;
+	width: calc(100% - 250px);
+	margin-left: 250px;
+}
+
+.row.margin-top-1.sidenav-open {
+	transition-duration: 0.3s;
+	width: calc(100% - 250px);
+	margin-left: 250px;
+}
+
+.row.margin-top-1{
+	transition-duration: 0.3s;
+	width: 100%;
+}
+
+.row.webcam.sidenav-open img.web_cam {
+	transition-duration: 0.3s;
+	width: calc(100% - 250px);
+	margin-left: 245px;
+}
+
+.row.webcam img.web_cam{
+	transition-duration: 0.3s;
+	/*width: 100%;*/
+}
+
+
+/* VERKEER PAGE */ 
+
