@@ -1,5 +1,6 @@
 <?php
-	include_once('/media/drive-sdb1/www/apen.be/htdocs/kloppend-hart-antwerpen/settings.php');
+	// include_once('/media/drive-sdb1/www/apen.be/htdocs/kloppend-hart-antwerpen/settings.php');
+	include_once('C:\xampp\htdocs\edge\projects\kloppend-hart-antwerpen\version_002\settings.php');
 	require_once(ROOT . 'twitter/api/TwitterApi.class.php');
 	$config = array('key' => '47MHPAfhtJE8IGMt5QPAA',
 	    'secret' => '4OHIhz8AZUD5dYX9HfVn7enEfZGRg3MxgyFQWVoN8',
@@ -26,7 +27,7 @@
 ?>
 <div class="section-wrapper verkeer" ng-init='disableFooter();toggle_show_traffic(true);enableScroll()'>
 	<div class="container-fluid">
-		<div class="col-md-12 tweets">
+		<div ng-class="{'sidenav-open' : !sideNavtest}" class="col-md-12 tweets">
 			<?php foreach($tweets as $key => $tweet): ?>
 				<div id="<?= $key ?>" class="row">
 					<div class="tweet-title"><h2><?= $tweet['title'] ?></h2></div>

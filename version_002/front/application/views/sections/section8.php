@@ -1,5 +1,6 @@
 <?php
-include_once('/media/drive-sdb1/www/apen.be/htdocs/kloppend-hart-antwerpen/settings.php');
+// include_once('/media/drive-sdb1/www/apen.be/htdocs/kloppend-hart-antwerpen/settings.php');
+include_once('C:\xampp\htdocs\edge\projects\kloppend-hart-antwerpen\version_002\settings.php');
 require_once(ROOT . 'twitter/api/TwitterApi.class.php');
 $config = array('key' => '47MHPAfhtJE8IGMt5QPAA',
     'secret' => '4OHIhz8AZUD5dYX9HfVn7enEfZGRg3MxgyFQWVoN8',
@@ -13,7 +14,7 @@ $tweets = $tweet->searchTweetsUsers('frankdeboosere');
 ?>
 <div class="section-wrapper weather" ng-init='disableFooter()' ng-controller="WeatherController">
     <div class="container-fluid margin-top-over_map">
-        <div class="row">
+        <div ng-class="{'sidenav-open' : !sideNavtest}" class="row webcam">
 
             <div class="parent">
                 <img class="web_cam image1" ng-src="http://webcam.hzs.be/CurrentPic.jpg?{{webcam}}" name="webcam">
@@ -27,7 +28,7 @@ $tweets = $tweet->searchTweetsUsers('frankdeboosere');
             <!--            <img class="web_cam" ng-src="http://webcam.hzs.be/CurrentPic.jpg?{{webcam}}" name="webcam">-->
 
         </div>
-        <div class="row margin-top-1">
+        <div ng-class="{'sidenav-open' : !sideNavtest}" class="row margin-top-1">
             <div class="weer-title"><h1 class="">Weer</h1></div>
             <div class="col-md-6 margin-top-5">
                 <div class="" ng-repeat="weather_result in weather_results">
@@ -72,7 +73,7 @@ $tweets = $tweet->searchTweetsUsers('frankdeboosere');
                     </div>
                 <?php endif; ?>
                 <div class="tweets ">
-                    <div class="col-sm-6 col-md-6 ">
+                    <div class="col-sm-12 col-md-6 ">
                         <?php foreach ($tweets as $key => $value): ?>
                             <?php if ($key % 2 == 0): ?>
                                 <div class="panel panel-default">

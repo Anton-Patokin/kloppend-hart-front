@@ -35,6 +35,7 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout, 
     $scope.size_map_small = false;
     $scope.size_map = false;
     $scope.showFooter = true;
+    $scope.sideNavtest = 'false';
     // $animate.enabled(false);
 
 //default date values
@@ -111,8 +112,20 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout, 
         return function() {
             if ($mdSidenav(componentId).isOpen()) {
                 $mdSidenav(componentId).toggle();
+                console.log("side nave is open");
             }
         }
+    }
+
+    $scope.toggleLeft = buildToggler('left1');
+
+    function buildToggler(componentId) {
+      return function() {
+        $mdSidenav(componentId).toggle();
+        $scope.sideNavtest = !$scope.sideNavtest;
+        console.log('test ',$scope.sideNavtest);
+      };
+
     }
 
     // $scope.showOverflow = false;
