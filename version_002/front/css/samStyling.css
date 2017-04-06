@@ -131,6 +131,17 @@
 	/*width: 100%;*/
 }
 
+.poi-search-details .sidenav-open.poi-details {
+	transition-duration: 0.3s;
+	width: calc(100% - 250px);
+	margin-left: 250px;
+}
+
+.poi-search-details .poi-details{
+	transition-duration: 0.3s;
+	width: 100%;
+}
+
 
 /* VERKEER PAGE */ 
 

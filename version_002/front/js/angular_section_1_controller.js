@@ -209,6 +209,7 @@ app.controller("section1", function ($scope, $routeParams, $http, $timeout) {
 			    	}
 		    	} else {
 		    		$('.photo-info').append('<p class="temp-photo">Er zijn geen foto\'s van deze plaats.</p>');
+		    		$scope.slides = false;
 		    	}
 
 		    	$scope.loadPhotos = false;
