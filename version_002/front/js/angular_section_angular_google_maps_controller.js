@@ -1,4 +1,4 @@
-app.controller("PrimeController", function ($scope, $http, $interval, $timeout, $animate, $mdSidenav) {
+app.controller("PrimeController", function ($scope, $http, $interval, $timeout, $animate, $mdSidenav,$location) {
     var showHeatmapBool = true;
     var showMarkersBool = true;
     $scope.toggleSlider = false;
@@ -76,7 +76,12 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout, 
         load_nearby_places(nid);
         $scope.map.options.scrollwheel = false;
     }
-    
+
+
+    $scope.isActive = function (viewLocation) {
+        return viewLocation === $location.path();
+    };
+
 
     $scope.enableScroll = function () {
         $scope.map.zoom = 10;
@@ -108,11 +113,11 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout, 
 
     $scope.closeSideNav = buildToggler2('left1');
 
-    function buildToggler2(componentId){
-        return function() {
+    function buildToggler2(componentId) {
+        return function () {
             if ($mdSidenav(componentId).isOpen()) {
                 $mdSidenav(componentId).toggle();
-                console.log("side nave is open");
+                $scope.sideNavtest = !$scope.sideNavtest;
             }
         }
     }
@@ -122,27 +127,16 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout, 
     $scope.toggleLeft = buildToggler('left1');
 
     function buildToggler(componentId) {
-      return function() {
-        $mdSidenav(componentId).toggle();
-        $scope.sideNavtest = !$scope.sideNavtest;
-        console.log('test ',$scope.sideNavtest);
-      };
+        return function () {
+            $mdSidenav(componentId).toggle();
+            $scope.sideNavtest = !$scope.sideNavtest;
+        };
 
     }
 
-    // $scope.showOverflow = false;
-
-    // $scope.enableOverflow = function() {
-    //     $scope.showOverflow = true;
-    // }
-
-    // $scope.disableOverflow = function() {
-    //     $scope.showOverflow = false;
-    // }
-
 
     $scope.toggle_show_traffic = function ($show) {
-        if($show){
+        if ($show) {
             center_google_maps(save_position_lat_client, save_position_long_client, false)
             clean_map();
             clean_map_from_markers_and_clusters();
@@ -160,8 +154,8 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout, 
     $scope.myChangeListener = function (sliderId) {
         slider_start_time = $scope.slider.minValue;
         slider_end_time = $scope.slider.maxValue;
-        if($scope.slider.maxValue == "24"){
-            slider_end_time ="23.59";
+        if ($scope.slider.maxValue == "24") {
+            slider_end_time = "23.59";
         }
         switchApplicationState(APP_STATE_LOAD_CURRENT_HOUR);
     };
@@ -573,7 +567,7 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout, 
                 },
                 click: function (marker, eventName, model) {
                     var method = 'GET';
-                    var url = ROOT_FRONT+'place/getCategoryByNid/' + marker.model.id
+                    var url = ROOT_FRONT + 'place/getCategoryByNid/' + marker.model.id
                     $http(
                         {
                             method: method,

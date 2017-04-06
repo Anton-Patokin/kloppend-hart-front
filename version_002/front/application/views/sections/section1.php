@@ -1,6 +1,5 @@
 <?php
-	
-
+	$rootPath = "https://apen.be/kloppend-hart-antwerpen/front/";
 ?>
 <div ng-init='disableSroll(<?= ($show=="search"&&isset($cafe))? $cafe: "";?>); disableFooter();toggle_show_traffic(false);' class="section-wrapper">
 	<?php if($show == 'show'): ?>
@@ -16,7 +15,7 @@
 									<?php for ($i=0; $i < 10; $i++): ?>
 										<?php if(isset($topPlaces[$i])): ?>
 											<!-- <a href="#section1/<?= $getCategory ?>/<?= $subcategory['link'] ?>/<?= $topPlaces[$i]->nid ?>"><li><?= $topPlaces[$i]->name ?></li></a> -->
-											<p <?= ($i == 0)? 'ng-init="getPoiById('. $topPlaces[$i]->nid .'); disableSroll('. $topPlaces[$i]->nid .')"' : "" ?> class="detail-top-place" ng-click="getPoiById(<?= $topPlaces[$i]->nid ?>);getNearbyPlaceses(<?= $topPlaces[$i]->nid ?>)" ><span class="place"><?= ($i == 9)? '0' : '00' ?><?= $i + 1 ?>.</span><?= $topPlaces[$i]->name ?></p>
+											<p ng-class="{'active':subNavBarActiveId=='<?=$topPlaces[$i]->nid?>' }" <?= ($i == 0)? 'ng-init="getPoiById('. $topPlaces[$i]->nid .'); disableSroll('. $topPlaces[$i]->nid .')"' : "" ?>  class="detail-top-place" ng-click="getPoiById(<?= $topPlaces[$i]->nid ?>);getNearbyPlaceses(<?= $topPlaces[$i]->nid ?>)" ><span class="place"><?= ($i == 9)? '0' : '00' ?><?= $i + 1 ?>.</span><?= $topPlaces[$i]->name ?><span class="subcategory-arrow pull-right"><img ng-show="subNavBarActiveId=='<?=$topPlaces[$i]->nid?>'" src="<?=$rootPath?>/images/newdesign/arrow_white.png"></span></p>
 										<?php endif ?>
 									<?php endfor ?>
 									<?php else: ?>

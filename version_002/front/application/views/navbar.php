@@ -1,21 +1,5 @@
-<!-- <div class="navbar navbar-inverse navbar-fixed-left">
-	<a ng-click="enableScroll()" class="navbar-brand" href="#">Brand</a>
-	<ul class="nav navbar-nav">
-		<li><a href="#section1/horeca/show/restaurant" class="main-menu section-001"><span>Horeca</span></a></li>
-		<li><a href="#section1/cultuur/show/gallerij" class="main-menu section-001"><span>Cultuur</span></a></li>
-		<li><a href="#section1/over_de_stad/show/Openbare-diensten" class="main-menu section-001"><span>Over de stad</span></a></li>
-		<li><a href="#section1/winkel/show/kleding" class="main-menu section-001"><span>Shopping</span></a></li>
-		<li><a href="#section1/uitgaan/show/film" class="main-menu section-001"><span>Uitgaan</span></a></li>
-		<li><a href="#section1/vrije_tijd/show/sport" class="main-menu section-001"><span>Vrije tijd</span></a></li>
-		<li><a href="#section7" class="main-menu section-007"><span>Verkeer</span></a></li>        
-		<li><a href="#section8" class="main-menu section-008"><span>Weer</span></a></li>
-		<li><a href="#sectionvelo" class="main-menu section-010"><span>Velo</span></a></li>
-	</ul>
-</div> -->
 <?php
-
     $rootPath = "https://apen.be/kloppend-hart-antwerpen/front/";
-
 ?>
 <div ng-controller="SideBarController">
 	<div class="navbar navbar-inverse navbar-fixed-left sidenav">
@@ -24,15 +8,15 @@
 		</div>
 		<div class="icons">
 			<ul>
-				<a ng-click="home(); toggleTrending('close'); closeSideNav(); enableFooter();" href=""><li><img src="<?= $rootPath ?>images/newdesign/home.png"></li></a>
-				<a ng-click="closeSideNav(); toggleTrending('close');" href="#section1/horeca/show/restaurant"><li><img src="<?= $rootPath ?>images/newdesign/coffee.png"></li></a>
-				<a ng-click="closeSideNav(); toggleTrending('close');" href="#section1/cultuur/show/gallerij"><li><img src="<?= $rootPath ?>images/newdesign/film.png"></li></a>
-				<a ng-click="closeSideNav(); toggleTrending('close');" href="#section1/over_de_stad/show/Openbare-diensten"><li><img src="<?= $rootPath ?>images/newdesign/city.png"></li></a>
-				<a ng-click="closeSideNav(); toggleTrending('close');" href="#section1/winkel/show/kleding"><li><img src="<?= $rootPath ?>images/newdesign/sale.png"></li></a>
-				<a ng-click="closeSideNav(); toggleTrending('close');" href="#section1/uitgaan/show/film"><li><img src="<?= $rootPath ?>images/newdesign/pint.png"></li></a>
-				<a ng-click="closeSideNav(); toggleTrending('close');" href="#section1/vrije_tijd/show/sport"><li><img src="<?= $rootPath ?>images/newdesign/plane.png"></li></a>
-				<a ng-click="closeSideNav(); toggleTrending('close');" href="#section8"><li><img src="<?= $rootPath ?>images/newdesign/sun.png"></li></a>
-				<a ng-click="closeSideNav(); toggleTrending('close');" href="#section7"><li><img src="<?= $rootPath ?>images/newdesign/car.png"></li></a>
+				<a ng-click="home(); toggleTrending('close'); closeSideNav(); enableFooter();" href=""><li ng-class="{ active: isActive('')}"><img src="<?= $rootPath ?>images/newdesign/{{isActive('') && 'home_active.png' || 'home.png'}}"></li></a>
+				<a ng-click="closeSideNav(); toggleTrending('close');" href="#section1/horeca/show/restaurant"><li ng-class="{ active: isActive('/section1/horeca/show/restaurant')}"><img src="<?= $rootPath ?>images/newdesign/{{isActive('/section1/horeca/show/restaurant') && 'coffee_active.png' || 'coffee.png'}}"></li></a>
+				<a ng-click="closeSideNav(); toggleTrending('close');" href="#section1/cultuur/show/gallerij"><li  ng-class="{ active: isActive('/section1/cultuur/show/gallerij')}"><img src="<?= $rootPath ?>images/newdesign/{{isActive('/section1/cultuur/show/gallerij') && 'film_active.png' || 'film.png'}}"></li></a>
+				<a ng-click="closeSideNav(); toggleTrending('close');" href="#section1/over_de_stad/show/Openbare-diensten"><li ng-class="{ active: isActive('/section1/over_de_stad/show/Openbare-diensten')}"><img src="<?= $rootPath ?>images/newdesign/{{isActive('/section1/over_de_stad/show/Openbare-diensten') && 'city_active.png' || 'city.png'}}"></li></a>
+				<a ng-click="closeSideNav(); toggleTrending('close');" href="#section1/winkel/show/kleding"><li ng-class="{ active: isActive('/section1/winkel/show/kleding')}"><img src="<?= $rootPath ?>images/newdesign/{{isActive('/section1/winkel/show/kleding') && 'sale_active.png' || 'sale.png'}}"></li></a>
+				<a ng-click="closeSideNav(); toggleTrending('close');" href="#section1/uitgaan/show/film"><li ng-class="{ active: isActive('/section1/uitgaan/show/film')}"><img src="<?= $rootPath ?>images/newdesign/{{isActive('/section1/uitgaan/show/film') && 'pint_active.png' || 'pint.png'}}"></li></a>
+				<a ng-click="closeSideNav(); toggleTrending('close');" href="#section1/vrije_tijd/show/sport"><li ng-class="{ active: isActive('/section1/vrije_tijd/show/sport')}"><img src="<?= $rootPath ?>images/newdesign/{{isActive('/section1/vrije_tijd/show/sport') && 'plane_active.png' || 'plane.png'}}"></li></a>
+				<a ng-click="closeSideNav(); toggleTrending('close');" href="#section8"><li ng-class="{ active: isActive('/section8')}"><img src="<?= $rootPath ?>images/newdesign/{{isActive('/section8') && 'sun_active.png' || 'sun.png'}}"></li></a>
+				<a ng-click="closeSideNav(); toggleTrending('close');" href="#section7"><li ng-class="{ active: isActive('/section7')}"><img src="<?= $rootPath ?>images/newdesign/{{isActive('/section7') && 'car_active.png' || 'car.png'}}"></li></a>
 				<li></li>
 			</ul>
 		</div>
@@ -53,14 +37,14 @@
 					<li ng-click="toggleLeft()">Verkeer<span class="pull-right">></span></li>
 					<li ng-click="toggleLeft()">Vrije tijd<span class="pull-right">></span></li>
 					<a href="#section7"><li>Weer<span class="pull-right">></span></li></a> -->
-					<a ng-click="toggleLeft(); toggleTrending('close');" href="#section1/horeca/show/restaurant"><li>Horeca<span class="pull-right">></span></li></a>
-					<a ng-click="toggleLeft(); toggleTrending('close');" href="#section1/cultuur/show/gallerij"><li>Cultuur<span class="pull-right">></span></li></a>
-					<a ng-click="toggleLeft(); toggleTrending('close');" href="#section1/over_de_stad/show/Openbare-diensten"><li>Over de stad<span class="pull-right">></span></li></a>
-					<a ng-click="toggleLeft(); toggleTrending('close');" href="#section1/winkel/show/kleding"><li>Shopping<span class="pull-right">></span></li></a>
-					<a ng-click="toggleLeft(); toggleTrending('close');" href="#section1/uitgaan/show/film"><li>Uitgaan<span class="pull-right">></span></li></a>
-					<a ng-click="toggleLeft(); toggleTrending('close');" href="#section1/vrije_tijd/show/sport"><li>Vrije tijd<span class="pull-right">></span></li></a>
-					<a ng-click="toggleLeft(); toggleTrending('close');" href="#section8"><li>Weer<span class="pull-right">></span></li></a>
-					<a ng-click="toggleLeft(); toggleTrending('close');" href="#section7"><li>Verkeer<span class="pull-right">></span></li></a>
+					<a ng-click="toggleLeft(); toggleTrending('close');" href="#section1/horeca/show/restaurant"><li ng-class="{ active: isActive('/section1/horeca/show/restaurant')}">Horeca<span class="subcategory-arrow pull-right"><img ng-src="<?=$rootPath?>/images/newdesign/{{isActive('/section1/horeca/show/restaurant') && 'arrow_white.png' || 'arrow.png'}}"></span></li></a>
+					<a ng-click="toggleLeft(); toggleTrending('close');" href="#section1/cultuur/show/gallerij"><li  ng-class="{ active: isActive('/section1/cultuur/show/gallerij')}">Cultuur<span class="subcategory-arrow pull-right"><img ng-src="<?=$rootPath?>/images/newdesign/{{isActive('/section1/cultuur/show/gallerij') && 'arrow_white.png' || 'arrow.png'}}"></span></li></a>
+					<a ng-click="toggleLeft(); toggleTrending('close');" href="#section1/over_de_stad/show/Openbare-diensten"><li ng-class="{ active: isActive('/section1/over_de_stad/show/Openbare-diensten')}">Over de stad<span class="subcategory-arrow pull-right"><img ng-src="<?=$rootPath?>/images/newdesign/{{isActive('/section1/over_de_stad/show/Openbare-diensten') && 'arrow_white.png' || 'arrow.png'}}"></span></li></a>
+					<a ng-click="toggleLeft(); toggleTrending('close');" href="#section1/winkel/show/kleding"><li ng-class="{ active: isActive('/section1/winkel/show/kleding')}">Shopping<span class="subcategory-arrow pull-right"><img ng-src="<?=$rootPath?>/images/newdesign/{{isActive('/section1/winkel/show/kleding') && 'arrow_white.png' || 'arrow.png'}}"></span></li></a>
+					<a ng-click="toggleLeft(); toggleTrending('close');" href="#section1/uitgaan/show/film"><li ng-class="{ active: isActive('/section1/uitgaan/show/film')}">Uitgaan<span class="subcategory-arrow pull-right"><img ng-src="<?=$rootPath?>/images/newdesign/{{isActive('/section1/uitgaan/show/film') && 'arrow_white.png' || 'arrow.png'}}"></span></li></a>
+					<a ng-click="toggleLeft(); toggleTrending('close');" href="#section1/vrije_tijd/show/sport"><li ng-class="{ active: isActive('/section1/vrije_tijd/show/sport')}">Vrije tijd<span class="subcategory-arrow pull-right"><img ng-src="<?=$rootPath?>/images/newdesign/{{isActive('/section1/vrije_tijd/show/sport') && 'arrow_white.png' || 'arrow.png'}}"></span></li></a>
+					<a ng-click="toggleLeft(); toggleTrending('close');" href="#section8"><li ng-class="{ active: isActive('/section8')}">Weer<span class="subcategory-arrow pull-right"><img ng-src="<?=$rootPath?>/images/newdesign/{{isActive('/section8') && 'arrow_white.png' || 'arrow.png'}}"></span></li></a>
+					<a ng-click="toggleLeft(); toggleTrending('close');" href="#section7"><li ng-class="{ active: isActive('/section7')}">Verkeer<span class="subcategory-arrow pull-right"><img ng-src="<?=$rootPath?>/images/newdesign/{{isActive('/section7') && 'arrow_white.png' || 'arrow.png'}}"></span></li></a>
 				</ul>
 			</div>
 		</md-sidenav>

@@ -1,8 +1,8 @@
 <?php
 
 //  $rootPath = "http://localhost/edge/projects/kloppend-hart-antwerpen/version_002/front/";
-       $rootPath = "http://localhost/edge/projects/kloppend-hart-antwerpen/kloppend-hart-front/version_002/front/";
-// $rootPath = "https://apen.be/kloppend-hart-antwerpen/front/";
+//       $rootPath = "http://localhost/edge/projects/kloppend-hart-antwerpen/kloppend-hart-front/version_002/front/";
+ $rootPath = "https://apen.be/kloppend-hart-antwerpen/front/";
 
 ?>
 <!DOCTYPE html>
@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="<?= $rootPath ?>css/libs/angular-material.min.css">
     <link rel="stylesheet" href="<?= $rootPath ?>css/base.css">
     <link rel="stylesheet" href="<?= $rootPath ?>css/samStyling.css">
-    <link rel="stylesheet" href="<?= $rootPath ?>js/angular-carousel.css">
+<!--    <link rel="stylesheet" href="--><?//= $rootPath ?><!--js/angular-carousel.css">-->
     <link rel="stylesheet" href="<?= $rootPath ?>css/libs/rzslider.css">
     <link rel="stylesheet" href="<?= $rootPath ?>css/weather-icons.min.css">
     <link rel="stylesheet" href="<?= $rootPath ?>css/weather-icons-wind.min.css">

@@ -1,8 +1,6 @@
 <?php
 	$date = date('l\, d M Y', time());
-//	$rootPath = "https://apen.be/kloppend-hart-antwerpen/front/";
-$rootPath = "http://localhost/edge/projects/kloppend-hart-antwerpen/kloppend-hart-front/version_002/front/";
-
+	$rootPath = "https://apen.be/kloppend-hart-antwerpen/front/";
 ?>
 
 <div ng-controller="navTopTrendingController" class="top-navbar clearfix">
