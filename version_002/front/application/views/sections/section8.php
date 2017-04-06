@@ -94,7 +94,7 @@ $tweets = $tweet->searchTweetsUsers('frankdeboosere');
                             <?php endif ?>
                         <?php endforeach; ?>
                     </div>
-                    <div class="col-sm-6 col-md-6">
+                    <div class="col-sm-12 col-md-6">
                         <?php foreach ($tweets as $key => $value): ?>
                             <?php if ($key % 2 == 1): ?>
                                 <div class="panel panel-default">
