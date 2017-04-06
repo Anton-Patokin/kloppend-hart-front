@@ -7,7 +7,7 @@
 	<div class="social-media-checklist pull-left">
 		<ul>
 			<li class="date"><?= strtoupper($date) ?></li>
-			<li><span class="btn-trending" ng-click="toggleTrending('topNav')">TRENDING</span>
+			<li><span class="btn-trending" ng-click="toggleTrending('topNav')">TRENDING<span class=""></span></span>
 				<ul id="trending-wrapper" ng-class="{'dropdownTest' : !dropdownToggle, 'dropdownShow' : dropdownToggle}">
 					<div class="top-trending">
 						<div class="trending-now">

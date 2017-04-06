@@ -1177,7 +1177,7 @@ button.md-datepicker-button {
     background: linear-gradient(45deg, #cd1739 0%, #a41c18 100%);
 }
 
-@media screen and (max-width: 1066px) {
+@media screen and (max-width: 1101px) {
     .datapicker_custom {
         float: right;
         display: inline-block;
@@ -1189,6 +1189,9 @@ button.md-datepicker-button {
         display: inline-block;
         width: 70%;
     }
+    .map-checkbox {
+        display: none !important;
+    }
 }
 
 @media screen and (max-width: 765px) {
@@ -1199,6 +1202,10 @@ button.md-datepicker-button {
 
     .slider_custom {
         max-width: 85%;
+    }
+    .date{
+        display: none !important;
+
     }
 }
 
@@ -1352,7 +1359,7 @@ button.md-datepicker-button {
 }
 
 
-@media screen and (max-device-width: 480px) , (orientation: landscape) {
+@media screen and (max-device-width: 1000px) and (orientation: landscape) {
     .map-checkbox {
         display: none !important;
     }
