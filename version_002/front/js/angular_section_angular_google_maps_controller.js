@@ -117,6 +117,8 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout, 
         }
     }
 
+    $scope.lockLeft = true;
+
     $scope.toggleLeft = buildToggler('left1');
 
     function buildToggler(componentId) {

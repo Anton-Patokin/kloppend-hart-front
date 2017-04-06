@@ -1,92 +1,5 @@
-.poi-chart {
-	padding: 0;
-}
 
-.poi-photo-wrapper, .poi-text {
-	margin: 25px 0;
-}
-
-.poi-photo-wrapper img.slide {
-	height: auto;
-	width: 100%;
-	padding: 20px;
-    margin: 0 auto;
-}
-
-.poi-photo-wrapper img.ng-hide {
-	/*position: absolute;*/
-	opacity: 0;
-}
-
-.show {
-	/*position: relative;*/
-	opacity: 1;
-	transition-duration: 0.7s;
-}
-
-.poi-photo-wrapper img {
-    padding: 0;
-    margin: 0;
-}
-
-.poi-photo-wrapper {
-	transition-duration: 1s;
-}
-
-.left-arrow, .right-arrow {
-	position: absolute;
-	height: calc(100% - 50px);
-	width: 80px;
-	background: rgba(255, 255, 255, 0.1);
-	z-index: 1000;
-	top: 0;
-	margin: 25px 0;
-	transition-duration: 0.3s;
-	outline: none;
-}
-
-.right-arrow {
-	right: 15px;
-}
-
-.left-arrow img, .right-arrow img {
-	height: 22px;
-	width: 12px;
-	position: relative;
-	top: 50%;
-	opacity: 0.8;
-}
-
-.left-arrow:hover, .right-arrow:hover {
-	background: rgba(255, 255, 255, 0.5);
-	transition-duration: 0.3s;
-}
-
-.poi-details {
-	padding: 0;
-}
-
-.poi-details .col-md-6{
-	padding: 0;
-}
-
-@media screen and (max-device-width: 480px) and (orientation: portrait) {
-	.welcome-message {
-        position: relative;
-        top: 0;
-        left: 0;
-        transform: none;
-        height: 100%;
-        /*margin-top: 20px;*/
-    }
-
-    .poi-details .col-md-6{
-		padding-right: 20px;
-		margin-left: 20px;
-	}
-}
-
-@media screen and (max-width: 1110px) {
+/*@media screen and (max-width: 1110px) {
     .map-checkbox {
         display: none !important;
     }
@@ -96,52 +9,8 @@
     .social-media-checklist .date {
         display: none !important;
     }
-}
-
-.tweets.col-md-12 {
-	transition-duration: 0.3s;
-	width: 100%;
-}
-
-.tweets.sidenav-open.col-md-12 {
-	transition-duration: 0.3s;
-	width: calc(100% - 250px);
-	margin-left: 250px;
-}
-
-.row.margin-top-1.sidenav-open {
-	transition-duration: 0.3s;
-	width: calc(100% - 250px);
-	margin-left: 250px;
-}
-
-.row.margin-top-1{
-	transition-duration: 0.3s;
-	width: 100%;
-}
-
-.row.webcam.sidenav-open img.web_cam {
-	transition-duration: 0.3s;
-	width: calc(100% - 250px);
-	margin-left: 245px;
-}
-
-.row.webcam img.web_cam{
-	transition-duration: 0.3s;
-	/*width: 100%;*/
-}
-
-.poi-search-details .sidenav-open.poi-details {
-	transition-duration: 0.3s;
-	width: calc(100% - 250px);
-	margin-left: 250px;
-}
-
-.poi-search-details .poi-details{
-	transition-duration: 0.3s;
-	width: 100%;
-}
+}*/
 
 
-/* VERKEER PAGE */ 
+
 

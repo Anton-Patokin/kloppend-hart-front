@@ -156,6 +156,10 @@ md-backdrop.md-sidenav-backdrop {
     border-top: 1px solid #232323;
 }
 
+.sidenav .icons ul a:first-child li img {
+    padding: 10px 0;
+}
+
 .sidenav .icons ul li img {
     width: 25px;
 }
@@ -169,15 +173,22 @@ md-backdrop.md-sidenav-backdrop {
 }
 
 .kha-logo-wrapper {
-    height: 254px;
-    padding: 20px;
+    padding: 15px;
     border-bottom: 1px solid #232323;
 }
 
-.kha-logo {
+/*.kha-logo {
     background-color: #1c1c1c;
     height: 100px;
     width: 100%;
+}*/
+
+.kha-logo {
+    text-align: center;
+}
+
+.kha-logo img {
+    height: 43.5px;
 }
 
 .icon-titles ul {
@@ -187,7 +198,7 @@ md-backdrop.md-sidenav-backdrop {
 }
 
 .icon-titles ul li {
-    padding: 13.5px 14px 14px 14px;
+    padding: 13.7px 14px 14px 14px;
     border-bottom: 1px solid #232323;
 }
 
@@ -561,8 +572,8 @@ label {
     padding-bottom: 30px;
 }
 
-.poi-details {
-    padding: 10px;
+.poi-details .col-md-6{
+    padding: 0;
 }
 
 .subcategories-menu-wrapper .col-md-12 {
@@ -578,13 +589,57 @@ label {
 }
 
 .poi-photo-wrapper {
-    margin: 10px 5px 20px 0px;
+    margin: 25px 0;
     text-align: center;
 }
 
-.poi-photo-wrapper img {
+.poi-photo-wrapper img.slide {
+    height: auto;
+    width: 100%;
     padding: 20px;
     margin: 0 auto;
+}
+
+.poi-photo-wrapper {
+    transition-duration: 1s;
+}
+
+.left-arrow, .right-arrow {
+    position: absolute;
+    height: calc(100% - 50px);
+    width: 80px;
+    background: rgba(255, 255, 255, 0.1);
+    z-index: 1000;
+    top: 0;
+    margin: 25px 0;
+    transition-duration: 0.3s;
+    outline: none;
+}
+
+.right-arrow {
+    right: 15px;
+}
+
+.left-arrow img, .right-arrow img {
+    height: 22px;
+    width: 12px;
+    position: relative;
+    top: 50%;
+    opacity: 0.8;
+}
+
+.left-arrow:hover, .right-arrow:hover {
+    background: rgba(255, 255, 255, 0.5);
+    transition-duration: 0.3s;
+}
+
+.poi-photo-wrapper img.ng-hide {
+    opacity: 0;
+}
+
+.show {
+    opacity: 1;
+    transition-duration: 0.7s;
 }
 
 .temp-photo {
@@ -615,7 +670,7 @@ label {
 
 .poi-text {
     min-height: 420px;
-    margin: 10px 0px 20px 5px;
+    margin: 25px 0;
     padding: 20px;
     position: relative;
 }
@@ -650,10 +705,6 @@ label {
 
 .node-body {
     margin-bottom: 30px;
-}
-
-.poi-chart {
-    padding: 5px;
 }
 
 .stats-analytics {
@@ -1167,6 +1218,24 @@ button.md-datepicker-button {
     height: 100px;
 }
 
+/* SIDENAVBAR OPEN */
+
+.tweets.col-md-12,  .row.margin-top-1, .poi-search-details .poi-details {
+    transition-duration: 0.3s;
+    width: 100%;
+}
+
+.tweets.sidenav-open.col-md-12, .row.margin-top-1.sidenav-open, .row.webcam.sidenav-open img.web_cam, .poi-search-details .sidenav-open.poi-details {
+    transition-duration: 0.3s;
+    width: calc(100% - 250px);
+    margin-left: 250px;
+}
+
+.row.webcam img.web_cam{
+    transition-duration: 0.3s;
+    /*width: 100%;*/
+}
+
 /* scrollbar */
 
 ::-webkit-scrollbar {
@@ -1236,6 +1305,20 @@ button.md-datepicker-button {
 
     .left1 {
         width: 100%;
+    }
+
+    .welcome-message {
+        position: relative;
+        top: 0;
+        left: 0;
+        transform: none;
+        height: 100%;
+        /*margin-top: 20px;*/
+    }
+
+    .poi-details .col-md-6{
+        padding-right: 20px;
+        margin-left: 20px;
     }
 
     md-sidenav {
@@ -1366,6 +1449,20 @@ button.md-datepicker-button {
 
     .left1 {
         width: 100%;
+    }
+
+    .welcome-message {
+        position: relative;
+        top: 0;
+        left: 0;
+        transform: none;
+        height: 100%;
+        /*margin-top: 20px;*/
+    }
+
+    .poi-details .col-md-6{
+        padding-right: 20px;
+        margin-left: 20px;
     }
 
     md-sidenav {
