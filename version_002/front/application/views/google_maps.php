@@ -37,9 +37,9 @@
             </div>
             <div class="instruction" id="body-top-navbar">
                 <p>Wanneer je op de "Trending" knop drukt krijg je de top 5 plaatsen van vandaag en de top 5 plaatsen
-                    van vandaag bij u in de buurt, indien u het toestaat om je locatie vrij te geven.<br>
-                    Daarnaast vind je de waarden die we gebruiken om de plaatsen te bereken op hoe populair ze zijn.
-                    Tenslotte vind je uiterst rechts een zoek functie waar u gemakkelijk op de naam van een plaats kan
+                    van vandaag bij je in de buurt, indien u het toestaat om je locatie vrij te geven.<br>
+                    Daarnaast vind je de waarden die we gebruiken om de plaatsen te berekenen op hoe populair ze zijn.
+                    Tenslotte vind je uiterst rechts een zoekfunctie waar je gemakkelijk op de naam van een plaats kan
                     zoeken.</p>
             </div>
         </div>
@@ -51,18 +51,18 @@
             </div>
             <div class="instruction" id="body-side-navbar">
                 <p>Hier kan je zoeken op category van de plaatsen. Als je links bovenaan op het hamburger icoontje klikt
-                    krijgt u de naam te zien van de verschillende categorieën.</p>
+                    krijg je de naam te zien van de verschillende categorieën.</p>
             </div>
         </div>
         <div class="detailpage-instructions">
             <div ng-click="toggleMenu($event)" id="detailpage-title" class="title">
-                <h4>Detail pagina <span class="not-active-arrow pull-right"><img src="<?= $rootScope ?>images/newdesign/arrow-black.png"></span>
+                <h4>Detailpagina <span class="not-active-arrow pull-right"><img src="<?= $rootScope ?>images/newdesign/arrow-black.png"></span>
                 </h4>
                 <div class="small-seperator"></div>
             </div>
             <div class="instruction" id="body-detailpage">
-                <p>Als je op de detail pagina zit van een plaats krijgt u links een top 10 en een overzicht van alle
-                    subcategorieën van de categorie waar de plaats tot behoort. Wilt u een andere subcategorie? Dat is
+                <p>Als je op de detail pagina zit van een plaats krijg je links een top 10 en een overzicht van alle
+                    subcategorieën van de categorie waar de plaats tot behoort. Wil e een andere subcategorie? Dat is
                     gemakkelijk! Klik gewoon op de subcategorie die je wilt bekijken in de lijst.<br>
                     Je krijgt hier ook een overzicht van info over een bepaalde plaats zoals foto's, beschrijving,
                     social media stream en een grafiek van hoe populair de plek is.</p>

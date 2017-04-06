@@ -22,11 +22,9 @@
 		<div ng-click="toggleLeft(); toggleTrending('close');" class="hamburger-icon">
 			<img src="<?= $rootPath ?>images/newdesign/hamburger.png">
 		</div>
-		<div class="title">
-		 	<img ng-click="home(); toggleTrending('close'); enableFooter();" src="<?= $rootPath ?>images/newdesign/apenCityboard.png">
-		</div>
 		<div class="icons">
 			<ul>
+				<a ng-click="home(); toggleTrending('close'); closeSideNav(); enableFooter();" href=""><li><img src="<?= $rootPath ?>images/newdesign/home.png"></li></a>
 				<a ng-click="closeSideNav(); toggleTrending('close');" href="#section1/horeca/show/restaurant"><li><img src="<?= $rootPath ?>images/newdesign/coffee.png"></li></a>
 				<a ng-click="closeSideNav(); toggleTrending('close');" href="#section1/cultuur/show/gallerij"><li><img src="<?= $rootPath ?>images/newdesign/film.png"></li></a>
 				<a ng-click="closeSideNav(); toggleTrending('close');" href="#section1/over_de_stad/show/Openbare-diensten"><li><img src="<?= $rootPath ?>images/newdesign/city.png"></li></a>
@@ -43,7 +41,7 @@
 		<md-sidenav class="left1" md-component-id="left1">
 			<div class="kha-logo-wrapper">
 				<div ng-click="home(); closeSideNav(); toggleTrending('close'); enableFooter();" class="kha-logo">
-					
+					<img src="<?= $rootPath ?>images/newdesign/logo-small.png">
 				</div>				
 			</div>
 			<div class="icon-titles">
