@@ -7,7 +7,7 @@
 	<div class="social-media-checklist pull-left">
 		<ul>
 			<li class="date"><?= strtoupper($date) ?></li>
-			<li ng-class="{'active' : dropdownToggle}"><span class="btn-trending"  ng-click="toggleTrending('topNav')">TRENDING<span ><img class="icon_navbar_top"  ng-src="<?= $rootPath?>/images/newdesign/{{!dropdownToggle && 'arrow_down_white.png' || 'arrow_up_black.png'}}"/></span></span>
+			<li><span class="btn-trending" ng-click="toggleTrending('topNav')">TRENDING<span ><img class="icon_navbar_top"  ng-src="<?= $rootPath?>/images/newdesign/{{!dropdownToggle && 'arrow_down_white.png' || 'arrow_up_white.png'}}"/></span></span>
 				<ul id="trending-wrapper" ng-class="{'dropdownTest' : !dropdownToggle, 'dropdownShow' : dropdownToggle}">
 					<div class="top-trending">
 						<div class="trending-now">

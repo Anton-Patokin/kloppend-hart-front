@@ -1,4 +1,4 @@
-app.controller("PrimeController", function ($scope, $http, $interval, $timeout, $animate, $mdSidenav, $location) {
+app.controller("PrimeController", function ($scope, $http, $interval, $timeout, $animate, $mdSidenav,$location) {
     var showHeatmapBool = true;
     var showMarkersBool = true;
     $scope.toggleSlider = false;
@@ -79,15 +79,7 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout, 
 
 
     $scope.isActive = function (viewLocation) {
-        var root = $location.path().split("/");
-        var new_root = ''
-        if (root.length != 1) {
-            var new_root = root[0] + "/" + root[1];
-            if (root.length > 2) {
-                new_root = new_root + "/" + root[2] + "/" + root[3];
-            }
-        }
-        return viewLocation === new_root;
+        return viewLocation === $location.path();
     };
 
 
