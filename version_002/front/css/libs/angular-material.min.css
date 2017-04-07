@@ -10603,7 +10603,8 @@ md-checkbox .md-label bdo[dir=ltr] {
 md-content {
     display: block;
     position: relative;
-    overflow: auto;
+    /*overflow: auto;*/
+    overflow: hidden;
     -webkit-overflow-scrolling: touch
 }
 

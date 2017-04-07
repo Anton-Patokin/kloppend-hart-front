@@ -19,12 +19,12 @@
     <!--    css-->
     <link rel="stylesheet" href="<?= $rootPath ?>css/libs/bootstrap.min.css">
     <link rel="stylesheet" href="<?= $rootPath ?>css/libs/angular-material.min.css">
-    <link rel="stylesheet" href="<?= $rootPath ?>css/base.css">
     <link rel="stylesheet" href="<?= $rootPath ?>css/samStyling.css">
 <!--    <link rel="stylesheet" href="--><?//= $rootPath ?><!--js/angular-carousel.css">-->
     <link rel="stylesheet" href="<?= $rootPath ?>css/libs/rzslider.css">
     <link rel="stylesheet" href="<?= $rootPath ?>css/weather-icons.min.css">
     <link rel="stylesheet" href="<?= $rootPath ?>css/weather-icons-wind.min.css">
+    <link rel="stylesheet" href="<?= $rootPath ?>css/base.css">
     <script type="text/javascript" src="<?= $rootPath ?>js/libs/lodash.min.js"></script>
     <script type="text/javascript" src="<?= $rootPath ?>js/libs/angular.min.js"></script>
     <script src="<?= $rootPath ?>js/angular-simple-logger.js"></script>

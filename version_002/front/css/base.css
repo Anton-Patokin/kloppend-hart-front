@@ -185,7 +185,7 @@ md-backdrop.md-sidenav-backdrop {
     width: 100%;
 }*/
 
-.social-media-checklist ul li.active{
+.social-media-checklist ul li.active {
     color: #000;
     background-color: #fff;
     border-radius: 0;
@@ -315,8 +315,6 @@ md-backdrop.md-sidenav-backdrop {
     height: 55px;
 }
 
-
-
 .search-input input[type="text"] {
     height: 55px;
     border: none;
@@ -329,7 +327,7 @@ md-backdrop.md-sidenav-backdrop {
     margin-right: -4px;
     padding-bottom: 0;
     outline: none;
-    background-color: rgba(255,255,255,0.15);
+    background-color: rgba(255, 255, 255, 0.15);
 }
 
 .search-input ul {
@@ -399,11 +397,12 @@ label {
     background: linear-gradient(45deg, #cd1739 0%, #a41c18 100%);
     border: 1px solid #a41c18;
     color: #99a1a7;
-    -webkit-box-shadow: inset 0px 0px 0px 2px rgba(0,0,0,0.65);
-    -moz-box-shadow: inset 0px 0px 0px 2px rgba(0,0,0,0.65);
-    box-shadow: inset 0px 0px 0px 2px rgba(0,0,0,0.65);
+    -webkit-box-shadow: inset 0px 0px 0px 2px rgba(0, 0, 0, 0.65);
+    -moz-box-shadow: inset 0px 0px 0px 2px rgba(0, 0, 0, 0.65);
+    box-shadow: inset 0px 0px 0px 2px rgba(0, 0, 0, 0.65);
 
 }
+
 .top-trending {
     padding: 20px;
     background-color: #fff;
@@ -441,9 +440,9 @@ label {
     background-color: #fff;
     /*border-left: 1px solid #212121;*/
     /*border-right: 1px solid #212121;*/
-    -webkit-box-shadow: 0px 5px 10px 1px rgba(0,0,0,0.75);
-    -moz-box-shadow: 0px 5px 10px 1px rgba(0,0,0,0.75);
-    box-shadow: 0px 5px 10px 1px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 0px 5px 10px 1px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 5px 10px 1px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 5px 10px 1px rgba(0, 0, 0, 0.75);
 }
 
 /* HOMEPAGE */
@@ -607,7 +606,7 @@ label {
     padding-bottom: 30px;
 }
 
-.poi-details .col-md-6{
+.poi-details .col-md-6 {
     padding: 0;
 }
 
@@ -702,10 +701,11 @@ label {
 .carousel-indicators .active {
     background-color: #cd1738;
 }
+
 /*.nav_arrow_icon{*/
-    /*height: 12px;*/
-    /*width: 8px;*/
-    /*margin-top: 3px;*/
+/*height: 12px;*/
+/*width: 8px;*/
+/*margin-top: 3px;*/
 /*}*/
 .poi-text {
     min-height: 420px;
@@ -714,16 +714,18 @@ label {
     position: relative;
 }
 
-.icons ul li.active{
-    background-color: rgba(255,255,255,0.15)
+.icons ul li.active {
+    background-color: rgba(255, 255, 255, 0.15)
 }
-.icon-titles ul li.active{
 
-    background-color: rgba(255,255,255,0.15);
+.icon-titles ul li.active {
+
+    background-color: rgba(255, 255, 255, 0.15);
     color: #fff;
 }
-.subcategories-menu ul ul p.active{
-    background-color: rgba(255,255,255,0.5);
+
+.subcategories-menu ul ul p.active {
+    background-color: rgba(255, 255, 255, 0.5);
 }
 
 .node-title {
@@ -737,7 +739,8 @@ label {
     background-color: #cd172c;
     margin-top: 10px;
 }
-.icon_navbar_top{
+
+.icon_navbar_top {
     height: 5px;
     width: 15px;
     margin-top: -2px;
@@ -790,7 +793,8 @@ label {
 .pagination {
     text-align: center;
 }
-.svg_navbar svg{
+
+.svg_navbar svg {
 
 }
 
@@ -900,7 +904,8 @@ label {
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     transition: all 0.5s ease;
-    padding: 0 35px;
+    padding-left: 35px;
+    padding-right: 0;
     right: 0;
     width: -webkit-calc(100% - 56px);
     width: -moz-calc(100% - 56px);
@@ -911,11 +916,13 @@ label {
 .div .overlay_1_1-disabled {
     position: absolute;
     bottom: 0;
-    height: 56px;
+    height: 85px;
+    padding-top: 15px;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     transition: all 0.5s ease;
-    padding: 0 35px;
+    padding-left: 35px;
+    padding-right: 0;
     right: 0;
     width: -webkit-calc(100% - 56px);
     width: -moz-calc(100% - 56px);
@@ -1139,7 +1146,7 @@ label {
 
 .custom-slider.rzslider .rz-bubble {
     /*display: none;*/
-    padding-left: 15px;
+    padding-left: 20px;
     top: -35px; /* to remove the default positioning */
 }
 
@@ -1201,6 +1208,10 @@ label {
     bottom: 10px;
 }
 
+.rzslider .rz-tick-value {
+    top: 18px;
+}
+
 @media screen and (max-width: 1180px) {
     .rz-tick-value {
         font-size: 8px;
@@ -1214,7 +1225,10 @@ label {
 }
 
 .rz-tick:nth-child(even) .rz-tick-value {
-    bottom: -15px !important;
+    /*bottom: -19px !important;*/
+}
+:nth-child(2n).rz-tick .rz-tick-value{
+    top: 14px;
 }
 
 .datepicker {
@@ -1280,7 +1294,7 @@ button.md-datepicker-button {
 
 /* SIDENAVBAR OPEN */
 
-.tweets.col-md-12,  .row.margin-top-1, .poi-search-details .poi-details {
+.tweets.col-md-12, .row.margin-top-1, .poi-search-details .poi-details {
     transition-duration: 0.3s;
     width: 100%;
 }
@@ -1291,7 +1305,7 @@ button.md-datepicker-button {
     margin-left: 250px;
 }
 
-.row.webcam img.web_cam{
+.row.webcam img.web_cam {
     transition-duration: 0.3s;
     /*width: 100%;*/
 }
@@ -1318,6 +1332,7 @@ button.md-datepicker-button {
         display: inline-block;
         width: 70%;
     }
+
     .map-checkbox {
         display: none !important;
     }
@@ -1332,7 +1347,8 @@ button.md-datepicker-button {
     .slider_custom {
         max-width: 85%;
     }
-    .date{
+
+    .date {
         display: none !important;
 
     }
@@ -1348,6 +1364,7 @@ button.md-datepicker-button {
         max-width: 70%;
     }
 }
+
 @media screen and (max-width: 480px) {
     .datapicker_custom {
         max-width: 100%;
@@ -1376,7 +1393,7 @@ button.md-datepicker-button {
         /*margin-top: 20px;*/
     }
 
-    .poi-details .col-md-6{
+    .poi-details .col-md-6 {
         padding-right: 20px;
         margin-left: 20px;
     }
@@ -1430,15 +1447,16 @@ button.md-datepicker-button {
 
     .div .overlay_1_1-able {
         position: absolute;
-        bottom: -112px;
-        height: 112px;
+        bottom: -135px;
+        height: 135px;
+        padding: 0 35px;
     }
 
     .div .overlay_1_1-disabled {
         position: absolute;
         bottom: 0;
-        height: 112px;
-
+        height: 135px;
+        padding: 10px 35px;
     }
 
     .sidenav .icons, .sidenav .title {
@@ -1453,8 +1471,6 @@ button.md-datepicker-button {
     .left1 {
         margin-left: 0;
     }
-
-
 
     .subcategories-menu-wrapper {
         margin-top: 0;
@@ -1499,7 +1515,6 @@ button.md-datepicker-button {
 
 }
 
-
 @media screen and (max-device-width: 1000px) and (orientation: landscape) {
     .map-checkbox {
         display: none !important;
@@ -1518,7 +1533,7 @@ button.md-datepicker-button {
         /*margin-top: 20px;*/
     }
 
-    .poi-details .col-md-6{
+    .poi-details .col-md-6 {
         padding-right: 20px;
         margin-left: 20px;
     }
@@ -1595,7 +1610,6 @@ button.md-datepicker-button {
     .left1 {
         margin-left: 0;
     }
-
 
     .subcategories-menu-wrapper {
         margin-top: 0;
