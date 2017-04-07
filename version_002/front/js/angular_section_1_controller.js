@@ -56,7 +56,7 @@ app.controller("section1", function ($scope, $routeParams, $http, $timeout) {
             $('.node-title').empty();
             $('.node-body').empty();
             $('.apen-link').empty();
-            $('.node-title').append(data['title'].toUpperCase());
+            $('.node-title').append("<h1>" + data['title'].toUpperCase() + "</h1>");
             $('.node-title').append('<div class="small-seperator"></div>');
             $('.node-body').append(data['body']);
             $('.apen-link').append('<a href="https://apen.be/node/' + nid + '">Meer weten over ' + data['title'] + '<img src="https://apen.be/kloppend-hart-antwerpen/front/images/newdesign/arrow-black.png"></a>');

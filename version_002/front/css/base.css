@@ -582,8 +582,11 @@ label {
 
 .subcategories-menu ul ul .place {
     margin-right: 10px;
-    /*color: #707070;*/
     color: #9b9b9b;
+}
+
+.subcategories-menu ul ul .active .place {
+    color: #383838;
 }
 
 .subcategory-active:first-child {
@@ -723,8 +726,11 @@ label {
 }
 
 .node-title {
-    font-size: 20px;
     margin-bottom: 20px;
+}
+
+.node-title h1 {
+    margin: 0;
 }
 
 .small-seperator {
@@ -865,7 +871,7 @@ label {
 }
 
 .tweets .tweet-title {
-    text-align: center;
+    margin: 0 0 20px 15px; 
 }
 
 /*#verkeer-antwerpen h2, #verkeerscentrum-antwerpen h2, #ring-antwerpen h2 {
@@ -928,6 +934,14 @@ label {
     width: -moz-calc(100% - 56px);
     width: calc(100% - 56px);
     background: #fff;
+}
+
+.tweet-title .small-seperator {
+    margin-top: 0px;
+}
+
+.tweet-title h1 {
+    margin-bottom: 0;
 }
 
 /* WEATHER PAGE */
@@ -1057,7 +1071,16 @@ label {
 }
 
 .weer-title {
-    text-align: center;
+    margin-left: 30px;
+    margin-bottom: 20px;
+}
+
+.weer-title h1 {
+    margin-bottom: 0;
+}
+
+.weer-title .small-seperator {
+    margin-top: 0;
 }
 
 .web_cam {

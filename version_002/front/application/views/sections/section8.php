@@ -29,8 +29,8 @@ $tweets = $tweet->searchTweetsUsers('frankdeboosere');
 
         </div>
         <div ng-class="{'sidenav-open' : !sideNavtest}" class="row margin-top-1">
-            <div class="weer-title"><h1 class="">Weer</h1></div>
-            <div class="col-md-6 margin-top-5">
+            <div class="weer-title"><h1>Weer</h1><div class="small-seperator"></div></div>
+            <div class="col-md-6">
                 <div class="" ng-repeat="weather_result in weather_results">
                     <div ng-if="$index <9">
                         <div ng-class="{'col-sm-6':$index!=0,'col-md-6':$index!=0,'col-md-12':$index==0}">
@@ -66,7 +66,7 @@ $tweets = $tweet->searchTweetsUsers('frankdeboosere');
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 margin-top-5">
+            <div class="col-md-6">
                 <?php if (!isset($tweets)): ?>
                     <div class="col-md-12">
                         <h1>no tweets are found</h1>

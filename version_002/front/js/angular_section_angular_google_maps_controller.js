@@ -63,7 +63,19 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout, 
     var currentAppStateFunction = null;
 
     var date = new Date();
-    $scope.showCurrentTime = date.getHours() + '.' + date.getMinutes() + 'u';
+    var footerMinutes;
+    var footerHours;
+    if (date.getMinutes() < 10) {
+        footerMinutes = "0" + date.getMinutes();
+    } else {
+        footerMinutes = date.getMinutes();
+    }
+    if (date.getHours() < 10) {
+        footerHours = "0" + date.getHours();
+    } else {
+        footerHours = date.getHours();
+    }
+    $scope.showCurrentTime = footerHours + '.' + footerMinutes + 'u';
     var startHour = date.getHours() - 2;
     var endHour = date.getHours() + 1;
     var day = date.getFullYear() + '-' + ('0' + (date.getMonth() + 1)).slice(-2) + '-' + ('0' + date.getDate()).slice(-2);
@@ -176,7 +188,7 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout, 
             ceil: 24,
             showTicksValues: 1.00,
             id: 'sliderA',
-            onChange: $scope.myChangeListener,
+            onEnd: $scope.myChangeListener,
             precision: 2,
             translate: function (value) {
                 return value + '.00';

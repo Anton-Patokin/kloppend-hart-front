@@ -30,7 +30,7 @@
 		<div ng-class="{'sidenav-open' : !sideNavtest}" class="col-md-12 tweets">
 			<?php foreach($tweets as $key => $tweet): ?>
 				<div id="<?= $key ?>" class="row">
-					<div class="tweet-title"><h2><?= $tweet['title'] ?></h2></div>
+					<div class="tweet-title"><h1><?= $tweet['title'] ?></h1><div class="small-seperator"></div></div>
 					<div class="col-sm-6 col-md-3">
 						<?php foreach($tweet["tweet"]->statuses as $key => $status): ?>
 							<?php if($key % 4 == 0): ?>
