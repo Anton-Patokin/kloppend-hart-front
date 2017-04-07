@@ -31,7 +31,7 @@ body {
     bottom: 0;
     right: 0;
     left: 0;
-    z-index: -10;
+    z-index: 2;
     background-color: #fff;
     margin-top: 350px;
 }
@@ -42,7 +42,7 @@ body {
     width: 100%;
     top: 0;
     bottom: 0;
-    z-index: -150;
+    z-index: 1;
 }
 
 .size_map_small {
@@ -51,7 +51,7 @@ body {
     width: 100%;
     top: 0;
     bottom: 0;
-    z-index: -150;
+    z-index: 1;
 }
 
 .size_map_full {
@@ -60,7 +60,7 @@ body {
     width: 100%;
     top: 0;
     bottom: 0;
-    z-index: -150;
+    z-index: 1;
 }
 
 .margin_top_content {
@@ -126,7 +126,7 @@ body {
     margin-left: 48px;
     margin-top: 52px;
     padding-top: 1px;
-    z-index: -5;
+    z-index: 4;
     background-color: #151515;
     width: 250px;
 }
@@ -140,6 +140,7 @@ md-backdrop.md-sidenav-backdrop {
 }
 
 .navbar-inverse {
+    z-index: 6;
     background-color: #151515;
 }
 
@@ -233,7 +234,7 @@ md-backdrop.md-sidenav-backdrop {
     background-color: #151515;
     margin-left: 50px;
     color: white;
-    z-index: -4;
+    z-index: 5;
     font-size: 14px;
     border-bottom: solid 1px #232323;
     position: fixed;
@@ -259,14 +260,7 @@ md-backdrop.md-sidenav-backdrop {
     -webkit-transition-duration: 0.3s;
     -moz-transition-duration: 0.3s;
     transition-duration: 0.3s;
-    z-index: -7;
-    -moz-transition: all 0.1s linear;
-    /* WebKit */
-    -webkit-transition: all 0.1s linear;
-    /* Opera */
-    -o-transition: all 0.1s linear;
-    /* Standard */
-    transition: all 0.1s linear;
+    z-index: 3;
 }
 
 .dropdownTest {
@@ -897,15 +891,22 @@ label {
     text-align: center;
 }*/
 
+.div{
+    z-index: 6;
+}
+
+
+
+
 .div .overlay_1_1-able {
+    z-index: 6;
     position: absolute;
     bottom: -56px;
     height: 56px;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     transition: all 0.5s ease;
-    padding-left: 35px;
-    padding-right: 0;
+    padding: 15px 5px 35px 35px;
     right: 0;
     width: -webkit-calc(100% - 56px);
     width: -moz-calc(100% - 56px);
@@ -914,15 +915,14 @@ label {
 }
 
 .div .overlay_1_1-disabled {
+    z-index: 6;
     position: absolute;
     bottom: 0;
     height: 85px;
-    padding-top: 15px;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     transition: all 0.5s ease;
-    padding-left: 35px;
-    padding-right: 0;
+    padding: 15px 5px 35px 35px;
     right: 0;
     width: -webkit-calc(100% - 56px);
     width: -moz-calc(100% - 56px);
@@ -1024,7 +1024,7 @@ label {
     top: 0;
     width: 100%;
     height: auto;
-    z-index: 1;
+    z-index: 7;
     opacity: 0.6;
 }
 
@@ -1449,7 +1449,7 @@ button.md-datepicker-button {
         position: absolute;
         bottom: -135px;
         height: 135px;
-        padding: 0 35px;
+        padding: 0px 35px;
     }
 
     .div .overlay_1_1-disabled {
@@ -1587,16 +1587,18 @@ button.md-datepicker-button {
 
     .div .overlay_1_1-able {
         position: absolute;
-        bottom: -112px;
-        height: 112px;
+        bottom: -135px;
+        height: 135px;
+        padding: 0px 35px;
     }
 
     .div .overlay_1_1-disabled {
         position: absolute;
         bottom: 0;
-        height: 112px;
-
+        height: 135px;
+        padding: 10px 35px;
     }
+
 
     .sidenav .icons, .sidenav .title {
         display: none;
