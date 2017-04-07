@@ -145,7 +145,7 @@ md-backdrop.md-sidenav-backdrop {
 
 .sidenav {
     color: white;
-    border-right: 1px solid #232323;
+    border-right: 0px solid #232323;
 }
 
 /*.sidenav .icons {
@@ -236,7 +236,7 @@ md-backdrop.md-sidenav-backdrop {
     position: fixed;
     background-color: #202020;
     width: 300px;
-    margin-left: -19px;
+    margin-left: -17px;
     top: 0;
     margin-top: 55px;
     overflow: hidden;
@@ -271,6 +271,13 @@ md-backdrop.md-sidenav-backdrop {
 .social-media-checklist ul li {
     display: inline-block;
     padding: 17.5px;
+    -moz-transition: all 0.1s linear;
+    /* WebKit */
+    -webkit-transition: all 0.1s linear;
+    /* Opera */
+    -o-transition: all 0.1s linear;
+    /* Standard */
+    transition: all 0.1s linear;
 }
 
 .social-media-checklist label {
@@ -379,15 +386,30 @@ label {
     -webkit-box-shadow: inset 0px 0px 0px 2px rgba(0,0,0,0.65);
     -moz-box-shadow: inset 0px 0px 0px 2px rgba(0,0,0,0.65);
     box-shadow: inset 0px 0px 0px 2px rgba(0,0,0,0.65);
-
 }
+
+#trending-wrapper{
+    background-color: #fff;
+    /*border-left: 1px solid #212121;*/
+    /*border-right: 1px solid #212121;*/
+    -webkit-box-shadow: 0px 5px 10px 1px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 5px 10px 1px rgba(0,0,0,0.75);
+    box-shadow: 0px 5px 10px 1px rgba(0,0,0,0.75);
+}
+
 .top-trending {
     padding: 20px;
+    background-color: #fff;
+    color: #000;
 }
+
+
 
 .social-media-checklist ul li .trending-now ul li, .social-media-checklist ul li .trending-near ul li {
     border-right: none;
+    color: #000;
 }
+
 
 .trending-now ul li, .trending-near ul li {
     border-bottom: solid 1px #232323;
@@ -413,6 +435,8 @@ label {
 #trending-wrapper {
     overflow-y: auto;
 }
+
+
 
 /* HOMEPAGE */
 
@@ -510,7 +534,7 @@ label {
 }
 
 .subcategories-menu-wrapper {
-    background-color: #202020;
+    background-color: #383838;
     width: 243px;
     margin-left: 5px;
     position: fixed;
@@ -523,7 +547,20 @@ label {
 }
 
 .subcategories-menu .even {
-    background-color: #1c1c1c;
+    /*background-color: #1c1c1c;*/
+    background-color: #565656;
+}
+.social-media-checklist ul li.active{
+    color: #000;
+    background-color: #fff;
+    border-radius: 0;
+    -moz-transition: all 0.1s linear;
+    /* WebKit */
+    -webkit-transition: all 0.1s linear;
+    /* Opera */
+    -o-transition: all 0.1s linear;
+    /* Standard */
+    transition: all 0.1s linear;
 }
 
 .subcategories-menu a {
@@ -555,7 +592,8 @@ label {
 
 .subcategories-menu ul ul .place {
     margin-right: 10px;
-    color: #707070;
+    /*color: #707070;*/
+    color: #9b9b9b;
 }
 
 .subcategory-active:first-child {
@@ -679,6 +717,7 @@ label {
     position: relative;
 }
 
+
 .icons ul li.active{
     background-color: rgba(255,255,255,0.15)
 }
@@ -688,7 +727,7 @@ label {
     color: #fff;
 }
 .subcategories-menu ul ul p.active{
-    background-color: rgba(255,255,255,0.15);
+    background-color: rgba(255,255,255,0.5);
 }
 
 .node-title {
@@ -1419,9 +1458,7 @@ button.md-datepicker-button {
         margin-left: 0;
     }
 
-    .top-trending {
-        /*margin-left: -20px;*/
-    }
+
 
     .subcategories-menu-wrapper {
         margin-top: 0;
@@ -1563,9 +1600,7 @@ button.md-datepicker-button {
         margin-left: 0;
     }
 
-    .top-trending {
-        /*margin-left: -20px;*/
-    }
+
 
     .subcategories-menu-wrapper {
         margin-top: 0;
@@ -1607,5 +1642,5 @@ button.md-datepicker-button {
         display: inline-block;
         width: 100%;
     }
-
 }
+

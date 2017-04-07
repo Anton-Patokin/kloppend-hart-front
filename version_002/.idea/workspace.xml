@@ -25,89 +25,100 @@
       <file leaf-file-name="angular_section_angular_google_maps_controller.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/front/js/angular_section_angular_google_maps_controller.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2574">
-              <caret line="117" column="28" selection-start-line="117" selection-start-column="28" selection-end-line="117" selection-end-column="28" />
+            <state relative-caret-position="391">
+              <caret line="81" column="0" selection-start-line="81" selection-start-column="0" selection-end-line="81" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="google_maps.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/front/google_maps.php">
+        <entry file="file://$PROJECT_DIR$/front/application/views/google_maps.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="418">
-              <caret line="24" column="23" selection-start-line="24" selection-start-column="15" selection-end-line="24" selection-end-column="23" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="4" selection-end-column="2" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="base.css" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/front/css/base.css">
+      <file leaf-file-name="base - kopie.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/front/css/base - kopie.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="533">
-              <caret line="461" column="0" selection-start-line="461" selection-start-column="0" selection-end-line="469" selection-end-column="0" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="navbar.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/front/navbar.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="440">
-              <caret line="20" column="46" selection-start-line="20" selection-start-column="27" selection-end-line="20" selection-end-column="46" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="marker_0.png" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/front/images/markers/marker_0.png">
-          <provider selected="true" editor-type-id="images">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="section1.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/front/sections/section1.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3080">
-              <caret line="140" column="30" selection-start-line="140" selection-start-column="30" selection-end-line="140" selection-end-column="30" />
-              <folding>
-                <marker date="1490275316101" expanded="true" signature="6561:6579" placeholder="..." />
-              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="navbar_top.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/front/navbar_top.php">
+        <entry file="file://$PROJECT_DIR$/front/application/views/navbar_top.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="748">
-              <caret line="34" column="27" selection-start-line="34" selection-start-column="27" selection-end-line="34" selection-end-column="27" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="angular_top_trending_controller.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/front/js/angular_top_trending_controller.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="594">
-              <caret line="27" column="47" selection-start-line="27" selection-start-column="47" selection-end-line="27" selection-end-column="47" />
+            <state relative-caret-position="198">
+              <caret line="9" column="267" selection-start-line="9" selection-start-column="267" selection-end-line="9" selection-end-column="267" />
               <folding>
-                <marker date="1490275316097" expanded="true" signature="3200:3201" placeholder="{&quot;type&quot;: 'GET'...}" />
+                <marker date="1491552425353" expanded="true" signature="802:823" placeholder="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="footer.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/front/footer.php">
+      <file leaf-file-name="navbar.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/front/application/views/navbar.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="206">
+              <caret line="10" column="137" selection-start-line="10" selection-start-column="137" selection-end-line="10" selection-end-column="137" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="weather-icons-wind.min.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/front/css/weather-icons-wind.min.css">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="angular_side_bar_controller.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/front/js/angular_side_bar_controller.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="header.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/front/application/views/header.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="176">
+              <caret line="8" column="19" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="19" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="footer.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/front/application/views/footer.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="22">
+              <caret line="1" column="102" selection-start-line="1" selection-start-column="102" selection-end-line="1" selection-end-column="102" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="base.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/front/css/base.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="425">
+              <caret line="279" column="32" selection-start-line="279" selection-start-column="32" selection-end-line="279" selection-end-column="32" />
               <folding />
             </state>
           </provider>
@@ -118,25 +129,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/facebook/factory/FacebookFactory.class.php" />
-        <option value="$PROJECT_DIR$/apen/service/ApenService.class.php" />
-        <option value="$PROJECT_DIR$/facebook/api/FacebookApi.class.php" />
-        <option value="$PROJECT_DIR$/dataMining2/factory/DataMiningFactory.class.php" />
-        <option value="$PROJECT_DIR$/dataMining2/service/FacebookService.class.php" />
-        <option value="$PROJECT_DIR$/script/cron/schedules/time_aggregate_stats.php" />
-        <option value="$PROJECT_DIR$/aggregated/dao/PoiStatDAO.class.php" />
-        <option value="$PROJECT_DIR$/script/cron/schedules/time_aggregate_stats_2.php" />
-        <option value="$PROJECT_DIR$/source/dao/SourceReferencePoiMetricDAO.class.php" />
-        <option value="$PROJECT_DIR$/script/cron/schedules/fetch_stats_apen.php" />
-        <option value="$PROJECT_DIR$/script/cron/schedules/archiveStats.php" />
-        <option value="$PROJECT_DIR$/script/cron/schedules/archive_stats.php" />
-        <option value="$PROJECT_DIR$/script/archiving/archivePoiStatsAggregated.php" />
-        <option value="$PROJECT_DIR$/script/archiving/archivePoiStats.php" />
-        <option value="$PROJECT_DIR$/schedule/factory/ScheduleFactory.class.php" />
-        <option value="$PROJECT_DIR$/script/cron/test_crone.php" />
-        <option value="$PROJECT_DIR$/script/cron/cron.php" />
-        <option value="$PROJECT_DIR$/facebook/api/BaseFacebookApi.class.php" />
-        <option value="$PROJECT_DIR$/front/public/js/panels.js" />
         <option value="$PROJECT_DIR$/front/public/js/panels2.js" />
         <option value="$PROJECT_DIR$/front/public/js/place.js" />
         <option value="$PROJECT_DIR$/front/scripts/angular_section_0_controller.js" />
@@ -154,20 +146,39 @@
         <option value="$PROJECT_DIR$/front/scripts/angular_section_8_controller.js" />
         <option value="$PROJECT_DIR$/front/scripts/angular_section_1_controller.js" />
         <option value="$PROJECT_DIR$/front/sections/section1.php" />
-        <option value="$PROJECT_DIR$/front/js/angular_section_1_controller.js" />
-        <option value="$PROJECT_DIR$/front/js/angular_main.js" />
         <option value="$PROJECT_DIR$/front/css/libs/angular-material.min.css" />
         <option value="$PROJECT_DIR$/front/header.php" />
         <option value="$PROJECT_DIR$/front/js/time_lineController.js" />
         <option value="$PROJECT_DIR$/aggregated/dao/PoiStatsTimeAggregatedDAO.class.php" />
         <option value="$PROJECT_DIR$/front/index.php" />
-        <option value="$PROJECT_DIR$/front/js/global_var.js" />
         <option value="$PROJECT_DIR$/front/js/angular_top_trending_controller.js" />
         <option value="$PROJECT_DIR$/front/footer.php" />
         <option value="$PROJECT_DIR$/front/navbar.php" />
-        <option value="$PROJECT_DIR$/front/js/angular_section_angular_google_maps_controller.js" />
         <option value="$PROJECT_DIR$/front/navbar_top.php" />
         <option value="$PROJECT_DIR$/front/google_maps.php" />
+        <option value="$PROJECT_DIR$/front/application/controllers/sectionController.php" />
+        <option value="$PROJECT_DIR$/front/js/global_var.js" />
+        <option value="$PROJECT_DIR$/front/application/views/google_maps.php" />
+        <option value="$PROJECT_DIR$/front/application/views/sections/section8.php" />
+        <option value="$PROJECT_DIR$/front/application/views/sections/section7.php" />
+        <option value="$PROJECT_DIR$/../../../../backups/front 4-4-2017/application/views/sections/section7.php" />
+        <option value="$PROJECT_DIR$/settings.php" />
+        <option value="$PROJECT_DIR$/front/js/angular_main.js" />
+        <option value="$PROJECT_DIR$/front/js/libs/angular-material.js" />
+        <option value="$PROJECT_DIR$/front/application/views/footer.php" />
+        <option value="$PROJECT_DIR$/../../../../backups/front 5-4-2017/js/searchFormController.js" />
+        <option value="$PROJECT_DIR$/front/js/searchFormController.js" />
+        <option value="$PROJECT_DIR$/../../../../backups/front 5-4-2017/application/views/navbar_top.php" />
+        <option value="$PROJECT_DIR$/../../../../backups/front 5-4-2017/js/angular_section_angular_google_maps_controller.js" />
+        <option value="$PROJECT_DIR$/../../../../backups/front 5-4-2017/application/views/header.php" />
+        <option value="$PROJECT_DIR$/../../../../backups/front 5-4-2017/css/base.css" />
+        <option value="$PROJECT_DIR$/front/css/libs/bootstrap.min.css" />
+        <option value="$PROJECT_DIR$/front/js/angular_section_1_controller.js" />
+        <option value="$PROJECT_DIR$/front/application/views/sections/section1.php" />
+        <option value="$PROJECT_DIR$/front/application/views/header.php" />
+        <option value="$PROJECT_DIR$/front/application/views/navbar.php" />
+        <option value="$PROJECT_DIR$/front/js/angular_section_angular_google_maps_controller.js" />
+        <option value="$PROJECT_DIR$/front/application/views/navbar_top.php" />
         <option value="$PROJECT_DIR$/front/css/base.css" />
       </list>
     </option>
@@ -212,7 +223,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -296,16 +306,105 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="libs" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="version_002" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="version_002" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="front" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="config" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="version_002" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="version_002" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="front" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="version_002" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="version_002" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="front" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sections" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="version_002" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="version_002" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="front" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../../Andrei website express/website-voor-winkel-kaviar/Kaviar" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="js-jscs-nodeInterpreter" value="C:\Program Files\nodejs\node.exe" />
     <property name="SearchEverywhereHistoryKey" value="var_dump&#9;null&#9;null&#10;var_&#9;null&#9;null&#10;getPlaceTotalMetr&#9;null&#9;null" />
@@ -384,19 +483,26 @@
       <workItem from="1490256415834" duration="15322000" />
       <workItem from="1490276209454" duration="5947000" />
       <workItem from="1490297966885" duration="218000" />
+      <workItem from="1491290445716" duration="21553000" />
+      <workItem from="1491328329442" duration="68000" />
+      <workItem from="1491375651641" duration="25489000" />
+      <workItem from="1491414125947" duration="50000" />
+      <workItem from="1491461695984" duration="22663000" />
+      <workItem from="1491503866918" duration="34000" />
+      <workItem from="1491548935073" duration="4344000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="201416000" />
+    <option name="totallyTimeSpent" value="275617000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
+    <frame x="-9" y="-9" width="1938" height="1048" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33177084" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23541667" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.10940919" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.10065646" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -425,156 +531,84 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/front/application/models/placeModel.php">
+    <entry file="file://$PROJECT_DIR$/front/navbar_top.php" />
+    <entry file="file://$PROJECT_DIR$/front/google_maps.php" />
+    <entry file="file://$PROJECT_DIR$/front/application/service/index.php" />
+    <entry file="file://$PROJECT_DIR$/front/application/views/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="11" column="33" selection-start-line="11" selection-start-column="33" selection-end-line="11" selection-end-column="33" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/front/application/models/homeModel.php">
+    <entry file="file://$PROJECT_DIR$/front/application/controllers/sectionsController.php" />
+    <entry file="file://$PROJECT_DIR$/front/application/controllers/sectionController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="10" column="41" selection-start-line="10" selection-start-column="41" selection-end-line="10" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/front/index.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="132">
-          <caret line="6" column="1" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
+          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/front/application/controllers/facebookController.php">
+    <entry file="file://$PROJECT_DIR$/front/js/angular-google-maps.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/front/application/models/heatmapModel.php">
+    <entry file="file://$PROJECT_DIR$/front/js/angular-simple-logger.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/front/library/controller.class.php">
+    <entry file="file://$PROJECT_DIR$/../../../../backups/front 4-4-2017/application/views/sections/section7.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="20" column="35" selection-start-line="20" selection-start-column="35" selection-end-line="20" selection-end-column="35" />
+        <state relative-caret-position="616">
+          <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/com/jetbrains/php/lang/psi/stubs/data/standard_4.php">
+    <entry file="file://$USER_HOME$/Downloads/version_002/version_002/front/header.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="177" column="3" selection-start-line="177" selection-start-column="3" selection-end-line="177" selection-end-column="3" />
+        <state relative-caret-position="88">
+          <caret line="4" column="38" selection-start-line="4" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/poi/dao/PoiDAO.class.php">
+    <entry file="file://$PROJECT_DIR$/../../version_002/front/css/base.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="383">
-          <caret line="191" column="33" selection-start-line="191" selection-start-column="32" selection-end-line="191" selection-end-column="33" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/front/application/models/foursquareModel.php">
+    <entry file="file://$USER_HOME$/Downloads/version_002/version_002/front/css/base.css" />
+    <entry file="file://$PROJECT_DIR$/front/application/views/sections/section8.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="242">
           <caret line="11" column="61" selection-start-line="11" selection-start-column="61" selection-end-line="11" selection-end-column="61" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/poi/factory/PoiFactory.class.php">
+    <entry file="file://$PROJECT_DIR$/front/application/views/sections/section7.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="283">
-          <caret line="62" column="21" selection-start-line="62" selection-start-column="21" selection-end-line="62" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/front/application/models/apenModel.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="12" column="68" selection-start-line="12" selection-start-column="68" selection-end-line="12" selection-end-column="68" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/factory/GenericFactory.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="293">
-          <caret line="32" column="20" selection-start-line="32" selection-start-column="20" selection-end-line="32" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/source/factory/SourceFactory.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="14" column="54" selection-start-line="14" selection-start-column="54" selection-end-line="14" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/source/dao/SourceDAO.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="19" column="33" selection-start-line="19" selection-start-column="33" selection-end-line="19" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/dao/GenericDAO.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2376">
-          <caret line="108" column="22" selection-start-line="108" selection-start-column="19" selection-end-line="108" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/front/application/models/facebookModel.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="14" column="72" selection-start-line="14" selection-start-column="72" selection-end-line="14" selection-end-column="72" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/aggregated/service/PoiStatsTimeAggregatedService.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="550">
-          <caret line="25" column="68" selection-start-line="25" selection-start-column="68" selection-end-line="25" selection-end-column="68" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/aggregated/factory/PoiStatsTimeAggregatedFactory.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="968">
-          <caret line="44" column="60" selection-start-line="44" selection-start-column="60" selection-end-line="44" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/front/application/controllers/homeController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="12" column="61" selection-start-line="12" selection-start-column="61" selection-end-line="12" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/front/application/controllers/heatmapController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1254">
-          <caret line="57" column="4" selection-start-line="57" selection-start-column="4" selection-end-line="57" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/front/scripts/angular_section_8_controller.js" />
-    <entry file="file://$PROJECT_DIR$/front/scripts/angular_section_1_controller.js" />
-    <entry file="file://D:/amocweb/project Antwerpen 2016/MediaChickens-Project-2016/antwerpen_project/resources/views/home.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="258">
-          <caret line="488" column="22" selection-start-line="488" selection-start-column="17" selection-end-line="488" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/front/js/lodash.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="440">
+          <caret line="20" column="30" selection-start-line="20" selection-start-column="30" selection-end-line="20" selection-end-column="30" />
         </state>
       </provider>
     </entry>
@@ -585,73 +619,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/front/application/controllers/placeController.php">
+    <entry file="file://$PROJECT_DIR$/settings.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2068">
-          <caret line="94" column="14" selection-start-line="94" selection-start-column="9" selection-end-line="94" selection-end-column="14" />
+        <state relative-caret-position="132">
+          <caret line="6" column="20" selection-start-line="6" selection-start-column="20" selection-end-line="6" selection-end-column="20" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/front/application/controllers/weatherController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="16" column="43" selection-start-line="16" selection-start-column="43" selection-end-line="16" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/front/scripts/weatherStation.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2794">
-          <caret line="127" column="5" selection-start-line="51" selection-start-column="8" selection-end-line="127" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/com/jetbrains/php/lang/psi/stubs/data/curl_d.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-8149">
-          <caret line="26" column="22" selection-start-line="26" selection-start-column="21" selection-end-line="26" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/util/ShowColumnsUtil.class.php">
+    <entry file="file://$PROJECT_DIR$/front/js/weatherController.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/util/cURL.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="880">
-          <caret line="40" column="132" selection-start-line="40" selection-start-column="132" selection-end-line="40" selection-end-column="132" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/facebook/api/BaseFacebookApi.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="265">
-          <caret line="133" column="30" selection-start-line="133" selection-start-column="30" selection-end-line="133" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/front/js/searchFormController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/front/js/angular_main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="120" selection-start-line="0" selection-start-column="120" selection-end-line="0" selection-end-column="120" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/front/css/libs/angular-material.min.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288046">
-          <caret line="13093" column="33" selection-start-line="13093" selection-start-column="33" selection-end-line="13093" selection-end-column="33" />
         </state>
       </provider>
     </entry>
@@ -662,48 +640,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/aggregated/dao/PoiStatsTimeAggregatedDAO.class.php">
+    <entry file="file://$PROJECT_DIR$/front/js/lodash.min.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1760">
-          <caret line="80" column="13" selection-start-line="80" selection-start-column="12" selection-end-line="80" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/front/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/front/js/global_var.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
-          <caret line="0" column="110" selection-start-line="0" selection-start-column="110" selection-end-line="0" selection-end-column="110" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/front/header.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="15" column="4" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/front/js/angular_section_1_controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="15" column="12" selection-start-line="15" selection-start-column="12" selection-end-line="16" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/front/sections/section1.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3080">
-          <caret line="140" column="30" selection-start-line="140" selection-start-column="30" selection-end-line="140" selection-end-column="30" />
-          <folding>
-            <marker date="1490275316101" expanded="true" signature="6561:6579" placeholder="..." />
-          </folding>
+          <caret line="0" column="92" selection-start-line="0" selection-start-column="92" selection-end-line="0" selection-end-column="92" />
         </state>
       </provider>
     </entry>
@@ -714,30 +661,140 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/front/images/markers/marker_0.png">
+    <entry file="file://$PROJECT_DIR$/front/js/libs/angular-material.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133386">
+          <caret line="6068" column="46" selection-start-line="6068" selection-start-column="46" selection-end-line="6068" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../../backups/front 4-4-2017/css/base.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="1047" column="32" selection-start-line="0" selection-start-column="0" selection-end-line="1269" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/front/css/weather-icons.min.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../../backups/front 5-4-2017/js/searchFormController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="8" column="63" selection-start-line="8" selection-start-column="63" selection-end-line="8" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/front/js/searchFormController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="75" selection-start-line="0" selection-start-column="75" selection-end-line="0" selection-end-column="75" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/front/images/accordion-down.png">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/front/js/angular_top_trending_controller.js">
+    <entry file="file://$PROJECT_DIR$/front/images/accordion-item-active-bg.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/front/images/accordion-item-bg.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../../backups/front 5-4-2017/application/views/navbar_top.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="594">
-          <caret line="27" column="47" selection-start-line="27" selection-start-column="47" selection-end-line="27" selection-end-column="47" />
-          <folding>
-            <marker date="1490275316097" expanded="true" signature="3200:3201" placeholder="{&quot;type&quot;: 'GET'...}" />
-          </folding>
+        <state relative-caret-position="718">
+          <caret line="66" column="6" selection-start-line="66" selection-start-column="6" selection-end-line="66" selection-end-column="6" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Desktop/version_002/front/google_maps.php">
+    <entry file="file://$PROJECT_DIR$/../../../../backups/front 5-4-2017/js/angular_section_angular_google_maps_controller.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="682">
-          <caret line="36" column="39" selection-start-line="0" selection-start-column="0" selection-end-line="94" selection-end-column="6" />
+        <state relative-caret-position="771">
+          <caret line="594" column="0" selection-start-line="594" selection-start-column="0" selection-end-line="597" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../../backups/front 5-4-2017/application/views/header.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="14" column="177" selection-start-line="14" selection-start-column="177" selection-end-line="14" selection-end-column="177" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../../backups/front 5-4-2017/css/base.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30756">
+          <caret line="1398" column="1" selection-start-line="1271" selection-start-column="0" selection-end-line="1398" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/front/css/libs/bootstrap.min.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="4" column="2346" selection-start-line="0" selection-start-column="0" selection-end-line="5" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Temp/Rar$DIa0.195/fontello.css" />
+    <entry file="file://$USER_HOME$/AppData/Local/Temp/Rar$DIa0.509/fontello.css" />
+    <entry file="file://$PROJECT_DIR$/front/css/samStyling.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/front/js/angular_section_1_controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="41" column="64" selection-start-line="41" selection-start-column="64" selection-end-line="41" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/front/application/views/sections/section1.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="5" selection-start-line="0" selection-start-column="5" selection-end-line="0" selection-end-column="5" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/front/footer.php">
+    <entry file="file://$PROJECT_DIR$/front/js/angular_main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="6" column="27" selection-start-line="6" selection-start-column="26" selection-end-line="6" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/front/application/views/header.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="8" column="19" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/front/application/views/google_maps.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="4" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/front/css/base - kopie.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -745,42 +802,60 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/front/navbar.php">
+    <entry file="file://$PROJECT_DIR$/front/css/weather-icons-wind.min.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="20" column="46" selection-start-line="20" selection-start-column="27" selection-end-line="20" selection-end-column="46" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/front/navbar_top.php">
+    <entry file="file://$PROJECT_DIR$/front/js/angular_side_bar_controller.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="748">
-          <caret line="34" column="27" selection-start-line="34" selection-start-column="27" selection-end-line="34" selection-end-column="27" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/front/google_maps.php">
+    <entry file="file://$PROJECT_DIR$/front/application/views/navbar.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="24" column="23" selection-start-line="24" selection-start-column="15" selection-end-line="24" selection-end-column="23" />
+        <state relative-caret-position="206">
+          <caret line="10" column="137" selection-start-line="10" selection-start-column="137" selection-end-line="10" selection-end-column="137" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/front/js/angular_section_angular_google_maps_controller.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2574">
-          <caret line="117" column="28" selection-start-line="117" selection-start-column="28" selection-end-line="117" selection-end-column="28" />
+        <state relative-caret-position="391">
+          <caret line="81" column="0" selection-start-line="81" selection-start-column="0" selection-end-line="81" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/front/application/views/navbar_top.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="9" column="267" selection-start-line="9" selection-start-column="267" selection-end-line="9" selection-end-column="267" />
+          <folding>
+            <marker date="1491552425353" expanded="true" signature="802:823" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/front/css/base.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="533">
-          <caret line="461" column="0" selection-start-line="461" selection-start-column="0" selection-end-line="469" selection-end-column="0" />
+        <state relative-caret-position="425">
+          <caret line="279" column="32" selection-start-line="279" selection-start-column="32" selection-end-line="279" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/front/application/views/footer.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="1" column="102" selection-start-line="1" selection-start-column="102" selection-end-line="1" selection-end-column="102" />
           <folding />
         </state>
       </provider>
