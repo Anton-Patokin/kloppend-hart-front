@@ -140,7 +140,7 @@ md-backdrop.md-sidenav-backdrop {
 }
 
 .navbar-inverse {
-    z-index: 6;
+    z-index: 5;
     background-color: #151515;
 }
 
@@ -150,10 +150,6 @@ md-backdrop.md-sidenav-backdrop {
     border-right: 0px solid #232323;
 
 }
-
-/*.sidenav .icons {
-    margin-top: 64px;
-}*/
 
 .sidenav .icons ul li {
     border-top: 1px solid #232323;
@@ -180,12 +176,6 @@ md-backdrop.md-sidenav-backdrop {
     border-bottom: 1px solid #232323;
 }
 
-/*.kha-logo {
-    background-color: #1c1c1c;
-    height: 100px;
-    width: 100%;
-}*/
-
 .social-media-checklist ul li.active {
     color: #000;
     background-color: #fff;
@@ -199,13 +189,13 @@ md-backdrop.md-sidenav-backdrop {
     transition: all 0.1s linear;
 }
 
-.kha-logo {
+/*.kha-logo {
     text-align: center;
 }
 
 .kha-logo img {
     height: 43.5px;
-}
+}*/
 
 .icon-titles ul {
     font-size: 16px;
@@ -227,6 +217,48 @@ md-backdrop.md-sidenav-backdrop {
     color: white;
     text-decoration: none;
 }
+
+.sidenavtest {
+    width: 298px;
+    transition-duration: 0.3s;
+}
+
+/*.sidenavtest.sidenav span {
+    opacity: 1;
+    transition-duration: 0.3s;
+    display: inline-block;
+}*/
+
+.sidenav {
+    overflow: hidden;
+    transition-duration: 0.3s;
+    font-family: 'Ropa Sans', sans-serif;
+}
+
+.sidenav ul {
+    width: 298px;
+}
+
+.sidenav span {
+    margin-left: 20px;
+}
+
+.sidenav .icons ul li span img {
+    width: 170px;
+    margin-left: 25px;
+}
+
+.sidenav a {
+    color: white;
+    text-decoration: none;
+}
+
+
+/*.sidenav span {
+    opacity: 0;
+    transition-duration: 0.3s;
+    display: none;
+}*/
 
 /* TOP NAVBAR */
 
@@ -1398,7 +1430,7 @@ button.md-datepicker-button {
     }
 }
 
-@media screen and (max-device-width: 480px) and (orientation: portrait) {
+@media screen and (max-device-width: 480px) and (orientation: portrait), screen and (max-device-width: 1000px) and (orientation: landscape) {
     .map-checkbox {
         display: none !important;
     }
@@ -1428,6 +1460,10 @@ button.md-datepicker-button {
 
     md-sidenav div {
         width: inherit;
+    }
+
+    .sidenav .icons ul li span img {
+        margin-left: 45px;
     }
 
     .social-media-checklist {
@@ -1482,149 +1518,21 @@ button.md-datepicker-button {
         padding: 10px 35px;
     }
 
-    .sidenav .icons, .sidenav .title {
+    /*.sidenav .icons, .sidenav .title {
         display: none;
+    }*/
+
+    .navbar.navbar-inverse.navbar-fixed-left.sidenav {
+        height: 56px;
     }
 
-    .sidenav {
-        height: auto;
-        border-bottom: none;
-    }
-
-    .left1 {
-        margin-left: 0;
-    }
-
-    .subcategories-menu-wrapper {
-        margin-top: 0;
-        margin-left: 0;
-        width: 100%;
-        position: static;
-    }
-
-    .section-wrapper, .poi-details-wrapper {
-        margin-left: 0;
-    }
-
-    .poi-details, .poi-details .col-md-12 {
-        padding-left: 0;
-        padding-right: 0;
-    }
-
-    .dropdownTest, .dropdownShow {
-        left: 0;
-        margin-left: 0;
-    }
-
-    .buienradar {
-        height: 150px;
-    }
-
-    .div .overlay_1_1-disabled, .div .overlay_1_1-able {
-        width: 100%;
-    }
-
-    .datapicker_custom {
-        float: right;
-        display: inline-block;
-        max-width: 100%;
-    }
-
-    .slider_custom {
-        float: left;
-        display: inline-block;
-        width: 100%;
-    }
-
-}
-
-@media screen and (max-device-width: 1000px) and (orientation: landscape) {
-    .map-checkbox {
-        display: none !important;
-    }
-
-    .left1 {
-        width: 100%;
-    }
-
-    .welcome-message {
-        position: relative;
-        top: 0;
-        left: 0;
-        transform: none;
+    .navbar.navbar-inverse.navbar-fixed-left.sidenav.sidenavtest {
         height: 100%;
-        /*margin-top: 20px;*/
-    }
-
-    .poi-details .col-md-6 {
-        padding-right: 20px;
-        margin-left: 20px;
-    }
-
-    md-sidenav {
-        max-width: 100% !important;
         width: 100%;
     }
 
-    md-sidenav div {
-        width: inherit;
-    }
-
-    .social-media-checklist {
-        width: -webkit-calc(100% - 55px);
-        width: -moz-calc(100% - 55px);
-        width: calc(100% - 55px);
-    }
-
-    .social-media-checklist ul {
+    .sidenavtest ul {
         width: 100%;
-    }
-
-    .social-media-checklist .btn-trending {
-        font-size: 80%;
-        height: 55px;
-        padding: 20px 0;
-        text-align: center;
-        width: 50%;
-    }
-
-    .search-input {
-        width: 55px;
-    }
-
-    .search-input ul {
-        margin-left: -142px;
-    }
-
-    ul li.date {
-        display: none;
-    }
-
-    .search-input input[type="text"] {
-        width: 100px
-    }
-
-    .search-results {
-        right: 0;
-    }
-
-    .div .overlay_1_1-able {
-        position: absolute;
-        bottom: -135px;
-        height: 135px;
-        padding: 0px 35px;
-    }
-
-    .div .overlay_1_1-disabled {
-        position: absolute;
-        bottom: 0;
-        height: 135px;
-        padding: 10px 35px;
-    }
-
-
-    .sidenav .icons, .sidenav .title {
-        display: none;
     }
 
     .sidenav {

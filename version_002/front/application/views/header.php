@@ -1,8 +1,8 @@
 <?php
 
- $rootPath = "http://localhost/edge/projects/kloppend-hart-antwerpen/version_002/front/";
+ // $rootPath = "http://localhost/edge/projects/kloppend-hart-antwerpen/version_002/front/";
        // $rootPath = "http://localhost/edge/projects/kloppend-hart-antwerpen/kloppend-hart-front/version_002/front/";
-// $rootPath = "https://apen.be/kloppend-hart-antwerpen/front/";
+$rootPath = "https://apen.be/kloppend-hart-antwerpen/front/";
 
 ?>
 <!DOCTYPE html>
@@ -19,30 +19,32 @@
     <!--    css-->
     <link rel="stylesheet" href="<?= $rootPath ?>css/libs/bootstrap.min.css">
     <link rel="stylesheet" href="<?= $rootPath ?>css/libs/angular-material.min.css">
-    <link rel="stylesheet" href="<?= $rootPath ?>css/samStyling.css">
-<!--    <link rel="stylesheet" href="--><?//= $rootPath ?><!--js/angular-carousel.css">-->
     <link rel="stylesheet" href="<?= $rootPath ?>css/libs/rzslider.css">
     <link rel="stylesheet" href="<?= $rootPath ?>css/weather-icons.min.css">
     <link rel="stylesheet" href="<?= $rootPath ?>css/weather-icons-wind.min.css">
     <link rel="stylesheet" href="<?= $rootPath ?>css/base.css">
-    <script type="text/javascript" src="<?= $rootPath ?>js/libs/lodash.min.js"></script>
+
     <script type="text/javascript" src="<?= $rootPath ?>js/libs/angular.min.js"></script>
-    <script src="<?= $rootPath ?>js/angular-simple-logger.js"></script>
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCrmTkGoBzp--pRgO5vRXIsbXPrk3VMp_w&libraries=places&language=nl&region=BE&sensor=false&libraries=drawing&libraries=visualization"
+        type="text/javascript"></script>
+
+    <script type="text/javascript" src="<?= $rootPath ?>js/libs/lodash.min.js"></script>
+    
+    <script src="<?= $rootPath ?>js/angular-simple-logger.min.js"></script>
     <script src="<?= $rootPath ?>js/angular-google-maps.js"></script>
 
     <!--    data picker-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular-animate.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular-aria.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular-messages.min.js"></script>
-    <script src="<?= $rootPath ?>js/libs/angular-material.js"></script>
+    <script src="<?= $rootPath ?>js/libs/angular-material.min.js"></script>
 
-    <script
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCrmTkGoBzp--pRgO5vRXIsbXPrk3VMp_w&libraries=places&language=nl&region=BE&sensor=false&libraries=drawing&libraries=visualization"
-        type="text/javascript"></script>
+    
     <script type="text/javascript" src="<?= $rootPath ?>js/libs/angular-cookies.min.js"></script>
-    <script src="<?= $rootPath ?>js/libs/angular-route.js"></script>
+    <script src="<?= $rootPath ?>js/libs/angular-route.min.js"></script>
     <script src="<?= $rootPath ?>js/libs/jquery.min.js"></script>
-    <script type="text/javascript" src="<?= $rootPath ?>js/libs/rzslider.js"></script>
+    <script type="text/javascript" src="<?= $rootPath ?>js/libs/rzslider.min.js"></script>
     <script src="<?= $rootPath ?>js/libs/raphael-min.js"></script>
     <script src="<?= $rootPath ?>js/libs/morris.min.js"></script>
     <script src="<?= $rootPath ?>js/libs/angular-morris.min.js"></script>
@@ -58,5 +60,6 @@
     <script type="text/javascript" src="<?= $rootPath ?>js/angular_side_bar_controller.js"></script>
     <script type="text/javascript" src="<?= $rootPath ?>js/global_var.js"></script>
     <script type="text/javascript" src="<?= $rootPath ?>js/time_lineController.js"></script>
+    
 </head>
 <?php include_once 'application/views/index.php'; ?>
