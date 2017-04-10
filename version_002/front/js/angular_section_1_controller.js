@@ -104,7 +104,7 @@ app.controller("section1", function ($scope, $routeParams, $http, $timeout) {
                 data: testVar,
                 xkey: 'y',
                 ykeys: ["a", "b", "c"],
-                lineColors: ["#de7f22", "#3b5998", "#ffa633"],
+                lineColors: ["#a36bc6", "#3b5998", "#ffa633"],
                 labels: ["Apen", "Facebook", "Foursquare"],
                 pointSize: 4,
             });

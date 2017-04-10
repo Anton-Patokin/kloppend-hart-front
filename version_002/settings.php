@@ -4,7 +4,7 @@ DEFINE("HTTP_GET","GET");
 DEFINE("HTTP_POST","POST");
 DEFINE('ROOT', 'C:\xampp\htdocs\edge\projects\kloppend-hart-antwerpen\version_002\\');
 // define('ROOT_FRONT', 'C:\xampp\htdocs\edge\projects\kloppend-hart-antwerpen\version_002\front\\');
-set_time_limit(120);
+set_time_limit(500);
 global $pdo;
 	try {
 		$pdo = new \PDO ('mysql:dbname=kha;host=localhost;charset=UTF8', 'root', '',

@@ -80,6 +80,7 @@
 			else {
 				$url = $baseUrl . $endpoint . '?';
 			}
+			echo $url;
 			return $url;
 		}
 
