@@ -76,6 +76,25 @@ class YelpDataMiningFactory extends \dataMining2\factory\DataMiningFactory {
     }
 
     /**
+     * Metrics
+     */
+
+    protected function extractPoiStatsFromMetrics($metrics){
+        $business = $this->yelpLocationFactory->getBusinessBySourceReference($metrics[0]['source_reference']);
+        // var_dump($business->review_count);
+        $poiStats = Array();
+        foreach($metrics as $metric){
+            $poiStat = new \poi\model\PoiStat();
+            $poiStat->timestamp = date('Y-m-d H:i:s');
+            $poiStat->source_reference_poi_metric_id = $metric['source_reference_poi_metric_id'];
+            //you need to know the metrics
+            if($metric['metric_name'] == 'review_count') $poiStat->number = (isset($business->review_count)) ? $business->review_count : 0;
+            $poiStats[] = $poiStat;
+        }
+        return $poiStats;
+    }
+
+    /**
      * Additional data
      */
     //overrided function

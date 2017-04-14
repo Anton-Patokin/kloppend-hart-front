@@ -27,7 +27,7 @@ class YelpService implements iService{
 
 	public function getMetricsBySourceReferencePoiIdRange($from, $batchSize)
 	{
-		return; // $this->instagramDataMiningFactory->getMetricsBySourceReferencePoiIdRange($from, $batchSize);
+		return $this->YelpDataMiningFactory->getMetricsBySourceReferencePoiIdRange($from, $batchSize);
 	}
 
 	public function getMetricsBySourceReferencePoiId($sourceReferencePoiId)

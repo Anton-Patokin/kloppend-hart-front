@@ -21,6 +21,7 @@
 			$this->meta->propertyTypes['name'] = 'string';
 			$this->meta->propertyTypes['rating'] = 'float';
 			$this->meta->propertyTypes['is_closed'] = 'boolean';
+			$this->meta->propertyTypes['review_count'] = 'integer';
 		}
 	}
 

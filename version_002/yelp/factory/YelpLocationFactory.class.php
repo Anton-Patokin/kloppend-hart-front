@@ -46,6 +46,10 @@
 					if(isset($data->is_closed)) return $data->is_closed;
                 	else  return Array();
 					break;
+				case 'review_count':
+					if(isset($data->review_count)) return $data->review_count;
+                	else  return 0;
+					break;
 				default:
 					return $object->$property;
 					break;
