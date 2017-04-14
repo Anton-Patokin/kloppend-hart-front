@@ -4,6 +4,7 @@ namespace dataMining2\factory;
 
 require_once (ROOT . 'yelp/factory/YelpLocationFactory.class.php');
 require_once (ROOT . 'yelp/factory/YelpRatingFactory.class.php');
+require_once (ROOT . 'yelp/factory/YelpIsClosedFactory.class.php');
 require_once (ROOT . 'dataMining2/factory/DataMiningFactory.class.php');
 require_once (ROOT . 'poi/factory/PoiCityFactory.class.php');
 require_once (ROOT . 'poi/factory/PoiFactory.class.php');
@@ -18,6 +19,7 @@ class YelpDataMiningFactory extends \dataMining2\factory\DataMiningFactory {
     
     protected $yelpLocationFactory;
     protected $yelpRatingFactory;
+    protected $yelpIsClosedFactory;
     protected $poiFactory;
     protected $poiCityFactory;
     protected $sourceReferenceFactory;
@@ -35,6 +37,7 @@ class YelpDataMiningFactory extends \dataMining2\factory\DataMiningFactory {
         $this->sourceCityGeolocationFactory = new \source\factory\SourceCityGeolocationFactory();
         $this->yelpLocationFactory = new \yelp\factory\YelpLocationFactory();
         $this->yelpRatingFactory = new \yelp\factory\YelpRatingFactory();
+        $this->yelpIsClosedFactory = new \yelp\factory\YelpIsClosedFactory();
     } 
     
     protected function getReferencesFromSource($city_id)
@@ -86,16 +89,22 @@ class YelpDataMiningFactory extends \dataMining2\factory\DataMiningFactory {
     }
 
     private function handleYelpBusiness($yelpBusiness, $sourceReference) {
-        // var_dump('yelpBusiness: ',$yelpBusiness);
-        if (!empty($yelpBusiness->rating)) {
-            $this->handleYelpRating($yelpBusiness, $sourceReference);
-        }
+        // if (!empty($yelpBusiness->rating)) {
+        //     $this->handleYelpRating($yelpBusiness, $sourceReference);
+        // }
+        $this->handleYelpIsClosed($yelpBusiness, $sourceReference);
     }
 
     private function handleYelpRating($rating, $sourceReference) {
         $rating->source_reference_id = $sourceReference->source_reference_id;
         $rating->business_rating = $rating->rating;
         $this->yelpRatingFactory->saveYelpRating($rating);
+    }
+
+    private function handleYelpIsClosed($isClosed, $sourceReference) {
+        $isClosed->source_reference_id = $sourceReference->source_reference_id;
+        $isClosed->business_is_closed = $isClosed->is_closed;
+        $this->yelpIsClosedFactory->saveYelpIsClosed($isClosed);
     }
 }
 

@@ -62,6 +62,11 @@ class placeModel{
         $rating = $this->yelpService->getYelpRatingByNid($nid);
         return $rating;
     }
+
+    public function getBusinessIsClosed($nid) {
+        $is_closed = $this->yelpService->getYelpIsClosedByNid($nid);
+        return $is_closed;
+    }
     
     public function getPlaceStatsByNid($nid, $startDate, $endDate){
         $metrics = array();

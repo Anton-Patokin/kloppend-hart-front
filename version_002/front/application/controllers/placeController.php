@@ -49,6 +49,12 @@ class placeController {
         $rating = $this->placeModel->getBusinessRating($nid);
         echo json_encode($rating);
     }
+
+    public function getBusinessIsClosed($nid){
+        $this->doNotRenderHeader = 1;
+        $is_closed = $this->placeModel->getBusinessIsClosed($nid);
+        echo json_encode($is_closed);
+    }
     
     public function getPlaceStatsByNid($nid){
         //5 days back in time

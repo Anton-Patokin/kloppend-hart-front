@@ -42,6 +42,10 @@
 					if(isset($data->rating)) return $data->rating;
                 	else  return Array();
 					break;
+				case 'is_closed':
+					if(isset($data->is_closed)) return $data->is_closed;
+                	else  return Array();
+					break;
 				default:
 					return $object->$property;
 					break;

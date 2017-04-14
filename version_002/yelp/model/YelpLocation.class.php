@@ -20,6 +20,7 @@
 			$this->meta->propertyTypes['id'] = 'string';
 			$this->meta->propertyTypes['name'] = 'string';
 			$this->meta->propertyTypes['rating'] = 'float';
+			$this->meta->propertyTypes['is_closed'] = 'boolean';
 		}
 	}
 
