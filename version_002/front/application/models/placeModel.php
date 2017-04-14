@@ -2,6 +2,7 @@
 require_once ROOT . '/apen/service/ApenService.class.php';
 require_once ROOT . '/poi/service/PoiService.class.php';
 require_once ROOT . '/foursquare/service/FoursquareService.class.php';
+require_once ROOT . '/yelp/service/YelpService.class.php';
 require_once ROOT . '/aggregated/service/PoiStatsTimeAggregatedService.class.php';
 require_once 'foursquareModel.php';
 require_once 'facebookModel.php';
@@ -13,6 +14,7 @@ class placeModel{
     protected $poiService;
     protected $foursquareModel;
     protected $facebookModel;
+    protected $yelpService;
     
     public function __construct() {
         $this->apenService = new \apen\service\ApenService();
@@ -21,6 +23,7 @@ class placeModel{
         $this->foursquareService = new \foursquare\service\FoursquareService();
         $this->foursquareModel = new foursquareModel();
         $this->facebookModel = new facebookModel();
+        $this->yelpService = new \yelp\service\YelpService();
     }
     
     public function getPlaceByNid($nid){
@@ -53,6 +56,11 @@ class placeModel{
         $photos = array();
         $photos['foursquare'] = $this->foursquareService->getFoursquarePhotosByNid($nid);
         return $photos;
+    }
+
+    public function getBusinessRating($nid) {
+        $rating = $this->yelpService->getYelpRatingByNid($nid);
+        return $rating;
     }
     
     public function getPlaceStatsByNid($nid, $startDate, $endDate){

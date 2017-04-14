@@ -25,6 +25,7 @@
         }
         
         public function getTotalFetchedSince($sinceDate){
+            var_dump($this->table);
             $query = $this->DB->prepare("SELECT count(poi_id) FROM $this->table WHERE last_fetched > ?");
 
             $succes = $query->execute(array($sinceDate));

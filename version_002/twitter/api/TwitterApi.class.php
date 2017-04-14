@@ -68,6 +68,32 @@ class TwitterApi extends BaseTwitterApi {
     }
     return parent::call($request, $requestArgs);
   }
+
+  public function getGeoSearch($lat, $long, $granularity, $accuracy, $max_results = 1){
+    $request = 'geo/search.json';
+    $args = $this->getArgumentNames('getGeoSearch');
+    $requestArgs = $this->getDefaultArgumentValues($args);
+
+    foreach ($args as $arg) {
+      $name = $arg->name;
+      if($$name != null)
+        $requestArgs[$name] = $$name;
+    }
+    return parent::call($request, $requestArgs);
+  }
+
+  public function getReverseGeo($lat, $long, $granularity, $max_results = 1){
+    $request = 'geo/reverse_geocode.json';
+    $args = $this->getArgumentNames('getReverseGeo');
+    $requestArgs = $this->getDefaultArgumentValues($args);
+
+    foreach ($args as $arg) {
+      $name = $arg->name;
+      if($$name != null)
+        $requestArgs[$name] = $$name;
+    }
+    return parent::call($request, $requestArgs);
+  }
   
   
   private function getArgumentNames($function){

@@ -137,6 +137,7 @@ class DataMiningFactory  extends \core\factory\GenericFactory {
     /*entry point*/
     public function getAdditionalDataBySourceReferencePoiIdRange($from, $batchSize){
         $sourceReferencePois = $this->sourceReferencePoiFactory->getSourceReferencePoiIdsBySourceIdBatch($from, $batchSize, $this->source_id);
+        // var_dump('test: ', $sourceReferencePois);
         $this->getAdditionalDataBySourceReferences($sourceReferencePois);
         //$this->saveAdditionalDatas($additionalDatas);
     }
@@ -146,6 +147,7 @@ class DataMiningFactory  extends \core\factory\GenericFactory {
         //keep in mind that the provided id needs to be of the right source
         $sourceReferencePoi = $this->sourceReferencePoiFactory->getSourceReferencePoiById($sourceReferencePoiId);
         $additionalData  = $this->getAdditionalDataBySourceReference($this->sourceReferenceFactory->getSourceReferenceById($sourceReferencePoi->source_reference_id));
+        // var_dump($additionalData);
         $this->saveAdditionalData($additionalData, $this->sourceReferenceFactory->getSourceReferenceById($sourceReferencePoi->source_reference_id));
     }
     

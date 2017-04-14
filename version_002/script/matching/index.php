@@ -31,6 +31,7 @@
         case '2': $sourceUrl = 'https://foursquare.com/venue/'; break;
         case '4': $sourceUrl = 'https://twitter.com/'; break;
         case '6': $sourceUrl = 'http://web.stagram.com/location/'; break;
+        case '8': $sourceUrl = 'https://nl.yelp.be/biz/'; break;
     }
 ?>
 

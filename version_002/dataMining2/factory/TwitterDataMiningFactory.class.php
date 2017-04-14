@@ -88,7 +88,8 @@ class TwitterDataMiningFactory extends \dataMining2\factory\DataMiningFactory {
         $requiredLocations = array('antwerp', 'antwerpen', 'belgium', 'belgie', 'belgië');
         foreach($pois as $poi){
             $apiResults = $this->twitterFactory->createSourceReferencesByName($poi->name);
-            
+            var_dump("POI NAME: ", $poi->name);
+            var_dump($apiResults);
             $results = array();
             foreach($apiResults as $apiResult){
                 if(in_array(strtolower($apiResult->location), $requiredLocations)){
@@ -97,7 +98,6 @@ class TwitterDataMiningFactory extends \dataMining2\factory\DataMiningFactory {
                     $results[] = $apiResult;
                 }
             }
-            
             if(!empty($results))
             $result = array_merge($result, $results);
         }

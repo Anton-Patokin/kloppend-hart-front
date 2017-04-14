@@ -18,8 +18,8 @@
             $this->signature_method = new \OAuthSignatureMethod_HMAC_SHA1();
         }
 
-        public function searchCoordinate($latitude, $longitude){
-            $unsigned_url = $this->api_root . "search?ll=" . $latitude . "," . $longitude;
+        public function searchCoordinate($latitude, $longitude, $radius_filter, $limit){
+            $unsigned_url = $this->api_root . "search?ll=" . $latitude . "," . $longitude . "&radius_filter=" . $radius_filter . "&limit=" . $limit;
             $signed_url = $this->signUrl($unsigned_url);
             return $this->sendRequest($signed_url);
         }

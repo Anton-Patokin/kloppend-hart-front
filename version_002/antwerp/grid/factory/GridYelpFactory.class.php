@@ -3,17 +3,16 @@ namespace antwerp\grid\factory;
 
 require_once(ROOT . 'antwerp/grid/factory/GridFactory.class.php');
 
-class GridFacebookFactory extends \antwerp\grid\factory\GridFactory{
+class GridYelpFactory extends \antwerp\grid\factory\GridFactory{
     
-    protected $source_name = 'facebook';
-    protected $gridDivide  = 500; //in meters
+    protected $source_name = 'yelp';
+    protected $gridDivide  = 400; //in meters
     
     public function __construct(){
         parent::__construct();
     }
     
     public function getSourceCityGeolocations($city_id) {
-    	var_dump('GridFacebookFactory');
         return parent::getSourceCityGeolocations($city_id);
     } 
 }

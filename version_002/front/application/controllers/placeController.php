@@ -43,6 +43,12 @@ class placeController {
         $photos = $this->placeModel->getSocialMediaPhotos($nid);
         echo json_encode($photos);
     }
+
+    public function getBusinessRating($nid){
+        $this->doNotRenderHeader = 1;
+        $rating = $this->placeModel->getBusinessRating($nid);
+        echo json_encode($rating);
+    }
     
     public function getPlaceStatsByNid($nid){
         //5 days back in time

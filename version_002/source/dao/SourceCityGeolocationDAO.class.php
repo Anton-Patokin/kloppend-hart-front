@@ -39,6 +39,7 @@
                return;
             }
             $result = $query->fetchAll(\PDO::FETCH_ASSOC);
+            // var_dump($result);
             return $result;
         }
     }

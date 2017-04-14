@@ -37,6 +37,7 @@ class GridFactory extends \core\factory\GenericFactory{
     }
     
     public function getSourceCityGeolocations($city_id){
+        var_dump('GridFactory');
        //calculate how big each step of the grid has to be
        $steps = $this->calculateSteps();
        //generate the points with the aquired steps

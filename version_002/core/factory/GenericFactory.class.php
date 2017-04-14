@@ -41,8 +41,10 @@ class GenericFactory {
             $object->$property = $this->fillProperty($property, $data, $object);
             
             //fill property by sourceQuery if provided
-            if(!empty($propertySourceQueries) && is_array($propertySourceQueries) && array_key_exists($property, $propertySourceQueries))
-            $object->$property = $this->queryFillProperty($property, $data, $object, $propertySourceQueries[$property]);      
+            if(!empty($propertySourceQueries) && is_array($propertySourceQueries) && array_key_exists($property, $propertySourceQueries)){
+                // var_dump($propertySourceQueries[$property]);
+                $object->$property = $this->queryFillProperty($property, $data, $object, $propertySourceQueries[$property]); 
+            }     
         }
         return $object;
     }
