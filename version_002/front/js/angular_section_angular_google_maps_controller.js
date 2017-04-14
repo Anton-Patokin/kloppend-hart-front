@@ -4,6 +4,8 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout, 
     $scope.toggleSlider = false;
     $scope.showHeatmapBool = {visible: true};
     $scope.showMarkerBool = {visible: false};
+    $scope.showvelo = {visible: false};
+
     var $slide;
     var zoom = 14;
     var save_position_lat_client = 51.218826;
@@ -22,9 +24,12 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout, 
     var heatmap;
     var heatmapData = [];
     var markersArray = [];
+    $scope.show_bicycling = false;
+    $scope.hideFrame = false;
     $scope.show_traffic = false;
     $scope.show_heatmap = true;
     $scope.clusterData = [];
+    $scope.velo = [];
     $scope.show_apen_heatmap = true;
     $scope.show_foursquare_heatmap = true;
     $scope.show_facebook_heatmap = true;
@@ -36,10 +41,10 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout, 
     $scope.size_map = false;
     $scope.showFooter = true;
     $scope.sideNavtest = false;
-    // $animate.enabled(false);
-
-//default date values
-
+    $scope.showTrendingDiv = true;
+    $scope.layer_facebook = "";
+    $scope.layer_foursquare = "";
+    $scope.layer_apen = "";
 
     var d = new Date();
     $scope.minDate = d;
@@ -81,9 +86,53 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout, 
     var day = date.getFullYear() + '-' + ('0' + (date.getMonth() + 1)).slice(-2) + '-' + ('0' + date.getDate()).slice(-2);
 
     var countPastAjaxCalls = 0;
+    var SHOW_GOOGLE_MAPS = true;
+    var GOOLE_MAPS_SIZE = "full";
+    var SCROOL_WHEEL=true;
 
+
+
+//start application
     initialize();
-    $scope.showTrendingDiv = true;
+
+    function currentPageLoaded(pageUrl) {
+        var root = pageUrl.split("/");
+        var new_root = ''
+        if (root.length != 1) {
+            new_root = root[0] + "/" + root[1];
+            if (root.length > 2) {
+                new_root = new_root + "/" + root[2] + "/" + root[3];
+            }
+        }
+        console.log('section->>',new_root);
+        switch (new_root) {
+            case '/section6':
+                GOOLE_MAPS_SIZE = "small";
+                SCROOL_WHEEL=false;
+                break;
+            case '/section7':
+                GOOLE_MAPS_SIZE = "small";
+                SCROOL_WHEEL=true;
+                break;
+            case '/section8':
+                SHOW_GOOGLE_MAPS = false;
+                break;
+            default:
+                SHOW_GOOGLE_MAPS = true;
+                GOOLE_MAPS_SIZE = "full";
+                break;
+        }
+    }
+
+    function initializeMap() {
+        initialize_bounce_marker();
+        initializeGoogleMapsObject();
+        initializeGoogleLayers();
+        currentPageLoaded($location.path());
+        switchApplicationState(APP_STATE_LOAD_CURRENT_HOUR)
+    }
+
+
     $scope.disableSroll = function (nid) {
         load_nearby_places(nid);
         $scope.map.options.scrollwheel = false;
@@ -135,7 +184,7 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout, 
     function buildToggler2() {
         return function () {
             if ($scope.sideNavtest == false) {
-                $scope.sideNavtest =  true;
+                $scope.sideNavtest = true;
             }
         }
     }
@@ -448,20 +497,22 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout, 
         $scope.showHeat_apen = true;
         $scope.size_map = false;
         $scope.toggle_show_traffic(false);
+        $scope.hideVelo();
         $timeout(function () {
             center_google_maps(save_position_lat_client, save_position_long_client, false)
 
         }, 100)
-        location.href = '#';
+        location.href = '';
     }
     function initialize_bounce_marker() {
+        $scope.bounce_marker_options = {};
         $scope.marker_center = {
             id: 1,
             coords: {
                 latitude: {},
                 longitude: {}
             },
-            icon: '',
+            icon: '0',
             title: "",
         };
     }
@@ -485,6 +536,7 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout, 
 
 
     function load_nearby_places(nid) {
+        $scope.hideVelo()
         $scope.bounce_marker_options = {animation: false};
         $scope.size_map = true;
         // save_position_lat_client = marker.model.latitude;
@@ -499,7 +551,6 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout, 
                 url: 'place/getPlaceNearbyPlacesByNid/' + nid,
             }
         ).then(function (result) {
-
             var lat = result.data.center.latitude;
             var long = result.data.center.longitude;
             var marker_type = result.data.center.marker_type;
@@ -540,20 +591,19 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout, 
     $scope.getNearbyPlaceses = function (nid) {
         load_nearby_places(nid);
     }
-    function initializeMap() {
-        initialize_bounce_marker()
-        $scope.bounce_marker_options = {};
 
+
+    function initializeGoogleMapsObject() {
         $scope.map = {
             center: {
                 latitude: center_antwerpen_lat,
                 longitude: center_antwerpen_long
             },
             zoom: zoom,
-            show: true,
+            show: SHOW_GOOGLE_MAPS,
             options: {
                 minZoom: 13,
-                scrollwheel: true
+                scrollwheel: SCROOL_WHEEL,
             },
             draggable: false,
             control: {},
@@ -597,13 +647,21 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout, 
                     });
                     load_nearby_places(marker.model.id);
                 },
-            },
+            }, velo: {
+                event: {
+                    click: function (marker, eventName, model) {
+                        console.log('click velo marker');
+                    },
+                },
+                show: {
+                    visible: false,
+                },
+            }
+
         };
-        $scope.layer_facebook = "";
-        $scope.layer_foursquare = "";
-        $scope.layer_apen = "";
+    }
 
-
+    function initializeGoogleLayers() {
         //this function run only after google maps is total loaded/ html=> googleMaps=>onCreated=> function below.
         $scope.heatLayerCallback_foursquare = function (layer) {
             //set the heat layers backend data
@@ -620,8 +678,49 @@ app.controller("PrimeController", function ($scope, $http, $interval, $timeout, 
             $scope.layer_apen = layer;
             var mockHeatLayer = new MockHeatLayer(layer, $scope.totalHeatmapData['apen']);
         };
-        switchApplicationState(APP_STATE_LOAD_CURRENT_HOUR)
-
     }
 
+
+    $scope.show_velo = function () {
+        $scope.velo = [];
+        $timeout(function () {
+            console.log('hide');
+            $scope.hideFrame = true;
+            clean_map_from_markers_and_clusters();
+            initialize_bounce_marker();
+            clean_map()
+            $scope.toggle_show_traffic(false);
+            $scope.show_bicycling = true;
+            $http(
+                {
+                    method: 'GET',
+                    url: 'velo/getAll',
+                }
+            ).then(function (result) {
+                $scope.showvelo.visible = true;
+                console.log(result);
+                angular.forEach(result.data, function (value, key) {
+                    var velo = {
+                        id: value.velo_id,
+                        latitude: value.point_lat,
+                        longitude: value.point_lng,
+                        title: value.name
+                    }
+                    $scope.velo.push(velo);
+                });
+                $scope.size_map = false;
+            });
+
+
+        }, 500)
+    }
+
+    $scope.hideVelo = function () {
+        $scope.velo = [];
+        $scope.show_bicycling = false;
+        $scope.hideFrame = false;
+        $timeout(function () {
+            $scope.showvelo.visible = false;
+        }, 200)
+    }
 });

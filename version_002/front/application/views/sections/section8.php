@@ -12,7 +12,7 @@ $tweets = $tweet->searchTweetsUsers('frankdeboosere');
     $rootPath = "https://apen.be/kloppend-hart-antwerpen/front/";
 
 ?>
-<div class="section-wrapper weather" ng-init='disableFooter()' ng-controller="WeatherController">
+<div class="section-wrapper weather" ng-init='disableFooter();hideVelo();' ng-controller="WeatherController">
     <div class="container-fluid margin-top-over_map">
         <div ng-class="{'sidenav-open' : !sideNavtest}" class="row webcam">
 

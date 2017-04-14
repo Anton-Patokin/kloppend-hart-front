@@ -6,10 +6,14 @@
 <div class="container background_white">
 </div>
 
-<div ng-class="size_map">
+<div>
     <ui-gmap-google-map ng-class="{'size_map_small' : size_map,'size_map_full' : !size_map}" center="map.center"
                         zoom="map.zoom" draggable="map.draggable" options="map.options"
                         events="map.events" control="map.control">
+
+
+
+        <ui-gmap-layer type="BicyclingLayer" show="show_bicycling"></ui-gmap-layer>
 
         <ui-gmap-layer type="TrafficLayer" show="show_traffic"></ui-gmap-layer>
 
@@ -20,9 +24,14 @@
         <ui-gmap-layer namespace="visualization" type="HeatmapLayer" show="showHeat_apen"
                        onCreated="heatLayerCallback_apen"></ui-gmap-layer>
 
+        <ui-gmap-markers doCluster="false" models="velo"
+                         events="map.velo.event" coords="'self'"
+                         icon="{url: '<?= $rootScope ?>/images/markers/marker_2.png'}" options="showvelo">
+        </ui-gmap-markers>
+
         <ui-gmap-markers doCluster="true" typeOptions="{minimumClusterSize : 1}" models="clusterData"
                          events="map.markersEvents" coords="'self'" heatmap-layer="{}"
-                         icon="{url: 'front/images/markers/marker_0.png'}" options="showHeatmapBool">
+                         icon="{url: '<?= $rootScope ?>/images/markers/marker_0.png'}" options="showHeatmapBool">
         </ui-gmap-markers>
 
 

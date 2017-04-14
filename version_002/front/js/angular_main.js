@@ -13,21 +13,9 @@ app.config(function ($routeProvider) {
             templateUrl: "section/detail_page/1/horeca/show/cafe",
             controller: "section2"
         })
-        .when("/section7", {
-            templateUrl: "section/test/7/horeca/show/cafe",
-            controller: "section3"
-        })
-        .when("/section4", {
-            templateUrl: "sections/section4.php",
-            controller: "section4"
-        })
-        .when("/section5", {
-            templateUrl: "sections/section5.php",
-            controller: "section5"
-        })
         .when("/section6", {
-            templateUrl: "sections/section6.php",
-            controller: "section6"
+            templateUrl: "section/everything/6",
+            controller: "section7"
         })
         .when("/section7", {
             templateUrl: "section/everything/7",

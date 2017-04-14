@@ -1,0 +1,1 @@
+<div ng-init="disableFooter();show_velo();enableScroll()"></div>

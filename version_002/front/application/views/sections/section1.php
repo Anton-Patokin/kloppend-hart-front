@@ -1,14 +1,14 @@
 <?php
 	$rootPath = "https://apen.be/kloppend-hart-antwerpen/front/";
 ?>
-<div ng-init='disableSroll(<?= ($show=="search"&&isset($cafe))? $cafe: "";?>); disableFooter();toggle_show_traffic(false);' class="section-wrapper">
+<div ng-init='disableSroll(<?= ($show=="search"&&isset($cafe))? $cafe: "";?>);hideVelo(); disableFooter();toggle_show_traffic(false);' class="section-wrapper">
 	<?php if($show == 'show'): ?>
 		<div class="row subcategories-menu-wrapper">
 			<div class="col-md-12 subcategories-menu">
 				<ul>
 					<?php foreach($subcategories as $key => $subcategory): ?>
 						<?php if($key == 0): ?><a ng-click="toggleSubcategories()"><li><span ng-hide="showSubcategories">Open</span><span ng-show="showSubcategories">Close</span> subcategories</li></a><?php endif ?>
-						<a ng-show="showSubcategories" href="#section1/<?= $getCategory ?>/show/<?= $subcategory['link'] ?>"><li class="<?= (strtolower($subcategory['link']) == strtolower($getSubcategory))? 'subcategory-active' : '' ?> <?= (($key % 2) == 0) ? 'even' : 'oneven' ;?>"><?= $subcategory['database'] ?><span class="subcategory-arrow pull-right"><img src="<?= (strtolower($subcategory['link']) == strtolower($getSubcategory))? $rootScope.'images/newdesign/arrow-active.png' : $rootScope.'images/newdesign/arrow.png' ?>"></span></li></a>
+						<a ng-show="showSubcategories" href="#section1/<?= $getCategory ?>/show/<?= $subcategory['link'] ?>"><li class="<?= (strtolower($subcategory['link']) == strtolower($getSubcategory))? 'subcategory-active' : '' ?> <?= (($key % 2) == 0) ? 'even' : 'oneven' ;?>"><?= $subcategory['database'] ?><span class="subcategory-arrow pull-right"><img src="<?= (strtolower($subcategory['link']) == strtolower($getSubcategory))? $rootPath.'images/newdesign/arrow-active.png' : $rootPath.'images/newdesign/arrow.png' ?>"></span></li></a>
 						<ul ng-show="showSubcategories">
 							<?php if(strtolower($subcategory['link']) == strtolower($getSubcategory)): ?>
 								<?php if(isset($topPlaces) && count($topPlaces) > 0): ?>
@@ -97,8 +97,8 @@
 							<md-progress-circular md-mode="indeterminate"></md-progress-circular>
 						</div>
 						<img class="slide slide-animation" ng-class="{'show' : isCurrentSlideIndex($index)}" ng-hide="!isCurrentSlideIndex($index)" ng-repeat="slide in slides" ng-src="{{ slide.image }}">
-						<div ng-show="slides" class="left-arrow" ng-click="nextSlide()"><img src="<?= $rootScope ?>images/newdesign/arrow-black-prev.png"></div>
-    					<div ng-show="slides" class="right-arrow" ng-click="prevSlide()"><img src="<?= $rootScope ?>images/newdesign/arrow-black.png"></a></div>
+						<div ng-show="slides" class="left-arrow" ng-click="nextSlide()"><img src="<?= $rootPath ?>images/newdesign/arrow-black-prev.png"></div>
+    					<div ng-show="slides" class="right-arrow" ng-click="prevSlide()"><img src="<?= $rootPath ?>images/newdesign/arrow-black.png"></a></div>
     					<div class="photo-info"></div>
 					</div>
 				</div>
