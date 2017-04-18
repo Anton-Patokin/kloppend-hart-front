@@ -32,6 +32,7 @@ app.controller("PrimeController", function ($scope, uiGmapGoogleMapApi, $http, $
     var heatmap;
     var heatmapData = [];
     var markersArray = [];
+    var aplicationReady=false
     $scope.show_bicycling = false;
     $scope.hideFrame = false;
     $scope.show_traffic = false;
@@ -55,6 +56,7 @@ app.controller("PrimeController", function ($scope, uiGmapGoogleMapApi, $http, $
     $scope.layer_apen = "";
     $scope.showOverflow = true;
     $scope.showGoogleMaps = false;
+    $scope.activeClass="";
 
 
     var d = new Date();
@@ -140,33 +142,35 @@ app.controller("PrimeController", function ($scope, uiGmapGoogleMapApi, $http, $
         }
         switch (new_root) {
             case '/section6':
-            // frame=true;
-            // console.log('section1 loaded');
-            // GOOLE_MAPS_SIZE = "small";
-            // SCROOL_WHEEL = false;
-            // show_velo();
-            // enableScroll()
-            // $scope.size_map = false;
-            // break;
-            case '/section7':
-            // frame=true;
-            // console.log('section7 loaded');
-            // GOOLE_MAPS_SIZE = "small";
-            // SCROOL_WHEEL = true;
-            // toggle_show_traffic(true);
-            // enableScroll();
-            // break;
-            case '/section8':
-            // frame=true;
-            // console.log('section8 loaded');
-            // $scope.hideFrame = false;
-            // SHOW_GOOGLE_MAPS = false;
-            // break;
-            case '/section1':
+                $scope.size_map = false;
+                $scope.hideFrame = true;
+                $scope.showGoogleMaps = false;
                 console.log('section1 loaded');
+                GOOLE_MAPS_SIZE = "small";
+                SCROOL_WHEEL = false;
+                show_velo();
+                enableScroll()
+                break;
+            case '/section7':
+                frame = true;
+                console.log('---->section7 loaded');
+                GOOLE_MAPS_SIZE = "small";
+                SCROOL_WHEEL = true;
                 $scope.hideFrame = false;
-                $scope.size_map = true;
+                toggle_show_traffic(true);
+                enableScroll();
+                break;
+            case '/section8':
+                frame = true;
+                console.log('---->section8 loaded');
+                $scope.hideFrame = false;
+                SHOW_GOOGLE_MAPS = false;
+                break;
+            case '/section1':
+                console.log('---->section1 loaded');
+                $scope.hideFrame = false;
                 $scope.map.options.scrollwheel = false;
+                $scope.size_map = true;
                 load_nearby_places(nid);
                 break;
             default:
@@ -176,16 +180,12 @@ app.controller("PrimeController", function ($scope, uiGmapGoogleMapApi, $http, $
                 //on click brand or on return to home page
                 enableScroll();
                 enableFooter();
-                switchApplicationState(APP_STATE_LOAD_CURRENT_HOUR);
                 $scope.hideFrame = true;
                 $scope.showHeat_facebook = true;
                 $scope.showHeat_foursquare = true;
                 $scope.showHeat_apen = true;
                 $scope.size_map = false;
-                $timeout(function () {
-                    center_google_maps(save_position_lat_client, save_position_long_client, false)
-
-                }, 100)
+                center_google_maps(save_position_lat_client, save_position_long_client, false)
                 switchApplicationState(APP_STATE_LOAD_CURRENT_HOUR)
                 break;
         }
@@ -198,7 +198,6 @@ app.controller("PrimeController", function ($scope, uiGmapGoogleMapApi, $http, $
     }
 
     function resetGoogleMapsMarkers() {
-        console.log($scope.markers);
         $scope.markerss = [];
         $scope.markers = [];
         $scope.cluster_save = [];
@@ -300,7 +299,12 @@ app.controller("PrimeController", function ($scope, uiGmapGoogleMapApi, $http, $
     $scope.$watch('myDate', function () {
         var date_picker = new Date($scope.myDate.toISOString());
         day = date_picker.getFullYear() + '-' + ('0' + (date_picker.getMonth() + 1)).slice(-2) + '-' + ('0' + date_picker.getDate()).slice(-2);
-        switchApplicationState(APP_STATE_LOAD_CURRENT_HOUR);
+
+       console.log('ready to load time but not on time');
+        if(aplicationReady){
+            switchApplicationState(APP_STATE_LOAD_CURRENT_HOUR);
+        }
+        aplicationReady=true;
     });
 
     $scope.myChangeListener = function (sliderId) {
@@ -309,6 +313,7 @@ app.controller("PrimeController", function ($scope, uiGmapGoogleMapApi, $http, $
         if ($scope.slider.maxValue == "24") {
             slider_end_time = "23.59";
         }
+        resetGoogleMapsMarkers();
         switchApplicationState(APP_STATE_LOAD_CURRENT_HOUR);
     };
     $scope.layer = "";
@@ -360,6 +365,7 @@ app.controller("PrimeController", function ($scope, uiGmapGoogleMapApi, $http, $
     }
 
     function switchApplicationState(newState) {
+        console.log('start function agragate',newState);
         switch (newState) {
             case APP_STATE_LOAD_MAP:
                 initializeMap();
@@ -385,7 +391,6 @@ app.controller("PrimeController", function ($scope, uiGmapGoogleMapApi, $http, $
         end_time = day + ' ' + calculateHour(endHour);
 
         //check if option for heatmap is checked
-        console.log('$scope.show_heatmap', $scope.show_heatmap);
         switch_between_marker_and_cluster('cluster');
 
         if ($scope.layer_foursquare && $scope.layer_facebook && $scope.layer_apen) {
@@ -576,19 +581,20 @@ app.controller("PrimeController", function ($scope, uiGmapGoogleMapApi, $http, $
 
 
     function center_google_maps(lat, long, zoom_bool) {
-        $scope.map.center = {
-            latitude: Number(lat),
-            longitude: Number(long),
-        };
-
-        console.log('center google maps', $scope.map.center);
-
+        $scope.map.control.refresh(
+            {
+                latitude: lat,
+                longitude: long,
+            }
+        );
         if (zoom_bool) {
             $scope.map.zoom = 17;
         } else {
             $scope.map.zoom = $scope.map.zoom;
 
         }
+
+
     }
 
 
@@ -660,9 +666,11 @@ app.controller("PrimeController", function ($scope, uiGmapGoogleMapApi, $http, $
             },
             draggable: false,
             control: {
-                refresh: {
-                    latitude: center_antwerpen_lat,
-                    longitude: center_antwerpen_long,
+                refresh: function ($object) {
+                    return {
+                        latitude: center_antwerpen_lat,
+                        longitude: center_antwerpen_long,
+                    }
                 },
             },
             events: {
@@ -701,7 +709,7 @@ app.controller("PrimeController", function ($scope, uiGmapGoogleMapApi, $http, $
                     ).then(function (result) {
                         //redirect to page witch clicket marker
 
-                        $location.path('/section1/test/search/' + marker.model.id, true);
+                        $location.path('/section1/show/search/' + marker.model.id, true);
                         // currentPageLoaded($location.path())
                         // location.href = '#/section1/' + Object.keys(result.data)[0] + '/search/' + marker.model.id;
 
@@ -743,23 +751,26 @@ app.controller("PrimeController", function ($scope, uiGmapGoogleMapApi, $http, $
 
     function show_velo() {
         $scope.show_bicycling = true;
-        $http(
-            {
-                method: 'GET',
-                url: 'velo/getAll',
-            }
-        ).then(function (result) {
-            $scope.showvelo.visible = true;
-            angular.forEach(result.data, function (value, key) {
-                var velo = {
-                    id: value.velo_id,
-                    latitude: value.point_lat,
-                    longitude: value.point_lng,
-                    title: value.name
+        $timeout(function () {
+            $http(
+                {
+                    method: 'GET',
+                    url: 'velo/getAll',
                 }
-                $scope.velo.push(velo);
+            ).then(function (result) {
+                $scope.showvelo.visible = true;
+                angular.forEach(result.data, function (value, key) {
+                    var velo = {
+                        id: value.velo_id,
+                        latitude: value.point_lat,
+                        longitude: value.point_lng,
+                        title: value.name
+                    }
+                    $scope.velo.push(velo);
+                });
             });
-        });
+        },500)
+
     }
 
 
