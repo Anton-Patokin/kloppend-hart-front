@@ -26,7 +26,7 @@
 
     <script type="text/javascript" src="<?= $rootPath ?>js/libs/angular.min.js"></script>
     <script
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCrmTkGoBzp--pRgO5vRXIsbXPrk3VMp_w&libraries=places&language=nl&region=BE&sensor=false&libraries=drawing&libraries=visualization"
+<!--        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCrmTkGoBzp--pRgO5vRXIsbXPrk3VMp_w&libraries=places&language=nl&region=BE&sensor=false&libraries=drawing&libraries=visualization"-->
         type="text/javascript"></script>
 
     <script type="text/javascript" src="<?= $rootPath ?>js/libs/lodash.min.js"></script>

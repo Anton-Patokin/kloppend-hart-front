@@ -1,1 +1,1 @@
-<div ng-init="disableFooter();show_velo();enableScroll()"></div>
+<div ng-init="redraw_view()"></div>

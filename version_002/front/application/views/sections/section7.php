@@ -25,7 +25,7 @@
 	// $ringAntwerpenTweets = $tweet->searchTweets('ring antwerpen');
 	// var_dump($verkeerAntwerpenTweets->statuses);
 ?>
-<div class="section-wrapper verkeer" ng-init='disableFooter();toggle_show_traffic(true);enableScroll();hideVelo()'>
+<div class="section-wrapper verkeer" ng-init='redraw_view()'>
 	<div class="container-fluid">
 		<div ng-class="{'sidenav-open' : !sideNavtest}" class="col-md-12 tweets">
 			<?php foreach($tweets as $key => $tweet): ?>

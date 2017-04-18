@@ -66,7 +66,7 @@ class weatherStation
 //        $xml->registerXPathNamespace('c', $ns['yweather']);
 
         if (!isset($phpObj['query']['results']['channel']['link'])) {
-            return t('City not found');
+            return 'City not found';
         }
 
         $element_units = $phpObj['query']['results']['channel']['units'];
