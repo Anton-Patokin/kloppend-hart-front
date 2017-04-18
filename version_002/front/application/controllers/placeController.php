@@ -55,15 +55,26 @@ class placeController {
         $is_closed = $this->placeModel->getBusinessIsClosed($nid);
         echo json_encode($is_closed);
     }
+
+    public function getBusinessHours($nid){
+        $this->doNotRenderHeader = 1;
+        $hours = $this->placeModel->getBusinessHours($nid);
+        echo json_encode($hours);
+    }
+
+    public function getBusinessPrice($nid){
+        $this->doNotRenderHeader = 1;
+        $price = $this->placeModel->getBusinessPrice($nid);
+        echo json_encode($price);
+    }
     
     public function getPlaceStatsByNid($nid){
-        //5 days back in time
+        //10 days back in time
         $startDate = date('Y-m-d 00:00:00', time() - (10 * (60 * 60 * 24)));
         $endDate   = date('Y-m-d 00:00:00', time());
         
         $this->doNotRenderHeader = 1;
         $stats = $this->placeModel->getPlaceStatsByNid($nid, $startDate, $endDate);
-        // var_dump($stats);
         echo json_encode($stats);
     }
     

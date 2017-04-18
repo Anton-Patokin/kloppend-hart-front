@@ -31,11 +31,11 @@
 		public function customFillProperty($property, $data, &$object){
 			switch($property){
 				case 'latitude':
-					if(isset($data->location)) return $data->location->coordinate->latitude;
+					if(isset($data->coordinates)) return $data->coordinates->latitude;
                 	else  return Array();
 					break;
 				case 'longitude':
-					if(isset($data->location)) return $data->location->coordinate->longitude;
+					if(isset($data->coordinates)) return $data->coordinates->longitude;
                 	else  return Array();
 					break;
 				case 'rating':
@@ -44,12 +44,18 @@
 					break;
 				case 'is_closed':
 					if(isset($data->is_closed)) return $data->is_closed;
-                	else  return Array();
+                	else  return false;
 					break;
 				case 'review_count':
 					if(isset($data->review_count)) return $data->review_count;
                 	else  return 0;
 					break;
+				case 'hours':
+					if (isset($data->hours)) return $data->hours;
+					else return Array();
+				case 'price':
+					if(isset($data->price)) return $data->price;
+					else return null;
 				default:
 					return $object->$property;
 					break;

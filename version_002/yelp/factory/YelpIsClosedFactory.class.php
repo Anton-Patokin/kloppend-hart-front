@@ -20,7 +20,7 @@ class YelpIsClosedFactory extends \core\factory\GenericFactory{
 	
 	public function saveYelpIsClosed($yelpIsClosed){
 		 if($this->checkIsClosedExists($yelpIsClosed)){
-			$this->dao->updateRecordByPrimaryKey($yelpIsClosed, array($yelpIsClosed->source_reference_id, $yelpIsClosed->business_is_closed),   array('source_reference_id', 'business_is_closed'));
+			$this->dao->updateRecordByPrimaryKey($yelpIsClosed, array($yelpIsClosed->source_reference_id),   array('source_reference_id'));
 		}else{
 			$this->dao->insertRecord($yelpIsClosed);
 		}
@@ -33,8 +33,8 @@ class YelpIsClosedFactory extends \core\factory\GenericFactory{
 	
 	private function checkIsClosedExists($yelpIsClosed){
 		$match = $this->dao->getByPrimaryKey(
-			array($yelpIsClosed->source_reference_id, $yelpIsClosed->business_is_closed),
-			array('source_reference_id', 'business_is_closed'));
+			array($yelpIsClosed->source_reference_id),
+			array('source_reference_id'));
 		if(empty($match)) return false;
 		return true;
 	}

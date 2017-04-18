@@ -22,7 +22,7 @@ class YelpRatingFactory extends \core\factory\GenericFactory{
 	
 	public function saveYelpRating($yelpRating){
 		 if($this->checkRatingExists($yelpRating)){
-			$this->dao->updateRecordByPrimaryKey($yelpRating, array($yelpRating->source_reference_id, $yelpRating->business_rating),   array('source_reference_id', 'business_rating'));
+			$this->dao->updateRecordByPrimaryKey($yelpRating, array($yelpRating->source_reference_id),   array('source_reference_id'));
 		}else{
 			$this->dao->insertRecord($yelpRating);
 		}
@@ -30,23 +30,12 @@ class YelpRatingFactory extends \core\factory\GenericFactory{
 
 	public function getYelpRatingByNid($nid){
 	 	return $this->dao->getYelpRatingByNid($nid);
-	}
-	
-   //  protected function customFillProperty($property, $data, &$object) {
-   //       switch($property){
-   //          case 'rating':
-   //              return  var_dump($data);  //$this->locationFactory->toObject($data);
-   //              break;
-   //         default:
-   //             return $object->$property;
-   //      }
-   // }
-	
+	}	
 	
 	private function checkRatingExists($yelpRating){
 		$match = $this->dao->getByPrimaryKey(
-			array($yelpRating->source_reference_id, $yelpRating->business_rating),
-			array('source_reference_id', 'business_rating'));
+			array($yelpRating->source_reference_id),
+			array('source_reference_id'));
 		if(empty($match)) return false;
 		return true;
 	}

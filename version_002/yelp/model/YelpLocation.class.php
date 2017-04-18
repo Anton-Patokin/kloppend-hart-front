@@ -22,6 +22,8 @@
 			$this->meta->propertyTypes['rating'] = 'float';
 			$this->meta->propertyTypes['is_closed'] = 'boolean';
 			$this->meta->propertyTypes['review_count'] = 'integer';
+			$this->meta->propertyTypes['hours'] = 'array';
+			$this->meta->propertyTypes['price'] = 'string';
 		}
 	}
 

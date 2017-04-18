@@ -147,7 +147,7 @@ class DataMiningFactory  extends \core\factory\GenericFactory {
         //keep in mind that the provided id needs to be of the right source
         $sourceReferencePoi = $this->sourceReferencePoiFactory->getSourceReferencePoiById($sourceReferencePoiId);
         $additionalData  = $this->getAdditionalDataBySourceReference($this->sourceReferenceFactory->getSourceReferenceById($sourceReferencePoi->source_reference_id));
-        // var_dump($additionalData);
+        // var_dump('additional data: ', $additionalData);
         $this->saveAdditionalData($additionalData, $this->sourceReferenceFactory->getSourceReferenceById($sourceReferencePoi->source_reference_id));
     }
     
