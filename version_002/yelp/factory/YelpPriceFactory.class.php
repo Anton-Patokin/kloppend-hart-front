@@ -4,7 +4,6 @@ namespace yelp\factory;
 
 require_once(ROOT . 'core/factory/GenericFactory.class.php');
 require_once(ROOT . 'yelp/dao/YelpPriceDao.class.php');
-require_once(ROOT . 'yelp/factory/YelpLocationFactory.class.php');
 require_once(ROOT . 'yelp/model/YelpPrice.class.php');
 
 class YelpPriceFactory extends \core\factory\GenericFactory{
@@ -14,8 +13,6 @@ class YelpPriceFactory extends \core\factory\GenericFactory{
 	public function __construct(){
 		parent::__construct(new \yelp\model\YelpPrice());
 		$this->dao = new \yelp\dao\YelpPriceDao();
-		$this->api = new \yelp\api\YelpApi();
-		$this->locationFactory = new \yelp\factory\YelpLocationFactory();
 	}
 	
 	public function saveYelpPrice($yelpPrice){
