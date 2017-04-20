@@ -2,34 +2,28 @@
 
 namespace dataMining2\factory;
 
-require_once (ROOT . 'yelp/factory/YelpLocationFactory.class.php');
-require_once (ROOT . 'yelp/factory/YelpRatingFactory.class.php');
-require_once (ROOT . 'yelp/factory/YelpIsClosedFactory.class.php');
-require_once (ROOT . 'yelp/factory/YelpHoursFactory.class.php');
-require_once (ROOT . 'yelp/factory/YelpPriceFactory.class.php');
 require_once (ROOT . 'dataMining2/factory/DataMiningFactory.class.php');
 require_once (ROOT . 'poi/factory/PoiCityFactory.class.php');
 require_once (ROOT . 'poi/factory/PoiFactory.class.php');
 require_once (ROOT . 'source/factory/SourceReferenceFactory.class.php');
 require_once (ROOT . 'source/factory/SourceReferencePoiFactory.class.php');
 require_once (ROOT . 'source/factory/SourceCityGeolocationFactory.class.php');
+require_once (ROOT . 'google/places/factory/GoogleLocationFactory.class.php');
+require_once (ROOT . 'google/places/factory/GoogleHoursFactory.class.php');
 
 require_once (ROOT . 'source/model/SourceReference.class.php');
 require_once (ROOT . 'source/model/SourceReferencePoi.class.php');
 
-class YelpDataMiningFactory extends \dataMining2\factory\DataMiningFactory {
+class GoogleDataMiningFactory extends \dataMining2\factory\DataMiningFactory {
     
-    protected $yelpLocationFactory;
-    protected $yelpRatingFactory;
-    protected $yelpIsClosedFactory;
-    protected $yelpHoursFactory;
-    protected $yelpPriceFactory;
     protected $poiFactory;
     protected $poiCityFactory;
     protected $sourceReferenceFactory;
     protected $sourceReferencePoiFactory;
+    protected $googleLocationFactory;
+    protected $googleHoursFactory;
     
-    protected $source_name = 'yelp';
+    protected $source_name = 'google';
     protected $sourceCityGeolocationLimit = 15; //limitation of how many points will be run in one call
             
     public function __construct() {
@@ -39,11 +33,9 @@ class YelpDataMiningFactory extends \dataMining2\factory\DataMiningFactory {
         $this->sourceReferenceFactory    = new \source\factory\SourceReferenceFactory();
         $this->sourceReferencePoiFactory = new \source\factory\SourceReferencePoiFactory();
         $this->sourceCityGeolocationFactory = new \source\factory\SourceCityGeolocationFactory();
-        $this->yelpLocationFactory = new \yelp\factory\YelpLocationFactory();
-        $this->yelpRatingFactory = new \yelp\factory\YelpRatingFactory();
-        $this->yelpIsClosedFactory = new \yelp\factory\YelpIsClosedFactory();
-        $this->yelpHoursFactory = new \yelp\factory\YelpHoursFactory();
-        $this->yelpPriceFactory = new \yelp\factory\YelpPriceFactory();
+        $this->googleLocationFactory = new \google\places\factory\GoogleLocationFactory();
+        $this->googleHoursFactory = new \google\places\factory\GoogleHoursFactory();
+
     } 
     
     protected function getReferencesFromSource($city_id)
@@ -67,7 +59,7 @@ class YelpDataMiningFactory extends \dataMining2\factory\DataMiningFactory {
     }
 
     private function createSourceReferencesByGeolocation($geolocation){
-         return $this->yelpLocationFactory->createYelpLocationsByLatLng($geolocation);
+         return $this->googleLocationFactory->createGoogleLocationsByLatLng($geolocation);
     }
 
     protected function convertReference($reference){
@@ -86,7 +78,7 @@ class YelpDataMiningFactory extends \dataMining2\factory\DataMiningFactory {
      */
 
     protected function extractPoiStatsFromMetrics($metrics){
-        $business = $this->yelpLocationFactory->getBusinessBySourceReference($metrics[0]['source_reference']);
+        // $business = $this->yelpLocationFactory->getBusinessBySourceReference($metrics[0]['source_reference']);
         // var_dump($business->review_count);
         $poiStats = Array();
         foreach($metrics as $metric){
@@ -94,7 +86,7 @@ class YelpDataMiningFactory extends \dataMining2\factory\DataMiningFactory {
             $poiStat->timestamp = date('Y-m-d H:i:s');
             $poiStat->source_reference_poi_metric_id = $metric['source_reference_poi_metric_id'];
             //you need to know the metrics
-            if($metric['metric_name'] == 'review_count') $poiStat->number = (isset($business->review_count)) ? $business->review_count : 0;
+
             $poiStats[] = $poiStat;
         }
         return $poiStats;
@@ -105,77 +97,65 @@ class YelpDataMiningFactory extends \dataMining2\factory\DataMiningFactory {
      */
     //overrided function
     protected function getAdditionalDataBySourceReference($sourceReference) {
-       return $this->yelpLocationFactory->getBusinessBySourceReference($sourceReference->source_reference);
+       return $this->googleLocationFactory->getPlaceBySourceReference($sourceReference->source_reference);
     }
 
     //overrided function
     protected function saveAdditionalData($additionalData, $sourceReference) {
-        $this->handleYelpBusiness($additionalData, $sourceReference);
+        $this->handleGooglePlace($additionalData, $sourceReference);
     }
 
-    private function handleYelpBusiness($yelpBusiness, $sourceReference) {
-        if (!empty($yelpBusiness->rating)) {
-            $this->handleYelpRating($yelpBusiness, $sourceReference);
+    private function handleGooglePlace($googlePlace, $sourceReference) {
+        if (!empty($googlePlace->opening_hours)) {
+            $this->handleGoogleHours($googlePlace, $sourceReference);
         }
-        if (!empty($yelpBusiness->hours)) {
-            $this->handleYelpHours($yelpBusiness, $sourceReference);
-        }
-        if (!empty($yelpBusiness->price)) {
-            $this->handleYelpPrice($yelpBusiness, $sourceReference);
-        }
-        $this->handleYelpIsClosed($yelpBusiness, $sourceReference);
     }
 
-    private function handleYelpRating($rating, $sourceReference) {
-        $rating->source_reference_id = $sourceReference->source_reference_id;
-        $rating->business_rating = $rating->rating;
-        $this->yelpRatingFactory->saveYelpRating($rating);
-    }
-
-    // Yelp business opening days go from 0-6, starting with monday
-    private function handleYelpHours($hours, $sourceReference) {
-        $hours->source_reference_id = $sourceReference->source_reference_id;
+    // Google place opening days go from 0-6, starting with sunday
+    private function handleGoogleHours($opening_hours, $sourceReference) {
+        $opening_hours->source_reference_id = $sourceReference->source_reference_id;
         $previous_day = 10;
         $count = 0;
         $days = array();
-        foreach ($hours->hours[0]->open as $hour) {
-            if ($previous_day == $hour->day) {
+        foreach ($opening_hours->opening_hours as $key => $hour) {
+            if ($previous_day == $hour->open->day) {
                 $count = $count + 1;
             } else {
                 $count = 0;
             }
-            $hours->business_day = $hour->day;
-            $hours->business_start = $hour->start;
-            $hours->business_end = $hour->end;
-            $hours->business_open = true;
-            $hours->times_opened = $count;
-            $previous_day = $hour->day;
-            $days[] = $hour->day;
-            $this->yelpHoursFactory->saveYelpHours($hours);
-        }
+            if (!isset($hour->close->time)) {
+                for ($i=0; $i < 7; $i++) { 
+                    $opening_hours->place_day = $i;
+                    $opening_hours->place_start = '0000';
+                    $opening_hours->place_end = '0000';
+                    $opening_hours->place_open = true;
+                    $opening_hours->times_opened = 0;
+                    $this->googleHoursFactory->saveGoogleHours($opening_hours);
+                }
+            } else {
+                $opening_hours->place_day = $hour->open->day;
+                $opening_hours->place_start = $hour->open->time;
+                $opening_hours->place_end = $hour->close->time;
+                $opening_hours->place_open = true;
+                $opening_hours->times_opened = $count;
+                $previous_day = $hour->open->day;
+                $days[] = $hour->open->day;
+                $this->googleHoursFactory->saveGoogleHours($opening_hours);
+            }
+                    }
         $days = array_unique($days);
-        for ($i=0; $i < 7; $i++) { 
-            if (!in_array($i, $days)) {
-                $hours->business_day = $i;
-                $hours->business_start = '';
-                $hours->business_end = '';
-                $hours->business_open = false;
-                $hours->times_opened = 0;
-                $this->yelpHoursFactory->saveYelpHours($hours);
+        if (count($days) != 0 & count($days) != 7) {
+            for ($i=0; $i < 7; $i++) { 
+                if (!in_array($i, $days)) {
+                    $opening_hours->place_day = $i;
+                    $opening_hours->place_start = '';
+                    $opening_hours->place_end = '';
+                    $opening_hours->place_open = false;
+                    $opening_hours->times_opened = 0;
+                    $this->googleHoursFactory->saveGoogleHours($opening_hours);
+                }
             }
         }
-    }
-
-    private function handleYelpPrice($price, $sourceReference) {
-        $price->source_reference_id = $sourceReference->source_reference_id;
-        $price->business_price = $price->price;
-        $this->yelpPriceFactory->saveYelpPrice($price);
-    }
-
-    private function handleYelpIsClosed($isClosed, $sourceReference) {
-        $isClosed->source_reference_id = $sourceReference->source_reference_id;
-        $isClosed->business_is_closed = $isClosed->is_closed;
-        $this->yelpIsClosedFactory->saveYelpIsClosed($isClosed);
     }
 }
 

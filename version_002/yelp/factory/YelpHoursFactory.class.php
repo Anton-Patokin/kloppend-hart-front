@@ -17,7 +17,7 @@ class YelpHoursFactory extends \core\factory\GenericFactory{
 	
 	public function saveYelpHours($yelpHours){
 		 if($this->checkHoursExists($yelpHours)){
-			$this->dao->updateRecordByPrimaryKey($yelpHours, array($yelpHours->source_reference_id, $yelpHours->business_day),   array('source_reference_id', 'business_day'));
+			$this->dao->updateRecordByPrimaryKey($yelpHours, array($yelpHours->source_reference_id, $yelpHours->business_day, $yelpHours->times_opened),   array('source_reference_id', 'business_day', 'times_opened'));
 		}else{
 			$this->dao->insertRecord($yelpHours);
 		}
@@ -30,8 +30,8 @@ class YelpHoursFactory extends \core\factory\GenericFactory{
 	
 	private function checkHoursExists($yelpHours){
 		$match = $this->dao->getByPrimaryKey(
-			array($yelpHours->source_reference_id, $yelpHours->business_day),
-			array('source_reference_id', 'business_day'));
+			array($yelpHours->source_reference_id, $yelpHours->business_day, $yelpHours->times_opened),
+			array('source_reference_id', 'business_day', 'times_opened'));
 		if(empty($match)) return false;
 		return true;
 	}

@@ -49,7 +49,7 @@ class DataMiningFactory  extends \core\factory\GenericFactory {
         
         $this->createRelevantReferences($sourceReferences);
         
-        //possibility to do some final manipulation
+        // //possibility to do some final manipulation
         $this->postRelevantReferencesHandler($references, $sourceReferences);
     }
     
