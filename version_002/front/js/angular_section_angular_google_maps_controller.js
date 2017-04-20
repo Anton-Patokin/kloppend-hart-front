@@ -6,7 +6,61 @@ app.config(function (uiGmapGoogleMapApiProvider) {
     });
 })
 
-app.controller("PrimeController", function ($scope, uiGmapGoogleMapApi, $http, $interval, $timeout, $animate, $mdSidenav, $location, $route, $rootScope) {
+app.service('nearbyPlaces', function ($http, $q) {
+    // I get the list of friends from the remote server.
+    function getFriends(nid) {
+        // The timeout property of the http request takes a deferred value
+        // that will abort the underying AJAX request if / when the deferred
+        // value is resolved.
+        var deferredAbort = $q.defer();
+        // Initiate the AJAX request.
+        var request = $http({
+            method: 'GET',
+            url: 'place/getPlaceNearbyPlacesByNid/' + nid,
+            timeout: deferredAbort.promise
+        });
+        // Rather than returning the http-promise object, we want to pipe it
+        // through another promise so that we can "unwrap" the response
+        // without letting the http-transport mechansim leak out of the
+        // service layer.
+        var promise = request.then(
+            function (response) {
+                return ( response.data );
+            },
+            function (response) {
+                return ( $q.reject("Something went wrong") );
+            }
+        );
+        // Now that we have the promise that we're going to return to the
+        // calling context, let's augment it with the abort method. Since
+        // the $http service uses a deferred value for the timeout, then
+        // all we have to do here is resolve the value and AngularJS will
+        // abort the underlying AJAX request.
+        promise.abort = function () {
+            deferredAbort.resolve();
+        };
+        // Since we're creating functions and passing them out of scope,
+        // we're creating object references that may be hard to garbage
+        // collect. As such, we can perform some clean-up once we know
+        // that the requests has finished.
+        promise.finally(
+            function () {
+                promise.abort = angular.noop;
+                deferredAbort = request = promise = null;
+            }
+        );
+        return ( promise );
+    }
+
+    // Return the public API.
+    return ({
+        getFriends: getFriends
+    });
+
+})
+
+
+app.controller("PrimeController", function ($scope, uiGmapGoogleMapApi, $http, $interval, $timeout, $animate, $mdSidenav, $location, $route, $rootScope, nearbyPlaces) {
     var showHeatmapBool = true;
     var showMarkersBool = true;
     $scope.toggleSlider = false;
@@ -32,7 +86,7 @@ app.controller("PrimeController", function ($scope, uiGmapGoogleMapApi, $http, $
     var heatmap;
     var heatmapData = [];
     var markersArray = [];
-    var aplicationReady=false
+    var aplicationReady = false
     $scope.show_bicycling = false;
     $scope.hideFrame = false;
     $scope.show_traffic = false;
@@ -56,7 +110,7 @@ app.controller("PrimeController", function ($scope, uiGmapGoogleMapApi, $http, $
     $scope.layer_apen = "";
     $scope.showOverflow = true;
     $scope.showGoogleMaps = false;
-    $scope.activeClass="";
+    $scope.activeClass = "";
 
 
     var d = new Date();
@@ -119,8 +173,11 @@ app.controller("PrimeController", function ($scope, uiGmapGoogleMapApi, $http, $
 //start application
     initialize();
 
-    function currentPageLoaded(pageUrl) {
-        toggle_show_traffic(false);
+    var nearbyplacesProsesing = false;
+
+    function currentPageLoaded(pageUrl, $id) {
+        aplicationReady = false;
+        $scope.show_traffic = false;
         initialize_bounce_marker();
         resetGoogleMapsMarkers();
         $scope.show_bicycling = false;
@@ -131,76 +188,155 @@ app.controller("PrimeController", function ($scope, uiGmapGoogleMapApi, $http, $
         var root = pageUrl.split("/");
         var new_root = ''
         var nid = "";
+        $scope.activeClass = "";
         if (root.length != 1) {
-            if (root.length > 4) {
-                nid = root[4];
+            if (root.length > 3) {
+                nid = root[root.length - 1];
             }
+            if ($id) {
+                nid = $id;
+            }
+
             new_root = root[0] + "/" + root[1];
-            // if (root.length > 2) {
-            //     new_root = new_root + "/" + root[2] + "/" + root[3];
-            // }
+            $scope.activeClass = new_root;
+            if (root.length > 2) {
+                $scope.activeClass = new_root + "/" + root[2] + "/" + root[3];
+
+            }
         }
         switch (new_root) {
             case '/section6':
                 $scope.size_map = false;
                 $scope.hideFrame = true;
                 $scope.showGoogleMaps = false;
-                console.log('section1 loaded');
                 GOOLE_MAPS_SIZE = "small";
                 SCROOL_WHEEL = false;
                 show_velo();
                 enableScroll()
                 break;
             case '/section7':
-                frame = true;
-                console.log('---->section7 loaded');
                 GOOLE_MAPS_SIZE = "small";
                 SCROOL_WHEEL = true;
                 $scope.hideFrame = false;
-                toggle_show_traffic(true);
+                $scope.show_traffic = true;
                 enableScroll();
                 break;
             case '/section8':
                 frame = true;
-                console.log('---->section8 loaded');
                 $scope.hideFrame = false;
                 SHOW_GOOGLE_MAPS = false;
                 break;
             case '/section1':
-                console.log('---->section1 loaded');
+                nearbyplacesProsesing = true;
                 $scope.hideFrame = false;
                 $scope.map.options.scrollwheel = false;
                 $scope.size_map = true;
                 load_nearby_places(nid);
+                // loadData();
                 break;
             default:
-                $scope.showGoogleMaps = false;
-                SHOW_GOOGLE_MAPS = true;
-                GOOLE_MAPS_SIZE = "full";
-                //on click brand or on return to home page
-                enableScroll();
-                enableFooter();
-                $scope.hideFrame = true;
-                $scope.showHeat_facebook = true;
-                $scope.showHeat_foursquare = true;
-                $scope.showHeat_apen = true;
-                $scope.size_map = false;
-                center_google_maps(save_position_lat_client, save_position_long_client, false)
-                switchApplicationState(APP_STATE_LOAD_CURRENT_HOUR)
+                var timeout = 0;
+                if (nearbyplacesProsesing) {
+                    abortRequestNearbyPlaces();
+                    timeout = 1000;
+                }
+                $timeout(function () {
+                    $scope.showGoogleMaps = false;
+                    SHOW_GOOGLE_MAPS = true;
+                    GOOLE_MAPS_SIZE = "full";
+                    //on click brand or on return to home page
+                    enableScroll();
+                    enableFooter();
+                    $scope.hideFrame = true;
+                    $scope.size_map = false;
+                    switchApplicationState(APP_STATE_LOAD_CURRENT_HOUR);
+                    nearbyplacesProsesing = false;
+                    $scope.showGoogleMaps = true;
+                    center_google_maps(save_position_lat_client, save_position_long_client, false)
+
+                }, timeout)
                 break;
         }
         $timeout(function () {
             $scope.showGoogleMaps = true;
-
         }, 100)
 
-
+        $id = "";
     }
+
+
+    //test prommisses ---------------------------------------------------------------------
+    $scope.isLoading = false;
+    $scope.friends = [];
+    var requestFornearByPlaces = null;
+
+    function abortRequestNearbyPlaces() {
+        return ( requestFornearByPlaces && requestFornearByPlaces.abort() );
+    };
+
+
+    function load_nearby_places(nid) {
+        // Flag the data is currently being loaded.
+        $scope.isLoading = true;
+        $scope.friends = [];
+        // Make a request for data. Note that we are saving a reference to
+        // this response rather than just piping it directly into a .then()
+        // call. This is because we need to be able to access the .abort()
+        // method on the request and we'll lose that original reference after
+        // we call the .then() method.
+        ( requestFornearByPlaces = nearbyPlaces.getFriends(nid) ).then(
+            function (result) {
+                var lat = result.center.latitude;
+                var long = result.center.longitude;
+                var marker_type = result.center.marker_type;
+                var title = result.center.name;
+
+                if (result.near) {
+                    result.near.forEach(function (element) {
+                        createMarker({
+                                id: element.nid,
+                                latitude: element.latitude,
+                                longitude: element.longitude,
+                                title: element.name,
+                                icon: element.marker_type
+                            },
+                            element.marker_type);
+                    });
+                }
+                switch_between_marker_and_cluster("marker");
+                $scope.marker_center = {
+                    id: result.center.nid,
+                    coords: {
+                        latitude: lat,
+                        longitude: long
+                    },
+                    icon: marker_type,
+                    title: title,
+                };
+                center_google_maps(lat, long, true);
+                $timeout(function () {
+                    $scope.bounce_marker_options = {animation: google.maps.Animation.BOUNCE};
+                }, 100)
+                nearbyplacesProsesing = false;
+            },
+            function (errorMessage) {
+                nearbyplacesProsesing = false
+                // Flag the data as loaded (or rather, done trying to load). loading).
+                $scope.isLoading = false;
+
+            }
+        );
+    };
+
+
+    //end test prommisses ---------------------------------------------------------------------
+
 
     function resetGoogleMapsMarkers() {
         $scope.markerss = [];
         $scope.markers = [];
         $scope.cluster_save = [];
+        $scope.clusterData = [];
         $scope.totalHeatmapData['facebook'] = [];
         $scope.totalHeatmapData['foursquare'] = [];
         $scope.totalHeatmapData['apen'] = [];
@@ -213,6 +349,12 @@ app.controller("PrimeController", function ($scope, uiGmapGoogleMapApi, $http, $
     $scope.redraw_view = function () {
         currentPageLoaded($location.path())
     }
+    $scope.redraw_view_weather = function () {
+        $timeout(function () {
+            currentPageLoaded($location.path())
+
+        }, 300);
+    }
 
     function initializeMap() {
         initialize_bounce_marker();
@@ -221,26 +363,9 @@ app.controller("PrimeController", function ($scope, uiGmapGoogleMapApi, $http, $
         currentPageLoaded($location.path());
     }
 
-
     $scope.loadFirstPoiInSubMenu = function ($id) {
-        // $scope.disableSroll($id);
-        $location.path('/section1/test/search/' + $id, false);
-        currentPageLoaded($location.path())
+        currentPageLoaded($location.path(), $id)
     }
-
-    $scope.isActive = function (viewLocation) {
-        var root = $location.path().split("/");
-        var new_root = ''
-        if (root.length != 1) {
-            var new_root = root[0] + "/" + root[1];
-            if (root.length > 2) {
-                new_root = new_root + "/" + root[2] + "/" + root[3];
-            }
-        }
-        return viewLocation === new_root;
-    };
-
-
     function enableScroll() {
         $scope.map.zoom = 10;
         $scope.map.options.scrollwheel = true;
@@ -288,23 +413,15 @@ app.controller("PrimeController", function ($scope, uiGmapGoogleMapApi, $http, $
 
     }
 
-
-    function toggle_show_traffic($show) {
-        if ($show) {
-            // center_google_maps(save_position_lat_client, save_position_long_client, false)
-        }
-        $scope.show_traffic = $show;
-    }
-
     $scope.$watch('myDate', function () {
         var date_picker = new Date($scope.myDate.toISOString());
         day = date_picker.getFullYear() + '-' + ('0' + (date_picker.getMonth() + 1)).slice(-2) + '-' + ('0' + date_picker.getDate()).slice(-2);
 
-       console.log('ready to load time but not on time');
-        if(aplicationReady){
+        if (aplicationReady) {
+            resetGoogleMapsMarkers();
             switchApplicationState(APP_STATE_LOAD_CURRENT_HOUR);
         }
-        aplicationReady=true;
+        aplicationReady = true;
     });
 
     $scope.myChangeListener = function (sliderId) {
@@ -365,7 +482,6 @@ app.controller("PrimeController", function ($scope, uiGmapGoogleMapApi, $http, $
     }
 
     function switchApplicationState(newState) {
-        console.log('start function agragate',newState);
         switch (newState) {
             case APP_STATE_LOAD_MAP:
                 initializeMap();
@@ -390,9 +506,11 @@ app.controller("PrimeController", function ($scope, uiGmapGoogleMapApi, $http, $
         start_time = day + ' ' + calculateHour(startHour);
         end_time = day + ' ' + calculateHour(endHour);
 
+        $scope.showHeat_facebook = true;
+        $scope.showHeat_foursquare = true;
+        $scope.showHeat_apen = true;
         //check if option for heatmap is checked
         switch_between_marker_and_cluster('cluster');
-
         if ($scope.layer_foursquare && $scope.layer_facebook && $scope.layer_apen) {
             $scope.heatLayerCallback_foursquare($scope.layer_foursquare, $scope.totalHeatmapData['foursquare']);
             $scope.heatLayerCallback_facebook($scope.layer_facebook, $scope.totalHeatmapData['facebook']);
@@ -406,7 +524,9 @@ app.controller("PrimeController", function ($scope, uiGmapGoogleMapApi, $http, $
         var startDate = day + ' ' + calculateHour(slider_start_time);
         //current hour + 1
         var endDate = day + ' ' + calculateHour(slider_end_time);
+        var timeout = 0;
         getHeatMapData(startDate, endDate, 'current')
+
     }
 
 
@@ -428,6 +548,7 @@ app.controller("PrimeController", function ($scope, uiGmapGoogleMapApi, $http, $
             }
         ).then(function (result) {
             var data = result['data'];
+
             for (var api in data) {
                 if (!heatmapData.hasOwnProperty(api)) heatmapData[api] = [];
                 if (!markersArray.hasOwnProperty(api)) markersArray[api] = [];
@@ -562,7 +683,7 @@ app.controller("PrimeController", function ($scope, uiGmapGoogleMapApi, $http, $
     $scope.home = function () {
         // location.href = '';
         $location.path('/', false);
-        currentPageLoaded(' ')
+        currentPageLoaded($location.path())
     }
 
 
@@ -596,61 +717,6 @@ app.controller("PrimeController", function ($scope, uiGmapGoogleMapApi, $http, $
 
 
     }
-
-
-    function load_nearby_places(nid) {
-        $scope.bounce_marker_options = {animation: false};
-
-        // save_position_lat_client = marker.model.latitude;
-        // save_position_long_client = marker.model.longitude;
-
-
-        //set nearby markers and bounce to active marker center
-        $http(
-            {
-                method: 'GET',
-                url: 'place/getPlaceNearbyPlacesByNid/' + nid,
-            }
-        ).then(function (result) {
-            var lat = result.data.center.latitude;
-            var long = result.data.center.longitude;
-            var marker_type = result.data.center.marker_type;
-            var title = result.data.center.name;
-
-            if (result.data.near) {
-                result.data.near.forEach(function (element) {
-                    createMarker({
-                            id: element.nid,
-                            latitude: element.latitude,
-                            longitude: element.longitude,
-                            title: element.name,
-                            icon: element.marker_type
-                        },
-                        element.marker_type);
-                });
-            }
-            switch_between_marker_and_cluster("marker");
-            $scope.marker_center = {
-                id: result.data.center.nid,
-                coords: {
-                    latitude: lat,
-                    longitude: long
-                },
-                icon: marker_type,
-                title: title,
-            };
-            center_google_maps(lat, long, true);
-            $timeout(function () {
-                $scope.bounce_marker_options = {animation: google.maps.Animation.BOUNCE};
-            }, 100)
-
-        });
-    }
-
-    $scope.getNearbyPlaceses = function (nid) {
-        load_nearby_places(nid);
-    }
-
 
     function initializeGoogleMapsObject() {
         $scope.map = {
@@ -769,7 +835,7 @@ app.controller("PrimeController", function ($scope, uiGmapGoogleMapApi, $http, $
                     $scope.velo.push(velo);
                 });
             });
-        },500)
+        }, 500)
 
     }
 

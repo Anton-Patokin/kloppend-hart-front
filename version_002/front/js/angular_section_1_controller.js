@@ -257,7 +257,9 @@ app.controller("section1", function ($scope, $routeParams, $http, $timeout) {
         }
     });
 
-    if ($routeParams.action == 'search') {
+
+    if ($routeParams.value) {
         $scope.getPoiById($routeParams.value);
     }
+    
 });

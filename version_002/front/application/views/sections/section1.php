@@ -119,10 +119,10 @@
 							</div>
 						</div>
 						<div ng-show="socialMediaItems" class="col-md-12 pagination">
-							<pagination 
+							<pagination
 							  page="currentPage"
 							  total-items="socialMediaItems.length"
-							  max-size="maxSize"  
+							  max-size="maxSize"
 							  boundary-links="true"
 							  items-per-page="numPerPage">
 							</pagination>

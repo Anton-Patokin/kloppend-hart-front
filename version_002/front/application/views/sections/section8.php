@@ -8,11 +8,9 @@ $config = array('key' => '47MHPAfhtJE8IGMt5QPAA',
     'accessTokenSecret' => 'qU3W2AkC2PnZ8ZRiMDVGTAysCEEvavSU26g6TVWDWI');
 $tweet = new \twitter\api\TwitterApi($config['accessToken'], $config['accessTokenSecret'], $config['key'], $config['secret']);
 $tweets = $tweet->searchTweetsUsers('frankdeboosere');
-
     $rootPath = "https://apen.be/kloppend-hart-antwerpen/front/";
-
 ?>
-<div class="section-wrapper weather" ng-init='disableFooter();hideVelo();' ng-controller="WeatherController">
+<div class="section-wrapper weather" ng-init='redraw_view()' ng-controller="WeatherController">
     <div class="container-fluid margin-top-over_map">
         <div ng-class="{'sidenav-open' : !sideNavtest}" class="row webcam">
 

@@ -19,7 +19,7 @@
 						<div class="trending-near">
 							<h4>Top trending dichtbij u:</h4>
 							<ul>
-								<a ng-show="trendingNearList" ng-repeat="(key, poi) in trendingNearList" href="#section1/top/search/{{poi.nid}}"><li><span class="place">00{{ key + 1 }}.</span>{{ poi.name }}</li></a>
+								<a ng-click="toggleTrending('close')" ng-show="trendingNearList" ng-repeat="(key, poi) in trendingNearList" href="#section1/top/search/{{poi.nid}}"><li><span class="place">00{{ key + 1 }}.</span>{{ poi.name }}</li></a>
 								<li ng-hide="trendingNearList">Er zijn geen plaatsen in uw buurt</li>
 							</ul>
 

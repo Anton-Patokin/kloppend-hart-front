@@ -15,7 +15,6 @@ app.config(function ($routeProvider) {
         })
         .when("/section6", {
             templateUrl: "section/everything/6",
-            controller: "section7"
         })
         .when("/section7", {
             templateUrl: "section/everything/7",
