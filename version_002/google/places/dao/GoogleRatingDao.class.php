@@ -6,7 +6,7 @@
         
         public function __construct() {
             global $pdo;
-            parent::init($pdo, "google_hours");
+            parent::init($pdo, "google_rating");
         }
         
         public function insertRecord($properties) {
@@ -21,11 +21,11 @@
             parent::updateRecordByPrimaryKey($properties, $values, $identifiers);
         }
 
-        public function getGoogleHoursByNid($nid) {
-            $query = $this->DB->prepare("SELECT place_day, place_start, place_end, place_open FROM poi p
+        public function getGoogleRatingByNid($nid) {
+            $query = $this->DB->prepare("SELECT place_rating FROM poi p
                                             JOIN source_reference_poi srp ON srp.poi_id = p.poi_id
                                             JOIN source_reference sr ON sr.source_reference_id = srp.source_reference_id
-                                            JOIN google_hours gh ON yh.source_reference_id = sr.source_reference_id
+                                            JOIN google_rating gr ON gr.source_reference_id = sr.source_reference_id
                                             WHERE p.nid = ?");
             $succes = $query->execute(array($nid));
             if (!$succes) {

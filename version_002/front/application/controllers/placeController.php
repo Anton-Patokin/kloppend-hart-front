@@ -67,6 +67,18 @@ class placeController {
         $price = $this->placeModel->getBusinessPrice($nid);
         echo json_encode($price);
     }
+
+    public function getPlaceRating($nid){
+        $this->doNotRenderHeader = 1;
+        $rating = $this->placeModel->getPlaceRating($nid);
+        echo json_encode($rating);
+    }
+
+    public function getPlaceHours($nid){
+        $this->doNotRenderHeader = 1;
+        $hours = $this->placeModel->getPlaceHours($nid);
+        echo json_encode($hours);
+    }
     
     public function getPlaceStatsByNid($nid){
         //10 days back in time

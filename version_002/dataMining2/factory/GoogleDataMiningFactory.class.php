@@ -10,6 +10,7 @@ require_once (ROOT . 'source/factory/SourceReferencePoiFactory.class.php');
 require_once (ROOT . 'source/factory/SourceCityGeolocationFactory.class.php');
 require_once (ROOT . 'google/places/factory/GoogleLocationFactory.class.php');
 require_once (ROOT . 'google/places/factory/GoogleHoursFactory.class.php');
+require_once (ROOT . 'google/places/factory/GoogleRatingFactory.class.php');
 
 require_once (ROOT . 'source/model/SourceReference.class.php');
 require_once (ROOT . 'source/model/SourceReferencePoi.class.php');
@@ -22,6 +23,7 @@ class GoogleDataMiningFactory extends \dataMining2\factory\DataMiningFactory {
     protected $sourceReferencePoiFactory;
     protected $googleLocationFactory;
     protected $googleHoursFactory;
+    protected $googleRatingFactory;
     
     protected $source_name = 'google';
     protected $sourceCityGeolocationLimit = 15; //limitation of how many points will be run in one call
@@ -35,6 +37,7 @@ class GoogleDataMiningFactory extends \dataMining2\factory\DataMiningFactory {
         $this->sourceCityGeolocationFactory = new \source\factory\SourceCityGeolocationFactory();
         $this->googleLocationFactory = new \google\places\factory\GoogleLocationFactory();
         $this->googleHoursFactory = new \google\places\factory\GoogleHoursFactory();
+        $this->googleRatingFactory = new \google\places\factory\GoogleRatingFactory();
 
     } 
     
@@ -106,8 +109,11 @@ class GoogleDataMiningFactory extends \dataMining2\factory\DataMiningFactory {
     }
 
     private function handleGooglePlace($googlePlace, $sourceReference) {
-        if (!empty($googlePlace->opening_hours)) {
-            $this->handleGoogleHours($googlePlace, $sourceReference);
+        // if (!empty($googlePlace->opening_hours)) {
+        //     $this->handleGoogleHours($googlePlace, $sourceReference);
+        // }
+        if (!empty($googlePlace->rating)) {
+            $this->handleGoogleRating($googlePlace, $sourceReference);
         }
     }
 
@@ -156,6 +162,12 @@ class GoogleDataMiningFactory extends \dataMining2\factory\DataMiningFactory {
                 }
             }
         }
+    }
+
+    private function handleGoogleRating($rating, $sourceReference){
+        $rating->source_reference_id = $sourceReference->source_reference_id;
+        $rating->place_rating = $rating->rating;
+        $this->googleRatingFactory->saveGoogleRating($rating);
     }
 }
 

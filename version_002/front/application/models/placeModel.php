@@ -3,6 +3,7 @@ require_once ROOT . '/apen/service/ApenService.class.php';
 require_once ROOT . '/poi/service/PoiService.class.php';
 require_once ROOT . '/foursquare/service/FoursquareService.class.php';
 require_once ROOT . '/yelp/service/YelpService.class.php';
+require_once ROOT . '/google/places/service/GoogleService.class.php';
 require_once ROOT . '/aggregated/service/PoiStatsTimeAggregatedService.class.php';
 require_once 'foursquareModel.php';
 require_once 'facebookModel.php';
@@ -15,6 +16,7 @@ class placeModel{
     protected $foursquareModel;
     protected $facebookModel;
     protected $yelpService;
+    protected $googleService;
     
     public function __construct() {
         $this->apenService = new \apen\service\ApenService();
@@ -24,6 +26,7 @@ class placeModel{
         $this->foursquareModel = new foursquareModel();
         $this->facebookModel = new facebookModel();
         $this->yelpService = new \yelp\service\YelpService();
+        $this->googleService = new \google\places\service\GoogleService();
     }
     
     public function getPlaceByNid($nid){
@@ -76,6 +79,16 @@ class placeModel{
     public function getBusinessPrice($nid) {
         $price = $this->yelpService->getYelpPriceByNid($nid);
         return $price;
+    }
+
+    public function getPlaceRating($nid) {
+        $rating = $this->googleService->getGoogleRatingByNid($nid);
+        return $rating;
+    }
+
+    public function getPlaceHours($nid) {
+        $hours = $this->googleService->getGoogleHoursByNid($nid);
+        return $hours;
     }
     
     public function getPlaceStatsByNid($nid, $startDate, $endDate){

@@ -25,7 +25,7 @@
             $query = $this->DB->prepare("SELECT place_day, place_start, place_end, place_open FROM poi p
                                             JOIN source_reference_poi srp ON srp.poi_id = p.poi_id
                                             JOIN source_reference sr ON sr.source_reference_id = srp.source_reference_id
-                                            JOIN google_hours gh ON yh.source_reference_id = sr.source_reference_id
+                                            JOIN google_hours gh ON gh.source_reference_id = sr.source_reference_id
                                             WHERE p.nid = ?");
             $succes = $query->execute(array($nid));
             if (!$succes) {
