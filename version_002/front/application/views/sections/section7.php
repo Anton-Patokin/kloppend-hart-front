@@ -1,5 +1,5 @@
 <?php
-	// include_once('/media/drive-sdb1/www/apen.be/htdocs/kloppend-hart-antwerpen/settings.php');
+//	 include_once('/media/drive-sdb1/www/apen.be/htdocs/kloppend-hart-antwerpen/settings.php');
 	include_once('C:\xampp\htdocs\edge\projects\kloppend-hart-antwerpen\version_002\settings.php');
 	require_once(ROOT . 'twitter/api/TwitterApi.class.php');
 	$config = array('key' => '47MHPAfhtJE8IGMt5QPAA',

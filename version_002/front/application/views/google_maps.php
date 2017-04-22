@@ -3,9 +3,6 @@
 $rootScope = "https://apen.be/kloppend-hart-antwerpen/front/";
 
 ?>
-<div class="container background_white">
-</div>
-
 <div>
     <div ng-if="showGoogleMaps">
         <ui-gmap-google-map ng-class="{'size_map_small' : size_map,'size_map_full' : !size_map}" center="map.center"
@@ -26,6 +23,16 @@ $rootScope = "https://apen.be/kloppend-hart-antwerpen/front/";
             <ui-gmap-markers doCluster="false" models="velo"
                              events="map.velo.event" coords="'self'"
                              icon="{url: '<?= $rootScope ?>/images/markers/marker_2.png'}" options="showvelo">
+                <ui-gmap-windows show="map.show">
+                    <div ng-non-bindable>
+                        <div>
+                            <h4 class="heading-pop-up-velo">
+                                {{aantal_loc}} fietsen op dit station
+                            </h4>
+
+                        </div>
+                    </div>
+                </ui-gmap-windows>
             </ui-gmap-markers>
 
             <ui-gmap-markers doCluster="true" typeOptions="{minimumClusterSize : 1}" models="clusterData"

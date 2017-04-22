@@ -109,9 +109,10 @@ app.controller("PrimeController", function ($scope, uiGmapGoogleMapApi, $http, $
     $scope.layer_foursquare = "";
     $scope.layer_apen = "";
     $scope.showOverflow = true;
-    $scope.showGoogleMaps = false;
+    $scope.showGoogleMaps = true;
     $scope.activeClass = "";
-
+    $scope.veloTitle = "";
+    $scope.veloAantal_loc = "";
 
     var d = new Date();
     $scope.minDate = d;
@@ -213,6 +214,9 @@ app.controller("PrimeController", function ($scope, uiGmapGoogleMapApi, $http, $
                 SCROOL_WHEEL = false;
                 show_velo();
                 enableScroll()
+                $timeout(function () {
+                    $scope.showGoogleMaps = true;
+                }, 200)
                 break;
             case '/section7':
                 GOOLE_MAPS_SIZE = "small";
@@ -235,13 +239,15 @@ app.controller("PrimeController", function ($scope, uiGmapGoogleMapApi, $http, $
                 // loadData();
                 break;
             default:
+                $scope.showGoogleMaps = false;
                 var timeout = 0;
                 if (nearbyplacesProsesing) {
                     abortRequestNearbyPlaces();
                     timeout = 1000;
                 }
                 $timeout(function () {
-                    $scope.showGoogleMaps = false;
+                    initialize_bounce_marker();
+                    resetGoogleMapsMarkers();
                     SHOW_GOOGLE_MAPS = true;
                     GOOLE_MAPS_SIZE = "full";
                     //on click brand or on return to home page
@@ -251,15 +257,14 @@ app.controller("PrimeController", function ($scope, uiGmapGoogleMapApi, $http, $
                     $scope.size_map = false;
                     switchApplicationState(APP_STATE_LOAD_CURRENT_HOUR);
                     nearbyplacesProsesing = false;
-                    $scope.showGoogleMaps = true;
+                    $timeout(function () {
+                        $scope.showGoogleMaps = true;
+                    }, 200)
                     center_google_maps(save_position_lat_client, save_position_long_client, false)
-
                 }, timeout)
                 break;
         }
-        $timeout(function () {
-            $scope.showGoogleMaps = true;
-        }, 100)
+
 
         $id = "";
     }
@@ -473,6 +478,7 @@ app.controller("PrimeController", function ($scope, uiGmapGoogleMapApi, $http, $
                 $scope.show_foursquare_marker = true;
                 $scope.show_apen_marker = true;
         }
+        resetGoogleMapsMarkers()
         switchApplicationState(APP_STATE_LOAD_CURRENT_HOUR);
 
     }
@@ -682,7 +688,7 @@ app.controller("PrimeController", function ($scope, uiGmapGoogleMapApi, $http, $
 
     $scope.home = function () {
         // location.href = '';
-        $location.path('/', false);
+        $location.path('/', true);
         currentPageLoaded($location.path())
     }
 
@@ -785,8 +791,15 @@ app.controller("PrimeController", function ($scope, uiGmapGoogleMapApi, $http, $
             }, velo: {
                 event: {
                     click: function (marker, eventName, model) {
+
+                        console.log('marker', marker);
+                        model.show = true;
+                        $scope.aantal_loc = marker.model.aantal_loc;
+                        console.log(marker.model);
+
                     },
                 },
+
                 show: {
                     visible: false,
                 },
@@ -830,7 +843,8 @@ app.controller("PrimeController", function ($scope, uiGmapGoogleMapApi, $http, $
                         id: value.velo_id,
                         latitude: value.point_lat,
                         longitude: value.point_lng,
-                        title: value.name
+                        title: value.name,
+                        aantal_loc: value.aantal_loc,
                     }
                     $scope.velo.push(velo);
                 });

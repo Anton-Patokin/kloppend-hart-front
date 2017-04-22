@@ -10,9 +10,10 @@ $rootPath = "http://localhost/edge/projects/kloppend-hart-antwerpen/version_002/
 
 <head>
     <meta charset="UTF-8">
-<!--    <meta name=viewport content="width=device-width, initial-scale=1">-->
-<!--    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />-->
-    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+    <!--    <meta name=viewport content="width=device-width, initial-scale=1">-->
+    <!--    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />-->
+    <meta name="viewport"
+          content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi"/>
 
     <link rel="icon" type="image/png" href="<?= $rootPath ?>/images/icon-002.png">
 
@@ -25,12 +26,10 @@ $rootPath = "http://localhost/edge/projects/kloppend-hart-antwerpen/version_002/
     <link rel="stylesheet" href="<?= $rootPath ?>css/base.css">
 
     <script type="text/javascript" src="<?= $rootPath ?>js/libs/angular.min.js"></script>
-    <script
-<!--        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCrmTkGoBzp--pRgO5vRXIsbXPrk3VMp_w&libraries=places&language=nl&region=BE&sensor=false&libraries=drawing&libraries=visualization"-->
-        type="text/javascript"></script>
+
 
     <script type="text/javascript" src="<?= $rootPath ?>js/libs/lodash.min.js"></script>
-    
+
     <script src="<?= $rootPath ?>js/angular-simple-logger.min.js"></script>
     <script src="<?= $rootPath ?>js/angular-google-maps.js"></script>
 
@@ -40,7 +39,7 @@ $rootPath = "http://localhost/edge/projects/kloppend-hart-antwerpen/version_002/
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular-messages.min.js"></script>
     <script src="<?= $rootPath ?>js/libs/angular-material.min.js"></script>
 
-    
+
     <script type="text/javascript" src="<?= $rootPath ?>js/libs/angular-cookies.min.js"></script>
     <script src="<?= $rootPath ?>js/libs/angular-route.min.js"></script>
     <script src="<?= $rootPath ?>js/libs/jquery.min.js"></script>
@@ -60,6 +59,6 @@ $rootPath = "http://localhost/edge/projects/kloppend-hart-antwerpen/version_002/
     <script type="text/javascript" src="<?= $rootPath ?>js/angular_side_bar_controller.js"></script>
     <script type="text/javascript" src="<?= $rootPath ?>js/global_var.js"></script>
     <script type="text/javascript" src="<?= $rootPath ?>js/time_lineController.js"></script>
-    
+
 </head>
 <?php include_once 'application/views/index.php'; ?>
