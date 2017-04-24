@@ -13,6 +13,10 @@ app.controller("section1", function ($scope, $routeParams, $http, $timeout) {
     $scope.imageExist;
     $scope.socialMediaItems;
     $scope.showSubcategories = true;
+    $scope.googleHours = [];
+    $scope.yelpPrice = '';
+    $scope.yelpRating = '';
+
 
     $scope.myInterval = 6000;
     $scope.slides = [];
@@ -38,8 +42,8 @@ app.controller("section1", function ($scope, $routeParams, $http, $timeout) {
     };
 
     $scope.getPoiById = function (nid) {
+        $('.node-hours').hide();
         $scope.subNavBarActiveId = nid;
-        console.log('subnavigatie id',$scope.subNavBarActiveId);
         $scope.loadInfo = true;
         $scope.loadChart = true;
         $scope.loadPhotos = true;
@@ -243,6 +247,119 @@ app.controller("section1", function ($scope, $routeParams, $http, $timeout) {
         }, function errorCallback(response) {
             console.log("Status: " + response);
         });
+
+        $http({
+            method: 'GET',
+            dataType: 'json',
+            async: false,
+            cache: false,
+            url: 'place/getPlaceHours/' + nid
+        }).then(function successCallback(response) {
+            data = response.data;
+            if (data.length == 0) {$scope.googleHours = false;}
+            text = [];
+            for (var i = 0; i < data.length; i++) {
+                text = [];
+                switch(data[i]['place_day']){
+                    case 0:
+                        if (data[i]['place_open'] != true) {
+                            text = 'Gesloten';
+                        } else {
+                            text = [data[i]['place_start'].slice(0, 2), ':', data[i]['place_start'].slice(2)].join('') + '-' + [data[i]['place_end'].slice(0, 2), ':', data[i]['place_end'].slice(2)].join('');
+                        }
+                        if (typeof $scope.googleHours['Zondag'] === 'undefined') {$scope.googleHours['Zondag'] = [];}
+                        $scope.googleHours['Zondag'][data[i]['times_opened']] = text;
+                        break;
+                    case 1:
+                        if (data[i]['place_open'] != true) {
+                            text = 'Gesloten';
+                        } else {
+                            text = [data[i]['place_start'].slice(0, 2), ':', data[i]['place_start'].slice(2)].join('') + '-' + [data[i]['place_end'].slice(0, 2), ':', data[i]['place_end'].slice(2)].join('');
+                        }
+                        if (typeof $scope.googleHours['Maandag'] === 'undefined') {$scope.googleHours['Maandag'] = [];}
+                        $scope.googleHours['Maandag'][data[i]['times_opened']] = text;
+                        break;
+                    case 2:
+                        if (data[i]['place_open'] != true) {
+                            text = 'Gesloten';
+                        } else {
+                            text = [data[i]['place_start'].slice(0, 2), ':', data[i]['place_start'].slice(2)].join('') + '-' + [data[i]['place_end'].slice(0, 2), ':', data[i]['place_end'].slice(2)].join('');
+                        }
+                        if (typeof $scope.googleHours['Dinsdag'] === 'undefined') {$scope.googleHours['Dinsdag'] = [];}
+                        $scope.googleHours['Dinsdag'][data[i]['times_opened']] = text;
+                        break;
+                    case 3:
+                        if (data[i]['place_open'] != true) {
+                            text = 'Gesloten';
+                        } else {
+                            text = [data[i]['place_start'].slice(0, 2), ':', data[i]['place_start'].slice(2)].join('') + '-' + [data[i]['place_end'].slice(0, 2), ':', data[i]['place_end'].slice(2)].join('');
+                        }
+                        if (typeof $scope.googleHours['Woensdag'] === 'undefined') {$scope.googleHours['Woensdag'] = [];}
+                        $scope.googleHours['Woensdag'][data[i]['times_opened']] = text;
+                        break;
+                    case 4:
+                        if (data[i]['place_open'] != true) {
+                            text = 'Gesloten';
+                        } else {
+                            text = [data[i]['place_start'].slice(0, 2), ':', data[i]['place_start'].slice(2)].join('') + '-' + [data[i]['place_end'].slice(0, 2), ':', data[i]['place_end'].slice(2)].join('');
+                        }
+                        if (typeof $scope.googleHours['Donderdag'] === 'undefined') {$scope.googleHours['Donderdag'] = [];}
+                        $scope.googleHours['Donderdag'][data[i]['times_opened']] = text;
+                        break;
+                    case 5:
+                        if (data[i]['place_open'] != true) {
+                            text = 'Gesloten';
+                        } else {
+                            text = [data[i]['place_start'].slice(0, 2), ':', data[i]['place_start'].slice(2)].join('') + '-' + [data[i]['place_end'].slice(0, 2), ':', data[i]['place_end'].slice(2)].join('');
+                        }
+                        if (typeof $scope.googleHours['Vrijdag'] === 'undefined') {$scope.googleHours['Vrijdag'] = [];}
+                        $scope.googleHours['Vrijdag'][data[i]['times_opened']] = text;
+                        break;
+                    case 6:
+                        if (data[i]['place_open'] != true) {
+                            text = 'Gesloten';
+                        } else {
+                            text = [data[i]['place_start'].slice(0, 2), ':', data[i]['place_start'].slice(2)].join('') + '-' + [data[i]['place_end'].slice(0, 2), ':', data[i]['place_end'].slice(2)].join('');
+                        }
+                        if (typeof $scope.googleHours['Zaterdag'] === 'undefined') {$scope.googleHours['Zaterdag'] = [];}
+                        $scope.googleHours['Zaterdag'][data[i]['times_opened']] = text;
+                        break;
+                }
+            }
+
+            $('.node-hours').show();
+            
+        }, function errorCallback(response) {
+            console.log("Status: " + response);
+        });
+
+        $http({
+            method: 'GET',
+            dataType: 'json',
+            async: true,
+            cache: false,
+            url: 'place/getBusinessRating/' + nid
+        }).then(function successCallback(response) {
+            data = response.data;
+            if (data.length == 0) {$scope.yelpRating = false;}
+            else {$scope.yelpRating = data[0]['business_rating']}
+        }, function errorCallback(response) {
+            console.log("Status: " + response);
+        });
+
+        $http({
+            method: 'GET',
+            dataType: 'json',
+            async: true,
+            cache: false,
+            url: 'place/getBusinessPrice/' + nid
+        }).then(function successCallback(response) {
+            data = response.data;
+            if (data.length == 0) {$scope.yelpPrice = false;}
+            else {$scope.yelpPrice = data[0]['business_price']}
+        }, function errorCallback(response) {
+            console.log("Status: " + response);
+        });
     }
 
     $scope.toggleSubcategories = function () {
@@ -257,9 +374,7 @@ app.controller("section1", function ($scope, $routeParams, $http, $timeout) {
         }
     });
 
-
-    if ($routeParams.value) {
+    if ($routeParams.action == 'search') {
         $scope.getPoiById($routeParams.value);
     }
-    
 });

@@ -31,7 +31,10 @@
 	<?php endif ?>
 	<div class="<?= ($show == 'show')? '' : 'poi-search-details'?> poi-details-wrapper clearfix">
 		<div ng-class="{'sidenav-open' : !sideNavtest}" class="poi-details">
-
+			<!-- <div class="col-md-12">
+				<div class="extra-info">
+				</div>
+			</div> -->
 			<div class="col-md-6">
 				<div class="col-md-12 clearfix">
 					<div class="poi-text ">
@@ -41,6 +44,27 @@
 						<div class="node-title">
 						</div>
 						<div class="node-body">
+						</div>
+						<div ng-show='googleHours' class="node-hours">
+							<h3>Openingsuren volgens Google</h3>
+							<div class="small-seperator"></div>
+							<ul>
+								<li>Maandag: <span ng-repeat="hour in googleHours['Maandag']">{{hour}} </span></li>
+								<li>Dinsdag: <span ng-repeat="hour in googleHours['Dinsdag']">{{hour}} </span></li>
+								<li>Woensdag: <span ng-repeat="hour in googleHours['Woensdag']">{{hour}} </span></li>
+								<li>Donderdag: <span ng-repeat="hour in googleHours['Donderdag']">{{hour}} </span></li>
+								<li>Vrijdag: <span ng-repeat="hour in googleHours['Vrijdag']">{{hour}} </span></li>
+								<li>Zaterdag: <span ng-repeat="hour in googleHours['Zaterdag']">{{hour}} </span></li>
+								<li>Zondag: <span ng-repeat="hour in googleHours['Zondag']">{{hour}} </span></li>
+							</ul>
+						</div>
+						<div ng-show='yelpPrice || yelpRating' class="node-yelp">
+							<h3>Prijsklasse & rating van Yelp</h3>
+							<div class="small-seperator"></div>
+							<div class="yelp-info">
+								<p>Prijsklasse: <span ng-show='yelpPrice'>{{ yelpPrice }}</span><span ng-hide='yelpPrice'>N/A</span></p>
+								<p>Rating: <span ng-show='yelpRating'>{{ yelpRating }}/5</span><span ng-hide='yelpRating'>N/A</span></p>
+							</div>
 						</div>
 						<div class="apen-link">
 						</div>

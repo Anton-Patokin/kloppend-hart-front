@@ -731,11 +731,6 @@ label {
     background-color: #cd1738;
 }
 
-/*.nav_arrow_icon{*/
-/*height: 12px;*/
-/*width: 8px;*/
-/*margin-top: 3px;*/
-/*}*/
 .poi-text {
     min-height: 420px;
     margin: 25px 0;
@@ -872,6 +867,22 @@ label {
 .morris-hover.morris-default-style .morris-hover-point {
     white-space: nowrap;
     margin: 0.1em 0
+}
+
+.poi-details .extra-info {
+    height: 50px;
+    background-color: white;
+    margin: 20px 0 0 0;
+}
+
+.poi-details .node-hours ul{
+    padding: 0;
+    list-style-type: none;
+    margin: 10px 0 30px 0;
+}
+
+.poi-details .node-yelp .yelp-info {
+    margin: 10px 0 30px 0;
 }
 
 /* VERKEER SECION 7 */

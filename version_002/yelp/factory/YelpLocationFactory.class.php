@@ -2,7 +2,7 @@
 
 	namespace yelp\factory;
 
-	require_once('C:\xampp\htdocs\edge\projects\kloppend-hart-antwerpen\version_002\Settings.php');
+	// require_once('C:\xampp\htdocs\edge\projects\kloppend-hart-antwerpen\version_002\Settings.php');
 	require_once(ROOT . 'yelp/model/YelpLocation.class.php');
 	require_once(ROOT . 'yelp/api/YelpApi.class.php');
 	require_once(ROOT . 'core/factory/GenericFactory.class.php');

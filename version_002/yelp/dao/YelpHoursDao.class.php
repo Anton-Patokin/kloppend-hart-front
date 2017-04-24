@@ -22,7 +22,7 @@
         }
 
         public function getYelpHoursByNid($nid) {
-            $query = $this->DB->prepare("SELECT business_day, business_start, business_end, business_open FROM poi p
+            $query = $this->DB->prepare("SELECT DISTINCT business_day, business_start, business_end, business_open FROM poi p
                                             JOIN source_reference_poi srp ON srp.poi_id = p.poi_id
                                             JOIN source_reference sr ON sr.source_reference_id = srp.source_reference_id
                                             JOIN yelp_hours yh ON yh.source_reference_id = sr.source_reference_id

@@ -22,7 +22,7 @@
         }
 
         public function getYelpRatingByNid($nid) {
-            $query = $this->DB->prepare("SELECT business_rating FROM poi p
+            $query = $this->DB->prepare("SELECT DISTINCT business_rating FROM poi p
                                             JOIN source_reference_poi srp ON srp.poi_id = p.poi_id
                                             JOIN source_reference sr ON sr.source_reference_id = srp.source_reference_id
                                             JOIN yelp_rating yr ON yr.source_reference_id = sr.source_reference_id
